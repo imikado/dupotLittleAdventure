@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://common/ui/notification.gd" type="Script" id=1]
+[ext_resource path="res://common/themes/default.theme" type="Theme" id=2]
+
+[node name="notification" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="canvas" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="canvas"]
+margin_left = 51.0
+margin_top = 86.0
+margin_right = 278.0
+margin_bottom = 122.0
+color = Color( 0.0784314, 0.411765, 0.509804, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="canvas/ColorRect"]
+margin_left = 4.84094
+margin_top = 10.1748
+margin_right = 223.841
+margin_bottom = 40.1748
+theme = ExtResource( 2 )
+text = "texte"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

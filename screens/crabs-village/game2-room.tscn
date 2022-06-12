@@ -1,0 +1,335 @@
+[gd_scene load_steps=24 format=2]
+
+[ext_resource path="res://screens/crabs-village/game2-room/assets/raft-2-horiz.tscn" type="PackedScene" id=1]
+[ext_resource path="res://screens/crabs-village/game2-room/assets/raft-2-vert.tscn" type="PackedScene" id=2]
+[ext_resource path="res://screens/crabs-village/game2-room/assets/raft-3-horiz.tscn" type="PackedScene" id=3]
+[ext_resource path="res://screens/crabs-village/game2-room/assets/raft-3-vert.tscn" type="PackedScene" id=4]
+[ext_resource path="res://screens/crabs-village/game2-room.gd" type="Script" id=5]
+[ext_resource path="res://screens/crabs-village/characters/welcome-boy/welcome-boy-idle.png" type="Texture" id=6]
+[ext_resource path="res://screens/crabs-village/game2-room/see.png" type="Texture" id=7]
+[ext_resource path="res://common/ui/simpleDialog.tscn" type="PackedScene" id=8]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+
+[sub_resource type="ConvexPolygonShape2D" id=2]
+points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+
+[sub_resource type="ConvexPolygonShape2D" id=3]
+points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+
+[sub_resource type="ConvexPolygonShape2D" id=4]
+points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+
+[sub_resource type="ConvexPolygonShape2D" id=5]
+points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+
+[sub_resource type="ConvexPolygonShape2D" id=6]
+points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+
+[sub_resource type="ConvexPolygonShape2D" id=7]
+points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+
+[sub_resource type="TileSet" id=8]
+0/name = "see.png 0"
+0/texture = ExtResource( 7 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 32, 0, 32, 32 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape = SubResource( 1 )
+0/shape_one_way = false
+0/shape_one_way_margin = 1.0
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
+1/name = "see.png 1"
+1/texture = ExtResource( 7 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 32, 32, 32 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape = SubResource( 2 )
+1/shape_one_way = false
+1/shape_one_way_margin = 1.0
+1/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+1/z_index = 0
+2/name = "see.png 2"
+2/texture = ExtResource( 7 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 32, 32, 32, 32 )
+2/tile_mode = 0
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shape_offset = Vector2( 0, 0 )
+2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+2/shape_one_way = false
+2/shape_one_way_margin = 0.0
+2/shapes = [  ]
+2/z_index = 0
+3/name = "see.png 3"
+3/texture = ExtResource( 7 )
+3/tex_offset = Vector2( 0, 0 )
+3/modulate = Color( 1, 1, 1, 1 )
+3/region = Rect2( 64, 32, 32, 32 )
+3/tile_mode = 0
+3/occluder_offset = Vector2( 0, 0 )
+3/navigation_offset = Vector2( 0, 0 )
+3/shape_offset = Vector2( 0, 0 )
+3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+3/shape = SubResource( 3 )
+3/shape_one_way = false
+3/shape_one_way_margin = 1.0
+3/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 3 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+3/z_index = 0
+4/name = "see.png 4"
+4/texture = ExtResource( 7 )
+4/tex_offset = Vector2( 0, 0 )
+4/modulate = Color( 1, 1, 1, 1 )
+4/region = Rect2( 32, 64, 32, 32 )
+4/tile_mode = 0
+4/occluder_offset = Vector2( 0, 0 )
+4/navigation_offset = Vector2( 0, 0 )
+4/shape_offset = Vector2( 0, 0 )
+4/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+4/shape = SubResource( 4 )
+4/shape_one_way = false
+4/shape_one_way_margin = 1.0
+4/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 4 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+4/z_index = 0
+5/name = "see.png 5"
+5/texture = ExtResource( 7 )
+5/tex_offset = Vector2( 0, 0 )
+5/modulate = Color( 1, 1, 1, 1 )
+5/region = Rect2( 64, 0, 32, 32 )
+5/tile_mode = 0
+5/occluder_offset = Vector2( 0, 0 )
+5/navigation_offset = Vector2( 0, 0 )
+5/shape_offset = Vector2( 0, 0 )
+5/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+5/shape = SubResource( 5 )
+5/shape_one_way = false
+5/shape_one_way_margin = 1.0
+5/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 5 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+5/z_index = 0
+6/name = "see.png 6"
+6/texture = ExtResource( 7 )
+6/tex_offset = Vector2( 0, 0 )
+6/modulate = Color( 1, 1, 1, 1 )
+6/region = Rect2( 0, 0, 32, 32 )
+6/tile_mode = 0
+6/occluder_offset = Vector2( 0, 0 )
+6/navigation_offset = Vector2( 0, 0 )
+6/shape_offset = Vector2( 0, 0 )
+6/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+6/shape = SubResource( 6 )
+6/shape_one_way = false
+6/shape_one_way_margin = 1.0
+6/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 6 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+6/z_index = 0
+7/name = "see.png 7"
+7/texture = ExtResource( 7 )
+7/tex_offset = Vector2( 0, 0 )
+7/modulate = Color( 1, 1, 1, 1 )
+7/region = Rect2( 64, 64, 32, 32 )
+7/tile_mode = 0
+7/occluder_offset = Vector2( 0, 0 )
+7/navigation_offset = Vector2( 0, 0 )
+7/shape_offset = Vector2( 0, 0 )
+7/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+7/shape = SubResource( 7 )
+7/shape_one_way = false
+7/shape_one_way_margin = 1.0
+7/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 7 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+7/z_index = 0
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 6 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 6 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 6 )
+region = Rect2( 96, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 6 )
+region = Rect2( 128, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 6 )
+region = Rect2( 160, 0, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=15]
+animations = [ {
+"frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="game2-room" type="Node2D"]
+script = ExtResource( 5 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource( 8 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 65535, 6, 0, 0, 6, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 6, 0, 8, 6, 0, 9, 6, 0, 10, 6, 0, 131071, 6, 0, 65536, 1, 0, 65537, 2, 0, 65538, 2, 0, 65539, 2, 0, 65540, 2, 0, 65541, 2, 0, 65542, 2, 0, 65543, 3, 0, 65544, 6, 0, 65545, 6, 0, 65546, 6, 0, 196607, 6, 0, 131072, 1, 0, 131073, 2, 0, 131074, 2, 0, 131075, 2, 0, 131076, 2, 0, 131077, 2, 0, 131078, 2, 0, 131079, 5, 0, 131080, 0, 0, 131081, 0, 0, 131082, 0, 0, 131083, 0, 0, 262143, 6, 0, 196608, 1, 0, 196609, 2, 0, 196610, 2, 0, 196611, 2, 0, 196612, 2, 0, 196613, 2, 0, 196614, 2, 0, 196615, 2, 0, 196616, 2, 0, 196617, 2, 0, 196618, 2, 0, 196619, 2, 0, 327679, 6, 0, 262144, 1, 0, 262145, 2, 0, 262146, 2, 0, 262147, 2, 0, 262148, 2, 0, 262149, 2, 0, 262150, 2, 0, 262151, 7, 0, 262152, 4, 0, 262153, 4, 0, 262154, 4, 0, 393215, 6, 0, 327680, 1, 0, 327681, 2, 0, 327682, 2, 0, 327683, 2, 0, 327684, 2, 0, 327685, 2, 0, 327686, 2, 0, 327687, 3, 0, 327688, 6, 0, 327689, 6, 0, 327690, 6, 0, 458751, 6, 0, 393216, 1, 0, 393217, 2, 0, 393218, 2, 0, 393219, 2, 0, 393220, 2, 0, 393221, 2, 0, 393222, 2, 0, 393223, 3, 0, 393224, 6, 0, 393225, 6, 0, 393226, 6, 0, 524287, 6, 0, 458752, 6, 0, 458753, 4, 0, 458754, 4, 0, 458755, 4, 0, 458756, 4, 0, 458757, 4, 0, 458758, 4, 0, 458759, 6, 0, 458760, 6, 0, 458761, 6, 0, 458762, 6, 0 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 153.622, 129.136 )
+scale = Vector2( 5, 2 )
+current = true
+zoom = Vector2( 1.1, 1.1 )
+
+[node name="raft-2-horiz2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 160, 192 )
+
+[node name="raft-2-horiz3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 160, 32 )
+
+[node name="raft-2-horiz4" parent="." instance=ExtResource( 1 )]
+position = Vector2( 32, 32 )
+
+[node name="raft-2-vert" parent="." instance=ExtResource( 2 )]
+position = Vector2( -122.003, 130.378 )
+
+[node name="raft-2-vert3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 192, 128 )
+
+[node name="raft-2-vert4" parent="." instance=ExtResource( 2 )]
+position = Vector2( 128, 160 )
+
+[node name="raft-2-vert2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 96, 32 )
+
+[node name="raft-3-horiz" parent="." instance=ExtResource( 3 )]
+position = Vector2( 64, 128 )
+
+[node name="raft-3-vert" parent="." instance=ExtResource( 4 )]
+position = Vector2( 32, 64 )
+
+[node name="raft-3-vert2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 160, 96 )
+
+[node name="raft-2-horiz" parent="." instance=ExtResource( 1 )]
+position = Vector2( 96, 96 )
+displayDriver = true
+
+[node name="colorWin" type="ColorRect" parent="."]
+visible = false
+margin_left = -35.0
+margin_top = -3.0
+margin_right = 353.0
+margin_bottom = 257.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="colorWin"]
+position = Vector2( 181.949, 113.569 )
+scale = Vector2( 3.8987, 3.8987 )
+frames = SubResource( 15 )
+
+[node name="simpleDialogWin" parent="." instance=ExtResource( 8 )]
+
+[node name="simpleDialogStart" parent="." instance=ExtResource( 8 )]
+
+[node name="ColorStart" type="ColorRect" parent="."]
+margin_left = -34.0
+margin_top = 3.0
+margin_right = 354.0
+margin_bottom = 280.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimatedSprite2" type="AnimatedSprite" parent="ColorStart"]
+position = Vector2( 146.949, 110.569 )
+scale = Vector2( 3.8987, 3.8987 )
+frames = SubResource( 15 )
+
+[connection signal="goLeft" from="raft-2-horiz2" to="." method="_on_raft2horiz_goLeft"]
+[connection signal="goRight" from="raft-2-horiz2" to="." method="_on_raft2horiz_goRight"]
+[connection signal="goLeft" from="raft-2-horiz3" to="." method="_on_raft2horiz_goLeft"]
+[connection signal="goRight" from="raft-2-horiz3" to="." method="_on_raft2horiz_goRight"]
+[connection signal="goLeft" from="raft-2-horiz4" to="." method="_on_raft2horiz_goLeft"]
+[connection signal="goRight" from="raft-2-horiz4" to="." method="_on_raft2horiz_goRight"]
+[connection signal="goDown" from="raft-2-vert" to="." method="_on_raft2vert_goDown"]
+[connection signal="goUp" from="raft-2-vert" to="." method="_on_raft2vert_goUp"]
+[connection signal="goDown" from="raft-2-vert3" to="." method="_on_raft2vert_goDown"]
+[connection signal="goUp" from="raft-2-vert3" to="." method="_on_raft2vert_goUp"]
+[connection signal="goDown" from="raft-2-vert4" to="." method="_on_raft2vert_goDown"]
+[connection signal="goUp" from="raft-2-vert4" to="." method="_on_raft2vert_goUp"]
+[connection signal="goDown" from="raft-2-vert2" to="." method="_on_raft2vert_goDown"]
+[connection signal="goUp" from="raft-2-vert2" to="." method="_on_raft2vert_goUp"]
+[connection signal="goLeft" from="raft-3-horiz" to="." method="_on_raft3horiz_goLeft"]
+[connection signal="goRight" from="raft-3-horiz" to="." method="_on_raft3horiz_goRight"]
+[connection signal="goDown" from="raft-3-vert" to="." method="_on_raft3vert_goDown"]
+[connection signal="goUp" from="raft-3-vert" to="." method="_on_raft3vert_goUp"]
+[connection signal="goDown" from="raft-3-vert2" to="." method="_on_raft3vert_goDown"]
+[connection signal="goUp" from="raft-3-vert2" to="." method="_on_raft3vert_goUp"]
+[connection signal="goLeft" from="raft-2-horiz" to="." method="_on_raft2horiz_goLeft"]
+[connection signal="goRight" from="raft-2-horiz" to="." method="_on_raft2horiz_goRight"]
+[connection signal="discussionFinished" from="simpleDialogWin" to="." method="_on_simpleDialog_discussionFinished"]
+[connection signal="discussionFinished" from="simpleDialogStart" to="." method="_on_simpleDialogStart_discussionFinished"]

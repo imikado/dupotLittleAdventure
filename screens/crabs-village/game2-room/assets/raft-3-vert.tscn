@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://screens/crabs-village/game2-room/raft-3.png" type="Texture" id=1]
+[ext_resource path="res://screens/crabs-village/game2-room/assets/raft-3-vert.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 12.6703, 47.66 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+[node name="raft-3-vert" type="KinematicBody2D"]
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 14.6999, 47.2176 )
+shape = SubResource( 1 )
+
+[node name="raft-3" type="Sprite" parent="."]
+position = Vector2( 16, 48 )
+rotation = -1.5708
+texture = ExtResource( 1 )
+
+[node name="Area2D" type="Area2D" parent="raft-3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="raft-3/Area2D"]
+position = Vector2( 36.5268, 9.53674e-07 )
+shape = SubResource( 2 )
+
+[node name="Area2D2" type="Area2D" parent="raft-3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="raft-3/Area2D2"]
+position = Vector2( -37.4177, -0.890903 )
+shape = SubResource( 2 )
+[connection signal="input_event" from="raft-3/Area2D" to="." method="_on_Area2D_input_event"]
+[connection signal="input_event" from="raft-3/Area2D2" to="." method="_on_Area2D2_input_event"]

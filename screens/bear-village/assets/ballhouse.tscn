@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://common/areas/door.tscn" type="PackedScene" id=1]
+[ext_resource path="res://screens/bear-village/assets/ballhouse.gd" type="Script" id=2]
+[ext_resource path="res://screens/bear-village/assets/ballhouse/ballhouse.png" type="Texture" id=3]
+
+[node name="ballhouse" type="StaticBody2D"]
+script = ExtResource( 2 )
+
+[node name="ballhouse" type="Sprite" parent="."]
+position = Vector2( -3.41943, -30.0482 )
+texture = ExtResource( 3 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -16.4235, 28.4788, -49.4591, 18.5681, -63.1452, 1.57839, -61.7294, -21.0746, 58.6145, -24.3782, 58.1426, -15.4113, 57.6707, 1.10645, 40.6809, 19.0401, 13.3086, 24.7033, 12.8366, -6.44454, -17.8393, -4.55679 )
+
+[node name="door" parent="." instance=ExtResource( 1 )]
+position = Vector2( -1.88774, 19.3494 )
+[connection signal="playerOpenedDoor" from="door" to="." method="_on_door_playerOpenedDoor"]

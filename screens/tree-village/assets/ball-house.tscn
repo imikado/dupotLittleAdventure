@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://screens/tree-village/assets/ball-house/ballhouse.png" type="Texture" id=1]
+[ext_resource path="res://screens/tree-village/assets/ball-house.gd" type="Script" id=2]
+[ext_resource path="res://common/areas/door.tscn" type="PackedScene" id=3]
+
+[node name="ball-house" type="StaticBody2D"]
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -12.7637, 56.9813, -15.8819, 13.7728, 20.1995, 14.2182, 20.1995, 56.5359, 41.5811, 48.9633, 61.6263, 26.6908, 61.1809, -5.82702, 31.7812, -14.2906, -46.1724, -13.3997, -59.0904, -7.16336, -58.645, 26.6908, -48.8451, 42.2815 )
+
+[node name="door" parent="." instance=ExtResource( 3 )]
+position = Vector2( 2.7864, 48.7331 )
+[connection signal="playerOpenedDoor" from="door" to="." method="_on_door_playerOpenedDoor"]

@@ -1,0 +1,211 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://common/items/maps/gormonstar-map-zoom.png" type="Texture" id=1]
+[ext_resource path="res://common/ui/shopList/item.gd" type="Script" id=2]
+[ext_resource path="res://common/ui/inventoryList.gd" type="Script" id=3]
+[ext_resource path="res://common/themes/fonts/dogica.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://common/themes/default.theme" type="Theme" id=5]
+[ext_resource path="res://common/items/weapons/wood-sword.png" type="Texture" id=6]
+[ext_resource path="res://common/ui/simpleDialog/windows.png" type="Texture" id=7]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.105882, 0.329412, 0.411765, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 4 )
+
+[node name="inventoryList" type="CanvasLayer"]
+layer = 3
+script = ExtResource( 3 )
+
+[node name="window" type="NinePatchRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 17.4617
+margin_top = 23.1684
+margin_right = -24.5383
+margin_bottom = -5.83162
+rect_scale = Vector2( 1.00571, 0.896089 )
+texture = ExtResource( 7 )
+region_rect = Rect2( 1, 0, 32, 32 )
+patch_margin_left = 3
+patch_margin_top = 5
+patch_margin_right = 3
+patch_margin_bottom = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="window"]
+margin_left = 2.66968
+margin_top = 4.67194
+margin_right = 10.6697
+margin_bottom = 44.6719
+grow_horizontal = 2
+rect_scale = Vector2( 14.7492, 3.57806 )
+size_flags_horizontal = 3
+color = Color( 1, 1, 1, 0.27451 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="window"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 7.0
+margin_top = 11.0
+margin_right = 45.0
+margin_bottom = -45.0
+rect_scale = Vector2( 0.842639, 1.40811 )
+size_flags_vertical = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="window/HBoxContainer"]
+margin_right = 132.0
+margin_bottom = 28.0
+rect_min_size = Vector2( 132, 0 )
+size_flags_vertical = 0
+columns = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="item" type="Button" parent="window/HBoxContainer/GridContainer"]
+margin_right = 40.0
+margin_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 40, 28 )
+theme = ExtResource( 5 )
+custom_styles/normal = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
+expand_icon = true
+script = ExtResource( 2 )
+
+[node name="TextureRect" type="TextureRect" parent="window/HBoxContainer/GridContainer/item"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -8.0
+margin_top = -8.0
+margin_right = 8.0
+margin_bottom = 8.0
+size_flags_horizontal = 5
+size_flags_vertical = 4
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="sideInfo" type="VBoxContainer" parent="window/HBoxContainer"]
+margin_left = 136.0
+margin_right = 316.0
+margin_bottom = 94.0
+rect_min_size = Vector2( 180, 0 )
+
+[node name="title" type="Label" parent="window/HBoxContainer/sideInfo"]
+margin_right = 180.0
+margin_bottom = 7.0
+size_flags_horizontal = 9
+theme = ExtResource( 5 )
+text = "Title item"
+autowrap = true
+uppercase = true
+
+[node name="description" type="RichTextLabel" parent="window/HBoxContainer/sideInfo"]
+margin_top = 11.0
+margin_right = 180.0
+margin_bottom = 27.0
+theme = ExtResource( 5 )
+text = "Description iem selected in lorem ipsum"
+fit_content_height = true
+
+[node name="equipButton" type="Button" parent="window/HBoxContainer/sideInfo"]
+margin_top = 31.0
+margin_right = 180.0
+margin_bottom = 48.0
+theme = ExtResource( 5 )
+text = "Equiper"
+
+[node name="displayButton" type="Button" parent="window/HBoxContainer/sideInfo"]
+margin_top = 52.0
+margin_right = 180.0
+margin_bottom = 69.0
+theme = ExtResource( 5 )
+text = "Afficher"
+
+[node name="useButton" type="Button" parent="window/HBoxContainer/sideInfo"]
+margin_top = 73.0
+margin_right = 180.0
+margin_bottom = 90.0
+theme = ExtResource( 5 )
+text = "Utiliser"
+
+[node name="closeButton" type="Button" parent="window"]
+margin_left = 238.0
+margin_top = 8.0
+margin_right = 271.0
+margin_bottom = 25.0
+theme = ExtResource( 5 )
+text = "X"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="window2" type="NinePatchRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 3.0
+margin_right = -4.0
+margin_bottom = 16.0
+rect_scale = Vector2( 1.00571, 0.896089 )
+texture = ExtResource( 7 )
+region_rect = Rect2( 1, 0, 32, 32 )
+patch_margin_left = 3
+patch_margin_top = 5
+patch_margin_right = 3
+patch_margin_bottom = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="window2"]
+margin_left = 19.007
+margin_top = 34.9113
+margin_right = 281.007
+margin_bottom = 183.911
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="closeButton2" type="Button" parent="window2"]
+margin_left = 272.078
+margin_top = 7.61456
+margin_right = 305.078
+margin_bottom = 24.6146
+theme = ExtResource( 5 )
+text = "X"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="window/closeButton" to="." method="_on_closeButton_pressed"]
+[connection signal="pressed" from="window2/closeButton2" to="." method="_on_closeButton2_pressed"]

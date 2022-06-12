@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://common/gamePad/navigation/joystick-small.png" type="Texture" id=1]
+[ext_resource path="res://common/gamePad/navigation/joystick-big.png" type="Texture" id=2]
+[ext_resource path="res://common/gamePad/navigation.gd" type="Script" id=3]
+[ext_resource path="res://common/gamePad/navigation/joystick-big.gd" type="Script" id=4]
+[ext_resource path="res://common/gamePad/navigation/button.gd" type="Script" id=5]
+
+[node name="navigation" type="CanvasLayer"]
+script = ExtResource( 3 )
+
+[node name="joystick-big" type="Sprite" parent="."]
+position = Vector2( 32.4099, 143.781 )
+texture = ExtResource( 2 )
+script = ExtResource( 4 )
+
+[node name="joystick-small" type="Sprite" parent="joystick-big"]
+position = Vector2( 0, 2.52267 )
+texture = ExtResource( 1 )
+
+[node name="button" type="Sprite" parent="."]
+visible = false
+position = Vector2( 291.405, 147.985 )
+texture = ExtResource( 1 )
+script = ExtResource( 5 )
+
+[node name="Sprite" type="Sprite" parent="button"]
+
+[connection signal="moveJoystick" from="joystick-big" to="." method="_on_joystickbig_moveJoystick"]
+[connection signal="pushButton" from="button" to="." method="_on_button_pushButton"]
+[connection signal="releaseButton" from="button" to="." method="_on_button_releaseButton"]

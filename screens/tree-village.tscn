@@ -1,0 +1,393 @@
+[gd_scene load_steps=27 format=2]
+
+[ext_resource path="res://screens/tree-village/images/background.png" type="Texture" id=1]
+[ext_resource path="res://screens/tree-village.gd" type="Script" id=2]
+[ext_resource path="res://screens/tree-village/assets/ball-house.tscn" type="PackedScene" id=3]
+[ext_resource path="res://screens/tree-village/images/mushrooms.png" type="Texture" id=4]
+[ext_resource path="res://screens/tree-village/images/bushes.png" type="Texture" id=5]
+[ext_resource path="res://screens/tree-village/images/paths.png" type="Texture" id=6]
+[ext_resource path="res://common/ui/playerAndControl.tscn" type="PackedScene" id=7]
+[ext_resource path="res://screens/tree-village/assets/ground.tscn" type="PackedScene" id=8]
+[ext_resource path="res://screens/tree-village/assets/tree-house.tscn" type="PackedScene" id=9]
+[ext_resource path="res://screens/tree-village/images/tree.png" type="Texture" id=10]
+[ext_resource path="res://common/ui/notification.tscn" type="PackedScene" id=11]
+[ext_resource path="res://common/areas/door.tscn" type="PackedScene" id=12]
+[ext_resource path="res://screens/tree-village/assets/well.tscn" type="PackedScene" id=13]
+[ext_resource path="res://screens/tree-village/assets/craftsman.tscn" type="PackedScene" id=14]
+[ext_resource path="res://common/ui/simpleDialog.tscn" type="PackedScene" id=15]
+[ext_resource path="res://screens/game/endgame/endgame.png" type="Texture" id=16]
+[ext_resource path="res://common/themes/default.theme" type="Theme" id=17]
+
+[sub_resource type="TileSet" id=1]
+0/name = "background.png 0"
+0/texture = ExtResource( 1 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 96, 96 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+
+[sub_resource type="ConvexPolygonShape2D" id=2]
+points = PoolVector2Array( 4.697, 21.6551, 6.15055, 16.8099, 13.2568, 13.4183, 26.5002, 15.6794, 24.2392, 25.3697, 6.47356, 25.0467 )
+
+[sub_resource type="ConvexPolygonShape2D" id=3]
+points = PoolVector2Array( 4.05098, 10.0267, 9.21915, 4.21249, 21.4936, 3.08195, 26.9848, 7.6041, 27.6308, 15.6794, 22.4626, 19.5555, 20.363, 20.04, 20.5245, 27.7923, 11.3187, 27.4693, 11.4802, 19.8785, 6.15055, 17.1329 )
+
+[sub_resource type="ConvexPolygonShape2D" id=4]
+points = PoolVector2Array( 45.5837, 226.522, 47.4443, 136.227, 19.7687, 124.134, 7.67517, 106.458, 7.4426, 81.748, 7.90773, 60.3517, 27.4434, 30.8156, 54.1888, 18.4895, 96.5161, 17.5592, 124.424, 31.5133, 144.425, 62.7356, 146.286, 102.795, 124.424, 129.076, 102.098, 134.657, 102.563, 241.348, 48.6071, 239.952 )
+
+[sub_resource type="TileSet" id=5]
+0/name = "bushes.png 0"
+0/texture = ExtResource( 5 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 32, 32 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape = SubResource( 2 )
+0/shape_one_way = false
+0/shape_one_way_margin = 1.0
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
+1/name = "mushrooms.png 1"
+1/texture = ExtResource( 4 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 0, 32, 32 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape = SubResource( 3 )
+1/shape_one_way = false
+1/shape_one_way_margin = 1.0
+1/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 3 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+1/z_index = 0
+2/name = "tree.png 2"
+2/texture = ExtResource( 10 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 0, 0, 160, 256 )
+2/tile_mode = 0
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shape_offset = Vector2( 0, 0 )
+2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+2/shape = SubResource( 4 )
+2/shape_one_way = false
+2/shape_one_way_margin = 1.0
+2/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 4 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+2/z_index = 0
+
+[sub_resource type="TileSet" id=6]
+0/name = "paths.png 0"
+0/texture = ExtResource( 6 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 32, 32 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "paths.png 1"
+1/texture = ExtResource( 6 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 32, 0, 32, 32 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+2/name = "paths.png 2"
+2/texture = ExtResource( 6 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 64, 0, 32, 32 )
+2/tile_mode = 0
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shape_offset = Vector2( 0, 0 )
+2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+2/shape_one_way = false
+2/shape_one_way_margin = 0.0
+2/shapes = [  ]
+2/z_index = 0
+3/name = "paths.png 3"
+3/texture = ExtResource( 6 )
+3/tex_offset = Vector2( 0, 0 )
+3/modulate = Color( 1, 1, 1, 1 )
+3/region = Rect2( 0, 32, 32, 32 )
+3/tile_mode = 0
+3/occluder_offset = Vector2( 0, 0 )
+3/navigation_offset = Vector2( 0, 0 )
+3/shape_offset = Vector2( 0, 0 )
+3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+3/shape_one_way = false
+3/shape_one_way_margin = 0.0
+3/shapes = [  ]
+3/z_index = 0
+4/name = "paths.png 4"
+4/texture = ExtResource( 6 )
+4/tex_offset = Vector2( 0, 0 )
+4/modulate = Color( 1, 1, 1, 1 )
+4/region = Rect2( 64, 32, 32, 32 )
+4/tile_mode = 0
+4/occluder_offset = Vector2( 0, 0 )
+4/navigation_offset = Vector2( 0, 0 )
+4/shape_offset = Vector2( 0, 0 )
+4/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+4/shape_one_way = false
+4/shape_one_way_margin = 0.0
+4/shapes = [  ]
+4/z_index = 0
+5/name = "paths.png 5"
+5/texture = ExtResource( 6 )
+5/tex_offset = Vector2( 0, 0 )
+5/modulate = Color( 1, 1, 1, 1 )
+5/region = Rect2( 0, 64, 32, 32 )
+5/tile_mode = 0
+5/occluder_offset = Vector2( 0, 0 )
+5/navigation_offset = Vector2( 0, 0 )
+5/shape_offset = Vector2( 0, 0 )
+5/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+5/shape_one_way = false
+5/shape_one_way_margin = 0.0
+5/shapes = [  ]
+5/z_index = 0
+6/name = "paths.png 6"
+6/texture = ExtResource( 6 )
+6/tex_offset = Vector2( 0, 0 )
+6/modulate = Color( 1, 1, 1, 1 )
+6/region = Rect2( 32, 64, 32, 32 )
+6/tile_mode = 0
+6/occluder_offset = Vector2( 0, 0 )
+6/navigation_offset = Vector2( 0, 0 )
+6/shape_offset = Vector2( 0, 0 )
+6/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+6/shape_one_way = false
+6/shape_one_way_margin = 0.0
+6/shapes = [  ]
+6/z_index = 0
+7/name = "paths.png 7"
+7/texture = ExtResource( 6 )
+7/tex_offset = Vector2( 0, 0 )
+7/modulate = Color( 1, 1, 1, 1 )
+7/region = Rect2( 64, 64, 32, 32 )
+7/tile_mode = 0
+7/occluder_offset = Vector2( 0, 0 )
+7/navigation_offset = Vector2( 0, 0 )
+7/shape_offset = Vector2( 0, 0 )
+7/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+7/shape_one_way = false
+7/shape_one_way_margin = 0.0
+7/shapes = [  ]
+7/z_index = 0
+
+[sub_resource type="ConvexPolygonShape2D" id=7]
+points = PoolVector2Array( 42.7929, 203.673, 104.191, 137.74, 103.261, 239.953, 46.9792, 238.325 )
+
+[sub_resource type="ConvexPolygonShape2D" id=8]
+points = PoolVector2Array( 42.3278, 202.393, 46.0489, 133.437, 18.6059, 121.227, 6.51233, 99.831, 9.53571, 62.3294, 22.5595, 35.0027, 59.0727, 17.7927, 92.5625, 18.4904, 126.052, 31.2816, 142.565, 59.8875, 145.355, 107.041, 131.401, 125.53, 105.354, 136.693, 105.586, 215.882, 102.098, 238.093, 81.8643, 243.209, 45.3512, 241.116 )
+
+[sub_resource type="TileSet" id=9]
+0/name = "tree.png 0"
+0/texture = ExtResource( 10 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 160, 256 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape = SubResource( 7 )
+0/shape_one_way = false
+0/shape_one_way_margin = 1.0
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 7 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 8 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
+
+[node name="tree-village" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="background" type="TileMap" parent="."]
+tile_set = SubResource( 1 )
+cell_size = Vector2( 96, 96 )
+format = 1
+tile_data = PoolIntArray( -196601, 0, 0, -196600, 0, 0, -196599, 0, 0, -196598, 0, 0, -196597, 0, 0, -196596, 0, 0, -196595, 0, 0, -196594, 0, 0, -65539, 0, 0, -65538, 0, 0, -65537, 0, 0, -131072, 0, 0, -131071, 0, 0, -131069, 0, 0, -131068, 0, 0, -131067, 0, 0, -131066, 0, 0, -131065, 0, 0, -131064, 0, 0, -131063, 0, 0, -131062, 0, 0, -131061, 0, 0, -131060, 0, 0, -131059, 0, 0, -131058, 0, 0, -3, 0, 0, -2, 0, 0, -1, 0, 0, -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, -65533, 0, 0, -65532, 0, 0, -65528, 0, 0, -65527, 0, 0, -65526, 0, 0, -65525, 0, 0, -65524, 0, 0, -65523, 0, 0, -65522, 0, 0, 65533, 0, 0, 65534, 0, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 13, 0, 0, 14, 0, 0, 131069, 0, 0, 131070, 0, 0, 131071, 0, 0, 65536, 0, 0, 65537, 0, 0, 65538, 0, 0, 65539, 0, 0, 65540, 0, 0, 65541, 0, 0, 65542, 0, 0, 65543, 0, 0, 65544, 0, 0, 65545, 0, 0, 65546, 0, 0, 65547, 0, 0, 65548, 0, 0, 65549, 0, 0, 65550, 0, 0, 196605, 0, 0, 196606, 0, 0, 196607, 0, 0, 131072, 0, 0, 131073, 0, 0, 131074, 0, 0, 131075, 0, 0, 131076, 0, 0, 131077, 0, 0, 131078, 0, 0, 131079, 0, 0, 131080, 0, 0, 131081, 0, 0, 131082, 0, 0, 131083, 0, 0, 131084, 0, 0, 131085, 0, 0, 131086, 0, 0, 262141, 0, 0, 262142, 0, 0, 262143, 0, 0, 196608, 0, 0, 196609, 0, 0, 196610, 0, 0, 196611, 0, 0, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0, 196616, 0, 0, 196617, 0, 0, 196618, 0, 0, 196619, 0, 0, 196620, 0, 0, 196621, 0, 0, 196622, 0, 0, 327677, 0, 0, 327678, 0, 0, 327679, 0, 0, 262144, 0, 0, 262145, 0, 0, 262146, 0, 0, 262147, 0, 0, 262148, 0, 0, 262149, 0, 0, 262150, 0, 0, 262151, 0, 0, 262152, 0, 0, 262153, 0, 0, 262154, 0, 0, 262155, 0, 0, 262156, 0, 0, 262157, 0, 0, 262158, 0, 0, 393213, 0, 0, 393214, 0, 0, 393215, 0, 0, 327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0, 327686, 0, 0, 327687, 0, 0, 327688, 0, 0, 327689, 0, 0, 327690, 0, 0, 327691, 0, 0, 327692, 0, 0, 327693, 0, 0, 327694, 0, 0, 458749, 0, 0, 458750, 0, 0, 458751, 0, 0, 393216, 0, 0, 393217, 0, 0, 393218, 0, 0, 393219, 0, 0, 393220, 0, 0, 393221, 0, 0, 393222, 0, 0, 393223, 0, 0, 393224, 0, 0, 393225, 0, 0, 393226, 0, 0, 393227, 0, 0, 393228, 0, 0, 393229, 0, 0, 393230, 0, 0, 524285, 0, 0, 524286, 0, 0, 524287, 0, 0, 458752, 0, 0, 458753, 0, 0, 458754, 0, 0, 458755, 0, 0, 458756, 0, 0, 458757, 0, 0, 458758, 0, 0, 458759, 0, 0, 458760, 0, 0, 458761, 0, 0, 458762, 0, 0, 458763, 0, 0, 458764, 0, 0, 458765, 0, 0, 458766, 0, 0 )
+
+[node name="decors" type="TileMap" parent="."]
+tile_set = SubResource( 5 )
+cell_size = Vector2( 32, 32 )
+cell_y_sort = true
+format = 1
+tile_data = PoolIntArray( -786404, 2, 0, -720876, 2, 0, -720873, 2, 0, -655344, 2, 0, -655330, 2, 0, -655324, 2, 0, -655318, 2, 0, -524296, 2, 0, -589817, 2, 0, -589812, 2, 0, -524260, 2, 0, -524256, 2, 0, -524249, 2, 0, -393220, 2, 0, -458751, 2, 0, -458747, 2, 0, -458734, 2, 0, -458728, 2, 0, -393206, 2, 0, -393181, 2, 0, -262152, 2, 0, -262145, 2, 0, -327665, 2, 0, -327659, 2, 0, -327654, 2, 0, -327639, 2, 0, -196613, 2, 0, -262140, 2, 0, -262112, 2, 0, -262107, 2, 0, -131063, 0, 0, -8, 2, 0, 65532, 2, 0, 8, 0, 0, 31, 1, 0, 65538, 1, 0, 65551, 1, 0, 65560, 1, 0, 131074, 0, 0, 131076, 0, 0, 131080, 0, 0, 131098, 0, 0, 131109, 0, 0, 262136, 2, 0, 262138, 2, 0, 196612, 1, 0, 196618, 0, 0, 196625, 0, 0, 196630, 1, 0, 196633, 1, 0, 196636, 0, 0, 196649, 1, 0, 262144, 0, 0, 262159, 1, 0, 262179, 0, 0, 262183, 1, 0, 327680, 0, 0, 327683, 1, 0, 327701, 1, 0, 327704, 0, 0, 327708, 0, 0, 393228, 0, 0, 393231, 0, 0, 393234, 0, 0, 393246, 1, 0, 524280, 2, 0, 524283, 2, 0, 458752, 0, 0, 458753, 1, 0, 458761, 0, 0, 458764, 0, 0, 458773, 0, 0, 458775, 0, 0, 458778, 0, 0, 524288, 0, 0, 524291, 1, 0, 524295, 1, 0, 524299, 1, 0, 524307, 1, 0, 655358, 0, 0, 589847, 0, 0, 589848, 1, 0, 589852, 0, 0, 589858, 1, 0, 655360, 0, 0, 655363, 0, 0, 655366, 0, 0, 655371, 0, 0, 655376, 0, 0, 655377, 1, 0, 655379, 0, 0, 655386, 0, 0, 655389, 1, 0, 655392, 0, 0, 655399, 0, 0, 720904, 0, 0, 720906, 1, 0, 720917, 0, 0, 720918, 1, 0, 720936, 1, 0, 786433, 0, 0, 786438, 1, 0, 786444, 0, 0, 786447, 1, 0, 786451, 1, 0, 786456, 0, 0 )
+
+[node name="road" type="TileMap" parent="."]
+tile_set = SubResource( 6 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 131092, 3, 0, 196628, 3, 0, 262164, 3, 0, 327693, 3, 0, 327700, 3, 0, 393220, 0, 0, 393221, 1, 0, 393222, 1, 0, 393223, 1, 0, 393224, 7, 0, 393229, 3, 0, 393236, 3, 0, 458756, 3, 0, 458765, 3, 0, 458772, 3, 0, 524292, 3, 0, 524301, 3, 0, 524308, 4, 0, 524309, 1, 0, 524310, 1, 0, 524311, 1, 0, 524312, 1, 0, 524313, 1, 0, 524314, 1, 0, 524315, 1, 0, 524316, 1, 0, 524317, 1, 0, 524318, 1, 0, 524319, 1, 0, 524320, 1, 0, 524321, 1, 0, 524322, 1, 0, 524323, 1, 0, 524324, 1, 0, 524325, 1, 0, 524326, 1, 0, 524327, 1, 0, 524328, 1, 0, 524329, 1, 0, 524330, 1, 0, 524331, 1, 0, 524332, 1, 0, 589828, 5, 0, 589829, 1, 0, 589830, 1, 0, 589831, 1, 0, 589832, 1, 0, 589833, 1, 0, 589834, 1, 0, 589835, 1, 0, 589836, 1, 0, 589837, 6, 0, 589844, 3, 0, 655373, 3, 0, 655380, 3, 0, 720909, 5, 0, 720910, 1, 0, 720911, 1, 0, 720912, 1, 0, 720913, 1, 0, 720914, 1, 0, 720915, 1, 0, 720916, 7, 0 )
+
+[node name="cameraRef" type="ReferenceRect" parent="."]
+margin_left = -40.0
+margin_top = -10.0
+margin_right = 1443.0
+margin_bottom = 475.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="shop" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 257.707, 138.5 )
+
+[node name="gordon-home" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 433.238, 142.525 )
+
+[node name="well" parent="YSort" instance=ExtResource( 13 )]
+position = Vector2( 934.236, 59.7037 )
+
+[node name="gem-house" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 655.238, 50.525 )
+
+[node name="playerAndControl" parent="YSort" instance=ExtResource( 7 )]
+position = Vector2( 827.242, 217.984 )
+
+[node name="craftsman" parent="YSort" instance=ExtResource( 14 )]
+visible = false
+position = Vector2( 1068.34, 162.382 )
+
+[node name="tree bottom" type="TileMap" parent="."]
+tile_set = SubResource( 9 )
+cell_y_sort = true
+format = 1
+tile_data = PoolIntArray( 393212, 0, 0, 393214, 0, 0, 327681, 0, 0, 327684, 0, 0, 327691, 0, 0, 327695, 0, 0, 327698, 0, 0, 327701, 0, 0, 458751, 0, 0, 393219, 0, 0, 393222, 0, 0, 393224, 0, 0, 393226, 0, 0, 393229, 0, 0, 393233, 0, 0, 393235, 0, 0, 524283, 0, 0, 524285, 0, 0, 458753, 0, 0, 458757, 0, 0, 458763, 0, 0, 458767, 0, 0, 458773, 0, 0, 589823, 0, 0, 524291, 0, 0, 524295, 0, 0, 524297, 0, 0, 524301, 0, 0, 524304, 0, 0, 524306, 0, 0, 589835, 0, 0 )
+
+[node name="goOutFromTreeVillage" parent="." instance=ExtResource( 12 )]
+position = Vector2( 1416.55, 225.931 )
+scale = Vector2( 1.92, 16.7473 )
+
+[node name="notification" parent="." instance=ExtResource( 11 )]
+margin_left = 9.94586
+margin_top = 24.2502
+margin_right = 9.94586
+margin_bottom = 24.2502
+
+[node name="ground" parent="." instance=ExtResource( 8 )]
+position = Vector2( 267.179, 271.815 )
+
+[node name="ground2" parent="." instance=ExtResource( 8 )]
+position = Vector2( 522.926, 144.363 )
+
+[node name="ground3" parent="." instance=ExtResource( 8 )]
+position = Vector2( 713.97, 177.322 )
+
+[node name="ground4" parent="." instance=ExtResource( 8 )]
+position = Vector2( 1003.04, 204.632 )
+
+[node name="ground5" parent="." instance=ExtResource( 8 )]
+position = Vector2( 1140.2, 311.479 )
+
+[node name="simpleDialog" parent="." instance=ExtResource( 15 )]
+
+[node name="endgame" type="Sprite" parent="."]
+visible = false
+position = Vector2( 1008.87, 161.782 )
+texture = ExtResource( 16 )
+
+[node name="gotBackToMenu" type="Button" parent="endgame"]
+margin_left = -7.55103
+margin_top = 49.0815
+margin_right = 106.449
+margin_bottom = 69.0815
+theme = ExtResource( 17 )
+text = "Retour au menu"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="playerEntered" from="YSort/shop" to="." method="_on_shop_playerEntered"]
+[connection signal="playerEntered" from="YSort/gordon-home" to="." method="_on_gordonhome_playerEntered"]
+[connection signal="playerLeaveScale" from="YSort/gordon-home" to="YSort/playerAndControl" method="_on_gordonhome_playerLeaveScale"]
+[connection signal="playerOnScale" from="YSort/gordon-home" to="YSort/playerAndControl" method="_on_gordonhome_playerOnScale"]
+[connection signal="playerStartClimbing" from="YSort/gordon-home" to="YSort/playerAndControl" method="_on_gordonhome_playerStartClimbing"]
+[connection signal="repaired" from="YSort/well" to="." method="_on_well_repaired"]
+[connection signal="talk" from="YSort/well" to="." method="_on_well_talk"]
+[connection signal="playerEntered" from="YSort/gem-house" to="." method="_on_gemhouse_playerEntered"]
+[connection signal="digging" from="YSort/playerAndControl" to="." method="_on_playerAndControl_digging"]
+[connection signal="endClimbing" from="YSort/playerAndControl" to="." method="_on_playerAndControl_endClimbing"]
+[connection signal="endDigging" from="YSort/playerAndControl" to="." method="_on_playerAndControl_endDigging"]
+[connection signal="quit" from="YSort/playerAndControl" to="." method="_on_playerAndControl_quit"]
+[connection signal="save" from="YSort/playerAndControl" to="." method="_on_playerAndControl_save"]
+[connection signal="startClimbing" from="YSort/playerAndControl" to="." method="_on_playerAndControl_startClimbing"]
+[connection signal="talk" from="YSort/craftsman" to="." method="_on_craftsman_talk"]
+[connection signal="playerOpenedDoor" from="goOutFromTreeVillage" to="." method="_on_goOutFromTreeVillage_playerOpenedDoor"]
+[connection signal="isDiscovered" from="ground" to="." method="_on_ground_isDiscovered"]
+[connection signal="rightGroundFounded" from="ground" to="." method="_on_ground_rightGroundFounded"]
+[connection signal="rightGroundFoundedLeft" from="ground" to="." method="_on_ground_rightGroundFoundedLeft"]
+[connection signal="isDiscovered" from="ground2" to="." method="_on_ground2_isDiscovered"]
+[connection signal="rightGroundFounded" from="ground2" to="." method="_on_ground2_rightGroundFounded"]
+[connection signal="rightGroundFoundedLeft" from="ground2" to="." method="_on_ground2_rightGroundFoundedLeft"]
+[connection signal="isDiscovered" from="ground3" to="." method="_on_ground3_isDiscovered"]
+[connection signal="rightGroundFounded" from="ground3" to="." method="_on_ground3_rightGroundFounded"]
+[connection signal="rightGroundFoundedLeft" from="ground3" to="." method="_on_ground3_rightGroundFoundedLeft"]
+[connection signal="isDiscovered" from="ground4" to="." method="_on_ground4_isDiscovered"]
+[connection signal="rightGroundFounded" from="ground4" to="." method="_on_ground4_rightGroundFounded"]
+[connection signal="rightGroundFoundedLeft" from="ground4" to="." method="_on_ground4_rightGroundFoundedLeft"]
+[connection signal="isDiscovered" from="ground5" to="." method="_on_ground5_isDiscovered"]
+[connection signal="rightGroundFounded" from="ground5" to="." method="_on_ground5_rightGroundFounded"]
+[connection signal="rightGroundFoundedLeft" from="ground5" to="." method="_on_ground5_rightGroundFoundedLeft"]
+[connection signal="discussionFinished" from="simpleDialog" to="." method="_on_simpleDialog_discussionFinished"]
+[connection signal="button_down" from="endgame/gotBackToMenu" to="." method="_on_gotBackToMenu_button_down"]

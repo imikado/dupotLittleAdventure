@@ -1,0 +1,60 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://screens/game/title/titleLetters.png" type="Texture" id=1]
+
+
+[node name="adventure" type="Node2D"]
+
+[node name="A" type="Sprite" parent="."]
+position = Vector2( 83.318, -123.862 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 260, 60, 50, 80 )
+
+[node name="d" type="Sprite" parent="."]
+position = Vector2( 121.366, -121.844 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 320, 60, 50, 80 )
+
+[node name="v" type="Sprite" parent="."]
+position = Vector2( 151.669, -117.697 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 380, 80, 40, 60 )
+
+[node name="e2" type="Sprite" parent="."]
+position = Vector2( 306.293, -113.337 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 210, 80, 30, 40 )
+
+[node name="n" type="Sprite" parent="."]
+position = Vector2( 208.443, -114.32 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 440, 80, 40, 60 )
+
+[node name="t3" type="Sprite" parent="."]
+position = Vector2( 231.097, -126.13 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 110, 60, 50, 80 )
+
+[node name="u" type="Sprite" parent="."]
+position = Vector2( 251.423, -112.272 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 490, 80, 40, 60 )
+
+[node name="r" type="Sprite" parent="."]
+position = Vector2( 280.167, -115.681 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 540, 60, 50, 80 )
+
+[node name="e3" type="Sprite" parent="."]
+position = Vector2( 179.455, -125.684 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 210, 80, 30, 40 )

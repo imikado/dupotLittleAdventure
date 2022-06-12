@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://common/themes/default.theme" type="Theme" id=1]
+[ext_resource path="res://common/gamePad/fight.gd" type="Script" id=2]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource( 2 )
+
+[node name="buttonList" type="HBoxContainer" parent="."]
+margin_left = 163.0
+margin_top = 148.0
+margin_right = 314.0
+margin_bottom = 171.0
+theme = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="leaveButton" type="Button" parent="buttonList"]
+margin_right = 66.0
+margin_bottom = 23.0
+text = "S'enfuir"
+
+[node name="attackButton" type="Button" parent="buttonList"]
+margin_left = 76.0
+margin_right = 142.0
+margin_bottom = 23.0
+text = "Attaquer"
+
+[node name="attackList" type="VBoxContainer" parent="."]
+margin_left = 19.3736
+margin_top = 53.9115
+margin_right = 59.3736
+margin_bottom = 93.9111
+theme = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="itemList" type="Button" parent="."]
+visible = false
+margin_left = 223.0
+margin_top = 148.0
+margin_right = 305.0
+margin_bottom = 171.0
+text = "Inventaire"
+
+[connection signal="pressed" from="buttonList/leaveButton" to="." method="_on_leaveButton_pressed"]
+[connection signal="pressed" from="buttonList/attackButton" to="." method="_on_attackButton_pressed"]

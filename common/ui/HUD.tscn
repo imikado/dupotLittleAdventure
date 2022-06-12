@@ -1,0 +1,175 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://common/ui/HUD/life.png" type="Texture" id=1]
+[ext_resource path="res://common/ui/HUD.gd" type="Script" id=2]
+[ext_resource path="res://common/themes/default.theme" type="Theme" id=3]
+[ext_resource path="res://common/ui/HUD/gem.png" type="Texture" id=4]
+[ext_resource path="res://common/ui/inventoryList.tscn" type="PackedScene" id=5]
+[ext_resource path="res://common/ui/HUD/xp.png" type="Texture" id=6]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource( 2 )
+
+[node name="Control" type="Control" parent="."]
+margin_left = 0.374577
+margin_right = 40.3746
+margin_bottom = 40.0
+theme = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lifeIcon" type="TextureRect" parent="Control"]
+margin_left = 4.87288
+margin_top = 3.0
+margin_right = 21.8729
+margin_bottom = 18.0
+texture = ExtResource( 1 )
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="life" type="Label" parent="Control"]
+margin_left = 26.0
+margin_top = 7.0
+margin_right = 53.0
+margin_bottom = 20.0
+size_flags_horizontal = 0
+text = "50"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="gemIcon" type="TextureRect" parent="Control"]
+margin_left = 60.6906
+margin_top = 6.0
+margin_right = 72.6906
+margin_bottom = 23.0
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="gem" type="Label" parent="Control"]
+margin_left = 77.0
+margin_top = 7.0
+margin_right = 97.0
+margin_bottom = 14.0
+size_flags_vertical = 1
+text = "1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btnMenu" type="Button" parent="Control"]
+margin_left = 283.555
+margin_top = 1.49831
+margin_right = 317.555
+margin_bottom = 18.4983
+text = "Menu"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+margin_left = 102.332
+margin_top = 6.0
+margin_right = 112.332
+margin_bottom = 17.0
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="xp" type="Label" parent="Control"]
+margin_left = 117.488
+margin_top = 7.0
+margin_right = 157.488
+margin_bottom = 14.0
+text = "0"
+
+[node name="inventoryList" parent="." instance=ExtResource( 5 )]
+
+[node name="confirmation" type="VBoxContainer" parent="."]
+visible = false
+margin_left = 56.0
+margin_top = 86.0
+margin_right = 222.0
+margin_bottom = 130.0
+rect_scale = Vector2( 1.2102, 1.2102 )
+theme = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btnYes" type="Button" parent="confirmation"]
+margin_right = 166.0
+margin_bottom = 17.0
+text = "Oui je veux Quitter"
+
+[node name="btnNo" type="Button" parent="confirmation"]
+margin_top = 21.0
+margin_right = 166.0
+margin_bottom = 38.0
+text = "Annuler"
+
+[node name="btnBlock" type="VBoxContainer" parent="."]
+visible = false
+margin_left = 66.4541
+margin_top = 41.5118
+margin_right = 178.454
+margin_bottom = 121.512
+rect_scale = Vector2( 1.65837, 1.65837 )
+theme = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btnSave" type="Button" parent="btnBlock"]
+margin_right = 111.0
+margin_bottom = 17.0
+text = "Sauvegarder"
+
+[node name="btnInventory" type="Button" parent="btnBlock"]
+margin_top = 21.0
+margin_right = 111.0
+margin_bottom = 38.0
+text = "Inventaire"
+
+[node name="btnCancell" type="Button" parent="btnBlock"]
+margin_top = 42.0
+margin_right = 111.0
+margin_bottom = 59.0
+text = "Annuler"
+
+[node name="btnQuit" type="Button" parent="btnBlock"]
+margin_top = 63.0
+margin_right = 111.0
+margin_bottom = 80.0
+text = "Quitter"
+
+[node name="saved" type="Label" parent="."]
+visible = false
+margin_left = 67.4829
+margin_top = 89.0885
+margin_right = 265.483
+margin_bottom = 103.088
+theme = ExtResource( 3 )
+text = "Sauvegardé avec succès"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="savedTimer" type="Timer" parent="."]
+
+[connection signal="button_down" from="Control/btnMenu" to="." method="_on_Button_button_down"]
+[connection signal="equipItem" from="inventoryList" to="." method="_on_inventoryList_equipItem"]
+[connection signal="useItem" from="inventoryList" to="." method="_on_inventoryList_useItem"]
+[connection signal="button_down" from="confirmation/btnYes" to="." method="_on_btnYes_button_down"]
+[connection signal="button_down" from="confirmation/btnNo" to="." method="_on_btnNo_button_down"]
+[connection signal="button_down" from="btnBlock/btnSave" to="." method="_on_btnSave_button_down"]
+[connection signal="button_down" from="btnBlock/btnInventory" to="." method="_on_btnInventory_button_down"]
+[connection signal="button_down" from="btnBlock/btnCancell" to="." method="_on_btnCancell_button_down"]
+[connection signal="button_down" from="btnBlock/btnQuit" to="." method="_on_btnQuit_button_down"]
+[connection signal="timeout" from="savedTimer" to="." method="_on_savedTimer_timeout"]

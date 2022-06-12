@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://screens/tree-village/assets/tree-house.gd" type="Script" id=1]
+[ext_resource path="res://common/areas/door.tscn" type="PackedScene" id=2]
+[ext_resource path="res://screens/tree-village/assets/tree-house/treehouse2.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 10, 41.9909 )
+
+[node name="tree-house" type="StaticBody2D"]
+script = ExtResource( 1 )
+
+[node name="treehouse2" type="Sprite" parent="."]
+position = Vector2( 0.00172424, -95.1783 )
+texture = ExtResource( 3 )
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -47.2487, 0.376526, -46.8952, -14.2959, -3.19453, -18.2975, -3.93843, 19.6452, -19.8483, 16.9935, -39.2938, 11.3367 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( 42.5438, 1.36365, 42.8574, -16.9626, 19.164, -19.2986, 18.8303, 18.0769, 36.4086, 8.4427 )
+
+[node name="door" parent="." instance=ExtResource( 2 )]
+position = Vector2( 6.67419, -73.4162 )
+
+[node name="scale" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="scale"]
+position = Vector2( 6.67419, -28.6945 )
+shape = SubResource( 1 )
+
+[node name="scaleBegin" parent="." instance=ExtResource( 2 )]
+position = Vector2( 7.0079, 9.67758 )
+[connection signal="playerOpenedDoor" from="door" to="." method="_on_door_playerOpenedDoor"]
+[connection signal="body_shape_entered" from="scale" to="." method="_on_scale_body_shape_entered"]
+[connection signal="body_shape_exited" from="scale" to="." method="_on_scale_body_shape_exited"]
+[connection signal="body_shape_exited" from="scaleBegin" to="." method="_on_scaleBegin_body_shape_exited"]
+[connection signal="playerOpenedDoor" from="scaleBegin" to="." method="_on_scaleBegin_playerOpenedDoor"]

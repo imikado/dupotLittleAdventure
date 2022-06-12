@@ -3,6 +3,9 @@
 .import/
 export.cfg
 export_presets.cfg
+export/Android
+export/html
+export/windows
 
 # Mono-specific ignores
 .mono/

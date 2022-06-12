@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://screens/game/boot.gd" type="Script" id=1]
+[ext_resource path="res://screens/game/boot/logodupot.png" type="Texture" id=2]
+
+[node name="Node2D" type="Control"]
+script = ExtResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 321.0
+margin_bottom = 179.0
+color = Color( 0.933333, 0.372549, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="logodupot" type="Sprite" parent="."]
+position = Vector2( 165.851, 87.2673 )
+scale = Vector2( 0.26085, 0.26085 )
+texture = ExtResource( 2 )
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

@@ -1,0 +1,32 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop">
+  <id>net.dupot.littleadventure</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>CC-BY-NC-SA-3.0</project_license>
+  <name>Little Adventure</name>
+  <summary>RPG Pixel Art little Game</summary>
+  <description>
+    <p>
+       Gordon have to repair 
+    </p>
+    
+    <p>
+      Features:
+      <ul>
+        <li>
+          <b>You can walk around diffrent village, solve enigme, buy a sword to fight with monsters and access others village
+        </li>
+  
+      </ul>
+    </p>
+  </description>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://www.dupot.org/images/mobile_littleAdventure_icon.png</image>
+    </screenshot>
+
+  </screenshots>
+  <url type="homepage">https://www.dupot.org/games.html</url>
+  <update_contact>imikado@gmail.com</update_contact>
+  <content_rating type="oars-1.1" />
+</component>
