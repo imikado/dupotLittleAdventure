@@ -7,22 +7,43 @@
   <summary>RPG Pixel Art little Game</summary>
   <description>
     <p>
-       Gordon have to repair 
+       Gordon have to repair the village's well
     </p>
-    
     <p>
-      Features:
-      <ul>
-        <li>
-          <b>You can walk around diffrent village, solve enigme, buy a sword to fight with monsters and access others village
-        </li>
-  
-      </ul>
+      You will walk around the village, buy a sword to fight monsters and access others village to find piece to repair the well.
     </p>
   </description>
   <screenshots>
     <screenshot type="default">
-      <image>https://www.dupot.org/images/mobile_littleAdventure_icon.png</image>
+      <image>https://raw.githubusercontent.com/imikado/dupotLittleAdventure/main/export/linux/screenshots/Screenshot_01.png</image>
+    </screenshot>
+
+    <screenshot>
+      <image>https://raw.githubusercontent.com/imikado/dupotLittleAdventure/main/export/linux/screenshots/Screenshot_02.png</image>
+    </screenshot>
+
+    <screenshot>
+      <image>https://raw.githubusercontent.com/imikado/dupotLittleAdventure/main/export/linux/screenshots/Screenshot_03.png</image>
+    </screenshot>
+
+    <screenshot>
+      <image>https://raw.githubusercontent.com/imikado/dupotLittleAdventure/main/export/linux/screenshots/Screenshot_04.png</image>
+    </screenshot>
+
+    <screenshot>
+      <image>https://raw.githubusercontent.com/imikado/dupotLittleAdventure/main/export/linux/screenshots/Screenshot_05.png</image>
+    </screenshot>
+
+    <screenshot>
+      <image>https://raw.githubusercontent.com/imikado/dupotLittleAdventure/main/export/linux/screenshots/Screenshot_06.png</image>
+    </screenshot>
+
+    <screenshot>
+      <image>https://raw.githubusercontent.com/imikado/dupotLittleAdventure/main/export/linux/screenshots/Screenshot_07.png</image>
+    </screenshot>
+
+    <screenshot>
+      <image>https://raw.githubusercontent.com/imikado/dupotLittleAdventure/main/export/linux/screenshots/Screenshot_08.png</image>
     </screenshot>
 
   </screenshots>
