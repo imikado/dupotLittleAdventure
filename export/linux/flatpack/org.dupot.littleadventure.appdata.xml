@@ -1,6 +1,6 @@
  <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop">
-  <id>net.dupot.littleadventure</id>
+  <id>org.dupot.littleadventure</id>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>CC-BY-NC-SA-3.0</project_license>
   <name>Little Adventure</name>

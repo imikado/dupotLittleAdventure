@@ -1,7 +1,6 @@
 [Desktop Entry]
 Name=Little Adventure
-Exec=/app/bin/littleAdventure.pck
+Exec=/app/bin/littleAdventure.x86_64
 Type=Application
-Icon=net.dupot.littleadventure
+Icon=org.dupot.littleadventure
 Categories=Game
-
