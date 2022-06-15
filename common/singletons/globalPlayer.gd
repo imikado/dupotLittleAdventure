@@ -17,13 +17,33 @@ var equipment=null
 
 var side="DOWN"
 
+var touchEnabled=true
+var dialogAnimationEnabled=true
+
 func setSide(side_):
 	side=side_
 
 func getSide():
 	return side
 	
-	
+func enableTouch():
+	touchEnabled=true
+
+func disableTouch():
+	touchEnabled=false
+
+func isTouchEnabled():
+	return touchEnabled
+
+
+func enableDialogAnimation():
+	dialogAnimationEnabled=true
+
+func disableDialogAnimation():
+	dialogAnimationEnabled=false
+
+func isDialogAnimationEnabled():
+	return dialogAnimationEnabled
 
 #---nickname
 func setNickname(nickname_):

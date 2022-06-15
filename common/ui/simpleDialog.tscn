@@ -63,8 +63,8 @@ margin_left = 4.0
 margin_right = 285.0
 margin_bottom = 27.0
 size_flags_horizontal = 3
-custom_fonts/normal_font = SubResource( 1 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 1 )
 text = "tertetetetet"
 scroll_active = false
 __meta__ = {
@@ -81,5 +81,6 @@ text = ">"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="pressed" from="window/HBoxContainer/nextButton" to="." method="_on_Button_pressed"]

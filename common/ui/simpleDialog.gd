@@ -65,7 +65,7 @@ func resetCharacterVisible():
 
 
 func next():
-	if disableDisplayByCharacter or getDiscussion().get_visible_characters() > getDiscussion().get_total_character_count():
+	if !GlobalPlayer.isDialogAnimationEnabled()  or getDiscussion().get_visible_characters() > getDiscussion().get_total_character_count():
 		if shouldContinueNextLine():
 			currentDiscussionLine+=1
 			resetCharacterVisible()
@@ -85,7 +85,7 @@ func next():
 
 func displayNextCharacter():
 	
-	if disableDisplayByCharacter :
+	if !GlobalPlayer.isDialogAnimationEnabled()  :
 		getDiscussion().set_visible_characters(getDiscussion().get_total_character_count())
 	else:
 		getDiscussion().set_visible_characters(getDiscussion().get_visible_characters()+1)

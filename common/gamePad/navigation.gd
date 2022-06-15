@@ -16,6 +16,11 @@ var _isEnable=true
 func _ready():
 	if GlobalPlayer.hasEquipment():
 		setEquipment(GlobalPlayer.getEquipment())
+		
+	if(GlobalPlayer.isTouchEnabled()):
+		enable()
+	else:
+		disable()
 
 
 func enable():
@@ -52,3 +57,11 @@ func setEquipment(item_):
 
 func _on_HUD_equipItem(item_):
 	setEquipment(item_)
+
+
+func _on_HUD_refreshTouchUi():
+	if(GlobalPlayer.isTouchEnabled()):
+		enable()
+	else:
+		disable()
+	pass # Replace with function body.

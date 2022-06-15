@@ -68,9 +68,6 @@ margin_top = 1.49831
 margin_right = 317.555
 margin_bottom = 18.4983
 text = "Menu"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="TextureRect" type="TextureRect" parent="Control"]
 margin_left = 102.332
@@ -116,37 +113,40 @@ text = "Annuler"
 
 [node name="btnBlock" type="VBoxContainer" parent="."]
 visible = false
-margin_left = 66.4541
-margin_top = 41.5118
-margin_right = 178.454
-margin_bottom = 121.512
+margin_left = 70.0
+margin_top = 7.00001
+margin_right = 182.0
+margin_bottom = 108.0
 rect_scale = Vector2( 1.65837, 1.65837 )
 theme = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="btnSave" type="Button" parent="btnBlock"]
-margin_right = 111.0
+margin_right = 112.0
 margin_bottom = 17.0
 text = "Sauvegarder"
 
 [node name="btnInventory" type="Button" parent="btnBlock"]
 margin_top = 21.0
-margin_right = 111.0
+margin_right = 112.0
 margin_bottom = 38.0
 text = "Inventaire"
 
-[node name="btnCancell" type="Button" parent="btnBlock"]
+[node name="btnParameters" type="Button" parent="btnBlock"]
 margin_top = 42.0
-margin_right = 111.0
+margin_right = 112.0
 margin_bottom = 59.0
+text = "Parametres"
+
+[node name="btnCancell" type="Button" parent="btnBlock"]
+margin_top = 63.0
+margin_right = 112.0
+margin_bottom = 80.0
 text = "Annuler"
 
 [node name="btnQuit" type="Button" parent="btnBlock"]
-margin_top = 63.0
-margin_right = 111.0
-margin_bottom = 80.0
+margin_top = 84.0
+margin_right = 112.0
+margin_bottom = 101.0
 text = "Quitter"
 
 [node name="saved" type="Label" parent="."]
@@ -163,6 +163,32 @@ __meta__ = {
 
 [node name="savedTimer" type="Timer" parent="."]
 
+[node name="parameters" type="VBoxContainer" parent="."]
+margin_left = 96.0
+margin_top = 61.0
+margin_right = 228.0
+margin_bottom = 101.0
+
+[node name="touchUiEnabled" type="CheckBox" parent="parameters"]
+margin_right = 148.0
+margin_bottom = 22.0
+theme = ExtResource( 3 )
+text = "touch UI"
+
+[node name="dialogAnimationEnabled" type="CheckBox" parent="parameters"]
+margin_top = 26.0
+margin_right = 148.0
+margin_bottom = 48.0
+theme = ExtResource( 3 )
+text = "dialog animation"
+
+[node name="saveParameters" type="Button" parent="parameters"]
+margin_top = 52.0
+margin_right = 148.0
+margin_bottom = 69.0
+theme = ExtResource( 3 )
+text = "Save"
+
 [connection signal="button_down" from="Control/btnMenu" to="." method="_on_Button_button_down"]
 [connection signal="equipItem" from="inventoryList" to="." method="_on_inventoryList_equipItem"]
 [connection signal="useItem" from="inventoryList" to="." method="_on_inventoryList_useItem"]
@@ -170,6 +196,10 @@ __meta__ = {
 [connection signal="button_down" from="confirmation/btnNo" to="." method="_on_btnNo_button_down"]
 [connection signal="button_down" from="btnBlock/btnSave" to="." method="_on_btnSave_button_down"]
 [connection signal="button_down" from="btnBlock/btnInventory" to="." method="_on_btnInventory_button_down"]
+[connection signal="button_down" from="btnBlock/btnParameters" to="." method="_on_btnParameters_button_down"]
 [connection signal="button_down" from="btnBlock/btnCancell" to="." method="_on_btnCancell_button_down"]
 [connection signal="button_down" from="btnBlock/btnQuit" to="." method="_on_btnQuit_button_down"]
 [connection signal="timeout" from="savedTimer" to="." method="_on_savedTimer_timeout"]
+[connection signal="toggled" from="parameters/touchUiEnabled" to="." method="_on_touchUiEnabled_toggled"]
+[connection signal="toggled" from="parameters/dialogAnimationEnabled" to="." method="_on_dialogAnimationEnabled_toggled"]
+[connection signal="button_down" from="parameters/saveParameters" to="." method="_on_saveParameters_button_down"]
