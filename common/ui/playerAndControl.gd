@@ -30,6 +30,9 @@ func disableNavigation():
 	$navigation.disable()
 
 	$player.stop()
+	
+func disableCamera():
+	$player.disableCamera()
 
 func reloadGems():
 	$HUD.reloadGems()

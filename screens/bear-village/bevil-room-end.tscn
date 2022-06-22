@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://screens/bear-village/bevil-room.gd" type="Script" id=2]
+[ext_resource path="res://screens/bear-village/bevil-room-end.gd" type="Script" id=2]
 [ext_resource path="res://common/ui/simpleDialog.tscn" type="PackedScene" id=4]
 [ext_resource path="res://screens/bear-village/assets/bear.tscn" type="PackedScene" id=7]
 
@@ -8,16 +8,19 @@
 position = Vector2( 177, 103 )
 script = ExtResource( 2 )
 
-[node name="startRect" type="ColorRect" parent="."]
+[node name="winRect" type="ColorRect" parent="."]
 margin_left = -178.0
 margin_top = -93.0
 margin_right = 177.0
 margin_bottom = 103.0
 color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="startDialog" parent="startRect" instance=ExtResource( 4 )]
+[node name="winDialog" parent="winRect" instance=ExtResource( 4 )]
 
-[node name="bear" parent="startRect" instance=ExtResource( 7 )]
+[node name="bear" parent="winRect" instance=ExtResource( 7 )]
 position = Vector2( 101, 73 )
 scale = Vector2( 4, 4 )
 
@@ -26,4 +29,4 @@ position = Vector2( -0.179184, 3.34854 )
 scale = Vector2( 0.419798, 0.239669 )
 current = true
 
-[connection signal="discussionFinished" from="startRect/startDialog" to="." method="_on_startDialog_discussionFinished"]
+[connection signal="discussionFinished" from="winRect/winDialog" to="." method="_on_winDialog_discussionFinished"]
