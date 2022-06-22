@@ -8,6 +8,10 @@ var currentDiscussionLine=0
 
 var disableDisplayByCharacter=false
 
+func _process(delta):
+	if Input.is_action_just_pressed("ui_accept"):
+		_on_Button_pressed()
+
 func addDiscussion(talker_,discussionList_):
 	multiDialogList.append({"talker":talker_,"discussionLineList":discussionList_})
 

@@ -614,7 +614,6 @@ position = Vector2( 47.2176, 106.017 )
 [node name="simpleDialog" parent="." instance=ExtResource( 5 )]
 
 [connection signal="talk" from="YSort/mom" to="." method="_on_mom_talk"]
-[connection signal="pressAccept" from="YSort/playerAndControl" to="." method="_on_playerAndControl_pressAccept"]
 [connection signal="quit" from="YSort/playerAndControl" to="." method="_on_playerAndControl_quit"]
 [connection signal="save" from="YSort/playerAndControl" to="." method="_on_playerAndControl_save"]
 [connection signal="playerOpenedDoor" from="door" to="." method="_on_door_playerOpenedDoor"]

@@ -84,6 +84,8 @@ position = Vector2( 842.935, 402.186 )
 position = Vector2( 1024.87, 359.783 )
 scale = Vector2( 4.8604, 72.4955 )
 
+[connection signal="quit" from="YSort/playerAndControl" to="." method="_on_playerAndControl_quit"]
+[connection signal="save" from="YSort/playerAndControl" to="." method="_on_playerAndControl_save"]
 [connection signal="playerEntered" from="YSort/bevil-room" to="." method="_on_bevilroom_playerEntered"]
 [connection signal="playerEntered" from="YSort/bee-room" to="." method="_on_beeroom_playerEntered"]
 [connection signal="playerEntered" from="YSort/shop" to="." method="_on_shop_playerEntered"]

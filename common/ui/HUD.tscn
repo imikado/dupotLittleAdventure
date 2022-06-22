@@ -164,6 +164,7 @@ __meta__ = {
 [node name="savedTimer" type="Timer" parent="."]
 
 [node name="parameters" type="VBoxContainer" parent="."]
+visible = false
 margin_left = 96.0
 margin_top = 61.0
 margin_right = 228.0

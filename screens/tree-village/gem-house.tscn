@@ -376,6 +376,7 @@ position = Vector2( 105.09, 57.7266 )
 
 [node name="playerAndControl" parent="." instance=ExtResource( 5 )]
 position = Vector2( 42.5551, 72.3591 )
+
 [connection signal="playerOpenedDoor" from="door" to="." method="_on_door_playerOpenedDoor"]
 [connection signal="playerOpenedDoor" from="discussionArea" to="." method="_on_discussionArea_playerOpenedDoor"]
 [connection signal="discussionFinished" from="simpleDialog" to="." method="_on_simpleDialog_discussionFinished"]
