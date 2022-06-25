@@ -1,8 +1,104 @@
-[gd_scene format=2]
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://common/themes/default.theme" type="Theme" id=1]
+[ext_resource path="res://screens/tree-village/images/background.png" type="Texture" id=2]
+[ext_resource path="res://BigFont.tres" type="DynamicFont" id=3]
+[ext_resource path="res://screens/game/title/adventure.tscn" type="PackedScene" id=4]
+[ext_resource path="res://screens/game/title/little.tscn" type="PackedScene" id=5]
+[ext_resource path="res://screens/game/menuNew.gd" type="Script" id=6]
+
+[sub_resource type="Theme" id=1]
+LineEdit/colors/clear_button_color = Color( 0.88, 0.88, 0.88, 1 )
+LineEdit/colors/clear_button_color_pressed = Color( 1, 1, 1, 1 )
+LineEdit/colors/cursor_color = Color( 0.94, 0.94, 0.94, 1 )
+LineEdit/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+LineEdit/colors/font_color_selected = Color( 0, 0, 0, 1 )
+LineEdit/colors/font_color_uneditable = Color( 0.88, 0.88, 0.88, 0.5 )
+LineEdit/colors/selection_color = Color( 0.49, 0.49, 0.49, 1 )
+LineEdit/constants/minimum_spaces = 12
+LineEdit/fonts/font = null
+LineEdit/icons/clear = null
+LineEdit/styles/focus = null
+LineEdit/styles/normal = null
+LineEdit/styles/read_only = null
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+margin_left = -14.0
+margin_top = -24.0
+margin_right = -14.0
+margin_bottom = -24.0
+script = ExtResource( 6 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = 13.0
+margin_top = 25.0
+margin_right = 109.0
+margin_bottom = 121.0
+rect_scale = Vector2( 3.34032, 1.88094 )
+texture = ExtResource( 2 )
+stretch_mode = 1
+
+[node name="Title" type="Label" parent="."]
+margin_left = 27.0
+margin_top = 96.0
+margin_right = 264.0
+margin_bottom = 146.0
+rect_scale = Vector2( 0.450138, 0.61221 )
+theme = ExtResource( 1 )
+custom_fonts/font = ExtResource( 3 )
+text = "Nouvelle partie"
+
+[node name="Control" type="Control" parent="."]
+margin_left = 25.0
+margin_top = 72.0
+margin_right = 65.0
+margin_bottom = 112.0
+
+[node name="newGameBox" type="ColorRect" parent="Control"]
+margin_left = 90.0
+margin_top = 64.0
+margin_right = 1.49001e+07
+margin_bottom = 5.70006e+06
+rect_scale = Vector2( 1e-05, 1e-05 )
+color = Color( 0.054902, 0.501961, 0.0196078, 1 )
+
+[node name="Label" type="Label" parent="Control"]
+margin_left = 100.0
+margin_top = 73.0
+margin_right = 127.0
+margin_bottom = 80.0
+rect_scale = Vector2( 0.450138, 0.61221 )
+theme = ExtResource( 1 )
+text = "Nom"
+
+[node name="nicknameLabel" type="LineEdit" parent="Control"]
+margin_left = 100.0
+margin_top = 83.0
+margin_right = 445.0
+margin_bottom = 123.0
+rect_scale = Vector2( 0.37695, 0.184603 )
+theme = SubResource( 1 )
+context_menu_enabled = false
+shortcut_keys_enabled = false
+selecting_enabled = false
+
+[node name="btnCreate" type="Button" parent="Control"]
+margin_left = 151.0
+margin_top = 99.0
+margin_right = 197.0
+margin_bottom = 119.0
+rect_scale = Vector2( 0.444017, 0.465149 )
+theme = ExtResource( 1 )
+text = "Créer"
+
+[node name="adventure" parent="." instance=ExtResource( 4 )]
+position = Vector2( 102.698, 180.168 )
+scale = Vector2( 0.696126, 0.839133 )
+
+[node name="little" parent="." instance=ExtResource( 5 )]
+position = Vector2( 19, 97 )
+scale = Vector2( 0.756828, 0.669435 )
+
+[connection signal="button_down" from="Control/btnCreate" to="." method="_on_btnCreate_button_down"]

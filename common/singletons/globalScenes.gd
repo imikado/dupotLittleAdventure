@@ -4,6 +4,14 @@ var simpleFieldToSaveList=["scenesData"]
 
 var scenesData={}
 
+var clipboard
+
+func setClipboard(value):
+	clipboard=value
+
+func getClipboard():
+	return clipboard
+
 func getKey(scene_,param_):
 	return scene_+'___'+param_
 

@@ -188,9 +188,10 @@ margin_top = 52.0
 margin_right = 148.0
 margin_bottom = 69.0
 theme = ExtResource( 3 )
-text = "Save"
+text = "Fermer"
 
 [connection signal="button_down" from="Control/btnMenu" to="." method="_on_Button_button_down"]
+[connection signal="closeInventory" from="inventoryList" to="." method="_on_inventoryList_closeInventory"]
 [connection signal="equipItem" from="inventoryList" to="." method="_on_inventoryList_equipItem"]
 [connection signal="useItem" from="inventoryList" to="." method="_on_inventoryList_useItem"]
 [connection signal="button_down" from="confirmation/btnYes" to="." method="_on_btnYes_button_down"]

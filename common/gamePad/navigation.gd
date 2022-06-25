@@ -13,6 +13,8 @@ var equipment=null
 
 var _isEnable=true
 
+var keyboardEnabled=false
+
 func _ready():
 	if GlobalPlayer.hasEquipment():
 		setEquipment(GlobalPlayer.getEquipment())
@@ -24,6 +26,9 @@ func _ready():
 
 
 func enable():
+	if !GlobalPlayer.isTouchEnabled():
+		return
+		
 	_isEnable=true
 	if equipment!=null:
 		$button.visible=true
@@ -65,3 +70,8 @@ func _on_HUD_refreshTouchUi():
 	else:
 		disable()
 	pass # Replace with function body.
+
+
+func _on_player_useKeyboard():
+	keyboardEnabled=true
+	_on_HUD_refreshTouchUi()

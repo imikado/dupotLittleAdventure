@@ -3,11 +3,15 @@ extends Node2D
 var honeyReceived=0
 var dialogStillDisplayed=false
 
+onready var cheatGround=get_node("cheat-ground")
+
 func getPlayer():
 	return $"bear-platform"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
+	cheatGround.position.y=500
 	
 	dialogStillDisplayed=GlobalScenes.getParamForSceneOr(filename,'dialogStillDisplayed',false)
 	
@@ -64,7 +68,7 @@ func _on_bearAsking_playerOpenedDoor():
 		get_node("bearAsking/honney"+str(honeyReceived)).visible=true
 		getPlayer().empty()
 		
-		if honeyReceived > 3:
+		if honeyReceived >= 3:
 			$winDialog.start()
 			$navigation.disable()
 		
@@ -88,14 +92,26 @@ func goBackToVillage():
 
 
 
-func _on_fall_body_shape_entered(body_id, body, body_shape, area_shape):
-	print ("tombe")
-	if body.is_in_group("Player"):
-		$gameOver.visible=true
-		$gameOver/Camera2D.current=true
 
 
 func _on_Button_button_down():
 	$gameOver.visible=false
 	$gameOver/Camera2D.current=false
 	get_tree().reload_current_scene()
+
+
+func _on_switcharea_enableCheatCode():
+	cheatGround.position.y=0
+	pass # Replace with function body.
+
+
+func _on_fall_body_exited(body):
+	if body.is_in_group("Player"):
+		$gameOver.visible=true
+		$gameOver/Camera2D.current=true
+
+
+func _on_fall_body_entered(body):
+	if body.is_in_group("Player"):
+		$gameOver.visible=true
+		$gameOver/Camera2D.current=true

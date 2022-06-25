@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://common/themes/default.theme" type="Theme" id=1]
 [ext_resource path="res://screens/game/menu.gd" type="Script" id=2]
@@ -6,21 +6,6 @@
 [ext_resource path="res://screens/game/title/little.tscn" type="PackedScene" id=4]
 [ext_resource path="res://screens/tree-village/images/background.png" type="Texture" id=5]
 [ext_resource path="res://screens/game/keyboardGame.tscn" type="PackedScene" id=6]
-
-[sub_resource type="Theme" id=1]
-LineEdit/colors/clear_button_color = Color( 0.88, 0.88, 0.88, 1 )
-LineEdit/colors/clear_button_color_pressed = Color( 1, 1, 1, 1 )
-LineEdit/colors/cursor_color = Color( 0.94, 0.94, 0.94, 1 )
-LineEdit/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
-LineEdit/colors/font_color_selected = Color( 0, 0, 0, 1 )
-LineEdit/colors/font_color_uneditable = Color( 0.88, 0.88, 0.88, 0.5 )
-LineEdit/colors/selection_color = Color( 0.49, 0.49, 0.49, 1 )
-LineEdit/constants/minimum_spaces = 12
-LineEdit/fonts/font = null
-LineEdit/icons/clear = null
-LineEdit/styles/focus = null
-LineEdit/styles/normal = null
-LineEdit/styles/read_only = null
 
 [node name="Menu" type="Control"]
 anchor_right = 1.0
@@ -31,9 +16,6 @@ rect_scale = Vector2( 0.997617, 1 )
 size_flags_horizontal = 7
 theme = ExtResource( 1 )
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="TextureRect" type="TextureRect" parent="."]
 margin_right = 40.0
@@ -41,23 +23,21 @@ margin_bottom = 40.0
 rect_scale = Vector2( 3.34032, 1.88094 )
 texture = ExtResource( 5 )
 stretch_mode = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="adventure" parent="." instance=ExtResource( 3 )]
-position = Vector2( 83.6976, 150.444 )
+position = Vector2( 83.1983, 172 )
 scale = Vector2( 0.696126, 0.839133 )
 
 [node name="little" parent="." instance=ExtResource( 4 )]
-position = Vector2( -8.10623e-06, 67.2759 )
+position = Vector2( -3.00717, 82 )
 scale = Vector2( 0.756828, 0.669435 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_left = 5.36745
-margin_top = 99.8438
-margin_right = 205.367
-margin_bottom = 142.844
+anchor_bottom = 0.129
+margin_left = 81.1935
+margin_top = 126.0
+margin_right = 281.193
+margin_bottom = 145.78
 rect_scale = Vector2( 0.813182, 0.890981 )
 size_flags_vertical = 0
 custom_constants/separation = 9
@@ -90,77 +70,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="newGameBox" type="ColorRect" parent="."]
-margin_left = 173.752
-margin_top = 82.1083
-margin_right = 213.752
-margin_bottom = 122.108
-rect_scale = Vector2( 3.32677, 2.23797 )
-color = Color( 0.054902, 0.501961, 0.0196078, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="newGameBox"]
-margin_left = 0.319221
-margin_top = 2.83905
-margin_right = 27.3192
-margin_bottom = 9.83905
-rect_scale = Vector2( 0.450138, 0.61221 )
-theme = ExtResource( 1 )
-text = "Nom"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="nicknameLabel" type="LineEdit" parent="newGameBox"]
-margin_left = -0.0973206
-margin_top = 9.70479
-margin_right = 105.903
-margin_bottom = 49.7048
-rect_scale = Vector2( 0.37695, 0.184603 )
-theme = SubResource( 1 )
-editable = false
-context_menu_enabled = false
-shortcut_keys_enabled = false
-selecting_enabled = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="btnCreate" type="Button" parent="newGameBox"]
-margin_left = 6.54415
-margin_top = 24.1436
-margin_right = 46.5442
-margin_bottom = 34.1436
-rect_scale = Vector2( 0.444017, 0.465149 )
-text = "Créer"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="loadGameBox" type="ColorRect" parent="."]
-margin_left = 173.752
-margin_top = 82.1083
-margin_right = 213.752
-margin_bottom = 122.108
-rect_scale = Vector2( 3.48715, 2.23797 )
-color = Color( 0.054902, 0.501961, 0.0196078, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MenuButton" type="MenuButton" parent="loadGameBox"]
-margin_left = -0.0086441
-margin_top = 1.66574
-margin_right = 91.9913
-margin_bottom = 21.6657
-rect_scale = Vector2( 0.436121, 0.557613 )
-text = "Partie(s)"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="keyboard" parent="CanvasLayer" instance=ExtResource( 6 )]
@@ -189,9 +98,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="version" type="Label" parent="."]
+margin_left = 273.652
+margin_top = 26.0
+margin_right = 313.652
+margin_bottom = 33.0
+text = "N.N"
+align = 2
+
 [connection signal="button_down" from="VBoxContainer/btnNew" to="." method="_on_btnNew_button_down"]
 [connection signal="button_down" from="VBoxContainer/btnLoad" to="." method="_on_btnLoad_button_down"]
-[connection signal="button_down" from="newGameBox/btnCreate" to="." method="_on_btnCreate_button_down"]
 [connection signal="close" from="CanvasLayer/keyboard" to="." method="_on_keyboard_close"]
 [connection signal="fillField" from="CanvasLayer/keyboard" to="." method="_on_keyboard_fillField"]
 [connection signal="button_down" from="lang/btnFR" to="." method="_on_btnFR_button_down"]

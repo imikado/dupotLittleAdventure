@@ -8,6 +8,9 @@
 [ext_resource path="res://common/items/weapons/wood-sword.png" type="Texture" id=6]
 [ext_resource path="res://common/ui/simpleDialog/windows.png" type="Texture" id=7]
 
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 4 )
+
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.105882, 0.329412, 0.411765, 1 )
 border_width_left = 1
@@ -18,9 +21,6 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
-
-[sub_resource type="DynamicFont" id=2]
-font_data = ExtResource( 4 )
 
 [node name="inventoryList" type="CanvasLayer"]
 layer = 3
@@ -88,8 +88,8 @@ grow_horizontal = 2
 grow_vertical = 2
 rect_min_size = Vector2( 40, 28 )
 theme = ExtResource( 5 )
-custom_styles/normal = SubResource( 1 )
 custom_fonts/font = SubResource( 2 )
+custom_styles/normal = SubResource( 1 )
 expand_icon = true
 script = ExtResource( 2 )
 
@@ -207,5 +207,6 @@ text = "X"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="pressed" from="window/closeButton" to="." method="_on_closeButton_pressed"]
 [connection signal="pressed" from="window2/closeButton2" to="." method="_on_closeButton2_pressed"]

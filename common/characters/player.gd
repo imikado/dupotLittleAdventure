@@ -9,6 +9,8 @@ signal damagedBy(enemy_)
 signal pressAccept
 signal pressMenu
 
+signal useKeyboard
+
 var speed=100
 
 var left=false
@@ -17,7 +19,7 @@ var up=false
 var down=false
 var buttonPressed=false
 
-var useTouch=false
+var useTouch=true
 
 var startClimbing=false
 var onScale=false
@@ -29,6 +31,14 @@ var limitTop=0
 var limitBottom=0
 
 export var refRect : Rect2
+
+var navigationEnabled=true
+
+func enableNavigation():
+	navigationEnabled=true
+
+func disableNavigation():
+	navigationEnabled=false
 
 func enableCamera():
 	$Camera2D.current=true
@@ -70,6 +80,9 @@ func _ready():
 
 func _process(delta):
 	
+	if !navigationEnabled:
+		return
+	
 	pocessInput()
 	
 	var velocity = Vector2()  # The player's movement vector.
@@ -100,6 +113,7 @@ func _process(delta):
 
 
 func pocessInput():
+	
 	if Input.is_action_pressed("ui_right"):
 		right=true
 		useTouch=false
@@ -121,11 +135,17 @@ func pocessInput():
 		print("press menuA")
 	
 	
-	if Input.is_action_pressed("ui_accept"):
+	if Input.is_action_just_pressed("ui_accept"):
 		buttonPressed=true	
 		useTouch=false
-		
+	
+	if Input.is_action_just_released("ui_accept"):
+		buttonPressed=false
+		useTouch=false
 
+	if !useTouch:
+		emit_signal("useKeyboard")
+		GlobalPlayer.disableTouch()
 		
 		
 func processAnimation():
@@ -173,6 +193,8 @@ func resetKeys():
 	right=false
 	up=false
 	down=false
+	
+
 
 
 func _on_navigation_movePlayer(joystickVector_):
@@ -244,3 +266,6 @@ func animDamage():
 
 func _on_timerModulate_timeout():
 	$redModulate.visible=false
+
+
+

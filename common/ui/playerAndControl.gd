@@ -131,3 +131,19 @@ func _on_player_pressAccept():
 func _on_player_pressMenu():
 	emit_signal("pressMenu")
 	pass # Replace with function body.
+
+
+func _on_HUD_openMenu():
+	$navigation.disable()
+	$player.disableNavigation()
+	
+	print("open menu")
+
+
+
+func _on_HUD_closeMenu():
+	$navigation.enable()
+	$player.enableNavigation()
+	
+	print("close menu")
+

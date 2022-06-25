@@ -3,6 +3,9 @@ extends CanvasLayer
 signal equipItem(item_)
 signal useItem(item)
 
+signal openInventory
+signal closeInventory
+
 var itemList=[]
 
 var itemClass=preload("res://common/class/item_class.gd")
@@ -20,6 +23,14 @@ func _ready():
 	var exampleItemTmp=getGrid().get_node("item")
 	exampleItem=exampleItemTmp.duplicate()
 	exampleItemTmp.queue_free()
+	
+
+
+func openInventory():
+	emit_signal("openInventory")
+	
+func closeInventory():
+	emit_signal("closeInventory")
 
 #access
 func getWindow():
@@ -47,9 +58,12 @@ func setItemList(itemList_):
 	
 func hide():
 	getWindow().visible=false
+	closeInventory()
 	
 func show():
 	getWindow().visible=true
+	
+	getWindow().get_node("closeButton").grab_focus()
 	
 	for itemToReset in getGrid().get_children():
 		itemToReset.queue_free()
@@ -103,6 +117,7 @@ func _on_pressed_equip():
 	GlobalPlayer.setEquipment(itemSelected)
 	emit_signal("equipItem",itemSelected)
 	getWindow().visible=false
+	closeInventory()
 
 func _on_pressed_display():
 	#display map zoomed
@@ -113,13 +128,13 @@ func _on_pressed_use():
 	GlobalPlayer.useItem(itemSelected)
 	emit_signal("useItem",itemSelected)
 	getWindow().visible=false
-
+	closeInventory()
 
 func _on_closeButton_pressed():
 	getWindow().visible=false
-
+	closeInventory()
 
 
 func _on_closeButton2_pressed():
 	$window2.visible=false
-	pass # Replace with function body.
+	closeInventory()

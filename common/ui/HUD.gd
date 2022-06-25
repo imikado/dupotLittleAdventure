@@ -7,6 +7,9 @@ signal equipItem(item_)
 signal useItem(item_)
 signal refreshTouchUi
 
+signal openMenu
+signal closeMenu
+
 const MENU_SAVE=0
 const MENU_INVENTORY=1
 const MENU_QUIT=2
@@ -24,16 +27,13 @@ func _ready():
 	
 	$parameters.visible=false
 	
-	if(GlobalPlayer.isTouchEnabled()):
-		$parameters/touchUiEnabled.pressed=true
-	else:
-		$parameters/touchUiEnabled.pressed=false
+	
 
-	if(GlobalPlayer.isDialogAnimationEnabled()):
-		$parameters/dialogAnimationEnabled.pressed=true
-	else:
-		$parameters/dialogAnimationEnabled.pressed=false
+func openMenu():
+	emit_signal("openMenu")
 
+func closeMenu():
+	emit_signal("closeMenu")
 
 func reloadGems():
 	setGems(GlobalPlayer.getGemsBalance())
@@ -66,15 +66,15 @@ func setXp(xp_):
 
 func _on_Button_button_down():
 	$btnBlock.visible=true
-	pass # Replace with function body.
+	openMenu()
 
 
 func _on_btnSave_button_down():
-	emit_signal("save")	
+	emit_signal("save")
 	$btnBlock.visible=false
 	$saved.visible=true
 	$savedTimer.start()
-
+	closeMenu()
 
 func _on_btnQuit_button_down():
 	$confirmation.visible=true
@@ -87,21 +87,20 @@ func _on_btnInventory_button_down():
 
 func _on_btnYes_button_down():
 	emit_signal("quit")
-
+	closeMenu()
 
 
 func _on_btnNo_button_down():
 	$confirmation.visible=false
-	pass # Replace with function body.
-
+	closeMenu()
 
 func _on_inventoryList_equipItem(item_):
 	emit_signal("equipItem",item_)
-
+	closeMenu()
 
 func _on_btnCancell_button_down():
 	$btnBlock.visible=false
-	pass # Replace with function body.
+	closeMenu()
 
 
 func _on_savedTimer_timeout():
@@ -112,24 +111,34 @@ func _on_savedTimer_timeout():
 func _on_inventoryList_useItem(item_):
 	emit_signal("useItem",item_)
 	reloadLife()
-
+	closeMenu()
 
 func _on_player_pressMenu():
 	_on_Button_button_down()
 	$btnBlock/btnInventory.grab_focus()
-	pass # Replace with function body.
 
 
 func _on_btnParameters_button_down():
 	$btnBlock.visible=false
 	$parameters.visible=true
-	pass # Replace with function body.
+	
+	$parameters/touchUiEnabled.grab_focus()
+	
+	if(GlobalPlayer.isTouchEnabled()):
+		$parameters/touchUiEnabled.pressed=true
+	else:
+		$parameters/touchUiEnabled.pressed=false
+
+	if(GlobalPlayer.isDialogAnimationEnabled()):
+		$parameters/dialogAnimationEnabled.pressed=true
+	else:
+		$parameters/dialogAnimationEnabled.pressed=false
 
 
 func _on_saveParameters_button_down():
 	$parameters.visible=false
 	emit_signal("refreshTouchUi")
-	pass # Replace with function body.
+	closeMenu()
 
 
 func _on_touchUiEnabled_toggled(button_pressed):
@@ -145,4 +154,9 @@ func _on_dialogAnimationEnabled_toggled(button_pressed):
 		GlobalPlayer.enableDialogAnimation()
 	else:
 		GlobalPlayer.disableDialogAnimation()
+	pass # Replace with function body.
+
+
+func _on_inventoryList_closeInventory():
+	closeMenu()
 	pass # Replace with function body.

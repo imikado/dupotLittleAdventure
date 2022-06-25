@@ -52,6 +52,7 @@ GlobalPlayer="*res://common/singletons/globalPlayer.gd"
 GlobalGame="*res://common/singletons/globalGame.gd"
 GlobalItems="*res://common/singletons/globalItems.gd"
 GlobalScenes="*res://common/singletons/globalScenes.gd"
+GlobalVersion="*res://common/singletons/globalVersion.gd"
 
 [display]
 

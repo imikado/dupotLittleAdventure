@@ -8,6 +8,8 @@ func debug():
 	GlobalPlayer.addItem(GlobalItems.ID.HONEY)
 	GlobalPlayer.addItem(GlobalItems.ID.BUCKET)
 	
+	GlobalPlayer.addItem(GlobalItems.ID.SPADE)
+	
 	#$YSort/well.repair()
 	#$YSort/craftsman.visible=false
 
@@ -17,9 +19,12 @@ func debug():
 	GlobalPlayer.addItem(GlobalItems.ID.HEALTH_POTION_10)
 
 func _ready():
+	
 	setPlayerPath("YSort/playerAndControl")
 	loadPosition()
 	getPlayer().loadCameraLimits($cameraRef)
+
+
 
 	var TRAD_ARTISAN=GlobalGame.getTraductionById(GlobalGame.TRAD_WORD_ARTISAN)
 
@@ -129,6 +134,8 @@ func processGormonStarFounded(grounded_):
 	$YSort/playerAndControl.reloadInvetory()
 	
 	GlobalScenes.saveParamForScene(filename,grounded_+".isDiscovered",true)
+	
+	get_node(grounded_).queue_free()
 	
 
 func processGroundedLeft():
