@@ -6,6 +6,7 @@ export_presets.cfg
 export/Android
 export/html
 export/windows
+android/
 
 # Mono-specific ignores
 .mono/
