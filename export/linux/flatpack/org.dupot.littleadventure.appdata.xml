@@ -49,8 +49,10 @@
   </screenshots>
 
    <releases>
+       <release date="2022-06-26" version="1.14"/>
+      <release date="2022-06-25" version="1.12"/>
       <release date="2022-06-14" version="1.0"/>
-    <release date="2022-06-25" version="1.12"/><release date="2022-06-26" version="1.14"/></releases>
+    </releases>
 
   <url type="homepage">https://www.dupot.org/games.html</url>
   <update_contact>imikado@gmail.com</update_contact>
