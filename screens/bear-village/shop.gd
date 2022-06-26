@@ -18,7 +18,8 @@ func _ready():
 		
 	$shopList.setShopItemList([
 		shopItemClass.new(GlobalItems.ID.HONEY,6),
-		shopItemClass.new(GlobalItems.ID.HEALTH_POTION_10,50)
+		shopItemClass.new(GlobalItems.ID.HEALTH_POTION_10,50),
+		shopItemClass.new(GlobalItems.ID.BUCKET,3)
 		])
 	
 	
