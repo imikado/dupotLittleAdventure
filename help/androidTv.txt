@@ -1,0 +1,27 @@
+Pour android tv,  il faut modifier les fichiers suivants dans le repertoire android/
+
+===========================================
+android/build/AndroidManifest.xml
+--------------------------
+remplacer:
+    <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
+    </intent-filter>
+
+vs
+
+    <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+
+        <!-- switch if want to export Playstore or Amazon play store -->
+        <category android:name="android.intent.category.LAUNCHER" />
+
+        <!-- Enable access to OpenXR on Oculus mobile devices, no-op on other Android
+        platforms. -->
+        <category android:name="com.oculus.intent.category.VR" />
+    </intent-filter>
+
+===========================================
+
+
