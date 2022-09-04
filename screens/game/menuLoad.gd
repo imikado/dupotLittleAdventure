@@ -23,6 +23,8 @@ func _ready():
 			buttonBox.add_child(newButton)
 			
 			newButton.connect("pressed",self,"_on_press_fileToLoad",[saveFileLoop])
+			
+			newButton.grab_focus()
 	
 	
 	

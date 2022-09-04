@@ -7,6 +7,7 @@ signal hit(enemy_)
 signal damagedBy(enemy_)
 
 signal pressAccept
+signal releaseAccept
 signal pressMenu
 
 signal useKeyboard
@@ -140,6 +141,7 @@ func pocessInput():
 		useTouch=false
 	
 	if Input.is_action_just_released("ui_accept"):
+		emit_signal("releaseAccept")
 		buttonPressed=false
 		useTouch=false
 

@@ -122,6 +122,7 @@ func _on_pressed_equip():
 func _on_pressed_display():
 	#display map zoomed
 	$window2.visible=true
+	$window2/closeButton2.grab_focus()
 	$window2/TextureRect.texture=load("res://common/items/maps/gormonstar-map-zoom.png")
 
 func _on_pressed_use():

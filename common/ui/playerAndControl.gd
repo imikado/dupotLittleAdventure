@@ -125,8 +125,9 @@ func _on_HUD_useItem(item_):
 
 func _on_player_pressAccept():
 	emit_signal("pressAccept")
-	pass # Replace with function body.
-
+	if GlobalPlayer.getEquipment()==GlobalItems.ID.SPADE:
+		emit_signal("digging")
+	
 
 func _on_player_pressMenu():
 	emit_signal("pressMenu")
@@ -147,3 +148,8 @@ func _on_HUD_closeMenu():
 	
 	print("close menu")
 
+
+
+func _on_player_releaseAccept() -> void:
+	if GlobalPlayer.getEquipment()==GlobalItems.ID.SPADE:
+		emit_signal("endDigging")

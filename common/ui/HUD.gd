@@ -78,6 +78,7 @@ func _on_btnSave_button_down():
 
 func _on_btnQuit_button_down():
 	$confirmation.visible=true
+	$confirmation/btnYes.grab_focus()
 	$btnBlock.visible=false
 
 func _on_btnInventory_button_down():

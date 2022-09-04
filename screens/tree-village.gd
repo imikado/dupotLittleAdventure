@@ -7,7 +7,7 @@ func debug():
 	GlobalPlayer.addItem(GlobalItems.ID.NAILS)
 	GlobalPlayer.addItem(GlobalItems.ID.HONEY)
 	GlobalPlayer.addItem(GlobalItems.ID.BUCKET)
-	
+	GlobalPlayer.addItem(GlobalItems.ID.GORMON_STAR_MAP)
 	GlobalPlayer.addItem(GlobalItems.ID.SPADE)
 	
 	#$YSort/well.repair()
