@@ -4,10 +4,21 @@
 export.cfg
 export_presets.cfg
 export/Android
+export/AndroidFireTv/*
 export/html
 export/windows
 android/
+off/
+androidTvOff/
+androidTv/
+androidNormal/
+export_presets.cfg.backup*
+export_presets.cfg.test
+switchAndroidTv.sh
+templates/
 
 # Mono-specific ignores
 .mono/
 data_*/
+.gut_editor_config.json
+.gut_editor_shortcuts.cfg

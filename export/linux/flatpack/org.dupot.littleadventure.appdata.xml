@@ -2,7 +2,7 @@
 <component type="desktop">
   <id>org.dupot.littleadventure</id>
   <metadata_license>CC0-1.0</metadata_license>
-  <project_license>CC-BY-NC-SA-3.0</project_license>
+  <project_license>LGPL-2.1-only</project_license>
   <name>Little Adventure</name>
   <summary>RPG Pixel Art little Game</summary>
   <description>
@@ -40,9 +40,11 @@
     </screenshot>
   </screenshots>
   <url type="homepage">https://www.dupot.org/games.html</url>
+  <url type="vcs-browser">https://github.com/imikado/dupotLittleAdventure</url>
   <update_contact>imikado@gmail.com</update_contact>
   <content_rating type="oars-1.1"/>
   <releases>
+    <release date="2023-10-05" version="1.20"/>
     <release date="2022-09-04" version="1.19"/>
     <release date="2022-06-26" version="1.14"/>
     <release date="2022-06-25" version="1.12"/>
