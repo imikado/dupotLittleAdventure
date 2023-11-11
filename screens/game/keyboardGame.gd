@@ -3,7 +3,9 @@ extends Control
 signal fillField(text_)
 signal close
 
-var textValue=""
+#var textValue=""
+
+onready var _textField=$VBox/TextEdit
 
 func eraseLetter():
 	
@@ -17,11 +19,10 @@ func addLetter(letter_):
 	updateField(newText)
 
 func updateField(text_):
-	textValue=text_
-	$VBox/Label.text=textValue
+	_textField.text=text_
 
 func getText():
-	return textValue
+	return _textField.text
 
 func reset():
 	updateField("")

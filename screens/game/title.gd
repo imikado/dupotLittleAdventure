@@ -10,6 +10,16 @@ extends Node2D
 func _ready():
 	$AnimationPlayerLittle.play("New Anim")
 	$AnimationPlayerAdventure.play("New Anim")
+	
+	var keyboardOsList=["HTML5","Web","X11","Linux", "FreeBSD", "NetBSD", "OpenBSD", "BSD","Windows"]
+
+	var osName= OS.get_name()
+	#print(osName)
+	if(keyboardOsList.find(osName)!=-1):
+		GlobalPlayer.disableTouch()
+		GlobalPlayer.disableDialogAnimation()
+		pass
+	
 	pass # Replace with function body.
 
 
