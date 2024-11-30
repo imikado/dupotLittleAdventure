@@ -5,7 +5,7 @@
   <project_license>LGPL-2.1-only</project_license>
   <name>Little Adventure</name>
 
-  <launchable type="desktop-id">org.dupot.littleadventure</launchable>
+  <launchable type="desktop-id">org.dupot.littleadventure.desktop</launchable>
 
 
   <summary>RPG Pixel Art little Game</summary>
