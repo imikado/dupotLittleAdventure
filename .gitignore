@@ -22,3 +22,7 @@ templates/
 data_*/
 .gut_editor_config.json
 .gut_editor_shortcuts.cfg
+*.import
+export/linux/bundle.tar.gz
+export/linux/bundle/littleAdventure.pck
+export/linux/bundle/littleAdventure.x86_64
