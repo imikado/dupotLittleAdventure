@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
 var speed = 10
 
@@ -18,7 +18,7 @@ func getPlayer():
 func _ready():
 	add_to_group("Enemy")
 	
-	$AnimatedSprite.play()
+	$AnimatedSprite2D.play()
 
 
 func _process(delta):

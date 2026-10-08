@@ -1,9 +1,9 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
-export(bool) var moving=false
+@export var moving: bool=false
 
-export(Vector2) var start=Vector2.ZERO
-export(Vector2) var end=Vector2.ZERO
+@export var start: Vector2=Vector2.ZERO
+@export var end: Vector2=Vector2.ZERO
 
 var speed=100
 
@@ -29,7 +29,8 @@ func _physics_process(delta):
 		print("moving to ")
 		var relativeDirection=target-position
 		
-		move_and_slide(relativeDirection*delta*speed)
+		set_velocity(relativeDirection*delta*speed)
+		move_and_slide()
 
 		if relativeDirection.length() < 1:
 			if target==start:

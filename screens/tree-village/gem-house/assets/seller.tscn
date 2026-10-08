@@ -1,37 +1,52 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene format=3]
 
-[ext_resource path="res://screens/tree-village/gem-house/assets/seller/Seller2-idle.png" type="Texture" id=1]
+[ext_resource type="Texture2D" path="res://screens/tree-village/gem-house/assets/seller/Seller2-idle.png" id="1"]
 
-[sub_resource type="AtlasTexture" id=1]
-atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 32, 32 )
+[sub_resource type="AtlasTexture" id="1"]
+atlas = ExtResource("1")
+region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id=2]
-atlas = ExtResource( 1 )
-region = Rect2( 32, 0, 32, 32 )
+[sub_resource type="AtlasTexture" id="2"]
+atlas = ExtResource("1")
+region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 1 )
-region = Rect2( 64, 0, 32, 32 )
+[sub_resource type="AtlasTexture" id="3"]
+atlas = ExtResource("1")
+region = Rect2(64, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id=4]
-atlas = ExtResource( 1 )
-region = Rect2( 96, 0, 32, 32 )
+[sub_resource type="AtlasTexture" id="4"]
+atlas = ExtResource("1")
+region = Rect2(96, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id=5]
-atlas = ExtResource( 1 )
-region = Rect2( 128, 0, 32, 32 )
+[sub_resource type="AtlasTexture" id="5"]
+atlas = ExtResource("1")
+region = Rect2(128, 0, 32, 32)
 
-[sub_resource type="SpriteFrames" id=6]
-animations = [ {
-"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
-"loop": true,
-"name": "default",
+[sub_resource type="SpriteFrames" id="6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("1")
+}, {
+"duration": 1.0,
+"texture": SubResource("2")
+}, {
+"duration": 1.0,
+"texture": SubResource("3")
+}, {
+"duration": 1.0,
+"texture": SubResource("4")
+}, {
+"duration": 1.0,
+"texture": SubResource("5")
+}],
+"loop": 1,
+"name": &"default",
 "speed": 5.0
-} ]
+}]
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Node2D" unique_id=130558095]
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-frames = SubResource( 6 )
-playing = true
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1095081784]
+sprite_frames = SubResource("6")
+autoplay = "default"

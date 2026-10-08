@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
 signal goUp(id_)
 signal goDown(id_)

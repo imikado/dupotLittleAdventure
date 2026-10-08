@@ -24,12 +24,17 @@ func _ready():
 	exampleItem=exampleItemTmp.duplicate()
 	exampleItemTmp.queue_free()
 	
+	getWindow().get_node("title").text=GlobalGame.getTraductionById(GlobalGame.TRAD_UI_INVENTORY)
+	getEquipButton().text=GlobalGame.getTraductionById(GlobalGame.TRAD_UI_EQUIP)
+	getDisplayButton().text=GlobalGame.getTraductionById(GlobalGame.TRAD_UI_DISPLAY)
+	getUseButton().text=GlobalGame.getTraductionById(GlobalGame.TRAD_UI_USE)
+	
 
 
-func openInventory():
+func emitOpenInventory():
 	emit_signal("openInventory")
 	
-func closeInventory():
+func emitCloseInventory():
 	emit_signal("closeInventory")
 
 #access
@@ -56,16 +61,17 @@ func setItemList(itemList_):
 	itemList=itemList_
 	pass
 	
-func hide():
+func hideWindow():
 	getWindow().visible=false
-	closeInventory()
+	emitCloseInventory()
 	
-func show():
+func showWindow():
 	getWindow().visible=true
 	
-	getWindow().get_node("closeButton").grab_focus()
+	getSideInfo().visible=false
 	
 	for itemToReset in getGrid().get_children():
+		getGrid().remove_child(itemToReset)
 		itemToReset.queue_free()
 	
 	patternItem=exampleItem.duplicate()
@@ -74,10 +80,15 @@ func show():
 		var realItem=GlobalItems.getItem(item)
 		var newItem=patternItem.duplicate()
 		newItem.setImage(realItem.getTexture())
-		newItem.connect("button_down",self,"_on_pressed_selected",[item])
+		newItem.connect("button_down", Callable(self, "_on_pressed_selected").bind(item))
 	
 		getGrid().add_child(newItem)
- 
+	
+	# focus sur le premier objet pour la navigation clavier / manette
+	if getGrid().get_child_count() > 0:
+		getGrid().get_child(0).grab_focus()
+	else:
+		getWindow().get_node("closeButton").grab_focus()
 
 func _on_pressed_selected(item_):
 	var realItem=GlobalItems.getItem(item_)
@@ -88,13 +99,16 @@ func _on_pressed_selected(item_):
 	itemSelected=item_
 
 	var equipButton=getEquipButton()
-	equipButton.connect("button_down",self,"_on_pressed_equip")
+	if not equipButton.button_down.is_connected(_on_pressed_equip):
+		equipButton.button_down.connect(_on_pressed_equip)
 
 	var displayButton=getDisplayButton()
-	displayButton.connect("button_down",self,"_on_pressed_display")
+	if not displayButton.button_down.is_connected(_on_pressed_display):
+		displayButton.button_down.connect(_on_pressed_display)
 
 	var useButton=getUseButton()
-	useButton.connect("button_down",self,"_on_pressed_use")
+	if not useButton.button_down.is_connected(_on_pressed_use):
+		useButton.button_down.connect(_on_pressed_use)
 
 	if realItem.type==itemClass.TYPE.TOOL or realItem.type==itemClass.TYPE.WEAPON:
 		equipButton.visible=true
@@ -117,7 +131,7 @@ func _on_pressed_equip():
 	GlobalPlayer.setEquipment(itemSelected)
 	emit_signal("equipItem",itemSelected)
 	getWindow().visible=false
-	closeInventory()
+	emitCloseInventory()
 
 func _on_pressed_display():
 	#display map zoomed
@@ -129,13 +143,13 @@ func _on_pressed_use():
 	GlobalPlayer.useItem(itemSelected)
 	emit_signal("useItem",itemSelected)
 	getWindow().visible=false
-	closeInventory()
+	emitCloseInventory()
 
 func _on_closeButton_pressed():
 	getWindow().visible=false
-	closeInventory()
+	emitCloseInventory()
 
 
 func _on_closeButton2_pressed():
 	$window2.visible=false
-	closeInventory()
+	emitCloseInventory()

@@ -5,7 +5,7 @@ signal close
 
 #var textValue=""
 
-onready var _textField=$VBox/TextEdit
+@onready var _textField=$VBox/TextEdit
 
 func eraseLetter():
 	
@@ -44,7 +44,7 @@ func build():
 	for letter in letterList:
 		var newLetterBtn=templateButton.duplicate()
 
-		newLetterBtn.connect("button_down",self,"_on_button_pressed",[letter])
+		newLetterBtn.connect("button_down", Callable(self, "_on_button_pressed").bind(letter))
 
 		newLetterBtn.text=" "+letter+" "
 		$VBox/GridContainer.add_child(newLetterBtn)

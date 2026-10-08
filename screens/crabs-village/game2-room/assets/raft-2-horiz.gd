@@ -1,9 +1,9 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
 signal goLeft(id_)
 signal goRight(id_)
 
-export(bool) var displayDriver
+@export var displayDriver: bool
 
 
 # Called when the node enters the scene tree for the first time.

@@ -19,7 +19,7 @@ func _ready():
 
 
 func _on_Button_button_down():
-	get_tree().change_scene("res://screens/game/menu.tscn")
+	SceneTransition.change_scene("res://screens/game/menu.tscn")
 	pass # Replace with function body.
 
 func refreshUi():

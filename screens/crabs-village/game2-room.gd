@@ -13,7 +13,7 @@ var hasAlreadyWon=false
 
 func _ready():
 	
-	hasAlreadyWon=GlobalScenes.getParamForSceneOr(filename,"hasAlreadyWon",false)
+	hasAlreadyWon=GlobalScenes.getParamForSceneOr(scene_file_path,"hasAlreadyWon",false)
 	
 	if true==hasAlreadyWon:
 		$simpleDialogStart.addDiscussion("Presentateur",[
@@ -42,27 +42,31 @@ func _ready():
 	
 
 func win():
-	GlobalScenes.saveParamForScene(filename,"hasAlreadyWon",true)
+	GlobalScenes.saveParamForScene(scene_file_path,"hasAlreadyWon",true)
 
 	$colorWin.visible=true
 	$simpleDialogWin.start()
 
 func moveLeft(item_):
-	item_.move_and_slide(Vector2.LEFT*vitesse)
+	item_.set_velocity(Vector2.LEFT*vitesse)
+	item_.move_and_slide()
 	#item_.position+=Vector2(-20,0)
 
 func moveRight(item_):
-	item_.move_and_slide(Vector2.RIGHT*vitesse)
+	item_.set_velocity(Vector2.RIGHT*vitesse)
+	item_.move_and_slide()
 	
 	if "displayDriver" in item_:
 		if item_.global_position.x > (32*8):
 			win()
 	
 func moveUp(item_):
-	item_.move_and_slide(Vector2.UP*vitesse)
+	item_.set_velocity(Vector2.UP*vitesse)
+	item_.move_and_slide()
 	
 func moveDown(item_):
-	item_.move_and_slide(Vector2.DOWN*vitesse)
+	item_.set_velocity(Vector2.DOWN*vitesse)
+	item_.move_and_slide()
 
 
 func _on_raft2horiz_goLeft(id_):
@@ -110,5 +114,5 @@ func _on_simpleDialogStart_discussionFinished():
 	
 func exitToVillage():
 	GlobalPlayer.savePosition(Vector2(497,231))
-	get_tree().change_scene("res://screens/crabs-village.tscn")
+	SceneTransition.change_scene("res://screens/crabs-village.tscn")
 

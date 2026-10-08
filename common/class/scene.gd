@@ -22,5 +22,5 @@ func _on_playerAndControl_quit():
 	
 
 func _on_playerAndControl_save():
-	GlobalGame.saveWithPosition(filename,getPlayer().getPlayerPosition());
+	GlobalGame.saveWithPosition(scene_file_path,getPlayer().getPlayerPosition());
 	

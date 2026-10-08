@@ -18,5 +18,5 @@ func _ready():
 
 
 func _on_Timer_timeout():
-	get_tree().change_scene("res://screens/game/title.tscn")
+	SceneTransition.change_scene("res://screens/game/title.tscn")
 	pass # Replace with function body.

@@ -22,7 +22,7 @@ func _ready():
 
 func _on_simpleDialog_discussionFinished():
 	$simpleDialog.end()
-	$shopList.show()
+	$shopList.showWindow()
 	pass # Replace with function body.
 
 
@@ -35,5 +35,5 @@ func _on_sellerTalk_playerOpenedDoor():
 
 func _on_door_playerOpenedDoor():
 	GlobalPlayer.savePosition(Vector2(45,171))
-	get_tree().change_scene("res://screens/crabs-village.tscn")
+	SceneTransition.change_scene("res://screens/crabs-village.tscn")
 

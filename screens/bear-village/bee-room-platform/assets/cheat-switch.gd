@@ -2,8 +2,8 @@ extends Area2D
 
 signal enableCheatCode
 
-onready var switchOff=get_node("swich-off")
-onready var switchOn=get_node("swich-on")
+@onready var switchOff=get_node("swich-off")
+@onready var switchOn=get_node("swich-on")
 
 var enabled=false
 

@@ -1,4 +1,4 @@
-extends "res://addons/gut/test.gd"
+extends GutTest
 
 var Game=load("res://common/singletons/globalGame.gd")
 

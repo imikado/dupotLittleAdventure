@@ -1,7 +1,7 @@
-extends "res://addons/gut/test.gd"
+extends GutTest
 
 class TestSimpleProperties:
-	extends 'res://addons/gut/test.gd'
+	extends GutTest
 	var Player=load("res://common/singletons/globalPlayer.gd")
 	
 	func test_life():
@@ -14,6 +14,12 @@ class TestSimpleProperties:
 		#Assert
 		var expectedLifeLeft=80
 		assert_eq(expectedLifeLeft, lifeLeft, "devrait afficher 80: 100-20")
+
+	func test_lifeNeverNegative():
+		var player=Player.new()
+		player.setLife(10)
+		player.damage(25)
+		assert_eq(0, player.getLife(), "la vie ne descend pas sous 0")
 
 	func test_xp():
 		#Arrange
@@ -34,7 +40,7 @@ class TestSimpleProperties:
 
 
 class TestLittleIntelligence:
-	extends 'res://addons/gut/test.gd'
+	extends GutTest
 	var Player=load("res://common/singletons/globalPlayer.gd")
 	
 	func test_savePosition():

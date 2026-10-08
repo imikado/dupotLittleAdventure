@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
 signal hit(enemy_)
 signal damage
@@ -19,21 +19,22 @@ var limitRight=0
 var limitTop=0
 var limitBottom=0
 
-export var refRect : Rect2
+@export var refRect : Rect2
 
 func enableCamera():
-	$Camera2D.current=true
+	$Camera2D.enabled=true
+	$Camera2D.make_current()
 
 func disableCamera():
-	$Camera2D.current=false
+	$Camera2D.enabled=false
 
 func loadCameraLimits(refRect:ReferenceRect):
 	
-	var position=refRect.rect_global_position
-	var rect=refRect.rect_size + position
+	var refPosition=refRect.global_position
+	var rect=refRect.size + refPosition
 	
-	limitLeft=position.x
-	limitTop=position.y
+	limitLeft=refPosition.x
+	limitTop=refPosition.y
 	limitRight=rect.x
 	limitBottom=rect.y
 	
@@ -47,11 +48,13 @@ func resetZoom():
 	$Camera2D.zoom=Vector2(1,1)
 
 func zoomDown():
-	var zoom=0.7
+	# Godot 4 : zoom inverse de Godot 3 (0.7 en Godot 3)
+	var zoom=1.0/0.7
 	$Camera2D.zoom=Vector2(zoom,zoom)
 	
 func zoomUp():
-	var zoom=2
+	# Godot 4 : zoom inverse de Godot 3 (2 en Godot 3)
+	var zoom=0.5
 	$Camera2D.zoom=Vector2(zoom,zoom)
 	
 func _ready():
@@ -63,27 +66,28 @@ func _process(delta):
 	
 	pocessInput()
 	
-	var velocity = Vector2()  # The player's movement vector.
+	var motion = Vector2()  # The player's movement vector.
 	
 	if left:
-		velocity.x -= 1
+		motion.x -= 1
 	elif right:
-		velocity.x += 1
+		motion.x += 1
 	elif up:
-		velocity.y -= 1	
+		motion.y -= 1	
 	elif down:
-		velocity.y += 1
+		motion.y += 1
 	
-	var velocityMin=velocity	
+	var velocityMin=motion	
 		
-	if velocity.length() > 0:
-		velocity = velocity.normalized() * speed
+	if motion.length() > 0:
+		motion = motion.normalized() * speed
 	
 	var expectPosition=global_position+velocityMin
 	
 
 	if expectPosition.x < limitRight && expectPosition.x > limitLeft && expectPosition.y > limitTop && expectPosition.y < limitBottom: 	
-		move_and_slide(velocity)
+		set_velocity(motion)
+		move_and_slide()
 	
 	processAnimation()
 	
@@ -113,15 +117,15 @@ func processAnimation():
 		currentAnimation='attack1-right'
 	elif up :
 		currentAnimation='walking-up'
-		$AnimatedSprite.flip_h=true
+		$AnimatedSprite2D.flip_h=true
 	elif down :
 		currentAnimation='walking-down'
-		$AnimatedSprite.flip_h=false
+		$AnimatedSprite2D.flip_h=false
 	elif left:
-		$AnimatedSprite.flip_h=true
+		$AnimatedSprite2D.flip_h=true
 
 	elif right:
-		$AnimatedSprite.flip_h=false
+		$AnimatedSprite2D.flip_h=false
 	else:
 		currentAnimation='idle'
 
@@ -130,8 +134,8 @@ func processAnimation():
 
 func playAnimation(anim):
 	#$AnimatedSprite.play(anim)
-	$AnimatedSprite/AnimationPlayer.play(anim)
-	$AnimatedSprite.play()
+	$AnimatedSprite2D/AnimationPlayer.play(anim)
+	$AnimatedSprite2D.play()
 
 
 func resetKeys():

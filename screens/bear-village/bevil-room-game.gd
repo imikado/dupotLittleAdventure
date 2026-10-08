@@ -46,7 +46,7 @@ func _on_playerAndControl_hit(enemy_):
 	
 
 func win():
-	get_tree().change_scene("res://screens/bear-village/bevil-room-end.tscn")
+	SceneTransition.change_scene("res://screens/bear-village/bevil-room-end.tscn")
 	
 
 func _on_playerAndControl_damagedBy(enemy_):
@@ -60,7 +60,7 @@ func _on_playerAndControl_damagedBy(enemy_):
 		GlobalPlayer.setLife(playerSavedLife)
 		
 		GlobalPlayer.savePosition(Vector2(120,300))
-		get_tree().change_scene("res://screens/bear-village.tscn")
+		SceneTransition.change_scene("res://screens/bear-village.tscn")
 
 
 
@@ -68,4 +68,4 @@ func _on_winDialog_discussionFinished():
 	GlobalPlayer.addGems(4)
 	
 	GlobalPlayer.savePosition(Vector2(120,300))
-	get_tree().change_scene("res://screens/bear-village.tscn")
+	SceneTransition.change_scene("res://screens/bear-village.tscn")

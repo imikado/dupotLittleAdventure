@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
 signal goLeft(id_)
 signal goRight(id_)

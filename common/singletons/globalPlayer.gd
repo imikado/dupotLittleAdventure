@@ -76,7 +76,7 @@ func getMaxLife():
 	return maxLife
 	
 func damage(damage_):
-	life-=damage_
+	life=max(0, life-damage_)
 	
 #--xp
 func setXp(xp_):
@@ -167,19 +167,23 @@ func removeItem(itemId_):
 	itemsList.erase(itemId_)
 
 
-func getAttackList():
-	var attackFilteredList=[]
+# toutes les attaques des armes possedees, y compris celles pas encore debloquees par l'xp
+func getWeaponAttackList():
+	var attackList=[]
 	for itemId in getItemsList():
 		var realItem=GlobalItems.getItem(itemId)
 		if realItem.type==item_class.TYPE.WEAPON:
-			print("type:"+str(realItem.type))
 			for attack in realItem.actionList:
-				if xp >= attack.xpMin:
-					print("xp > attaxMin:  attack.xpMin:"+str(attack.xpMin))
-					attackFilteredList.append(attack)
-			
-	return attackFilteredList
-	
+				if !attackList.has(attack):
+					attackList.append(attack)
+	return attackList
+
+func isAttackUnlocked(attack_):
+	return xp >= attack_.xpMin
+
+func getAttackList():
+	return getWeaponAttackList().filter(isAttackUnlocked)
+
 func loadFromSave(data_):
 	for field in simpleFieldToSaveList:
 		if data_.has(field):

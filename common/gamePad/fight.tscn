@@ -1,49 +1,44 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene format=3]
 
-[ext_resource path="res://common/themes/default.theme" type="Theme" id=1]
-[ext_resource path="res://common/gamePad/fight.gd" type="Script" id=2]
+[ext_resource type="Theme" path="res://common/themes/default.tres" id="1"]
+[ext_resource type="Script" path="res://common/gamePad/fight.gd" id="2"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
-script = ExtResource( 2 )
+script = ExtResource("2")
 
-[node name="buttonList" type="HBoxContainer" parent="."]
-margin_left = 163.0
-margin_top = 148.0
-margin_right = 314.0
-margin_bottom = 171.0
-theme = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="messageBox" type="PanelContainer" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = -34.0
+offset_right = 200.0
+offset_bottom = -4.0
+grow_vertical = 0
+mouse_filter = 2
+theme = ExtResource("1")
 
-[node name="leaveButton" type="Button" parent="buttonList"]
-margin_right = 66.0
-margin_bottom = 23.0
-text = "S'enfuir"
+[node name="message" type="Label" parent="messageBox"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_type_variation = &"DarkLabel"
+text = "Une araignée surgit !"
+autowrap_mode = 2
 
-[node name="attackButton" type="Button" parent="buttonList"]
-margin_left = 76.0
-margin_right = 142.0
-margin_bottom = 23.0
-text = "Attaquer"
+[node name="actions" type="PanelContainer" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -114.0
+offset_top = -34.0
+offset_right = -4.0
+offset_bottom = -4.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("1")
 
-[node name="attackList" type="VBoxContainer" parent="."]
-margin_left = 19.3736
-margin_top = 53.9115
-margin_right = 59.3736
-margin_bottom = 93.9111
-theme = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="itemList" type="Button" parent="."]
-visible = false
-margin_left = 223.0
-margin_top = 148.0
-margin_right = 305.0
-margin_bottom = 171.0
-text = "Inventaire"
-
-[connection signal="pressed" from="buttonList/leaveButton" to="." method="_on_leaveButton_pressed"]
-[connection signal="pressed" from="buttonList/attackButton" to="." method="_on_attackButton_pressed"]
+[node name="list" type="VBoxContainer" parent="actions"]
+layout_mode = 2
+theme_override_constants/separation = 2

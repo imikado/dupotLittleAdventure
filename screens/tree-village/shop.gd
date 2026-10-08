@@ -24,7 +24,7 @@ func _ready():
 
 func _on_door_playerOpenedDoor():
 	GlobalPlayer.savePosition(Vector2(260,196))
-	get_tree().change_scene("res://screens/tree-village.tscn")
+	SceneTransition.change_scene("res://screens/tree-village.tscn")
 
 
 func _on_discussionDoor_playerOpenedDoor():
@@ -34,7 +34,7 @@ func _on_discussionDoor_playerOpenedDoor():
 
 func _on_simpleDialog_discussionFinished():
 	$simpleDialog.end()
-	$shopList.show()
+	$shopList.showWindow()
 	getPlayer().enableNavigation()
 
 

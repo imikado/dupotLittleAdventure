@@ -10,7 +10,7 @@ func getPlayer():
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
-	hasAlreadyWon=GlobalScenes.getParamForSceneOr(filename,"hasAlreadyWon",false)
+	hasAlreadyWon=GlobalScenes.getParamForSceneOr(scene_file_path,"hasAlreadyWon",false)
 	
 	if true==hasAlreadyWon:
 		$ColorStart/simpleDialogStart.addDiscussion("Presentateur",[
@@ -60,13 +60,14 @@ func checkGame():
 
 
 func win():
-	GlobalScenes.saveParamForScene(filename,"hasAlreadyWon",true)
+	GlobalScenes.saveParamForScene(scene_file_path,"hasAlreadyWon",true)
 	
 	$ColorWin.visible=true
 	$ColorWin/simpleDialogWin.start()
 	$navigation.disable()
 	$character.disableCamera()
-	$Camera2D.current=true
+	$Camera2D.enabled=true
+	$Camera2D.make_current()
 
 func _on_placeholder7_unPlaced(item_):
 	item_.setPlaced(false)
@@ -98,4 +99,4 @@ func _on_exit_body_shape_entered(body_id, body, body_shape, area_shape):
 
 func exitToVillage():
 	GlobalPlayer.savePosition(Vector2(712,250))
-	get_tree().change_scene("res://screens/crabs-village.tscn")
+	SceneTransition.change_scene("res://screens/crabs-village.tscn")

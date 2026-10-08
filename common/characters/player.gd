@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
 signal startClimbing
 signal endClimbing
@@ -22,7 +22,7 @@ var buttonPressed=false
 
 var useTouch=true
 
-var startClimbing=false
+var climbingStarted=false
 var onScale=false
 var isClimbing=false
 
@@ -31,9 +31,18 @@ var limitRight=0
 var limitTop=0
 var limitBottom=0
 
-export var refRect : Rect2
+@export var refRect : Rect2
 
 var navigationEnabled=true
+
+# zone morte et rapport d'axes du joystick tactile (8 directions)
+const JOYSTICK_DEAD_ZONE=10
+const JOYSTICK_DIAGONAL_RATIO=0.4
+
+# invincibilite apres un coup (en ms) : le personnage clignote
+const INVINCIBILITY_DURATION=1000
+var invincibleUntil=0
+var wasInvincible=false
 
 func enableNavigation():
 	navigationEnabled=true
@@ -42,18 +51,19 @@ func disableNavigation():
 	navigationEnabled=false
 
 func enableCamera():
-	$Camera2D.current=true
+	$Camera2D.enabled=true
+	$Camera2D.make_current()
 
 func disableCamera():
-	$Camera2D.current=false
+	$Camera2D.enabled=false
 
 func loadCameraLimits(refRect:ReferenceRect):
 	
-	var position=refRect.rect_global_position
-	var rect=refRect.rect_size + position
+	var refPosition=refRect.global_position
+	var rect=refRect.size + refPosition
 	
-	limitLeft=position.x
-	limitTop=position.y
+	limitLeft=refPosition.x
+	limitTop=refPosition.y
 	limitRight=rect.x
 	limitBottom=rect.y
 	
@@ -67,11 +77,13 @@ func resetZoom():
 	$Camera2D.zoom=Vector2(1,1)
 
 func zoomDown():
-	var zoom=0.7
+	# Godot 4 : zoom inverse de Godot 3 (0.7 en Godot 3)
+	var zoom=1.0/0.7
 	$Camera2D.zoom=Vector2(zoom,zoom)
 	
 func zoomUp():
-	var zoom=2
+	# Godot 4 : zoom inverse de Godot 3 (2 en Godot 3)
+	var zoom=0.5
 	$Camera2D.zoom=Vector2(zoom,zoom)
 	
 func _ready():
@@ -81,32 +93,27 @@ func _ready():
 
 func _process(delta):
 	
+	processInvincibility()
+	
 	if !navigationEnabled:
 		return
 	
 	pocessInput()
 	
-	var velocity = Vector2()  # The player's movement vector.
+	# deplacement en 8 directions, vitesse identique en diagonale
+	var motion = Vector2(int(right)-int(left), int(down)-int(up))
 	
-	if left:
-		velocity.x -= 1
-	elif right:
-		velocity.x += 1
-	elif up:
-		velocity.y -= 1	
-	elif down:
-		velocity.y += 1
-	
-	var velocityMin=velocity	
+	var velocityMin=motion	
 		
-	if velocity.length() > 0:
-		velocity = velocity.normalized() * speed
+	if motion.length() > 0:
+		motion = motion.normalized() * speed
 	
 	var expectPosition=global_position+velocityMin
 	
 
 	if expectPosition.x < limitRight && expectPosition.x > limitLeft && expectPosition.y > limitTop && expectPosition.y < limitBottom: 	
-		move_and_slide(velocity)
+		set_velocity(motion)
+		move_and_slide()
 	
 	processAnimation()
 	
@@ -158,19 +165,17 @@ func processAnimation():
 		currentAnimation='digging'
 	elif buttonPressed && GlobalPlayer.getEquipment()==GlobalItems.ID.WOOD_SWORD:
 		currentAnimation='attack1'
-	elif startClimbing:
+	elif climbingStarted:
 		currentAnimation='climbing'
+	elif left != right:
+		# en diagonale, on garde l'animation de profil
+		$AnimatedSprite2D.flip_h=left
 	elif up :
 		currentAnimation='walk-up'
-		$AnimatedSprite.flip_h=true
+		$AnimatedSprite2D.flip_h=true
 	elif down :
 		currentAnimation='walk-down'
-		$AnimatedSprite.flip_h=false
-	elif left:
-		$AnimatedSprite.flip_h=true
-
-	elif right:
-		$AnimatedSprite.flip_h=false
+		$AnimatedSprite2D.flip_h=false
 	else:
 		currentAnimation='idle'
 
@@ -178,8 +183,8 @@ func processAnimation():
 
 
 func playAnimation(anim):
-	$AnimatedSprite/AnimationPlayer.play(anim)
-	$AnimatedSprite/AnimationPlayer.play()
+	$AnimatedSprite2D/AnimationPlayer.play(anim)
+	$AnimatedSprite2D/AnimationPlayer.play()
 
 func stop():
 	left=false
@@ -202,28 +207,19 @@ func resetKeys():
 func _on_navigation_movePlayer(joystickVector_):
 	useTouch=true
 	
-	right=false
-	left=false
-	down=false
-	up=false	
-	
-	if abs(joystickVector_.x)>abs(joystickVector_.y) :
-	
-		if(joystickVector_.x > 10):
-			right=true
-		elif(joystickVector_.x < -10):
-			left=true
-	 
-	else:
-				
-		if(joystickVector_.y > 10):
-			down=true
-		elif(joystickVector_.y < -10):
-			up=true
+	var x=joystickVector_.x
+	var y=joystickVector_.y
+	# un axe compte s'il depasse la zone morte et n'est pas negligeable face a l'autre
+	var useX=abs(x) > abs(y)*JOYSTICK_DIAGONAL_RATIO
+	var useY=abs(y) > abs(x)*JOYSTICK_DIAGONAL_RATIO
+	right=useX and x > JOYSTICK_DEAD_ZONE
+	left=useX and x < -JOYSTICK_DEAD_ZONE
+	down=useY and y > JOYSTICK_DEAD_ZONE
+	up=useY and y < -JOYSTICK_DEAD_ZONE
 
 
 func _on_gordonhome_playerStartClimbing():
-	startClimbing=true
+	climbingStarted=true
 	emit_signal("startClimbing")
 
 func _on_gordonhome_playerOnScale():
@@ -234,7 +230,7 @@ func _on_gordonhome_playerLeaveScale():
 
 func _on_gordonhome_playerEndClimbing():
 	if !onScale:
-		startClimbing=false
+		climbingStarted=false
 		emit_signal("endClimbing")
 
 
@@ -257,9 +253,28 @@ func _on_hit_body_shape_entered(body_id, body, body_shape, area_shape):
 
 func _on_damage_body_shape_entered(body_id, body, body_shape, area_shape):
 	if body.is_in_group("Enemy"):
-		emit_signal("damagedBy",body)
-		animDamage()
-		
+		takeDamageFrom(body)
+
+func isInvincible():
+	return Time.get_ticks_msec() < invincibleUntil
+
+func takeDamageFrom(enemy_):
+	if isInvincible():
+		return
+	invincibleUntil=Time.get_ticks_msec()+INVINCIBILITY_DURATION
+	emit_signal("damagedBy",enemy_)
+	animDamage()
+
+func processInvincibility():
+	var invincible=isInvincible()
+	$AnimatedSprite2D.visible=!invincible or (Time.get_ticks_msec()/80)%2==0
+	if wasInvincible and !invincible:
+		# un ennemi encore au contact a la fin de l'invincibilite touche a nouveau
+		for body in $damage.get_overlapping_bodies():
+			if body.is_in_group("Enemy"):
+				takeDamageFrom(body)
+				break
+	wasInvincible=invincible
 
 func animDamage():
 	$redModulate.visible=true

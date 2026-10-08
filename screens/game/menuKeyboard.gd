@@ -15,12 +15,12 @@ func _ready():
 
 
 func _on_keyboard_close():
-	get_tree().change_scene("res://screens/game/menu.tscn")	
+	SceneTransition.change_scene("res://screens/game/menu.tscn")	
 
 func _on_keyboard_fillField(text_):
 	
 	GlobalGame.create(text_)
-	get_tree().change_scene(GlobalGame.getSceneToLoad())
+	SceneTransition.change_scene(GlobalGame.getSceneToLoad())
 	return
 
 	

@@ -1,112 +1,87 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene format=3]
 
-[ext_resource path="res://common/themes/default.theme" type="Theme" id=1]
-[ext_resource path="res://screens/game/keyboardGame.gd" type="Script" id=2]
+[ext_resource type="Theme" path="res://common/themes/default.tres" id="1"]
+[ext_resource type="Script" path="res://screens/game/keyboardGame.gd" id="2"]
 
-[sub_resource type="StyleBoxFlat" id=1]
+[sub_resource type="StyleBoxFlat" id="1"]
 content_margin_left = 2.0
-content_margin_right = 0.0
 content_margin_top = 1.0
+content_margin_right = 0.0
 content_margin_bottom = 3.0
-bg_color = Color( 0, 0, 0, 1 )
+bg_color = Color(0, 0, 0, 1)
 
-[node name="Control" type="Control"]
+[node name="Control" type="Control" unique_id=1013661255]
+layout_mode = 3
+anchors_preset = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 0.561218
-margin_right = 0.561218
-script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+offset_left = 0.561218
+offset_right = 0.561218
+script = ExtResource("2")
 
-[node name="Button" type="Button" parent="."]
-margin_left = -48.8271
-margin_top = 16.2757
-margin_right = -36.8271
-margin_bottom = 36.2757
-theme = ExtResource( 1 )
+[node name="Button" type="Button" parent="." unique_id=566246246]
+layout_mode = 0
+offset_left = -48.8271
+offset_top = 16.2757
+offset_right = -36.8271
+offset_bottom = 36.2757
+theme = ExtResource("1")
 text = " A "
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=649705527]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-rect_scale = Vector2( 3.24, 1 )
-color = Color( 0.0862745, 0.501961, 0.305882, 1 )
+scale = Vector2(3.24, 1)
+color = Color(0.0862745, 0.501961, 0.305882, 1)
 
-[node name="VBox" type="VBoxContainer" parent="."]
+[node name="VBox" type="VBoxContainer" parent="." unique_id=239164590]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 6.0
+offset_top = 6.0
 
-[node name="title" type="Label" parent="VBox"]
-margin_right = 320.0
-margin_bottom = 7.0
-theme = ExtResource( 1 )
+[node name="title" type="Label" parent="VBox" unique_id=885962062]
+layout_mode = 2
+theme = ExtResource("1")
 text = "Votre pseudo:"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="TextEdit" type="TextEdit" parent="VBox"]
-margin_top = 11.0
-margin_right = 320.0
-margin_bottom = 31.0
-rect_min_size = Vector2( 50, 20 )
-theme = ExtResource( 1 )
+[node name="TextEdit" type="TextEdit" parent="VBox" unique_id=2113064463]
+custom_minimum_size = Vector2(50, 20)
+layout_mode = 2
+theme = ExtResource("1")
 text = "test"
 
-[node name="Label" type="Label" parent="VBox"]
+[node name="Label" type="Label" parent="VBox" unique_id=772502064]
 visible = false
-margin_top = 15.0
-margin_right = 320.0
-margin_bottom = 26.0
-theme = ExtResource( 1 )
-custom_styles/normal = SubResource( 1 )
+layout_mode = 2
+theme = ExtResource("1")
+theme_override_styles/normal = SubResource("1")
 text = "test"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="GridContainer" type="GridContainer" parent="VBox"]
-margin_top = 35.0
-margin_right = 320.0
-margin_bottom = 35.0
+[node name="GridContainer" type="GridContainer" parent="VBox" unique_id=1059293602]
+layout_mode = 2
 columns = 10
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBox"]
-margin_top = 39.0
-margin_right = 320.0
-margin_bottom = 56.0
-theme = ExtResource( 1 )
+[node name="HBoxContainer" type="HBoxContainer" parent="VBox" unique_id=1007531635]
+layout_mode = 2
+theme = ExtResource("1")
 alignment = 1
 
-[node name="Retour" type="Button" parent="VBox/HBoxContainer"]
-margin_left = 67.0
-margin_right = 117.0
-margin_bottom = 17.0
+[node name="Retour" type="Button" parent="VBox/HBoxContainer" unique_id=411390784]
+layout_mode = 2
 text = "Retour"
 
-[node name="erase" type="Button" parent="VBox/HBoxContainer"]
-margin_left = 127.0
-margin_right = 185.0
-margin_bottom = 17.0
+[node name="erase" type="Button" parent="VBox/HBoxContainer" unique_id=337459273]
+layout_mode = 2
 text = "Effacer"
 
-[node name="submit" type="Button" parent="VBox/HBoxContainer"]
-margin_left = 195.0
-margin_right = 253.0
-margin_bottom = 17.0
-theme = ExtResource( 1 )
+[node name="submit" type="Button" parent="VBox/HBoxContainer" unique_id=1493075815]
+layout_mode = 2
+theme = ExtResource("1")
 text = "VALIDER"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [connection signal="button_down" from="VBox/HBoxContainer/Retour" to="." method="_on_Retour_button_down"]
 [connection signal="button_down" from="VBox/HBoxContainer/erase" to="." method="_on_erase_button_down"]

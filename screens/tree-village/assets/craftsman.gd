@@ -12,16 +12,16 @@ var hasStillTalked=false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$AnimatedSprite.play("default")
+	$AnimatedSprite2D.play("default")
 	talkingEnabled=true
 	pass # Replace with function body.
 
 func repair():
-	$AnimatedSprite.play("repairing")
+	$AnimatedSprite2D.play("repairing")
 	talkingEnabled=false
 	
 func idle():
-	$AnimatedSprite.play("default")
+	$AnimatedSprite2D.play("default")
 	if !hasStillTalked:
 		talkingEnabled=true
 

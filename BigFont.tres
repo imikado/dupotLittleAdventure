@@ -1,8 +1,6 @@
-[gd_resource type="DynamicFont" load_steps=2 format=2]
+[gd_resource type="FontVariation" format=3]
 
-[sub_resource type="DynamicFontData" id=9]
-font_path = "res://addons/gut/fonts/LobsterTwo-BoldItalic.ttf"
+[ext_resource type="FontFile" path="res://common/themes/fonts/LobsterTwo-BoldItalic.ttf" id="1"]
 
 [resource]
-size = 40
-font_data = SubResource( 9 )
+base_font = ExtResource("1")

@@ -35,9 +35,9 @@ func _on_sellerTalk_playerOpenedDoor():
 
 func _on_door_playerOpenedDoor():
 	GlobalPlayer.savePosition(Vector2(833,458))
-	get_tree().change_scene("res://screens/bear-village.tscn")
+	SceneTransition.change_scene("res://screens/bear-village.tscn")
 
 
 func _on_simpleDialog_discussionFinished():
 	$simpleDialog.end()
-	$shopList.show()
+	$shopList.showWindow()

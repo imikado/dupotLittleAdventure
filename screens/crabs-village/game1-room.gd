@@ -16,7 +16,7 @@ var hasAlreadyWon=false
 
 func _ready():
 	
-	hasAlreadyWon=GlobalScenes.getParamForSceneOr(filename,"hasAlreadyWon",false)
+	hasAlreadyWon=GlobalScenes.getParamForSceneOr(scene_file_path,"hasAlreadyWon",false)
 	
 	if true==hasAlreadyWon:
 		$ColorStart/simpleDialogStart.addDiscussion(GlobalGame.getTraductionById(GlobalGame.TRAD_WORD_PRESENTATEUR),  GlobalGame.getTraductionById(GlobalGame.TRAD_CRABVILLAGE_GAME1_ALREADYWON)  )
@@ -36,7 +36,7 @@ func _ready():
 		$ColorWin/simpleDialogWin.addDiscussion(GlobalGame.getTraductionById(GlobalGame.TRAD_WORD_PRESENTATEUR),GlobalGame.getTraductionById(GlobalGame.TRAD_CRABVILLAGE_GAME1_WIN)  )
 	
 func win():
-	GlobalScenes.saveParamForScene(filename,"hasAlreadyWon",true)
+	GlobalScenes.saveParamForScene(scene_file_path,"hasAlreadyWon",true)
 	
 	$ColorWin.visible=true
 	$ColorWin/simpleDialogWin.start()
@@ -233,7 +233,7 @@ func _on_algaeRight_selected():
 
 func _on_crabAteAstonished_animation_finished():
 	$colorGameOver/crabAteAstonished.stop()
-	$colorGameOver/crabAteAstonished.frame=$colorGameOver/crabAteAstonished.frames.get_frame_count("default")
+	$colorGameOver/crabAteAstonished.frame=$colorGameOver/crabAteAstonished.sprite_frames.get_frame_count("default")
 	
 
 
@@ -246,7 +246,7 @@ func _on_restart_button_down():
 
 func _on_astonishedAteAlgae_animation_finished():
 	$colorGameOver/astonishedAteAlgae.stop()
-	$colorGameOver/astonishedAteAlgae.frame=$colorGameOver/astonishedAteAlgae.frames.get_frame_count("default")
+	$colorGameOver/astonishedAteAlgae.frame=$colorGameOver/astonishedAteAlgae.sprite_frames.get_frame_count("default")
 
 
 func _on_simpleDialogStart_discussionFinished():
@@ -263,4 +263,4 @@ func _on_simpleDialogWin_discussionFinished():
 
 func exitToVillage():
 	GlobalPlayer.savePosition(Vector2(310, 193))
-	get_tree().change_scene("res://screens/crabs-village.tscn")
+	SceneTransition.change_scene("res://screens/crabs-village.tscn")

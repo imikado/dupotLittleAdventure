@@ -1,76 +1,59 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene format=4]
 
-[ext_resource path="res://screens/crabs-village/characters/welcome-boy.tscn" type="PackedScene" id=1]
-[ext_resource path="res://common/ui/shopList.tscn" type="PackedScene" id=2]
-[ext_resource path="res://screens/crabs-village/shop/shopTiles.png" type="Texture" id=3]
-[ext_resource path="res://common/ui/playerAndControl.tscn" type="PackedScene" id=4]
-[ext_resource path="res://screens/crabs-village/shop.gd" type="Script" id=5]
-[ext_resource path="res://common/ui/simpleDialog.tscn" type="PackedScene" id=6]
-[ext_resource path="res://common/areas/door.tscn" type="PackedScene" id=7]
+[ext_resource type="PackedScene" path="res://screens/crabs-village/characters/welcome-boy.tscn" id="1"]
+[ext_resource type="PackedScene" path="res://common/ui/shopList.tscn" id="2"]
+[ext_resource type="Texture2D" path="res://screens/crabs-village/shop/shopTiles.png" id="3"]
+[ext_resource type="PackedScene" path="res://common/ui/playerAndControl.tscn" id="4"]
+[ext_resource type="Script" path="res://screens/crabs-village/shop.gd" id="5"]
+[ext_resource type="PackedScene" path="res://common/ui/simpleDialog.tscn" id="6"]
+[ext_resource type="PackedScene" path="res://common/areas/door.tscn" id="7"]
 
-[sub_resource type="TileSet" id=1]
-0/name = "shopTiles.png 0"
-0/texture = ExtResource( 3 )
-0/tex_offset = Vector2( 0, 0 )
-0/modulate = Color( 1, 1, 1, 1 )
-0/region = Rect2( 32, 32, 32, 32 )
-0/tile_mode = 0
-0/occluder_offset = Vector2( 0, 0 )
-0/navigation_offset = Vector2( 0, 0 )
-0/shape_offset = Vector2( 0, 0 )
-0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-0/shape_one_way = false
-0/shape_one_way_margin = 0.0
-0/shapes = [  ]
-0/z_index = 0
-1/name = "shopTiles.png 1"
-1/texture = ExtResource( 3 )
-1/tex_offset = Vector2( 0, 0 )
-1/modulate = Color( 1, 1, 1, 1 )
-1/region = Rect2( 32, 64, 32, 32 )
-1/tile_mode = 0
-1/occluder_offset = Vector2( 0, 0 )
-1/navigation_offset = Vector2( 0, 0 )
-1/shape_offset = Vector2( 0, 0 )
-1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-1/shape_one_way = false
-1/shape_one_way_margin = 0.0
-1/shapes = [  ]
-1/z_index = 0
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4wn72"]
+texture = ExtResource("3")
+margins = Vector2i(32, 32)
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
 
-[node name="shop" type="Node2D"]
-script = ExtResource( 5 )
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4ccha"]
+texture = ExtResource("3")
+margins = Vector2i(32, 64)
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
 
-[node name="TileMap" type="TileMap" parent="."]
-tile_set = SubResource( 1 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( -1, 0, 0, -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, -65533, 0, 0, -65532, 0, 0, -65531, 0, 0, -65530, 0, 0, -65529, 0, 0, -65528, 0, 0, -65527, 0, 0, -65526, 0, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 131071, 0, 0, 65536, 0, 0, 65545, 0, 0, 65546, 0, 0, 196607, 0, 0, 131072, 0, 0, 131081, 0, 0, 131082, 0, 0, 262143, 0, 0, 196608, 0, 0, 196617, 0, 0, 196618, 0, 0, 327679, 0, 0, 262144, 0, 0, 262148, 1, 0, 262153, 0, 0, 262154, 0, 0, 393215, 0, 0, 327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0, 327686, 0, 0, 327687, 0, 0, 327688, 0, 0, 327689, 0, 0, 327690, 0, 0 )
+[sub_resource type="TileSet" id="TileSet_ctqys"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_4wn72")
+sources/1 = SubResource("TileSetAtlasSource_4ccha")
 
-[node name="welcome-boy" parent="." instance=ExtResource( 1 )]
-position = Vector2( 131.443, 54.6306 )
+[node name="shop" type="Node2D" unique_id=86966847]
+script = ExtResource("5")
 
-[node name="shopList" parent="." instance=ExtResource( 2 )]
+[node name="TileMap" type="TileMapLayer" parent="." unique_id=222617996]
+tile_map_data = PackedByteArray("AAD/////AAAAAAAAAAAAAP//AAAAAAAAAAABAP//AAAAAAAAAAACAP//AAAAAAAAAAADAP//AAAAAAAAAAAEAP//AAAAAAAAAAAFAP//AAAAAAAAAAAGAP//AAAAAAAAAAAHAP//AAAAAAAAAAAIAP//AAAAAAAAAAAJAP//AAAAAAAAAAAKAP//AAAAAAAAAAD//wAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAD//wEAAAAAAAAAAAAAAAEAAAAAAAAAAAAJAAEAAAAAAAAAAAAKAAEAAAAAAAAAAAD//wIAAAAAAAAAAAAAAAIAAAAAAAAAAAAJAAIAAAAAAAAAAAAKAAIAAAAAAAAAAAD//wMAAAAAAAAAAAAAAAMAAAAAAAAAAAAJAAMAAAAAAAAAAAAKAAMAAAAAAAAAAAD//wQAAAAAAAAAAAAAAAQAAAAAAAAAAAAEAAQAAQAAAAAAAAAJAAQAAAAAAAAAAAAKAAQAAAAAAAAAAAD//wUAAAAAAAAAAAAAAAUAAAAAAAAAAAABAAUAAAAAAAAAAAACAAUAAAAAAAAAAAADAAUAAAAAAAAAAAAEAAUAAAAAAAAAAAAFAAUAAAAAAAAAAAAGAAUAAAAAAAAAAAAHAAUAAAAAAAAAAAAIAAUAAAAAAAAAAAAJAAUAAAAAAAAAAAAKAAUAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_ctqys")
 
-[node name="playerAndControl" parent="." instance=ExtResource( 4 )]
-position = Vector2( 140.164, 106.359 )
+[node name="welcome-boy" parent="." unique_id=1005883155 instance=ExtResource("1")]
+position = Vector2(131.443, 54.6306)
 
-[node name="cameraRef" type="ReferenceRect" parent="."]
-margin_left = 4.24742
-margin_top = 3.30355
-margin_right = 324.247
-margin_bottom = 181.304
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="shopList" parent="." unique_id=986603904 instance=ExtResource("2")]
 
-[node name="simpleDialog" parent="." instance=ExtResource( 6 )]
+[node name="playerAndControl" parent="." unique_id=1906748737 instance=ExtResource("4")]
+position = Vector2(140.164, 106.359)
 
-[node name="sellerTalk" parent="." instance=ExtResource( 7 )]
-position = Vector2( 131.199, 67.0151 )
+[node name="cameraRef" type="ReferenceRect" parent="." unique_id=508439453]
+offset_left = 4.24742
+offset_top = 3.30355
+offset_right = 324.247
+offset_bottom = 181.304
 
-[node name="door" parent="." instance=ExtResource( 7 )]
-position = Vector2( 149.604, 163.29 )
+[node name="simpleDialog" parent="." unique_id=296742408 instance=ExtResource("6")]
+
+[node name="sellerTalk" parent="." unique_id=480798075 instance=ExtResource("7")]
+position = Vector2(131.199, 67.0151)
+
+[node name="door" parent="." unique_id=235100605 instance=ExtResource("7")]
+position = Vector2(149.604, 163.29)
 
 [connection signal="buyItem" from="shopList" to="playerAndControl" method="_on_shopList_buyItem"]
 [connection signal="discussionFinished" from="simpleDialog" to="." method="_on_simpleDialog_discussionFinished"]

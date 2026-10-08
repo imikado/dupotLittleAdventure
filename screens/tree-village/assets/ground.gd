@@ -16,10 +16,10 @@ func enableDiscovered():
 	
 func play():
 	if !discovered:
-		$AnimatedSprite.play()
+		$AnimatedSprite2D.play()
 
 func stop():
-	$AnimatedSprite.stop()
+	$AnimatedSprite2D.stop()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -42,5 +42,5 @@ func _on_ground_body_shape_exited(body_id, body, body_shape, area_shape):
 func _on_AnimatedSprite_animation_finished():
 	discovered=true
 	emit_signal("isDiscovered")
-	$AnimatedSprite.set_frame(0)
+	$AnimatedSprite2D.set_frame(0)
 	pass # Replace with function body.

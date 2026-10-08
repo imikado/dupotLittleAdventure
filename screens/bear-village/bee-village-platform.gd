@@ -3,7 +3,7 @@ extends Node2D
 var honeyReceived=0
 var dialogStillDisplayed=false
 
-onready var cheatGround=get_node("cheat-ground")
+@onready var cheatGround=get_node("cheat-ground")
 
 func getPlayer():
 	return $"bear-platform"
@@ -13,7 +13,7 @@ func _ready():
 	
 	cheatGround.position.y=500
 	
-	dialogStillDisplayed=GlobalScenes.getParamForSceneOr(filename,'dialogStillDisplayed',false)
+	dialogStillDisplayed=GlobalScenes.getParamForSceneOr(scene_file_path,'dialogStillDisplayed',false)
 	
 	$gameOver.visible=false
 	getPlayer().loadCameraLimits($cameraRef)
@@ -66,7 +66,7 @@ func _on_bearAsking_playerOpenedDoor():
 		honeyReceived+=1
 		
 		get_node("bearAsking/honney"+str(honeyReceived)).visible=true
-		getPlayer().empty()
+		getPlayer().is_empty()
 		
 		if honeyReceived >= 3:
 			$winDialog.start()
@@ -77,7 +77,7 @@ func _on_bearAsking_playerOpenedDoor():
 func _on_startDialog_discussionFinished():
 	$startDialog.end()
 	enableNavigation()
-	GlobalScenes.saveParamForScene(filename,"dialogStillDisplayed",true)
+	GlobalScenes.saveParamForScene(scene_file_path,"dialogStillDisplayed",true)
 
 
 
@@ -88,7 +88,7 @@ func _on_winDialog_discussionFinished():
 	
 func goBackToVillage():
 	GlobalPlayer.savePosition(Vector2(341,419))
-	get_tree().change_scene("res://screens/bear-village.tscn")
+	SceneTransition.change_scene("res://screens/bear-village.tscn")
 
 
 
@@ -96,7 +96,7 @@ func goBackToVillage():
 
 func _on_Button_button_down():
 	$gameOver.visible=false
-	$gameOver/Camera2D.current=false
+	$gameOver/Camera2D.enabled=false
 	get_tree().reload_current_scene()
 
 
@@ -108,10 +108,12 @@ func _on_switcharea_enableCheatCode():
 func _on_fall_body_exited(body):
 	if body.is_in_group("Player"):
 		$gameOver.visible=true
-		$gameOver/Camera2D.current=true
+		$gameOver/Camera2D.enabled=true
+		$gameOver/Camera2D.make_current()
 
 
 func _on_fall_body_entered(body):
 	if body.is_in_group("Player"):
 		$gameOver.visible=true
-		$gameOver/Camera2D.current=true
+		$gameOver/Camera2D.enabled=true
+		$gameOver/Camera2D.make_current()

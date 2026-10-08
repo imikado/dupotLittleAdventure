@@ -56,6 +56,47 @@ const TRAD_BUTTON_VALIDER='button_valider'
 
 const TRAD_LABEL_RETOURAUMENU='label_retouraumenu'
 
+const TRAD_UI_PAUSE='ui_pause'
+const TRAD_UI_RESUME='ui_resume'
+const TRAD_UI_INVENTORY='ui_inventory'
+const TRAD_UI_SAVE='ui_save'
+const TRAD_UI_SETTINGS='ui_settings'
+const TRAD_UI_QUIT='ui_quit'
+const TRAD_UI_QUIT_CONFIRM='ui_quit_confirm'
+const TRAD_UI_QUIT_WARNING='ui_quit_warning'
+const TRAD_UI_YES='ui_yes'
+const TRAD_UI_NO='ui_no'
+const TRAD_UI_SAVED='ui_saved'
+const TRAD_UI_TOUCH='ui_touch'
+const TRAD_UI_DIALOG_ANIMATION='ui_dialog_animation'
+const TRAD_UI_CLOSE='ui_close'
+const TRAD_UI_MENU='ui_menu'
+const TRAD_UI_SHOP='ui_shop'
+const TRAD_UI_EQUIP='ui_equip'
+const TRAD_UI_DISPLAY='ui_display'
+const TRAD_UI_USE='ui_use'
+const TRAD_UI_BUY='ui_buy'
+const TRAD_UI_OWNED='ui_owned'
+
+const TRAD_FIGHT_ATTACK='fight_attack'
+const TRAD_FIGHT_POTION='fight_potion'
+const TRAD_FIGHT_FLEE='fight_flee'
+const TRAD_FIGHT_BACK='fight_back'
+const TRAD_FIGHT_PUNCH='fight_punch'
+const TRAD_FIGHT_SPIDER='fight_spider'
+const TRAD_FIGHT_APPEAR='fight_appear'
+const TRAD_FIGHT_CHOOSE='fight_choose'
+const TRAD_FIGHT_PLAYER_ATTACK='fight_player_attack'
+const TRAD_FIGHT_CRITICAL='fight_critical'
+const TRAD_FIGHT_ENEMY_ATTACK='fight_enemy_attack'
+const TRAD_FIGHT_ENEMY_MISS='fight_enemy_miss'
+const TRAD_FIGHT_MISS='fight_miss'
+const TRAD_FIGHT_POTION_USED='fight_potion_used'
+const TRAD_FIGHT_FLEE_OK='fight_flee_ok'
+const TRAD_FIGHT_FLEE_FAIL='fight_flee_fail'
+const TRAD_FIGHT_VICTORY='fight_victory'
+const TRAD_FIGHT_DEFEAT='fight_defeat'
+
 
 
 var lang=FR
@@ -109,6 +150,47 @@ var traductionsList={
 		FR:'RETOUR AU MENU',
 		EN:'BACK TO THE MENU'
 	},
+
+	TRAD_UI_PAUSE:{FR:'Pause',EN:'Pause'},
+	TRAD_UI_RESUME:{FR:'Reprendre',EN:'Resume'},
+	TRAD_UI_INVENTORY:{FR:'Inventaire',EN:'Inventory'},
+	TRAD_UI_SAVE:{FR:'Sauvegarder',EN:'Save'},
+	TRAD_UI_SETTINGS:{FR:'Paramètres',EN:'Settings'},
+	TRAD_UI_QUIT:{FR:'Quitter',EN:'Quit'},
+	TRAD_UI_QUIT_CONFIRM:{FR:'Quitter la partie ?',EN:'Quit the game?'},
+	TRAD_UI_QUIT_WARNING:{FR:'Pensez à sauvegarder !',EN:'Remember to save!'},
+	TRAD_UI_YES:{FR:'Oui',EN:'Yes'},
+	TRAD_UI_NO:{FR:'Non',EN:'No'},
+	TRAD_UI_SAVED:{FR:'Partie sauvegardée',EN:'Game saved'},
+	TRAD_UI_TOUCH:{FR:'Commandes tactiles',EN:'Touch controls'},
+	TRAD_UI_DIALOG_ANIMATION:{FR:'Texte animé',EN:'Animated text'},
+	TRAD_UI_CLOSE:{FR:'Fermer',EN:'Close'},
+	TRAD_UI_MENU:{FR:'Menu',EN:'Menu'},
+	TRAD_UI_SHOP:{FR:'Boutique',EN:'Shop'},
+	TRAD_UI_EQUIP:{FR:'Equiper',EN:'Equip'},
+	TRAD_UI_DISPLAY:{FR:'Afficher',EN:'Show'},
+	TRAD_UI_USE:{FR:'Utiliser',EN:'Use'},
+	TRAD_UI_BUY:{FR:'Acheter',EN:'Buy'},
+	TRAD_UI_OWNED:{FR:'Déjà possédé',EN:'Owned'},
+
+	TRAD_FIGHT_ATTACK:{FR:'Attaquer',EN:'Attack'},
+	TRAD_FIGHT_POTION:{FR:'Potion x%d',EN:'Potion x%d'},
+	TRAD_FIGHT_FLEE:{FR:'Fuir',EN:'Flee'},
+	TRAD_FIGHT_BACK:{FR:'Retour',EN:'Back'},
+	TRAD_FIGHT_PUNCH:{FR:'Coup de poing',EN:'Punch'},
+	TRAD_FIGHT_SPIDER:{FR:'Araignée',EN:'Spider'},
+	TRAD_FIGHT_APPEAR:{FR:'Une araignée surgit !',EN:'A spider appears!'},
+	TRAD_FIGHT_CHOOSE:{FR:'Que fait %s ?',EN:'What will %s do?'},
+	TRAD_FIGHT_PLAYER_ATTACK:{FR:'%s : %s !',EN:'%s uses %s!'},
+	TRAD_FIGHT_CRITICAL:{FR:'Coup critique !',EN:'Critical hit!'},
+	TRAD_FIGHT_ENEMY_ATTACK:{FR:"L'araignée attaque !",EN:'The spider attacks!'},
+	TRAD_FIGHT_ENEMY_MISS:{FR:"L'araignée rate son coup !",EN:'The spider misses!'},
+	TRAD_FIGHT_MISS:{FR:'Raté',EN:'Miss'},
+	TRAD_FIGHT_POTION_USED:{FR:'%s boit une potion.',EN:'%s drinks a potion.'},
+	TRAD_FIGHT_FLEE_OK:{FR:'Vous prenez la fuite !',EN:'You got away!'},
+	TRAD_FIGHT_FLEE_FAIL:{FR:'Impossible de fuir !',EN:"Can't escape!"},
+	TRAD_FIGHT_VICTORY:{FR:'Victoire ! +%d XP  +%d gemmes',EN:'Victory! +%d XP  +%d gems'},
+	TRAD_FIGHT_DEFEAT:{FR:'%s est épuisé et recule...',EN:'%s is exhausted and retreats...'},
 
 
 	TRAD_WORD_PRESENTATEUR:{
@@ -517,9 +599,11 @@ func saveWithPosition(scene_,position_):
 func save(scene_):
 	print("save :"+_filename)
 	var gameData=getDataToSave(scene_)
-	var saveFile = File.new()
-	saveFile.open("user://"+_filename, File.WRITE)
-	saveFile.store_line(to_json(gameData))
+	var saveFile = FileAccess.open("user://"+_filename, FileAccess.WRITE)
+	if saveFile == null:
+		push_error("Erreur lors de l'ecriture de la sauvegarde user://"+_filename)
+		return
+	saveFile.store_line(JSON.stringify(gameData))
 	saveFile.close()
 
 func getNewFilename(nickname_):
@@ -534,8 +618,7 @@ func getNewFilename(nickname_):
 func getFilteredSaveList(fileList_):
 	var filterSaveList=[]
 	for file in fileList_:
-		var extension=file.right( file.length()-5 )
-		if extension=='.save':
+		if file.ends_with('.save'):
 			filterSaveList.append(file)
 	return filterSaveList	
 	
@@ -543,8 +626,8 @@ func getFilteredSaveList(fileList_):
 func getList():
 	var path="user://"
 	var fileList=[]
-	var dir = Directory.new()
-	if dir.open(path) == OK:
+	var dir = DirAccess.open(path)
+	if dir != null:
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
 		while file_name != "":
@@ -566,7 +649,7 @@ func convertObjectToSave(object_,fieldList_):
 
 
 func gotoMenu():
-	get_tree().change_scene("res://screens/game/menu.tscn")
+	SceneTransition.change_scene("res://screens/game/menu.tscn")
 
 
 func getDataToSave(scene_):
@@ -581,14 +664,15 @@ func getDataToSave(scene_):
 func loadFile(file_):
 	_filename=file_
 	var saveFilename="user://"+file_
-	var saveFile = File.new()
-	if not saveFile.file_exists(saveFilename):
+	if not FileAccess.file_exists(saveFilename):
 		return # Error! We don't have a save to load.
 	
-	saveFile.open(saveFilename, File.READ)
-	while saveFile.get_position() < saveFile.get_len():
+	var saveFile = FileAccess.open(saveFilename, FileAccess.READ)
+	while saveFile.get_position() < saveFile.get_length():
 		# Get the saved dictionary from the next line in the save file
-		var saveData = parse_json(saveFile.get_line())
+		var saveData = JSON.parse_string(saveFile.get_line())
+		if not saveData is Dictionary:
+			continue
 		for field in saveData.keys():
 			if field=="scene":
 				_sceneToLoad=saveData[field]
@@ -601,4 +685,3 @@ func loadFile(file_):
 
 
 	
-

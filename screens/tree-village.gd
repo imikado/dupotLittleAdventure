@@ -20,7 +20,7 @@ func debug():
 
 func _ready():
 	
-	setPlayerPath("YSort/playerAndControl")
+	setPlayerPath("Node2D/playerAndControl")
 	loadPosition()
 	getPlayer().loadCameraLimits($cameraRef)
 
@@ -30,19 +30,19 @@ func _ready():
 
 	#debug()
 
-	if true==GlobalScenes.getParamForSceneOr(filename,'ground.isDiscovered',false):
+	if true==GlobalScenes.getParamForSceneOr(scene_file_path,'ground.isDiscovered',false):
 		$ground.enableDiscovered()
 	
-	if true==GlobalScenes.getParamForSceneOr(filename,'ground2.isDiscovered',false):
+	if true==GlobalScenes.getParamForSceneOr(scene_file_path,'ground2.isDiscovered',false):
 		$ground2.enableDiscovered()
 	
-	if true==GlobalScenes.getParamForSceneOr(filename,'ground3.isDiscovered',false):
+	if true==GlobalScenes.getParamForSceneOr(scene_file_path,'ground3.isDiscovered',false):
 		$ground3.enableDiscovered()
 	
-	if true==GlobalScenes.getParamForSceneOr(filename,'ground4.isDiscovered',false):
+	if true==GlobalScenes.getParamForSceneOr(scene_file_path,'ground4.isDiscovered',false):
 		$ground4.enableDiscovered()
 	
-	if true==GlobalScenes.getParamForSceneOr(filename,'ground5.isDiscovered',false):
+	if true==GlobalScenes.getParamForSceneOr(scene_file_path,'ground5.isDiscovered',false):
 		$ground5.enableDiscovered()
 	
 	if GlobalPlayer.hasItem(GlobalItems.ID.NAILS) and GlobalPlayer.hasItem(GlobalItems.ID.HONEY) and GlobalPlayer.hasItem(GlobalItems.ID.BUCKET) :
@@ -84,34 +84,34 @@ func _ready():
 
 func _on_shop_playerEntered():
 	GlobalPlayer.savePosition(Vector2(48,73))
-	get_tree().change_scene("res://screens/tree-village/shop.tscn")
+	SceneTransition.change_scene("res://screens/tree-village/shop.tscn")
 
 
 func _on_gordonhome_playerEntered():
 	GlobalPlayer.savePosition(Vector2(55,84))
-	get_tree().change_scene("res://screens/tree-village/gordon-home.tscn")
+	SceneTransition.change_scene("res://screens/tree-village/gordon-home.tscn")
 
 func _on_gemhouse_playerEntered():
 	GlobalPlayer.savePosition(Vector2(48,73))
-	get_tree().change_scene("res://screens/tree-village/gem-house.tscn")
+	SceneTransition.change_scene("res://screens/tree-village/gem-house.tscn")
 	pass # Replace with function body.
 
 
 func _on_goOutFromTreeVillage_playerOpenedDoor():
 	GlobalPlayer.savePosition(Vector2(293,608))
-	get_tree().change_scene("res://screens/macro-map.tscn")
+	SceneTransition.change_scene("res://screens/macro-map.tscn")
 	pass # Replace with function body.
 
 
 
 
 func _on_playerAndControl_endClimbing():
-	$YSort.sort_enabled=true
+	$Node2D.y_sort_enabled=true
 
 
 
 func _on_playerAndControl_startClimbing():
-	$YSort.sort_enabled=false
+	$Node2D.y_sort_enabled=false
 
  
 
@@ -131,9 +131,9 @@ func _on_playerAndControl_endDigging():
 func processGormonStarFounded(grounded_):
 	$notification.display(GlobalGame.getTraductionById(GlobalGame.TRAD_TREEVILLAGE_STARFOUND))
 	GlobalPlayer.addItemEvenIfExist(GlobalItems.ID.GORDMON_STAR)
-	$YSort/playerAndControl.reloadInvetory()
+	$Node2D/playerAndControl.reloadInvetory()
 	
-	GlobalScenes.saveParamForScene(filename,grounded_+".isDiscovered",true)
+	GlobalScenes.saveParamForScene(scene_file_path,grounded_+".isDiscovered",true)
 	
 	get_node(grounded_).queue_free()
 	
@@ -203,7 +203,7 @@ func _on_simpleDialog_discussionFinished():
 	getPlayer().enableNavigation()
 
 	if GlobalPlayer.hasItem(GlobalItems.ID.NAILS) and GlobalPlayer.hasItem(GlobalItems.ID.HONEY) and GlobalPlayer.hasItem(GlobalItems.ID.BUCKET) :
-		$YSort/well.repair()
+		$Node2D/well.repair()
 
 
 
@@ -219,4 +219,4 @@ func _on_well_repaired():
 
 
 func _on_gotBackToMenu_button_down():
-	get_tree().change_scene("res://screens/game/menu.tscn")
+	SceneTransition.change_scene("res://screens/game/menu.tscn")

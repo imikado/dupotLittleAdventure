@@ -14,7 +14,7 @@ func _ready():
 
 	var TRAD_VENDEUR=GlobalGame.getTraductionById(GlobalGame.TRAD_WORD_VENDEUR)
 
-	var step=GlobalScenes.getParamForSceneOr(filename,"step",STEP_FIRSTTIME)
+	var step=GlobalScenes.getParamForSceneOr(scene_file_path,"step",STEP_FIRSTTIME)
 
 	if step==STEP_FIRSTTIME :
 
@@ -27,7 +27,7 @@ func _ready():
 		$simpleDialog.addDiscussion(TRAD_VENDEUR,discussionList[4])
 		$simpleDialog.addDiscussion("Gordon",discussionList[5])
 			
-		GlobalScenes.saveParamForScene(filename,"step",STEP_SHOULD_FIND_GORMONSTAR)
+		GlobalScenes.saveParamForScene(scene_file_path,"step",STEP_SHOULD_FIND_GORMONSTAR)
 
 	elif step==STEP_SHOULD_FIND_GORMONSTAR:
 		
@@ -47,7 +47,7 @@ func _ready():
 			for i in range(5):
 				GlobalPlayer.removeItem(GlobalItems.ID.GORDMON_STAR)
 				
-				GlobalScenes.saveParamForScene(filename,"step",STEP_HAS_FOUND_GORMONSTAR)
+				GlobalScenes.saveParamForScene(scene_file_path,"step",STEP_HAS_FOUND_GORMONSTAR)
 				
 			getPlayer().reloadGems()
 	
@@ -59,7 +59,7 @@ func _ready():
 	
 func _on_door_playerOpenedDoor():
 	GlobalPlayer.savePosition(Vector2(651,115))
-	get_tree().change_scene("res://screens/tree-village.tscn")
+	SceneTransition.change_scene("res://screens/tree-village.tscn")
 
 
 func _on_discussionDoor_playerOpenedDoor():

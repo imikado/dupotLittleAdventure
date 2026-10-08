@@ -56,7 +56,7 @@ func enableButton():
 
 func setEquipment(item_):
 	var realItem=GlobalItems.getItem(item_)
-	$button/Sprite.texture=realItem.getTexture()
+	$button/Sprite2D.texture=realItem.getTexture()
 	enableButton()
 	
 

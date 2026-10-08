@@ -12,9 +12,9 @@ func setSelected(state_):
 	$ColorRect.visible=state_
 
 	if state_:
-		$AnimatedSprite.play()
+		$AnimatedSprite2D.play()
 	else:
-		$AnimatedSprite.stop()
+		$AnimatedSprite2D.stop()
 
 func _ready():
 	setSelected(false)

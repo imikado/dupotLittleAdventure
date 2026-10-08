@@ -1,41 +1,35 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene format=3]
 
-[ext_resource path="res://common/ui/notification.gd" type="Script" id=1]
-[ext_resource path="res://common/themes/default.theme" type="Theme" id=2]
+[ext_resource type="Script" path="res://common/ui/notification.gd" id="1"]
+[ext_resource type="Theme" path="res://common/themes/default.tres" id="2"]
 
-[node name="notification" type="Control"]
+[node name="notification" type="Control" unique_id=1737273084]
+layout_mode = 3
+anchors_preset = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+script = ExtResource("1")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=1899043764]
 
-[node name="canvas" type="CanvasLayer" parent="."]
+[node name="canvas" type="CanvasLayer" parent="." unique_id=206227781]
 
-[node name="ColorRect" type="ColorRect" parent="canvas"]
-margin_left = 9.0
-margin_top = 70.0
-margin_right = 318.0
-margin_bottom = 125.0
-color = Color( 0.0784314, 0.411765, 0.509804, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="ColorRect" type="ColorRect" parent="canvas" unique_id=1759544964]
+offset_left = 9.0
+offset_top = 70.0
+offset_right = 318.0
+offset_bottom = 125.0
+color = Color(0.0784314, 0.411765, 0.509804, 1)
 
-[node name="Label" type="Label" parent="canvas/ColorRect"]
-margin_left = 1.0
-margin_top = 2.0
-margin_right = 311.0
-margin_bottom = 53.0
-theme = ExtResource( 2 )
+[node name="Label" type="Label" parent="canvas/ColorRect" unique_id=599040398]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 2.0
+offset_right = 311.0
+offset_bottom = 53.0
+theme = ExtResource("2")
 text = "texte"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

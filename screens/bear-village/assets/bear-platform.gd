@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
 
 var speed=100
@@ -31,21 +31,22 @@ enum {IDLE,WALK,JUMP,JUMP_DOWN,HURT,DEAD}
 
 var current_animation="idle"
 
-export var refRect : Rect2
+@export var refRect : Rect2
 
 func enableCamera():
-	$Camera2D.current=true
+	$Camera2D.enabled=true
+	$Camera2D.make_current()
 
 func disableCamera():
-	$Camera2D.current=false
+	$Camera2D.enabled=false
 
 func loadCameraLimits(refRect:ReferenceRect):
 	
-	var position=refRect.rect_global_position
-	var rect=refRect.rect_size + position
+	var refPosition=refRect.global_position
+	var rect=refRect.size + refPosition
 	
-	limitLeft=position.x
-	limitTop=position.y
+	limitLeft=refPosition.x
+	limitTop=refPosition.y
 	limitRight=rect.x
 	limitBottom=rect.y
 	
@@ -59,11 +60,13 @@ func resetZoom():
 	$Camera2D.zoom=Vector2(1,1)
 
 func zoomDown():
-	var zoom=0.7
+	# Godot 4 : zoom inverse de Godot 3 (0.7 en Godot 3)
+	var zoom=1.0/0.7
 	$Camera2D.zoom=Vector2(zoom,zoom)
 	
 func zoomUp():
-	var zoom=2
+	# Godot 4 : zoom inverse de Godot 3 (2 en Godot 3)
+	var zoom=0.5
 	$Camera2D.zoom=Vector2(zoom,zoom)
 	
 func _ready():
@@ -77,7 +80,7 @@ func isFilled():
 func fill():
 	filled=true
 
-func empty():
+func is_empty():
 	filled=false
 
 
@@ -122,7 +125,7 @@ func change_state(new_state) -> void:
 
 func animationPlay(animation : String) -> void:
 	if current_animation!= animation:
-		$AnimatedSprite.play(animation)
+		$AnimatedSprite2D.play(animation)
 	
 		current_animation=animation
 
@@ -134,18 +137,18 @@ func _physics_process(delta):
 	
 	state_loop()
 	
-	$AnimatedSprite.flip_h=false
+	$AnimatedSprite2D.flip_h=false
 
 
 	if left:
-		$AnimatedSprite.flip_h=true
+		$AnimatedSprite2D.flip_h=true
 		vel.x = max(vel.x-ACCEL*delta,-maxSpeed)
 	elif right:
 
 
 		vel.x = min(vel.x+ACCEL*delta,maxSpeed)
 	else:
-		vel.x=lerp(vel.x,0,0.10)
+		vel.x=lerpf(vel.x,0,0.10)
 	
 	if buttonPressed && is_on_floor():
 		vel.y=-JUMPHEIGHT
@@ -154,7 +157,10 @@ func _physics_process(delta):
 	vel.y+=GRAVITY*delta
 	
 
-	move_and_slide(vel,Vector2(0,-1))
+	set_velocity(vel)
+	set_up_direction(Vector2(0,-1))
+	move_and_slide()
+	vel=velocity
 	
 	resetKeys()
 	
@@ -183,7 +189,7 @@ func pocessInput():
 
 
 func playAnimation(anim):
-	$AnimatedSprite.play(anim)
+	$AnimatedSprite2D.play(anim)
 	#$AnimatedSprite/AnimationPlayer.play()
 
 

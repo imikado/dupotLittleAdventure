@@ -13,13 +13,13 @@ func _ready():
 func _on_btnNew_button_down():
 	#showNewGame()
 	#hideLoadGame()
-	get_tree().change_scene("res://screens/game/menuKeyboard.tscn")
+	SceneTransition.change_scene("res://screens/game/menuKeyboard.tscn")
 	
 
 func _on_btnLoad_button_down():
 	#showLoadGame()
 	#hideNewGame()
-	get_tree().change_scene("res://screens/game/menuLoad.tscn")
+	SceneTransition.change_scene("res://screens/game/menuLoad.tscn")
 	pass # Replace with function body.
 
 

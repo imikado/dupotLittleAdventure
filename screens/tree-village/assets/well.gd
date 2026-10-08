@@ -32,7 +32,7 @@ func repair():
 func setState(state_):
 	state=state_
 	#$AnimatedSprite.play(stateAnimation[state_])
-	$AnimatedSprite/AnimationPlayer.play(stateAnimation[state_])
+	$AnimatedSprite2D/AnimationPlayer.play(stateAnimation[state_])
 
 
 func _on_AnimatedSprite_animation_finished():

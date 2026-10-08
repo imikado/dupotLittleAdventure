@@ -6,10 +6,10 @@
 
 **A little pixel art RPG where Gordon sets out to repair his village's well.**
 
-Free · Linux, Android, Windows & Web · Made with Godot 3
+Free · Linux, Android, Windows & Web · Made with Godot 4
 
 [![Flathub](https://img.shields.io/flathub/v/org.dupot.littleadventure?logo=flathub&logoColor=white&label=Flathub&color=4a90d9)](https://flathub.org/apps/org.dupot.littleadventure)
-[![Godot 3](https://img.shields.io/badge/Godot-3-478CBF?logo=godotengine&logoColor=white)](https://godotengine.org)
+[![Godot 4](https://img.shields.io/badge/Godot-4.7-478CBF?logo=godotengine&logoColor=white)](https://godotengine.org)
 [![License: LGPL-2.1](https://img.shields.io/badge/License-LGPL--2.1-blue.svg)](LICENSE)
 
 <a href="https://flathub.org/apps/org.dupot.littleadventure"><img width="200" alt="Get it on Flathub" src="https://flathub.org/api/badge?locale=en"/></a>
@@ -62,7 +62,7 @@ You can also install it from GNOME Software, KDE Discover or any app store that 
 
 ## 🛠️ Build from source
 
-1. Install [Godot 3](https://godotengine.org/download/archive/) (the project uses the Godot 3.x format).
+1. Install [Godot 4.7](https://godotengine.org/download/) or later.
 2. Clone the repository:
    ```bash
    git clone https://github.com/imikado/dupotLittleAdventure.git
@@ -79,7 +79,7 @@ Unit tests use [GUT](https://github.com/bitwes/Gut) and live in [test/](test/). 
 ./unitTest.sh
 ```
 
-(Edit the Godot binary path in `unitTest.sh` to match your install.)
+(`unitTest.sh` expects a `godot` 4 binary in your `PATH`; tests are configured in `.gutconfig.json`.)
 
 ## 🕹️ More from dupot.org
 

@@ -23,7 +23,7 @@ func _ready():
 
 
 func startGame():
-	get_tree().change_scene("res://screens/bear-village/bevil-room-game.tscn")
+	SceneTransition.change_scene("res://screens/bear-village/bevil-room-game.tscn")
 
 
 

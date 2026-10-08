@@ -3,7 +3,7 @@ extends Control
 
 var saveFileList=[]
 
-onready var expleButton=get_node("exples/Button")
+@onready var expleButton=get_node("exples/Button")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -22,7 +22,7 @@ func _ready():
 			
 			buttonBox.add_child(newButton)
 			
-			newButton.connect("pressed",self,"_on_press_fileToLoad",[saveFileLoop])
+			newButton.connect("pressed", Callable(self, "_on_press_fileToLoad").bind(saveFileLoop))
 			
 			newButton.grab_focus()
 	
@@ -35,9 +35,9 @@ func _on_press_fileToLoad(fileSave):
 
 	
 	GlobalGame.loadFile(fileSave)
-	get_tree().change_scene(GlobalGame.getSceneToLoad())
+	SceneTransition.change_scene(GlobalGame.getSceneToLoad())
 
 
 func _on_Retour_pressed():
-	get_tree().change_scene("res://screens/game/menu.tscn")
+	SceneTransition.change_scene("res://screens/game/menu.tscn")
 	pass # Replace with function body.

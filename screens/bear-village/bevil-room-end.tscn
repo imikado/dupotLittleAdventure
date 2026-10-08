@@ -1,32 +1,28 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene format=3]
 
-[ext_resource path="res://screens/bear-village/bevil-room-end.gd" type="Script" id=2]
-[ext_resource path="res://common/ui/simpleDialog.tscn" type="PackedScene" id=4]
-[ext_resource path="res://screens/bear-village/assets/bear.tscn" type="PackedScene" id=7]
+[ext_resource type="Script" path="res://screens/bear-village/bevil-room-end.gd" id="2"]
+[ext_resource type="PackedScene" path="res://common/ui/simpleDialog.tscn" id="4"]
+[ext_resource type="PackedScene" path="res://screens/bear-village/assets/bear.tscn" id="7"]
 
-[node name="bee-room" type="Node2D"]
-position = Vector2( 177, 103 )
-script = ExtResource( 2 )
+[node name="bee-room" type="Node2D" unique_id=238678055]
+position = Vector2(177, 103)
+script = ExtResource("2")
 
-[node name="winRect" type="ColorRect" parent="."]
-margin_left = -178.0
-margin_top = -93.0
-margin_right = 177.0
-margin_bottom = 103.0
-color = Color( 0, 0, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="winRect" type="ColorRect" parent="." unique_id=1859212549]
+offset_left = -178.0
+offset_top = -93.0
+offset_right = 177.0
+offset_bottom = 103.0
+color = Color(0, 0, 0, 1)
 
-[node name="winDialog" parent="winRect" instance=ExtResource( 4 )]
+[node name="winDialog" parent="winRect" unique_id=223786472 instance=ExtResource("4")]
 
-[node name="bear" parent="winRect" instance=ExtResource( 7 )]
-position = Vector2( 101, 73 )
-scale = Vector2( 4, 4 )
+[node name="bear" parent="winRect" unique_id=1538785563 instance=ExtResource("7")]
+position = Vector2(101, 73)
+scale = Vector2(4, 4)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( -0.179184, 3.34854 )
-scale = Vector2( 0.419798, 0.239669 )
-current = true
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1438196744]
+position = Vector2(-0.179184, 3.34854)
+scale = Vector2(0.419798, 0.239669)
 
 [connection signal="discussionFinished" from="winRect/winDialog" to="." method="_on_winDialog_discussionFinished"]

@@ -11,7 +11,8 @@ func win():
 	$winRect.visible=true
 	$winRect/winDialog.start()
 	
-	$Camera2D.current=true
+	$Camera2D.enabled=true
+	$Camera2D.make_current()
 	
 	
 
@@ -21,4 +22,4 @@ func _on_winDialog_discussionFinished():
 	GlobalPlayer.addGems(4)
 	
 	GlobalPlayer.savePosition(Vector2(120,300))
-	get_tree().change_scene("res://screens/bear-village.tscn")
+	SceneTransition.change_scene("res://screens/bear-village.tscn")
