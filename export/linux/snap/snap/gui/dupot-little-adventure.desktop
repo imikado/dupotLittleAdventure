@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Little Adventure
+Comment=RPG Pixel Art little Game
+Exec=dupot-little-adventure
+Type=Application
+Icon=${SNAP}/meta/gui/dupot-little-adventure.png
+Categories=Game;RolePlaying;
+Keywords=game;arcade;adventure;

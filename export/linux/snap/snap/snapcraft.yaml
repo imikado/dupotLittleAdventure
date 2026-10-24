@@ -1,0 +1,47 @@
+name: dupot-little-adventure
+title: Little Adventure
+base: core24
+version: '1.22.0'
+summary: RPG Pixel Art little Game
+description: |
+  Gordon has to repair the village's well.
+
+  You will walk around the village, buy a sword to fight monsters and
+  access other villages to find the pieces needed to repair the well.
+  This Game was made with Godot 4.7.2
+icon: snap/gui/dupot-little-adventure.png
+license: LGPL-2.1-only
+website: https://www.dupot.org/games.html
+issues: https://github.com/imikado/dupotLittleAdventure/issues
+source-code: https://github.com/imikado/dupotLittleAdventure
+contact: imikado@gmail.com
+grade: stable
+confinement: strict
+
+platforms:
+  amd64:
+
+apps:
+  dupot-little-adventure:
+    command: bin/LittleAdventure.x86_64
+    desktop: meta/gui/dupot-little-adventure.desktop
+    extensions: [gnome]
+    plugs:
+      - opengl
+      - audio-playback
+      - joystick
+      - x11
+      - wayland
+      - desktop
+
+parts:
+  game:
+    plugin: dump
+    source: .
+    organize:
+      LittleAdventure.x86_64: bin/LittleAdventure.x86_64
+      LittleAdventure.pck: bin/LittleAdventure.pck
+    stage:
+      - bin/LittleAdventure.x86_64
+      - bin/LittleAdventure.pck
+

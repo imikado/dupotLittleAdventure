@@ -26,6 +26,7 @@ The village well is broken, and **Gordon** is the one who has to fix it. To find
 - 🛒 **Shop**: buy a sword, potions and tools from the merchant
 - 🕷️ **Fight**: face spiders, crabs and other monsters roaming outside the village
 - 🗺️ **Travel**: visit the tree village, the bear village and the crab village to gather every piece of the well
+- 🌍 **Languages**: play in English or French, chosen on the title screen or in the in-game settings (your system language by default)
 
 ## 📸 Screenshots
 
@@ -80,6 +81,18 @@ Unit tests use [GUT](https://github.com/bitwes/Gut) and live in [test/](test/). 
 ```
 
 (`unitTest.sh` expects a `godot` 4 binary in your `PATH`; tests are configured in `.gutconfig.json`.)
+
+### Release scripts
+
+| Script | What it does |
+|---|---|
+| `./maj_version.sh` | copies the version of the latest `<release>` in the [appdata](export/linux/flatpak/org.dupot.littleadventure.appdata.xml) to `globalVersion.gd` and `snapcraft.yaml` (run by the build scripts) |
+| `./build_snap.sh` | exports the Linux build and packs the snap in [export/linux/snap](export/linux/snap) (`--install` to install it locally) |
+| `./build_flathub.sh` | exports the Linux build into `export/linux/bundle.tar.gz`, the archive used by the Flathub manifest, and prints its SHA256 |
+| `./export_html5.sh` | exports the HTML5 build and zips it in `export/html` |
+| `./generate_screenshots.sh [FR\|EN]` | regenerates the 1920x1080 screenshots in [export/linux/screenshots](export/linux/screenshots) (English by default, `FR` for French) |
+
+These scripts use the `godot` binary from your `PATH`, or the one set in the `GODOT` variable. To publish a new version, add a `<release version="X.Y.Z">` at the top of `<releases>` in the appdata, then run the build scripts.
 
 ## 🕹️ More from dupot.org
 

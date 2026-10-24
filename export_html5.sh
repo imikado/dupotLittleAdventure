@@ -23,6 +23,9 @@ if [ ! -f "$TEMPLATES/web_nothreads_release.zip" ]; then
 	exit 1
 fi
 
+# Version du jeu reprise de l'appdata
+./maj_version.sh
+
 # Godot ne doit pas importer (ni embarquer dans le .pck) les contenus de
 # publication déjà rangés sous export/ : captures, icônes et builds.
 mkdir -p export

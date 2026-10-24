@@ -91,7 +91,7 @@ text = "EN"
 
 [node name="version" type="Label" parent="." unique_id=53046992]
 layout_mode = 0
-offset_left = 273.652
+offset_left = 233.652
 offset_top = 26.0
 offset_right = 313.652
 offset_bottom = 33.0

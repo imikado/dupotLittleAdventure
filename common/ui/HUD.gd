@@ -58,6 +58,7 @@ func refreshUi():
 	$parameters/list/title.text=GlobalGame.getTraductionById(GlobalGame.TRAD_UI_SETTINGS)
 	$parameters/list/touchUiEnabled.text=GlobalGame.getTraductionById(GlobalGame.TRAD_UI_TOUCH)
 	$parameters/list/dialogAnimationEnabled.text=GlobalGame.getTraductionById(GlobalGame.TRAD_UI_DIALOG_ANIMATION)
+	$parameters/list/language.text=GlobalGame.getTraductionById(GlobalGame.TRAD_UI_LANGUAGE)
 	$parameters/list/saveParameters.text=GlobalGame.getTraductionById(GlobalGame.TRAD_UI_CLOSE)
 	$saved/label.text=GlobalGame.getTraductionById(GlobalGame.TRAD_UI_SAVED)
 
@@ -236,6 +237,13 @@ func _on_dialogAnimationEnabled_toggled(button_pressed):
 		GlobalPlayer.enableDialogAnimation()
 	else:
 		GlobalPlayer.disableDialogAnimation()
+
+
+# les dialogues de la scène en cours gardent leur langue : ils sont
+# construits au chargement de la scène
+func _on_language_pressed():
+	GlobalGame.toggleLang()
+	refreshUi()
 
 
 func _on_inventoryList_closeInventory():

@@ -77,6 +77,7 @@ const TRAD_UI_DISPLAY='ui_display'
 const TRAD_UI_USE='ui_use'
 const TRAD_UI_BUY='ui_buy'
 const TRAD_UI_OWNED='ui_owned'
+const TRAD_UI_LANGUAGE='ui_language'
 
 const TRAD_FIGHT_ATTACK='fight_attack'
 const TRAD_FIGHT_POTION='fight_potion'
@@ -98,6 +99,9 @@ const TRAD_FIGHT_VICTORY='fight_victory'
 const TRAD_FIGHT_DEFEAT='fight_defeat'
 
 
+
+# langue choisie par le joueur, retenue d'un lancement à l'autre
+const SETTINGS_FILE="user://settings.cfg"
 
 var lang=FR
 
@@ -172,6 +176,7 @@ var traductionsList={
 	TRAD_UI_USE:{FR:'Utiliser',EN:'Use'},
 	TRAD_UI_BUY:{FR:'Acheter',EN:'Buy'},
 	TRAD_UI_OWNED:{FR:'Déjà possédé',EN:'Owned'},
+	TRAD_UI_LANGUAGE:{FR:'Langue : Français',EN:'Language: English'},
 
 	TRAD_FIGHT_ATTACK:{FR:'Attaquer',EN:'Attack'},
 	TRAD_FIGHT_POTION:{FR:'Potion x%d',EN:'Potion x%d'},
@@ -572,8 +577,32 @@ var traductionsList={
 
 }
 
+func _ready():
+	loadLang()
+
 func setLang(lang_):
 	lang=lang_
+
+# choix du joueur : appliqué et enregistré pour les prochains lancements
+func chooseLang(lang_):
+	setLang(lang_)
+	var settings=ConfigFile.new()
+	settings.load(SETTINGS_FILE)
+	settings.set_value("game","lang",lang_)
+	if settings.save(SETTINGS_FILE)!=OK:
+		push_error("Erreur lors de l'ecriture de "+SETTINGS_FILE)
+
+# langue enregistrée, sinon celle du système (anglais si elle n'est pas gérée)
+func loadLang():
+	var settings=ConfigFile.new()
+	var defaultLang=FR if OS.get_locale_language()=="fr" else EN
+	if settings.load(SETTINGS_FILE)==OK:
+		setLang(settings.get_value("game","lang",defaultLang))
+	else:
+		setLang(defaultLang)
+
+func toggleLang():
+	chooseLang(EN if lang==FR else FR)
 
 func getLang():
 	return lang

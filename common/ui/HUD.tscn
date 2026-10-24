@@ -224,6 +224,10 @@ text = "Commandes tactiles"
 layout_mode = 2
 text = "Texte animé"
 
+[node name="language" type="Button" parent="parameters/list"]
+layout_mode = 2
+text = "Langue : Français"
+
 [node name="saveParameters" type="Button" parent="parameters/list"]
 layout_mode = 2
 text = "Fermer"
@@ -264,5 +268,6 @@ one_shot = true
 [connection signal="pressed" from="confirmation/list/buttons/btnNo" to="." method="_on_btnNo_button_down"]
 [connection signal="toggled" from="parameters/list/touchUiEnabled" to="." method="_on_touchUiEnabled_toggled"]
 [connection signal="toggled" from="parameters/list/dialogAnimationEnabled" to="." method="_on_dialogAnimationEnabled_toggled"]
+[connection signal="pressed" from="parameters/list/language" to="." method="_on_language_pressed"]
 [connection signal="pressed" from="parameters/list/saveParameters" to="." method="_on_saveParameters_button_down"]
 [connection signal="timeout" from="savedTimer" to="." method="_on_savedTimer_timeout"]

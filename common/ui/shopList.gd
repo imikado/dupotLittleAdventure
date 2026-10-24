@@ -16,6 +16,12 @@ func _ready():
 	getSideInfo().visible=false
 	getWindow().get_node("title").text=GlobalGame.getTraductionById(GlobalGame.TRAD_UI_SHOP)
 
+# le modèle d'objet est hors de l'arbre : il faut le libérer soi-même
+func _exit_tree():
+	if patternItem!=null:
+		patternItem.free()
+		patternItem=null
+
 #access
 func getWindow():
 	return $window

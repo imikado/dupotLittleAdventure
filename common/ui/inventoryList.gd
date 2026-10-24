@@ -30,6 +30,12 @@ func _ready():
 	getUseButton().text=GlobalGame.getTraductionById(GlobalGame.TRAD_UI_USE)
 	
 
+# le modèle d'objet est hors de l'arbre : il faut le libérer soi-même
+func _exit_tree():
+	if exampleItem!=null:
+		exampleItem.free()
+		exampleItem=null
+
 
 func emitOpenInventory():
 	emit_signal("openInventory")
