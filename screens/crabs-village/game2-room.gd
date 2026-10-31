@@ -16,28 +16,17 @@ func _ready():
 	hasAlreadyWon=GlobalScenes.getParamForSceneOr(scene_file_path,"hasAlreadyWon",false)
 	
 	if true==hasAlreadyWon:
-		$simpleDialogStart.addDiscussion("Presentateur",[
-					"Re-bonjour,",
-					"Désolé, mais vous avez déjà gagné",
-					])
+		$simpleDialogStart.addDiscussion(GlobalGame.getTraductionById(GlobalGame.TRAD_WORD_PRESENTATEUR),GlobalGame.getTraductionById(GlobalGame.TRAD_CRABVILLAGE_GAME1_ALREADYWON))
 		$ColorStart.visible=true
 		$simpleDialogStart.start()
 		
 	else:
 
 		$colorWin.visible=false
-		$simpleDialogWin.addDiscussion("Presentateur",[
-						"Félicitations, tu remporte ce jeu",
-						"Voici 2 Gems de récompense"
-						])
+		$simpleDialogWin.addDiscussion(GlobalGame.getTraductionById(GlobalGame.TRAD_WORD_PRESENTATEUR),GlobalGame.getTraductionById(GlobalGame.TRAD_CRABVILLAGE_GAME1_WIN))
 						
 		$ColorStart.visible=true
-		$simpleDialogStart.addDiscussion("Presentateur",[
-						"Dans cet énigme,",
-						"Vous devez faire sortir",
-						"La barque avec le crabe"
-			
-		])
+		$simpleDialogStart.addDiscussion(GlobalGame.getTraductionById(GlobalGame.TRAD_WORD_PRESENTATEUR),GlobalGame.getTraductionById(GlobalGame.TRAD_CRABVILLAGE_GAME2_START))
 		$simpleDialogStart.start()
 	
 

@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" path="res://screens/crabs-village/characters/welcome-boy.tscn" id="7"]
 [ext_resource type="PackedScene" path="res://common/ui/simpleDialog.tscn" id="8"]
 [ext_resource type="Texture2D" path="res://screens/crabs-village/shop/shopTiles.png" id="9"]
+[ext_resource type="Texture2D" path="res://screens/crabs-village/images/presenterStage.png" id="stage"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u14jj"]
 texture = ExtResource("4")
@@ -182,9 +183,14 @@ offset_right = 328.0
 offset_bottom = 248.0
 color = Color(0, 0, 0, 1)
 
+[node name="stage" type="Sprite2D" parent="ColorStart"]
+position = Vector2(120, 88)
+scale = Vector2(2, 2)
+texture = ExtResource("stage")
+
 [node name="welcome-boy" parent="ColorStart" unique_id=807736968 instance=ExtResource("7")]
 position = Vector2(120, 88)
-scale = Vector2(3.6, 3.6)
+scale = Vector2(2, 2)
 
 [node name="simpleDialogStart" parent="ColorStart" unique_id=1280395212 instance=ExtResource("8")]
 
@@ -194,9 +200,14 @@ offset_right = 328.0
 offset_bottom = 248.0
 color = Color(0, 0, 0, 1)
 
+[node name="stage" type="Sprite2D" parent="ColorWin"]
+position = Vector2(120, 80)
+scale = Vector2(2, 2)
+texture = ExtResource("stage")
+
 [node name="welcome-boy2" parent="ColorWin" unique_id=1383014523 instance=ExtResource("7")]
 position = Vector2(120, 80)
-scale = Vector2(3.6, 3.6)
+scale = Vector2(2, 2)
 
 [node name="simpleDialogWin" parent="ColorWin" unique_id=1382209576 instance=ExtResource("8")]
 

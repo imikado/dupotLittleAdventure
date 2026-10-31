@@ -44,11 +44,16 @@ const INVINCIBILITY_DURATION=1000
 var invincibleUntil=0
 var wasInvincible=false
 
+# cote vers lequel Gordon regarde : l'epee frappe de ce cote
+var facingLeft=false
+const SLASH_OFFSET=14
+
 func enableNavigation():
 	navigationEnabled=true
 
 func disableNavigation():
 	navigationEnabled=false
+	$dust.emitting=false
 
 func enableCamera():
 	$Camera2D.enabled=true
@@ -114,6 +119,9 @@ func _process(delta):
 	if expectPosition.x < limitRight && expectPosition.x > limitLeft && expectPosition.y > limitTop && expectPosition.y < limitBottom: 	
 		set_velocity(motion)
 		move_and_slide()
+
+	# petits nuages de poussiere sous les pieds quand on marche
+	$dust.emitting=motion.length() > 0 and !climbingStarted
 	
 	processAnimation()
 	
@@ -161,10 +169,14 @@ func processAnimation():
 	var currentAnimation='walk-right'
 	
 	
+	if left != right:
+		facingLeft=left
+
 	if buttonPressed && GlobalPlayer.getEquipment()==GlobalItems.ID.SPADE:
 		currentAnimation='digging'
 	elif buttonPressed && GlobalPlayer.getEquipment()==GlobalItems.ID.WOOD_SWORD:
 		currentAnimation='attack1'
+		$AnimatedSprite2D.flip_h=facingLeft
 	elif climbingStarted:
 		currentAnimation='climbing'
 	elif left != right:
@@ -179,10 +191,25 @@ func processAnimation():
 	else:
 		currentAnimation='idle'
 
+	# accroche a l'echelle, Gordon n'est plus au sol : pas d'ombre
+	$shadow.visible=!climbingStarted
+	_applyFacing()
 	playAnimation(currentAnimation)
+
+# la zone de frappe et l'arc de l'epee passent du cote ou regarde Gordon
+func _applyFacing():
+	var side=-1 if facingLeft else 1
+	$hit.scale.x=side
+	$AnimatedSprite2D/slash.flip_h=facingLeft
+	$AnimatedSprite2D/slash.position.x=SLASH_OFFSET*side
+
+func playSwing():
+	Sfx.play(Sfx.SWING)
 
 
 func playAnimation(anim):
+	if anim!='attack1':
+		$AnimatedSprite2D/slash.visible=false
 	$AnimatedSprite2D/AnimationPlayer.play(anim)
 	$AnimatedSprite2D/AnimationPlayer.play()
 

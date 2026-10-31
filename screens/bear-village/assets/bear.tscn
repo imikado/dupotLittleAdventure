@@ -1,5 +1,6 @@
 [gd_scene format=3]
 
+[ext_resource type="Texture2D" path="res://common/characters/shadow.png" id="shadow"]
 [ext_resource type="Texture2D" path="res://screens/bear-village/assets/bear/bear-idle.png" id="1"]
 
 [sub_resource type="AtlasTexture" id="1"]
@@ -46,6 +47,10 @@ animations = [{
 }]
 
 [node name="bear" type="Node2D" unique_id=344269521]
+
+[node name="shadow" type="Sprite2D" parent="."]
+position = Vector2(-1, 16)
+texture = ExtResource("shadow")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1039427402]
 sprite_frames = SubResource("6")

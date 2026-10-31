@@ -1,0 +1,27 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://common/effects/ambient.gd" id="1"]
+
+[sub_resource type="Gradient" id="fade"]
+offsets = PackedFloat32Array(0, 0.2, 0.8, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="pollen" type="CPUParticles2D"]
+z_index = 10
+amount = 60
+lifetime = 7.0
+preprocess = 7.0
+emission_shape = 3
+emission_rect_extents = Vector2(160, 90)
+direction = Vector2(1, -0.4)
+spread = 40.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 3.0
+initial_velocity_max = 8.0
+angular_velocity_min = 0.0
+angular_velocity_max = 0.0
+tangential_accel_min = -4.0
+tangential_accel_max = 4.0
+color = Color(1, 0.96, 0.7, 0.8)
+color_ramp = SubResource("fade")
+script = ExtResource("1")

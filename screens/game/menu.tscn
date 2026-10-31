@@ -1,9 +1,8 @@
 [gd_scene format=3]
 
+[ext_resource type="PackedScene" path="res://screens/game/title/pixelLogo.tscn" id="logo"]
 [ext_resource type="Theme" path="res://common/themes/default.tres" id="1"]
 [ext_resource type="Script" path="res://screens/game/menu.gd" id="2"]
-[ext_resource type="PackedScene" path="res://screens/game/title/adventure.tscn" id="3"]
-[ext_resource type="PackedScene" path="res://screens/game/title/little.tscn" id="4"]
 [ext_resource type="Texture2D" path="res://screens/tree-village/images/background.png" id="5"]
 [ext_resource type="PackedScene" path="res://screens/game/keyboardGame.tscn" id="6"]
 
@@ -14,7 +13,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 0
 grow_vertical = 0
-scale = Vector2(0.997617, 1)
 size_flags_horizontal = 7
 theme = ExtResource("1")
 script = ExtResource("2")
@@ -26,37 +24,30 @@ offset_bottom = 40.0
 scale = Vector2(3.34032, 1.88094)
 texture = ExtResource("5")
 
-[node name="adventure" parent="." unique_id=1082571265 instance=ExtResource("3")]
-position = Vector2(83.1983, 172)
-scale = Vector2(0.696126, 0.839133)
+[node name="logo" parent="." instance=ExtResource("logo")]
+position = Vector2(40, 34)
 
-[node name="little" parent="." unique_id=2030219162 instance=ExtResource("4")]
-position = Vector2(-3.00717, 82)
-scale = Vector2(0.756828, 0.669435)
-
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1456050197]
+[node name="window" type="PanelContainer" parent="." unique_id=1456050198]
 layout_mode = 0
-anchor_bottom = 0.129
-offset_left = 81.1935
-offset_top = 126.0
-offset_right = 281.193
-offset_bottom = 145.78
-scale = Vector2(0.813182, 0.890981)
-size_flags_vertical = 0
-theme_override_constants/separation = 9
+offset_left = 96.0
+offset_top = 122.0
+offset_right = 224.0
+offset_bottom = 166.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="window" unique_id=1456050197]
+layout_mode = 2
+theme_override_constants/separation = 2
 alignment = 1
 
-[node name="btnNew" type="Button" parent="VBoxContainer" unique_id=1020512919]
-custom_minimum_size = Vector2(200, 0)
+[node name="btnNew" type="Button" parent="window/VBoxContainer" unique_id=1020512919]
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 3
 text = "Nouvelle partie"
 alignment = 0
 
-[node name="btnLoad" type="Button" parent="VBoxContainer" unique_id=575538774]
-custom_minimum_size = Vector2(200, 0)
+[node name="btnLoad" type="Button" parent="window/VBoxContainer" unique_id=575538774]
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 3
 text = "Charger une partie"
 alignment = 0
 
@@ -74,6 +65,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="btnFR" type="Button" parent="lang" unique_id=2077917900]
+theme_type_variation = &"ChipButton"
 layout_mode = 0
 offset_left = 264.306
 offset_top = 3.33258
@@ -82,6 +74,7 @@ offset_bottom = 20.3326
 text = "FR"
 
 [node name="btnEN" type="Button" parent="lang" unique_id=1469439263]
+theme_type_variation = &"ChipButton"
 layout_mode = 0
 offset_left = 292.405
 offset_top = 3.33258
@@ -98,8 +91,8 @@ offset_bottom = 33.0
 text = "N.N"
 horizontal_alignment = 2
 
-[connection signal="button_down" from="VBoxContainer/btnNew" to="." method="_on_btnNew_button_down"]
-[connection signal="button_down" from="VBoxContainer/btnLoad" to="." method="_on_btnLoad_button_down"]
+[connection signal="button_down" from="window/VBoxContainer/btnNew" to="." method="_on_btnNew_button_down"]
+[connection signal="button_down" from="window/VBoxContainer/btnLoad" to="." method="_on_btnLoad_button_down"]
 [connection signal="close" from="CanvasLayer/keyboard" to="." method="_on_keyboard_close"]
 [connection signal="fillField" from="CanvasLayer/keyboard" to="." method="_on_keyboard_fillField"]
 [connection signal="button_down" from="lang/btnFR" to="." method="_on_btnFR_button_down"]

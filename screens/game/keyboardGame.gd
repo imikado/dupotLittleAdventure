@@ -5,7 +5,7 @@ signal close
 
 #var textValue=""
 
-@onready var _textField=$VBox/TextEdit
+@onready var _textField=$window/VBox/TextEdit
 
 func eraseLetter():
 	
@@ -32,7 +32,7 @@ func reset():
 func _ready():
 	refreshUi()
 	build()
-	$VBox/HBoxContainer/submit.grab_focus()
+	$window/VBox/HBoxContainer/submit.grab_focus()
 	pass # Replace with function body.
 
 
@@ -46,8 +46,8 @@ func build():
 
 		newLetterBtn.connect("button_down", Callable(self, "_on_button_pressed").bind(letter))
 
-		newLetterBtn.text=" "+letter+" "
-		$VBox/GridContainer.add_child(newLetterBtn)
+		newLetterBtn.text=letter
+		$window/VBox/GridContainer.add_child(newLetterBtn)
 	
 
 func _on_button_pressed(letter_):
@@ -66,8 +66,8 @@ func _on_Retour_button_down():
 	emit_signal("close")
 
 func refreshUi():
-	$VBox/title.text=GlobalGame.getTraductionById(GlobalGame.TRAD_LABEL_VOTREPSEUDO)
-	$VBox/HBoxContainer/Retour.text=GlobalGame.getTraductionById(GlobalGame.TRAD_BUTTON_RETOUR)
-	$VBox/HBoxContainer/erase.text=GlobalGame.getTraductionById(GlobalGame.TRAD_BUTTON_EFFACER)
-	$VBox/HBoxContainer/submit.text=GlobalGame.getTraductionById(GlobalGame.TRAD_BUTTON_VALIDER)
+	$window/VBox/title.text=GlobalGame.getTraductionById(GlobalGame.TRAD_LABEL_VOTREPSEUDO)
+	$window/VBox/HBoxContainer/Retour.text=GlobalGame.getTraductionById(GlobalGame.TRAD_BUTTON_RETOUR)
+	$window/VBox/HBoxContainer/erase.text=GlobalGame.getTraductionById(GlobalGame.TRAD_BUTTON_EFFACER)
+	$window/VBox/HBoxContainer/submit.text=GlobalGame.getTraductionById(GlobalGame.TRAD_BUTTON_VALIDER)
 	

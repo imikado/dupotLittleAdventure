@@ -27,6 +27,8 @@ GlobalItems="*res://common/singletons/globalItems.gd"
 GlobalScenes="*res://common/singletons/globalScenes.gd"
 GlobalVersion="*res://common/singletons/globalVersion.gd"
 SceneTransition="*res://common/singletons/sceneTransition.gd"
+Sfx="*res://common/singletons/sfx.gd"
+MenuCursor="*res://common/singletons/menuCursor.gd"
 
 [display]
 

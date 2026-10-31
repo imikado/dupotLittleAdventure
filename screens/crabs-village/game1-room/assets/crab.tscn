@@ -1,5 +1,6 @@
 [gd_scene format=3]
 
+[ext_resource type="Texture2D" path="res://common/characters/shadow.png" id="shadow"]
 [ext_resource type="Texture2D" path="res://screens/crabs-village/game1-room/crabs-idle.png" id="1"]
 [ext_resource type="Script" path="res://screens/crabs-village/game1-room/assets/crab.gd" id="2"]
 
@@ -51,6 +52,10 @@ size = Vector2(35.9278, 42.906)
 
 [node name="crab" type="Node2D" unique_id=1560009976]
 script = ExtResource("2")
+
+[node name="shadow" type="Sprite2D" parent="."]
+position = Vector2(1, 16)
+texture = ExtResource("shadow")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=486595915]
 offset_left = -20.602

@@ -1,62 +1,54 @@
 [gd_scene format=3]
 
-[ext_resource type="Texture2D" path="res://screens/game/endgame/endgame.png" id="1"]
-[ext_resource type="Script" path="res://screens/game/endgame.gd" id="2"]
-[ext_resource type="Theme" path="res://common/themes/default.tres" id="3"]
+[ext_resource type="Script" path="res://screens/game/endgame.gd" id="1"]
+[ext_resource type="Theme" path="res://common/themes/default.tres" id="2"]
 
-[sub_resource type="Animation" id="1"]
-resource_name = "start"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.9, 1.9),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(101.424, 59.2163), Vector2(176.938, 129.38), Vector2(175.155, 137.109)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:zoom")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.9, 1.9),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(1.25, 1.25), Vector2(0.833333, 0.833333), Vector2(1, 1)]
-}
+[node name="endgame" type="CanvasLayer"]
+layer = 5
+script = ExtResource("1")
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_8fr4d"]
-_data = {
-&"start": SubResource("1")
-}
+[node name="backdrop" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.1, 0.06, 0.02, 0.65)
 
-[node name="endgame" type="Node2D" unique_id=1219039222]
-script = ExtResource("2")
+[node name="window" type="PanelContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -90.0
+offset_top = -46.0
+offset_right = 90.0
+offset_bottom = 46.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1058978490]
-position = Vector2(175.155, 137.109)
-scale = Vector2(191.015, -19.9489)
+[node name="list" type="VBoxContainer" parent="window"]
+layout_mode = 2
+theme_override_constants/separation = 6
+alignment = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera2D" unique_id=1479357908]
-libraries/ = SubResource("AnimationLibrary_8fr4d")
+[node name="title" type="Label" parent="window/list"]
+layout_mode = 2
+theme_type_variation = &"HeadingLabel"
+theme_override_font_sizes/font_size = 24
+theme_override_constants/outline_size = 6
+text = "Fin"
+horizontal_alignment = 1
 
-[node name="endgame" type="Sprite2D" parent="." unique_id=1483633118]
-position = Vector2(172.322, 137.989)
-texture = ExtResource("1")
+[node name="message" type="Label" parent="window/list"]
+layout_mode = 2
+theme_type_variation = &"DarkLabel"
+text = "Le puits est réparé !"
+horizontal_alignment = 1
 
-[node name="Button" type="Button" parent="." unique_id=1244698747]
-offset_left = 100.729
-offset_top = 199.24
-offset_right = 222.729
-offset_bottom = 219.24
-theme = ExtResource("3")
-text = "Retour au  menu"
+[node name="button" type="Button" parent="window/list"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Retour au menu"
 
-[connection signal="button_down" from="Button" to="." method="_on_Button_button_down"]
+[connection signal="pressed" from="window/list/button" to="." method="_on_button_pressed"]

@@ -15,6 +15,9 @@
 [ext_resource type="PackedScene" path="res://common/ui/simpleDialog.tscn" id="13"]
 [ext_resource type="Theme" path="res://common/themes/default.tres" id="14"]
 [ext_resource type="PackedScene" path="res://screens/bear-village/bee-room-platform/assets/cheat-switch.tscn" id="15"]
+[ext_resource type="Texture2D" path="res://screens/bear-village/bee-room-platform/hillsFar.png" id="hillsFar"]
+[ext_resource type="Texture2D" path="res://screens/bear-village/bee-room-platform/hillsNear.png" id="hillsNear"]
+[ext_resource type="Texture2D" path="res://screens/bear-village/bee-room-platform/cloudsParallax.png" id="cloudsParallax"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0b4xo"]
 texture = ExtResource("6")
@@ -180,6 +183,34 @@ tile_set = SubResource("TileSet_ua2ua")
 tile_map_data = PackedByteArray("AAD9//3/AAAAAAAAAAD+//3/AAAAAAAAAAD9//7/AAAAAAAAAAD+//7/AAAAAAAAAAAdAP7/AQAAAAAAAAD9////AAAAAAAAAAD+////AAAAAAAAAAADAP//AQAAAAAAAAD9/wAAAAAAAAAAAAD+/wAAAAAAAAAAAAD//wAAAAAAAAAAAAAMAAAAAQAAAAAAAAAWAAAAAQAAAAAAAAD9/wEAAAAAAAAAAAD+/wEAAAAAAAAAAAD//wEAAAAAAAAAAAASAAEAAQAAAAAAAAAaAAEAAQAAAAAAAAAdAAEAAQAAAAAAAAD9/wIAAAAAAAAAAAD+/wIAAAAAAAAAAAD//wIAAAAAAAAAAAAIAAIAAQAAAAAAAAAPAAIAAQAAAAAAAAAXAAIAAQAAAAAAAAD9/wMAAAAAAAAAAAD+/wMAAAAAAAAAAAD//wMAAAAAAAAAAAAfAAMAAQAAAAAAAAD9/wQAAAAAAAAAAAD+/wQAAAAAAAAAAAD9/wUAAAAAAAAAAAD+/wUAAAAAAAAAAAD9/wYAAAAAAAAAAAD+/wYAAAAAAAAAAAD9/wcAAAAAAAAAAAD+/wcAAAAAAAAAAAD9/wgAAAAAAAAAAAD+/wgAAAAAAAAAAAD9/wkAAAAAAAAAAAD+/wkAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_ua2ua")
 
+[node name="parallaxClouds" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.1, 1)
+repeat_size = Vector2(640, 0)
+autoscroll = Vector2(-4, 0)
+
+[node name="sprite" type="Sprite2D" parent="parallaxClouds"]
+position = Vector2(0, 34)
+texture = ExtResource("cloudsParallax")
+centered = false
+
+[node name="parallaxHillsFar" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.2, 1)
+repeat_size = Vector2(640, 0)
+
+[node name="sprite" type="Sprite2D" parent="parallaxHillsFar"]
+position = Vector2(0, 108)
+texture = ExtResource("hillsFar")
+centered = false
+
+[node name="parallaxHillsNear" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.4, 1)
+repeat_size = Vector2(640, 0)
+
+[node name="sprite" type="Sprite2D" parent="parallaxHillsNear"]
+position = Vector2(0, 140)
+texture = ExtResource("hillsNear")
+centered = false
+
 [node name="door" type="Sprite2D" parent="." unique_id=214307934]
 position = Vector2(14.6173, 135.842)
 scale = Vector2(0.394923, 0.394923)
@@ -279,20 +310,22 @@ enabled = false
 
 [node name="Label" type="Label" parent="gameOver" unique_id=1585347218]
 layout_mode = 0
-offset_left = 42.8114
-offset_top = 45.1899
-offset_right = 115.811
-offset_bottom = 59.1899
-scale = Vector2(2.2, 2.2)
+offset_left = 7.0
+offset_top = 45.0
+offset_right = 167.0
+offset_bottom = 59.0
+scale = Vector2(2, 2)
 text = "Game Over"
+horizontal_alignment = 1
 
 [node name="Button" type="Button" parent="gameOver" unique_id=519143724]
 layout_mode = 0
-offset_left = 96.84
-offset_top = 90.1547
-offset_right = 162.84
-offset_bottom = 107.155
+offset_left = 122.0
+offset_top = 90.0
+offset_right = 212.0
+offset_bottom = 107.0
 theme = ExtResource("14")
+theme_type_variation = &"ChipButton"
 text = "Re-jouer"
 
 [connection signal="movePlayer" from="navigation" to="bear-platform" method="_on_navigation_movePlayer"]

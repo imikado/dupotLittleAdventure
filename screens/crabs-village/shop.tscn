@@ -2,7 +2,8 @@
 
 [ext_resource type="PackedScene" path="res://screens/crabs-village/characters/welcome-boy.tscn" id="1"]
 [ext_resource type="PackedScene" path="res://common/ui/shopList.tscn" id="2"]
-[ext_resource type="Texture2D" path="res://screens/crabs-village/shop/shopTiles.png" id="3"]
+[ext_resource type="Texture2D" path="res://screens/crabs-village/shop/crabShopTiles.png" id="3"]
+[ext_resource type="Texture2D" path="res://screens/crabs-village/shop/crabShopBackground.png" id="bg"]
 [ext_resource type="PackedScene" path="res://common/ui/playerAndControl.tscn" id="4"]
 [ext_resource type="Script" path="res://screens/crabs-village/shop.gd" id="5"]
 [ext_resource type="PackedScene" path="res://common/ui/simpleDialog.tscn" id="6"]
@@ -28,6 +29,11 @@ sources/1 = SubResource("TileSetAtlasSource_4ccha")
 
 [node name="shop" type="Node2D" unique_id=86966847]
 script = ExtResource("5")
+
+[node name="background" type="Sprite2D" parent="."]
+position = Vector2(-32, -32)
+texture = ExtResource("bg")
+centered = false
 
 [node name="TileMap" type="TileMapLayer" parent="." unique_id=222617996]
 tile_map_data = PackedByteArray("AAD/////AAAAAAAAAAAAAP//AAAAAAAAAAABAP//AAAAAAAAAAACAP//AAAAAAAAAAADAP//AAAAAAAAAAAEAP//AAAAAAAAAAAFAP//AAAAAAAAAAAGAP//AAAAAAAAAAAHAP//AAAAAAAAAAAIAP//AAAAAAAAAAAJAP//AAAAAAAAAAAKAP//AAAAAAAAAAD//wAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAD//wEAAAAAAAAAAAAAAAEAAAAAAAAAAAAJAAEAAAAAAAAAAAAKAAEAAAAAAAAAAAD//wIAAAAAAAAAAAAAAAIAAAAAAAAAAAAJAAIAAAAAAAAAAAAKAAIAAAAAAAAAAAD//wMAAAAAAAAAAAAAAAMAAAAAAAAAAAAJAAMAAAAAAAAAAAAKAAMAAAAAAAAAAAD//wQAAAAAAAAAAAAAAAQAAAAAAAAAAAAEAAQAAQAAAAAAAAAJAAQAAAAAAAAAAAAKAAQAAAAAAAAAAAD//wUAAAAAAAAAAAAAAAUAAAAAAAAAAAABAAUAAAAAAAAAAAACAAUAAAAAAAAAAAADAAUAAAAAAAAAAAAEAAUAAAAAAAAAAAAFAAUAAAAAAAAAAAAGAAUAAAAAAAAAAAAHAAUAAAAAAAAAAAAIAAUAAAAAAAAAAAAJAAUAAAAAAAAAAAAKAAUAAAAAAAAAAAA=")

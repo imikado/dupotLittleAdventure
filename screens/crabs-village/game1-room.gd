@@ -15,6 +15,7 @@ var itemCurrentlyOnRaf=null
 var hasAlreadyWon=false
 
 func _ready():
+	$colorGameOver/restart.text=GlobalGame.getTraductionById(GlobalGame.TRAD_UI_RESTART)
 	
 	hasAlreadyWon=GlobalScenes.getParamForSceneOr(scene_file_path,"hasAlreadyWon",false)
 	

@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" path="res://screens/tree-village/images/background.png" id="4"]
 [ext_resource type="Script" path="res://screens/macro-map/spiderFight.gd" id="5"]
 [ext_resource type="PackedScene" path="res://common/gamePad/fight.tscn" id="6"]
+[ext_resource type="ShaderMaterial" path="res://common/shaders/grassGround.tres" id="fx_grass"]
+[ext_resource type="Texture2D" path="res://screens/macro-map/fightDecor.png" id="decor"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6ld7b"]
 texture = ExtResource("4")
@@ -21,14 +23,20 @@ sources/0 = SubResource("TileSetAtlasSource_6ld7b")
 script = ExtResource("5")
 
 [node name="TileMap" type="TileMapLayer" parent="." unique_id=22531163]
+material = ExtResource("fx_grass")
 tile_map_data = PackedByteArray("AAD/////AAAAAAAAAAAAAP//AAAAAAAAAAABAP//AAAAAAAAAAACAP//AAAAAAAAAAADAP//AAAAAAAAAAAEAP//AAAAAAAAAAD//wAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAD//wEAAAAAAAAAAAAAAAEAAAAAAAAAAAABAAEAAAAAAAAAAAACAAEAAAAAAAAAAAADAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAABAAIAAAAAAAAAAAACAAIAAAAAAAAAAAADAAIAAAAAAAAAAAAEAAIAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_5jdrl")
 
+[node name="decor" type="Sprite2D" parent="."]
+position = Vector2(-8, -8)
+texture = ExtResource("decor")
+centered = false
+
 [node name="player" parent="." unique_id=133440641 instance=ExtResource("2")]
-position = Vector2(85.0283, 88.2986)
+position = Vector2(100, 54)
 
 [node name="spider1" parent="." unique_id=1793965719 instance=ExtResource("1")]
-position = Vector2(199.115, 51.272)
+position = Vector2(180, 22)
 
 [node name="lifePlayer" parent="." unique_id=1704518379 instance=ExtResource("3")]
 offset_left = 6.0

@@ -24,7 +24,6 @@ platforms:
 apps:
   dupot-little-adventure:
     command: bin/LittleAdventure.x86_64
-    desktop: meta/gui/dupot-little-adventure.desktop
     extensions: [gnome]
     plugs:
       - opengl

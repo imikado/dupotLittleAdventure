@@ -21,3 +21,15 @@ static func rollEnemyHit(rng_:RandomNumberGenerator):
 
 static func rollFlee(rng_:RandomNumberGenerator):
 	return rng_.randf() < FLEE_CHANCE
+
+# action "au bon moment" : appui pendant la fenetre du signal "!"
+const PERFECT_MULTIPLIER=1.5
+const PARRY_RATIO=0.5
+
+# attaque parfaite : degats x1.5
+static func applyPerfect(damage_):
+	return int(ceil(damage_*PERFECT_MULTIPLIER))
+
+# parade : la moitie des degats, mais au moins 1
+static func applyParry(damage_):
+	return max(1, int(floor(damage_*PARRY_RATIO)))

@@ -2,6 +2,17 @@
 
 [ext_resource type="Theme" path="res://common/themes/default.tres" id="1"]
 [ext_resource type="Script" path="res://screens/game/keyboardGame.gd" id="2"]
+[ext_resource type="Texture2D" path="res://screens/tree-village/images/background.png" id="bg"]
+
+[sub_resource type="StyleBoxFlat" id="field"]
+content_margin_left = 4.0
+content_margin_top = 2.0
+content_margin_right = 4.0
+content_margin_bottom = 2.0
+bg_color = Color(0.45, 0.27, 0.1, 0.15)
+border_width_bottom = 1
+border_color = Color(0.6, 0.24, 0.12, 1)
+anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id="1"]
 content_margin_left = 2.0
@@ -28,61 +39,76 @@ offset_bottom = 36.2757
 theme = ExtResource("1")
 text = " A "
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=649705527]
+[node name="background" type="TextureRect" parent="." unique_id=649705527]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(3.24, 1)
-color = Color(0.0862745, 0.501961, 0.305882, 1)
+texture = ExtResource("bg")
+stretch_mode = 1
 
-[node name="VBox" type="VBoxContainer" parent="." unique_id=239164590]
+[node name="window" type="PanelContainer" parent="." unique_id=239164591]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 6.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+theme = ExtResource("1")
 
-[node name="title" type="Label" parent="VBox" unique_id=885962062]
+[node name="VBox" type="VBoxContainer" parent="window" unique_id=239164590]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="title" type="Label" parent="window/VBox" unique_id=885962062]
 layout_mode = 2
 theme = ExtResource("1")
+theme_type_variation = &"TitleLabel"
 text = "Votre pseudo:"
 
-[node name="TextEdit" type="TextEdit" parent="VBox" unique_id=2113064463]
-custom_minimum_size = Vector2(50, 20)
+[node name="TextEdit" type="TextEdit" parent="window/VBox" unique_id=2113064463]
+custom_minimum_size = Vector2(50, 18)
 layout_mode = 2
 theme = ExtResource("1")
+theme_override_colors/font_color = Color(0.24, 0.14, 0.07, 1)
+theme_override_styles/normal = SubResource("field")
+theme_override_styles/focus = SubResource("field")
 text = "test"
 
-[node name="Label" type="Label" parent="VBox" unique_id=772502064]
+[node name="Label" type="Label" parent="window/VBox" unique_id=772502064]
 visible = false
 layout_mode = 2
 theme = ExtResource("1")
 theme_override_styles/normal = SubResource("1")
 text = "test"
 
-[node name="GridContainer" type="GridContainer" parent="VBox" unique_id=1059293602]
+[node name="GridContainer" type="GridContainer" parent="window/VBox" unique_id=1059293602]
 layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/h_separation = 2
+theme_override_constants/v_separation = 1
 columns = 10
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBox" unique_id=1007531635]
+[node name="HBoxContainer" type="HBoxContainer" parent="window/VBox" unique_id=1007531635]
 layout_mode = 2
 theme = ExtResource("1")
 alignment = 1
 
-[node name="Retour" type="Button" parent="VBox/HBoxContainer" unique_id=411390784]
+[node name="Retour" type="Button" parent="window/VBox/HBoxContainer" unique_id=411390784]
 layout_mode = 2
 text = "Retour"
 
-[node name="erase" type="Button" parent="VBox/HBoxContainer" unique_id=337459273]
+[node name="erase" type="Button" parent="window/VBox/HBoxContainer" unique_id=337459273]
 layout_mode = 2
 text = "Effacer"
 
-[node name="submit" type="Button" parent="VBox/HBoxContainer" unique_id=1493075815]
+[node name="submit" type="Button" parent="window/VBox/HBoxContainer" unique_id=1493075815]
 layout_mode = 2
 theme = ExtResource("1")
 text = "VALIDER"
 
-[connection signal="button_down" from="VBox/HBoxContainer/Retour" to="." method="_on_Retour_button_down"]
-[connection signal="button_down" from="VBox/HBoxContainer/erase" to="." method="_on_erase_button_down"]
-[connection signal="button_down" from="VBox/HBoxContainer/submit" to="." method="_on_submit_button_down"]
+[connection signal="button_down" from="window/VBox/HBoxContainer/Retour" to="." method="_on_Retour_button_down"]
+[connection signal="button_down" from="window/VBox/HBoxContainer/erase" to="." method="_on_erase_button_down"]
+[connection signal="button_down" from="window/VBox/HBoxContainer/submit" to="." method="_on_submit_button_down"]

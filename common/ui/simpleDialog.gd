@@ -24,8 +24,21 @@ func addDiscussion(talker_,discussionList_):
 func start():
 	setTalker(getCurrentDiscussionTalker())
 	getDiscussion().text=getCurrentDiscussionLine()
+	var wasVisible=getWindow().visible
+	# l'appui qui ouvre le dialogue ne doit pas aussi afficher tout le texte
+	lastNextFrame=Engine.get_process_frames()
 	getWindow().visible=true
 	$Timer.start()
+	if !wasVisible:
+		_openAnimation()
+
+# la fenetre se deplie verticalement (ouverture facon 16 bits)
+func _openAnimation():
+	var window=getWindow()
+	window.pivot_offset=window.size/2
+	window.scale=Vector2(1, 0.1)
+	var tween=window.create_tween()
+	tween.tween_property(window, "scale:y", 1.0, 0.12).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 
 func end():
 	getWindow().visible=false
@@ -85,6 +98,11 @@ func next():
 	if lastNextFrame==Engine.get_process_frames():
 		return
 	lastNextFrame=Engine.get_process_frames()
+	# texte encore en cours d'ecriture : un appui l'affiche en entier
+	if GlobalPlayer.isDialogAnimationEnabled() and getDiscussion().get_visible_characters() <= getDiscussion().get_total_character_count():
+		getDiscussion().set_visible_characters(getDiscussion().get_total_character_count()+1)
+		getNextButton().visible=true
+		return
 	if !GlobalPlayer.isDialogAnimationEnabled()  or getDiscussion().get_visible_characters() > getDiscussion().get_total_character_count():
 		if shouldContinueNextLine():
 			currentDiscussionLine+=1
@@ -109,6 +127,10 @@ func displayNextCharacter():
 		getDiscussion().set_visible_characters(getDiscussion().get_total_character_count())
 	else:
 		getDiscussion().set_visible_characters(getDiscussion().get_visible_characters()+1)
+		# "bip" de frappe une lettre sur trois
+		var shown=getDiscussion().get_visible_characters()
+		if shown <= getDiscussion().get_total_character_count() and shown%3==0:
+			Sfx.play(Sfx.TEXT)
 	
 	if(getDiscussion().get_total_character_count() > getDiscussion().get_visible_characters() ):		
 		getNextButton().visible=false

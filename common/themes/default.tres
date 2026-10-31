@@ -1,50 +1,44 @@
 [gd_resource type="Theme" format=3]
 
-[ext_resource type="FontFile" path="res://common/themes/fonts/dogica.ttf" id="1_p47i1"]
+[ext_resource type="FontFile" path="res://common/themes/fonts/pixelOperator8.ttf" id="1_p47i1"]
 [ext_resource type="Texture2D" path="res://common/ui/simpleDialog/windows.png" id="2_win"]
+[ext_resource type="Texture2D" path="res://common/ui/simpleDialog/check-on.png" id="3_chkon"]
+[ext_resource type="Texture2D" path="res://common/ui/simpleDialog/check-off.png" id="4_chkoff"]
 
 [sub_resource type="FontVariation" id="FontVariation_043ut"]
 base_font = ExtResource("1_p47i1")
 spacing_top = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u7fp3"]
-content_margin_left = 2.0
-content_margin_right = 2.0
+content_margin_left = 16.0
 content_margin_top = 0.0
+content_margin_right = 3.0
 content_margin_bottom = 5.0
-bg_color = Color(0.25, 0.31, 0.34, 1)
-border_width_bottom = 1
-border_color = Color(0.15, 0.18, 0.2, 1)
+draw_center = false
 anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v24jk"]
-content_margin_left = 2.0
-content_margin_right = 2.0
+content_margin_left = 16.0
 content_margin_top = 0.0
+content_margin_right = 3.0
 content_margin_bottom = 5.0
-bg_color = Color(0.12, 0.52, 0.62, 1)
-border_width_bottom = 1
-border_color = Color(0.03, 0.2, 0.26, 1)
+bg_color = Color(0.45, 0.27, 0.1, 0.14)
 anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vstxg"]
-content_margin_left = 2.0
-content_margin_right = 2.0
-content_margin_top = 1.0
+content_margin_left = 16.0
+content_margin_top = 0.0
+content_margin_right = 3.0
 content_margin_bottom = 5.0
-bg_color = Color(0.05, 0.3, 0.38, 1)
-border_width_bottom = 0
-border_color = Color(0.03, 0.2, 0.26, 1)
+bg_color = Color(0.45, 0.27, 0.1, 0.26)
 anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ndexx"]
-content_margin_left = 2.0
-content_margin_right = 2.0
+content_margin_left = 16.0
 content_margin_top = 0.0
+content_margin_right = 3.0
 content_margin_bottom = 5.0
-bg_color = Color(0.078431375, 0.4117647, 0.50980395, 1)
-border_width_bottom = 1
-border_color = Color(0.03, 0.2, 0.26, 1)
+draw_center = false
 anti_aliasing = false
 
 [sub_resource type="Image" id="Image_57bvy"]
@@ -157,32 +151,35 @@ border_width_right = 1
 border_width_bottom = 1
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxEmpty_focus"]
-draw_center = false
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(1, 0.82, 0.4, 1)
+content_margin_left = 16.0
+content_margin_top = 0.0
+content_margin_right = 3.0
+content_margin_bottom = 5.0
+bg_color = Color(0.45, 0.27, 0.1, 0.14)
 anti_aliasing = false
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_panel"]
-content_margin_left = 6.0
-content_margin_top = 7.0
-content_margin_right = 6.0
+content_margin_left = 7.0
+content_margin_top = 6.0
+content_margin_right = 7.0
 content_margin_bottom = 5.0
 texture = ExtResource("2_win")
-texture_margin_left = 3.0
-texture_margin_top = 5.0
-texture_margin_right = 3.0
-texture_margin_bottom = 3.0
-region_rect = Rect2(1, 0, 31, 32)
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(0, 0, 32, 32)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tab"]
 content_margin_left = 4.0
 content_margin_top = 1.0
 content_margin_right = 4.0
 content_margin_bottom = 1.0
-bg_color = Color(0.13, 0.125, 0.2, 1)
+bg_color = Color(0.43, 0.26, 0.12, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_color = Color(0.16, 0.09, 0.04, 1)
 anti_aliasing = false
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_checkbox"]
@@ -191,14 +188,86 @@ content_margin_top = 1.0
 content_margin_right = 2.0
 content_margin_bottom = 1.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_chip"]
+content_margin_left = 3.0
+content_margin_top = 0.0
+content_margin_right = 3.0
+content_margin_bottom = 5.0
+bg_color = Color(0.43, 0.26, 0.12, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.16, 0.09, 0.04, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+corner_detail = 1
+shadow_color = Color(0.05, 0.05, 0.14, 0.8)
+shadow_offset = Vector2(1, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_chipHover"]
+content_margin_left = 3.0
+content_margin_top = 0.0
+content_margin_right = 3.0
+content_margin_bottom = 5.0
+bg_color = Color(0.55, 0.34, 0.16, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.16, 0.09, 0.04, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+corner_detail = 1
+shadow_color = Color(0.05, 0.05, 0.14, 0.8)
+shadow_offset = Vector2(1, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_chipPressed"]
+content_margin_left = 3.0
+content_margin_top = 1.0
+content_margin_right = 3.0
+content_margin_bottom = 4.0
+bg_color = Color(0.33, 0.19, 0.08, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.16, 0.09, 0.04, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+corner_detail = 1
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_chipFocus"]
+draw_center = false
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.86, 0.45, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+corner_detail = 1
+anti_aliasing = false
+
 [resource]
 default_font = SubResource("FontVariation_043ut")
 default_font_size = 8
-Button/colors/font_color = Color(0.88, 0.88, 0.88, 1)
-Button/colors/font_disabled_color = Color(0.6, 0.64, 0.66, 1)
-Button/colors/font_focus_color = Color(1, 0.92, 0.7, 1)
-Button/colors/font_hover_color = Color(1, 1, 1, 1)
-Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_color = Color(0.24, 0.14, 0.07, 1)
+Button/colors/font_disabled_color = Color(0.6, 0.5, 0.38, 1)
+Button/colors/font_focus_color = Color(0.6, 0.24, 0.12, 1)
+Button/colors/font_hover_color = Color(0.6, 0.24, 0.12, 1)
+Button/colors/font_pressed_color = Color(0.6, 0.24, 0.12, 1)
 Button/constants/h_separation = 2
 Button/font_sizes/font_size = 8
 Button/fonts/font = SubResource("FontVariation_043ut")
@@ -208,12 +277,15 @@ Button/styles/hover = SubResource("StyleBoxFlat_v24jk")
 Button/styles/hover_pressed = SubResource("StyleBoxFlat_vstxg")
 Button/styles/normal = SubResource("StyleBoxFlat_ndexx")
 Button/styles/pressed = SubResource("StyleBoxFlat_vstxg")
-CheckBox/colors/font_color = Color(0.13, 0.125, 0.2, 1)
-CheckBox/colors/font_focus_color = Color(0.03, 0.2, 0.26, 1)
-CheckBox/colors/font_hover_color = Color(0.03, 0.3, 0.38, 1)
-CheckBox/colors/font_hover_pressed_color = Color(0.03, 0.3, 0.38, 1)
-CheckBox/colors/font_pressed_color = Color(0.13, 0.125, 0.2, 1)
+CheckBox/colors/font_color = Color(0.24, 0.14, 0.07, 1)
+CheckBox/colors/font_focus_color = Color(0.6, 0.24, 0.12, 1)
+CheckBox/colors/font_hover_color = Color(0.6, 0.24, 0.12, 1)
+CheckBox/colors/font_hover_pressed_color = Color(0.6, 0.24, 0.12, 1)
+CheckBox/colors/font_pressed_color = Color(0.24, 0.14, 0.07, 1)
 CheckBox/font_sizes/font_size = 8
+CheckBox/icons/checked = ExtResource("3_chkon")
+CheckBox/icons/unchecked = ExtResource("4_chkoff")
+CheckBox/constants/h_separation = 4
 CheckBox/styles/focus = SubResource("StyleBoxEmpty_focus")
 CheckBox/styles/hover = SubResource("StyleBoxEmpty_checkbox")
 CheckBox/styles/hover_pressed = SubResource("StyleBoxEmpty_checkbox")
@@ -252,13 +324,13 @@ ItemList/fonts/font = SubResource("FontVariation_043ut")
 ItemList/styles/bg = SubResource("StyleBoxFlat_dqrk8")
 Label/colors/font_color = Color(1, 1, 1, 1)
 Label/colors/font_outline_color = Color(1, 1, 1, 1)
-Label/colors/font_shadow_color = Color(0, 0, 0, 0)
+Label/colors/font_shadow_color = Color(0.04, 0.04, 0.14, 0.85)
 Label/constants/line_spacing = 3
 Label/constants/shadow_offset_x = 1
 Label/constants/shadow_offset_y = 1
-Label/font_sizes/font_size = 9
+Label/font_sizes/font_size = 8
 Label/fonts/font = ExtResource("1_p47i1")
-RichTextLabel/colors/default_color = Color(1, 1, 1, 1)
+RichTextLabel/colors/default_color = Color(0.24, 0.14, 0.07, 1)
 RichTextLabel/colors/font_selected_color = Color(0.49, 0.49, 0.49, 1)
 RichTextLabel/colors/font_shadow_color = Color(0, 0, 0, 0)
 RichTextLabel/colors/selection_color = Color(0.1, 0.1, 1, 0.8)
@@ -271,21 +343,44 @@ RichTextLabel/font_sizes/bold_font_size = 8
 RichTextLabel/font_sizes/bold_italics_font_size = 8
 RichTextLabel/font_sizes/italics_font_size = 8
 RichTextLabel/font_sizes/mono_font_size = 8
-RichTextLabel/font_sizes/normal_font_size = 7
+RichTextLabel/font_sizes/normal_font_size = 8
 RichTextLabel/fonts/bold_font = SubResource("FontVariation_043ut")
 RichTextLabel/fonts/bold_italics_font = SubResource("FontVariation_043ut")
 RichTextLabel/fonts/italics_font = SubResource("FontVariation_043ut")
 RichTextLabel/fonts/mono_font = SubResource("FontVariation_043ut")
 RichTextLabel/fonts/normal_font = ExtResource("1_p47i1")
 TitleLabel/base_type = &"Label"
-TitleLabel/colors/font_color = Color(0.13, 0.125, 0.2, 1)
-TitleLabel/font_sizes/font_size = 9
+TitleLabel/colors/font_color = Color(0.6, 0.24, 0.12, 1)
+TitleLabel/colors/font_shadow_color = Color(0, 0, 0, 0)
+TitleLabel/font_sizes/font_size = 8
 DarkLabel/base_type = &"Label"
-DarkLabel/colors/font_color = Color(0.13, 0.125, 0.2, 1)
+DarkLabel/colors/font_color = Color(0.24, 0.14, 0.07, 1)
+DarkLabel/colors/font_shadow_color = Color(0, 0, 0, 0)
 DarkLabel/font_sizes/font_size = 8
 TabPanel/base_type = &"PanelContainer"
 TabPanel/styles/panel = SubResource("StyleBoxFlat_tab")
 NameLabel/base_type = &"Label"
-NameLabel/colors/font_color = Color(1, 0.82, 0.4, 1)
+NameLabel/colors/font_color = Color(1, 0.92, 0.72, 1)
 NameLabel/constants/line_spacing = 0
 NameLabel/font_sizes/font_size = 8
+ChipButton/base_type = &"Button"
+ChipButton/colors/font_color = Color(1, 0.92, 0.72, 1)
+ChipButton/colors/font_focus_color = Color(1, 0.82, 0.4, 1)
+ChipButton/colors/font_hover_color = Color(1, 1, 0.9, 1)
+ChipButton/colors/font_pressed_color = Color(1, 0.82, 0.4, 1)
+ChipButton/colors/font_disabled_color = Color(0.75, 0.62, 0.48, 1)
+ChipButton/styles/normal = SubResource("StyleBoxFlat_chip")
+ChipButton/styles/hover = SubResource("StyleBoxFlat_chipHover")
+ChipButton/styles/pressed = SubResource("StyleBoxFlat_chipPressed")
+ChipButton/styles/hover_pressed = SubResource("StyleBoxFlat_chipPressed")
+ChipButton/styles/disabled = SubResource("StyleBoxFlat_chip")
+ChipButton/styles/focus = SubResource("StyleBoxFlat_chipFocus")
+HeadingLabel/base_type = &"Label"
+HeadingLabel/colors/font_color = Color(1, 0.82, 0.4, 1)
+HeadingLabel/colors/font_outline_color = Color(0.24, 0.14, 0.07, 1)
+HeadingLabel/colors/font_shadow_color = Color(0.1, 0.06, 0.02, 0.55)
+HeadingLabel/constants/outline_size = 4
+HeadingLabel/constants/shadow_offset_x = 0
+HeadingLabel/constants/shadow_offset_y = 2
+HeadingLabel/constants/shadow_outline_size = 4
+HeadingLabel/font_sizes/font_size = 16

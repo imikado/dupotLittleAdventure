@@ -1,5 +1,6 @@
 [gd_scene format=3]
 
+[ext_resource type="Texture2D" path="res://common/characters/shadow.png" id="shadow"]
 [ext_resource type="Texture2D" path="res://screens/crabs-village/characters/welcome-boy/welcome-boy-idle.png" id="1"]
 [ext_resource type="Script" path="res://screens/crabs-village/characters/welcome-boy.gd" id="2"]
 [ext_resource type="PackedScene" path="res://common/areas/door.tscn" id="3"]
@@ -52,6 +53,10 @@ size = Vector2(20, 11.87416)
 
 [node name="welcome-boy" type="Node2D" unique_id=1317435717]
 script = ExtResource("2")
+
+[node name="shadow" type="Sprite2D" parent="."]
+position = Vector2(1, 16)
+texture = ExtResource("shadow")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1051236259]
 sprite_frames = SubResource("6")

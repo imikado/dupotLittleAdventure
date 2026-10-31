@@ -7,7 +7,7 @@ func _ready():
 	
 	get_node("version").text=GlobalVersion.getVersion()
 
-	$VBoxContainer/btnNew.grab_focus()
+	$window/VBoxContainer/btnNew.grab_focus()
 
 
 func _on_btnNew_button_down():
@@ -43,8 +43,8 @@ func _on_btnEN_button_down():
 	pass # Replace with function body.
 
 func refreshUi():
-	$VBoxContainer/btnNew.text=GlobalGame.getTraductionById(GlobalGame.TRAD_BUTTON_NEWGAME)
-	$VBoxContainer/btnLoad.text=GlobalGame.getTraductionById(GlobalGame.TRAD_BUTTON_LOADGAME)
+	$window/VBoxContainer/btnNew.text=GlobalGame.getTraductionById(GlobalGame.TRAD_BUTTON_NEWGAME)
+	$window/VBoxContainer/btnLoad.text=GlobalGame.getTraductionById(GlobalGame.TRAD_BUTTON_LOADGAME)
 	# la langue active est en surbrillance, l'autre est estompée
 	$lang/btnFR.modulate.a=1.0 if GlobalGame.getLang()==GlobalGame.FR else 0.5
 	$lang/btnEN.modulate.a=1.0 if GlobalGame.getLang()==GlobalGame.EN else 0.5

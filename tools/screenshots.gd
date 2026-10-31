@@ -59,8 +59,8 @@ func _run():
 	GlobalPlayer.setEquipment(GlobalItems.ID.WOOD_SWORD)
 	GlobalPlayer.addGems(6)
 
-	# 05 : la forêt, devant le panneau des araignées
-	await _open("res://screens/macro-map.tscn", Vector2(382,430))
+	# 05 : la carte du monde, devant la toile des araignées
+	await _open("res://screens/macro-map.tscn", Vector2(150,134))
 	await _shot(5)
 
 	# 06 : combat contre une araignée, au moment de choisir l'action
@@ -68,10 +68,10 @@ func _run():
 	await _open("res://screens/macro-map/spiderFight.tscn", Vector2(346,372))
 	await _shot(6, 1.0)
 
-	# 07 : sur la route du village des crabes (hors de la zone de sa porte)
+	# 07 : la carte du monde, devant le village des crabes
 	GlobalPlayer.setLife(80)
 	GlobalPlayer.addXp(3)
-	await _open("res://screens/macro-map.tscn", Vector2(470,240))
+	await _open("res://screens/macro-map.tscn", Vector2(250,64))
 	await _shot(7)
 
 	# 08 : le village des crabes et son habitant

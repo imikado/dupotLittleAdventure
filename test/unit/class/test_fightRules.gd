@@ -35,3 +35,12 @@ func test_enemySometimesMisses():
 		if !FightRules.rollEnemyHit(rng):
 			missCount+=1
 	assert_between(missCount, 40, 120, "environ 15% d'attaques ratees")
+
+func test_perfectAttackAddsHalf():
+	assert_eq(FightRules.applyPerfect(10), 15)
+	assert_eq(FightRules.applyPerfect(7), 11, "arrondi au superieur")
+
+func test_parryHalvesDamage():
+	assert_eq(FightRules.applyParry(10), 5)
+	assert_eq(FightRules.applyParry(9), 4, "arrondi a l'inferieur")
+	assert_eq(FightRules.applyParry(1), 1, "au moins 1")

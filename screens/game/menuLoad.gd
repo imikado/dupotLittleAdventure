@@ -9,6 +9,8 @@ var saveFileList=[]
 func _ready():
 	
 	$exples.visible=false
+	$Title.text=GlobalGame.getTraductionById(GlobalGame.TRAD_BUTTON_LOADGAME)
+	$Retour.text=GlobalGame.getTraductionById(GlobalGame.TRAD_BUTTON_RETOUR)
 	
 	saveFileList=GlobalGame.getList()
 	

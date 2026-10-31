@@ -1,26 +1,36 @@
-extends Node2D
+extends CanvasLayer
 
+# Ecran de fin : fenetre parchemin par-dessus le village, textes traduits
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+signal backToMenu
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
+	visible=false
 	refreshUi()
-	$Camera2D/AnimationPlayer.play("start")
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
-
-func _on_Button_button_down():
-	SceneTransition.change_scene("res://screens/game/menu.tscn")
-	pass # Replace with function body.
 
 func refreshUi():
-	$Button.text=GlobalGame.getTraductionById(GlobalGame.TRAD_LABEL_RETOURAUMENU)
+	$window/list/title.text=GlobalGame.getTraductionById(GlobalGame.TRAD_END_TITLE)
+	$window/list/message.text=GlobalGame.getTraductionById(GlobalGame.TRAD_END_MESSAGE)
+	$window/list/button.text=GlobalGame.getTraductionById(GlobalGame.TRAD_LABEL_RETOURAUMENU)
+
+func showEnd():
+	refreshUi()
+	visible=true
+	Sfx.play(Sfx.VICTORY)
+	# le fond s'assombrit, puis la fenetre se deplie
+	var backdrop=$backdrop
+	var window=$window
+	backdrop.modulate.a=0.0
+	window.pivot_offset=window.size/2
+	window.scale=Vector2(1, 0.1)
+	window.modulate.a=0.0
+	var tween=create_tween()
+	tween.tween_property(backdrop, "modulate:a", 1.0, 0.4)
+	tween.tween_property(window, "modulate:a", 1.0, 0.05)
+	tween.tween_property(window, "scale:y", 1.0, 0.15).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	await tween.finished
+	$window/list/button.grab_focus()
+
+func _on_button_pressed():
+	emit_signal("backToMenu")
+	SceneTransition.change_scene("res://screens/game/menu.tscn")

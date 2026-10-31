@@ -112,6 +112,14 @@ region = Rect2(64, 0, 32, 32)
 atlas = ExtResource("6")
 region = Rect2(96, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="29"]
+atlas = ExtResource("2")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="30"]
+atlas = ExtResource("7")
+region = Rect2(128, 0, 32, 32)
+
 [sub_resource type="SpriteFrames" id="19"]
 animations = [{
 "frames": [{
@@ -203,7 +211,7 @@ animations = [{
 }],
 "loop": 1,
 "name": &"walking",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -220,7 +228,67 @@ animations = [{
 }],
 "loop": 1,
 "name": &"walking-filled",
-"speed": 5.0
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("11")
+}, {
+"duration": 1.0,
+"texture": SubResource("12")
+}],
+"loop": false,
+"name": &"jump-up",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("22")
+}, {
+"duration": 1.0,
+"texture": SubResource("23")
+}],
+"loop": false,
+"name": &"jump-up-filled",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("13")
+}, {
+"duration": 1.0,
+"texture": SubResource("29")
+}],
+"loop": false,
+"name": &"jump-fall",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("24")
+}, {
+"duration": 1.0,
+"texture": SubResource("30")
+}],
+"loop": false,
+"name": &"jump-fall-filled",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("11")
+}],
+"loop": false,
+"name": &"land",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("22")
+}],
+"loop": false,
+"name": &"land-filled",
+"speed": 10.0
 }]
 
 [sub_resource type="RectangleShape2D" id="20"]

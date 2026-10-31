@@ -1,7 +1,9 @@
 [gd_scene format=4]
 
 [ext_resource type="PackedScene" path="res://screens/bear-village/assets/bear.tscn" id="1"]
-[ext_resource type="Texture2D" path="res://screens/bear-village/shop/shopTiles.png" id="2"]
+[ext_resource type="Texture2D" path="res://screens/bear-village/shop/bearShopTiles.png" id="2"]
+[ext_resource type="Texture2D" path="res://screens/bear-village/shop/bearShopBackground.png" id="bg"]
+[ext_resource type="Texture2D" path="res://screens/bear-village/shop/bearShopCounter.png" id="counter"]
 [ext_resource type="PackedScene" path="res://common/ui/playerAndControl.tscn" id="3"]
 [ext_resource type="PackedScene" path="res://common/areas/door.tscn" id="4"]
 [ext_resource type="Script" path="res://screens/bear-village/shop.gd" id="5"]
@@ -27,6 +29,12 @@ margins = Vector2i(64, 32)
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 
+[sub_resource type="RectangleShape2D" id="counterShape"]
+size = Vector2(182, 80)
+
+[sub_resource type="RectangleShape2D" id="barrelsShape"]
+size = Vector2(34, 38)
+
 [sub_resource type="TileSet" id="TileSet_vajv2"]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
@@ -36,6 +44,11 @@ sources/2 = SubResource("TileSetAtlasSource_xy5o4")
 
 [node name="Node2D" type="Node2D" unique_id=2071163173]
 script = ExtResource("5")
+
+[node name="background" type="Sprite2D" parent="."]
+position = Vector2(-64, -32)
+texture = ExtResource("bg")
+centered = false
 
 [node name="TileMap" type="TileMapLayer" parent="." unique_id=1147699007]
 tile_map_data = PackedByteArray("AAD+////AAAAAAAAAAD/////AAAAAAAAAAAAAP//AAAAAAAAAAABAP//AAAAAAAAAAACAP//AAAAAAAAAAADAP//AAAAAAAAAAAEAP//AAAAAAAAAAAFAP//AAAAAAAAAAAGAP//AAAAAAAAAAAHAP//AAAAAAAAAAAIAP//AAAAAAAAAAAJAP//AAAAAAAAAAAKAP//AAAAAAAAAAD+/wAAAAAAAAAAAAD//wAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAD+/wEAAAAAAAAAAAD//wEAAAAAAAAAAAAJAAEAAAAAAAAAAAAKAAEAAAAAAAAAAAD+/wIAAAAAAAAAAAD//wIAAAAAAAAAAAAJAAIAAAAAAAAAAAAKAAIAAAAAAAAAAAD+/wMAAAAAAAAAAAD//wMAAAAAAAAAAAAJAAMAAAAAAAAAAAAKAAMAAAAAAAAAAAD+/wQAAAAAAAAAAAD//wQAAAAAAAAAAAAJAAQAAAAAAAAAAAAKAAQAAAAAAAAAAAD+/wUAAAAAAAAAAAD//wUAAAAAAAAAAAADAAUAAQAAAAAAAAAJAAUAAAAAAAAAAAAKAAUAAAAAAAAAAAD+/wYAAAAAAAAAAAD//wYAAAAAAAAAAAAAAAYAAAAAAAAAAAABAAYAAAAAAAAAAAACAAYAAAAAAAAAAAADAAYAAAAAAAAAAAAEAAYAAAAAAAAAAAAFAAYAAAAAAAAAAAAGAAYAAAAAAAAAAAAHAAYAAAAAAAAAAAAIAAYAAAAAAAAAAAAJAAYAAAAAAAAAAAAKAAYAAAAAAAAAAAA=")
@@ -48,6 +61,21 @@ offset_bottom = 202.0
 [node name="bear" parent="." unique_id=1905475473 instance=ExtResource("1")]
 position = Vector2(110.73, 82.1202)
 
+[node name="counter" type="Sprite2D" parent="."]
+position = Vector2(0, 40)
+texture = ExtResource("counter")
+centered = false
+
+[node name="furnitures" type="StaticBody2D" parent="."]
+
+[node name="counter" type="CollisionShape2D" parent="furnitures"]
+position = Vector2(91, 72)
+shape = SubResource("counterShape")
+
+[node name="barrels" type="CollisionShape2D" parent="furnitures"]
+position = Vector2(267, 57)
+shape = SubResource("barrelsShape")
+
 [node name="playerAndControl" parent="." unique_id=877845589 instance=ExtResource("3")]
 position = Vector2(120.637, 144.261)
 
@@ -57,7 +85,7 @@ position = Vector2(112.763, 183.319)
 [node name="simpleDialog" parent="." unique_id=2033257679 instance=ExtResource("6")]
 
 [node name="sellerTalk" parent="." unique_id=1825595159 instance=ExtResource("4")]
-position = Vector2(111.503, 97.0139)
+position = Vector2(111.503, 116)
 
 [node name="shopList" parent="." unique_id=1396550847 instance=ExtResource("7")]
 

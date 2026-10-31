@@ -10,6 +10,7 @@ func getPlayer():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$gameOver/Button.text=GlobalGame.getTraductionById(GlobalGame.TRAD_UI_REPLAY)
 	
 	cheatGround.position.y=500
 	

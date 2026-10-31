@@ -36,6 +36,7 @@ func setupGame():
 			maxNbBeeToKill+=1
 
 func _on_playerAndControl_hit(enemy_):
+	Sfx.play(Sfx.HIT)
 	enemy_.queue_free()
 	GlobalPlayer.addXp(2)
 	nbBeeKilled+=1

@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" path="res://screens/crabs-village/game1-room/astonished-ate-algae.png" id="10"]
 [ext_resource type="Texture2D" path="res://screens/crabs-village/characters/welcome-boy/welcome-boy-idle.png" id="11"]
 [ext_resource type="PackedScene" path="res://common/ui/simpleDialog.tscn" id="12"]
+[ext_resource type="Texture2D" path="res://screens/crabs-village/images/presenterStage.png" id="stage"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q3vir"]
 texture = ExtResource("3")
@@ -399,36 +400,42 @@ offset_right = 320.0
 offset_bottom = 192.0
 color = Color(0, 0, 0, 1)
 
+[node name="stage" type="Sprite2D" parent="colorGameOver"]
+position = Vector2(164, 91)
+scale = Vector2(2, 2)
+texture = ExtResource("stage")
+
 [node name="crabAteAstonished" type="AnimatedSprite2D" parent="colorGameOver" unique_id=1431953]
 visible = false
 position = Vector2(158.178, 92.7712)
-scale = Vector2(2.62683, 2.62683)
+scale = Vector2(2, 2)
 sprite_frames = SubResource("17")
 
 [node name="restart" type="Button" parent="colorGameOver" unique_id=803053578]
 layout_mode = 0
-offset_left = 82.0925
-offset_top = 158.846
-offset_right = 202.092
-offset_bottom = 178.846
+offset_left = 100.0
+offset_top = 158.0
+offset_right = 220.0
+offset_bottom = 178.0
 theme = ExtResource("9")
+theme_type_variation = &"ChipButton"
 text = "Re-commencer ?"
 
 [node name="astonishedAteAlgae" type="AnimatedSprite2D" parent="colorGameOver" unique_id=566833260]
 visible = false
 position = Vector2(171.527, 89.7678)
-scale = Vector2(3.18997, 3.18997)
+scale = Vector2(2, 2)
 sprite_frames = SubResource("29")
 
 [node name="Label" type="Label" parent="colorGameOver" unique_id=1887553098]
 layout_mode = 0
-offset_left = 68.7441
-offset_top = 7.3416
-offset_right = 149.744
-offset_bottom = 21.3416
-scale = Vector2(2.08, 2.08)
+offset_top = 7.0
+offset_right = 160.0
+offset_bottom = 21.0
+scale = Vector2(2, 2)
 theme = ExtResource("9")
 text = "Game Over"
+horizontal_alignment = 1
 
 [node name="ColorStart" type="ColorRect" parent="." unique_id=136853968]
 visible = false
@@ -436,9 +443,14 @@ offset_right = 320.0
 offset_bottom = 194.0
 color = Color(0, 0, 0, 1)
 
+[node name="stage" type="Sprite2D" parent="ColorStart"]
+position = Vector2(141.493, 62.7374)
+scale = Vector2(2, 2)
+texture = ExtResource("stage")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ColorStart" unique_id=1363917280]
 position = Vector2(141.493, 62.7374)
-scale = Vector2(3.46111, 3.46111)
+scale = Vector2(2, 2)
 sprite_frames = SubResource("36")
 
 [node name="simpleDialogStart" parent="ColorStart" unique_id=247766238 instance=ExtResource("12")]
@@ -448,9 +460,14 @@ offset_right = 320.0
 offset_bottom = 192.0
 color = Color(0, 0, 0, 1)
 
+[node name="stage" type="Sprite2D" parent="ColorWin"]
+position = Vector2(141.493, 62.7374)
+scale = Vector2(2, 2)
+texture = ExtResource("stage")
+
 [node name="AnimatedSprite2" type="AnimatedSprite2D" parent="ColorWin" unique_id=1237376470]
 position = Vector2(141.493, 62.7374)
-scale = Vector2(3.46111, 3.46111)
+scale = Vector2(2, 2)
 sprite_frames = SubResource("36")
 
 [node name="simpleDialogWin" parent="ColorWin" unique_id=1605157899 instance=ExtResource("12")]

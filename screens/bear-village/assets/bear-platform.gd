@@ -16,6 +16,16 @@ const GRAVITY = 350
 const ACCEL=100
 const JUMPHEIGHT=150
 
+# saut plus tolerant : on peut encore sauter juste apres avoir quitte le bord,
+# et un appui un peu trop tot est garde jusqu'a la reception (en secondes)
+const COYOTE_TIME=0.1
+const JUMP_BUFFER_TIME=0.12
+# en changeant de sens, l'ours freine d'abord (sinon demi-tour tres lent)
+const TURN_FRICTION=0.15
+
+var coyoteTimer=0.0
+var jumpBufferTimer=0.0
+
 var limitLeft=0
 var limitRight=0
 var limitTop=0
@@ -27,7 +37,7 @@ var state=IDLE
 
 var filled=false
 
-enum {IDLE,WALK,JUMP,JUMP_DOWN,HURT,DEAD}
+enum {IDLE,WALK,JUMP,JUMP_DOWN,HURT,DEAD,LAND}
 
 var current_animation="idle"
 
@@ -95,11 +105,17 @@ func calculateNewState(state_,velocity_,is_on_floor_):
 
 	if state_ in [IDLE] and (velocity_.x >1 or velocity_.x <-1):
 		return WALK
-	elif state_ in [IDLE,WALK] and !is_on_floor_:
+	elif state_ in [IDLE,WALK,LAND] and !is_on_floor_:
 		return JUMP
 	elif state_ in [IDLE,WALK] and (velocity_.x > -1 and velocity_.x < 1):
 		return IDLE
-	elif state_ in [JUMP] and is_on_floor_:
+	elif state_ in [JUMP,JUMP_DOWN] and is_on_floor_:
+		return LAND
+	# montee puis chute : on change d'image quand l'ours redescend
+	elif state_ in [JUMP] and velocity_.y > 0:
+		return JUMP_DOWN
+	# reception accroupie le temps de son animation
+	elif state_ in [LAND] and !$AnimatedSprite2D.is_playing():
 		return IDLE
 	else:
 		return state_
@@ -121,7 +137,11 @@ func change_state(new_state) -> void:
 		WALK:
 			animationPlay("walking"+suffix)
 		JUMP:
-			animationPlay("jumping"+suffix)
+			animationPlay("jump-up"+suffix)
+		JUMP_DOWN:
+			animationPlay("jump-fall"+suffix)
+		LAND:
+			animationPlay("land"+suffix)
 
 func animationPlay(animation : String) -> void:
 	if current_animation!= animation:
@@ -137,22 +157,36 @@ func _physics_process(delta):
 	
 	state_loop()
 	
-	$AnimatedSprite2D.flip_h=false
-
+	# a l'arret, l'ours garde le cote vers lequel il regardait
+	if left != right:
+		$AnimatedSprite2D.flip_h=left
 
 	if left:
-		$AnimatedSprite2D.flip_h=true
+		if vel.x > 0:
+			vel.x=lerpf(vel.x,0,TURN_FRICTION)
 		vel.x = max(vel.x-ACCEL*delta,-maxSpeed)
 	elif right:
-
-
+		if vel.x < 0:
+			vel.x=lerpf(vel.x,0,TURN_FRICTION)
 		vel.x = min(vel.x+ACCEL*delta,maxSpeed)
 	else:
 		vel.x=lerpf(vel.x,0,0.10)
 	
-	if buttonPressed && is_on_floor():
-		vel.y=-JUMPHEIGHT
+	if is_on_floor():
+		coyoteTimer=COYOTE_TIME
+	else:
+		coyoteTimer-=delta
+	
+	if buttonPressed:
+		jumpBufferTimer=JUMP_BUFFER_TIME
 		buttonPressed=false
+	else:
+		jumpBufferTimer-=delta
+	
+	if jumpBufferTimer > 0 and coyoteTimer > 0:
+		vel.y=-JUMPHEIGHT
+		jumpBufferTimer=0.0
+		coyoteTimer=0.0
 	
 	vel.y+=GRAVITY*delta
 	

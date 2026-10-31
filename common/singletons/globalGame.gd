@@ -33,6 +33,10 @@ const TRAD_CRABVILLAGE='crabvillage'
 const TRAD_CRABVILLAGE_GAME1_ALREADYWON='crabvillage_game1'
 const TRAD_CRABVILLAGE_GAME1_START='crabvillage_game1_start'
 const TRAD_CRABVILLAGE_GAME1_WIN='crabvillage_game1_win'
+# les jeux 2 et 3 reprennent les textes "deja gagne" et "victoire" du jeu 1
+const TRAD_CRABVILLAGE_GAME2_START='crabvillage_game2_start'
+const TRAD_CRABVILLAGE_GAME3_START='crabvillage_game3_start'
+const TRAD_BEARVILLAGE_SHOP='beervillage_shop'
 
 const TRAD_BEARVILLAGE_BEEPLATFORM='beervillage_beeplatform'
 const TRAD_BEARVILLAGE_BEEPLATFORM_START='beervillage_beeplatform_start'
@@ -55,6 +59,8 @@ const TRAD_BUTTON_EFFACER='button_effacer'
 const TRAD_BUTTON_VALIDER='button_valider'
 
 const TRAD_LABEL_RETOURAUMENU='label_retouraumenu'
+const TRAD_END_TITLE='end_title'
+const TRAD_END_MESSAGE='end_message'
 
 const TRAD_UI_PAUSE='ui_pause'
 const TRAD_UI_RESUME='ui_resume'
@@ -69,14 +75,24 @@ const TRAD_UI_NO='ui_no'
 const TRAD_UI_SAVED='ui_saved'
 const TRAD_UI_TOUCH='ui_touch'
 const TRAD_UI_DIALOG_ANIMATION='ui_dialog_animation'
+const TRAD_UI_SOUND='ui_sound'
 const TRAD_UI_CLOSE='ui_close'
 const TRAD_UI_MENU='ui_menu'
+const TRAD_MAP_TREEVILLAGE='map_tree-village'
+const TRAD_MAP_CRABVILLAGE='map_crab-village'
+const TRAD_MAP_BEARVILLAGE='map_bear-village'
+const TRAD_MAP_SPIDERWEB='map_spider-web'
+const TRAD_MAP_ENTER='map_enter'
 const TRAD_UI_SHOP='ui_shop'
 const TRAD_UI_EQUIP='ui_equip'
+const TRAD_UI_REPLAY='ui_replay'
+const TRAD_UI_RESTART='ui_restart'
 const TRAD_UI_DISPLAY='ui_display'
 const TRAD_UI_USE='ui_use'
 const TRAD_UI_BUY='ui_buy'
 const TRAD_UI_OWNED='ui_owned'
+const TRAD_UI_NOT_ENOUGH_GEMS='ui_not_enough_gems'
+const TRAD_UI_YOUR_GEMS='ui_your_gems'
 const TRAD_UI_LANGUAGE='ui_language'
 
 const TRAD_FIGHT_ATTACK='fight_attack'
@@ -97,6 +113,9 @@ const TRAD_FIGHT_FLEE_OK='fight_flee_ok'
 const TRAD_FIGHT_FLEE_FAIL='fight_flee_fail'
 const TRAD_FIGHT_VICTORY='fight_victory'
 const TRAD_FIGHT_DEFEAT='fight_defeat'
+const TRAD_FIGHT_TIP='fight_tip'
+const TRAD_FIGHT_PERFECT='fight_perfect'
+const TRAD_FIGHT_PARRY='fight_parry'
 
 
 
@@ -134,7 +153,7 @@ var traductionsList={
 
 	TRAD_LABEL_VOTREPSEUDO:{
 		FR:'Votre pseudo',
-		EN:'You nickname'
+		EN:'Your nickname'
 	},
 
 	TRAD_BUTTON_RETOUR:{
@@ -168,14 +187,24 @@ var traductionsList={
 	TRAD_UI_SAVED:{FR:'Partie sauvegardée',EN:'Game saved'},
 	TRAD_UI_TOUCH:{FR:'Commandes tactiles',EN:'Touch controls'},
 	TRAD_UI_DIALOG_ANIMATION:{FR:'Texte animé',EN:'Animated text'},
+	TRAD_UI_SOUND:{FR:'Bruitages',EN:'Sound effects'},
 	TRAD_UI_CLOSE:{FR:'Fermer',EN:'Close'},
 	TRAD_UI_MENU:{FR:'Menu',EN:'Menu'},
+	TRAD_MAP_TREEVILLAGE:{FR:'Village des arbres',EN:'Tree village'},
+	TRAD_MAP_CRABVILLAGE:{FR:'Village des crabes',EN:'Crab village'},
+	TRAD_MAP_BEARVILLAGE:{FR:'Village des ours',EN:'Bear village'},
+	TRAD_MAP_SPIDERWEB:{FR:'Toile des araignées',EN:'Spider web'},
+	TRAD_MAP_ENTER:{FR:'Entrer',EN:'Enter'},
 	TRAD_UI_SHOP:{FR:'Boutique',EN:'Shop'},
-	TRAD_UI_EQUIP:{FR:'Equiper',EN:'Equip'},
+	TRAD_UI_EQUIP:{FR:'Équiper',EN:'Equip'},
+	TRAD_UI_REPLAY:{FR:'Rejouer',EN:'Play again'},
+	TRAD_UI_RESTART:{FR:'Recommencer ?',EN:'Try again?'},
 	TRAD_UI_DISPLAY:{FR:'Afficher',EN:'Show'},
 	TRAD_UI_USE:{FR:'Utiliser',EN:'Use'},
 	TRAD_UI_BUY:{FR:'Acheter',EN:'Buy'},
 	TRAD_UI_OWNED:{FR:'Déjà possédé',EN:'Owned'},
+	TRAD_UI_NOT_ENOUGH_GEMS:{FR:'Pas assez de gemmes',EN:'Not enough gems'},
+	TRAD_UI_YOUR_GEMS:{FR:'Tes gemmes :',EN:'Your gems:'},
 	TRAD_UI_LANGUAGE:{FR:'Langue : Français',EN:'Language: English'},
 
 	TRAD_FIGHT_ATTACK:{FR:'Attaquer',EN:'Attack'},
@@ -196,6 +225,11 @@ var traductionsList={
 	TRAD_FIGHT_FLEE_FAIL:{FR:'Impossible de fuir !',EN:"Can't escape!"},
 	TRAD_FIGHT_VICTORY:{FR:'Victoire ! +%d XP  +%d gemmes',EN:'Victory! +%d XP  +%d gems'},
 	TRAD_FIGHT_DEFEAT:{FR:'%s est épuisé et recule...',EN:'%s is exhausted and retreats...'},
+	TRAD_END_TITLE:{FR:'Fin',EN:'The End'},
+	TRAD_END_MESSAGE:{FR:"Le puits est réparé !\nMerci d'avoir joué.",EN:'The well is fixed!\nThanks for playing.'},
+	TRAD_FIGHT_TIP:{FR:'Appuie au « ! » pour un bonus !',EN:'Press at « ! » for a bonus!'},
+	TRAD_FIGHT_PERFECT:{FR:'Parfait !',EN:'Perfect!'},
+	TRAD_FIGHT_PARRY:{FR:'Paré !',EN:'Blocked!'},
 
 
 	TRAD_WORD_PRESENTATEUR:{
@@ -211,7 +245,7 @@ var traductionsList={
 		EN:"Seller"
 	},
 	TRAD_WORD_GORDONMOM:{
-		FR:"Maman de Godron",
+		FR:"Maman de Gordon",
 		EN:"Gordon's Mom"
 	},
 	
@@ -457,19 +491,19 @@ var traductionsList={
 			"Bonjour, pour remporter ce jeu",
 			"Vous devez faire traverser",
 			"Le crabe, l'algue et la méduse.",
-			"Vous pouvez en tranporter un seul à la fois",
+			"Vous pouvez en transporter un seul à la fois.",
 			"Attention si vous laissez seuls certains :",
 			"Le crabe mange la méduse,",
 			"La méduse mange l'algue."
 			],
 		EN:[
 			"Hi, to win this game",
-			"You will crosses",
-			"The crab, the seaweed and the medusa.",
-			"You can carry only one on the wooden raft",
-			"Take care, if you let alone :",
-			"The crab eat the medusa,",
-			"The medusa eat the seaweed."
+			"You must take across",
+			"The crab, the seaweed and the jellyfish.",
+			"The raft can only carry one at a time.",
+			"Careful, if you leave them alone:",
+			"The crab eats the jellyfish,",
+			"The jellyfish eats the seaweed."
 			],
 
 	},
@@ -480,12 +514,49 @@ var traductionsList={
 			],
 		EN:[
 			"Congratulations, you win !",
-			"Take 2 Gems."
+			"Here are 2 gems."
 			],
 
 	},
 
 	
+	TRAD_CRABVILLAGE_GAME2_START:{
+		FR:[
+			"Dans cette énigme,",
+			"Vous devez faire sortir",
+			"La barque avec le crabe."
+			],
+		EN:[
+			"In this puzzle,",
+			"You must get the boat",
+			"With the crab out."
+			],
+	},
+	TRAD_CRABVILLAGE_GAME3_START:{
+		FR:[
+			"Dans cette énigme,",
+			"Vous devez placer les coquillages",
+			"Sur les emplacements avec des croix."
+			],
+		EN:[
+			"In this puzzle,",
+			"You must put the shells",
+			"On the spots marked with a cross."
+			],
+	},
+	TRAD_BEARVILLAGE_SHOP:{
+		FR:[
+			"Bonjour,",
+			"Choisis parmi nos produits",
+			"Celui de ton choix."
+			],
+		EN:[
+			"Hello,",
+			"Pick the product",
+			"Of your choice."
+			],
+	},
+
 	TRAD_CRABVILLAGE_SHOP:{
 		FR:[
 		"Bonjour,",

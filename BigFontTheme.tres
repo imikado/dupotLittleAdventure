@@ -1,7 +1,0 @@
-[gd_resource type="Theme" format=3]
-
-[ext_resource type="FontVariation" path="res://BigFont.tres" id="1"]
-
-[resource]
-default_font = ExtResource("1")
-default_font_size = 40

@@ -1,13 +1,12 @@
 [gd_scene format=4]
 
+[ext_resource type="PackedScene" path="res://screens/game/title/pixelLogo.tscn" id="logo"]
 [ext_resource type="Texture2D" path="res://screens/tree-village/images/mushrooms.png" id="1"]
 [ext_resource type="Texture2D" path="res://screens/tree-village/assets/ball-house/ballhouse.png" id="2"]
 [ext_resource type="Texture2D" path="res://screens/tree-village/images/bushes.png" id="3"]
 [ext_resource type="Texture2D" path="res://screens/tree-village/images/background.png" id="4"]
 [ext_resource type="Texture2D" path="res://screens/tree-village/images/tree.png" id="5"]
-[ext_resource type="PackedScene" path="res://screens/game/title/adventure.tscn" id="6"]
 [ext_resource type="Script" path="res://screens/game/title.gd" id="7"]
-[ext_resource type="PackedScene" path="res://screens/game/title/little.tscn" id="8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kguro"]
 texture = ExtResource("4")
@@ -18,48 +17,6 @@ texture_region_size = Vector2i(96, 96)
 tile_size = Vector2i(96, 96)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_kguro")
-
-[sub_resource type="Animation" id="2"]
-resource_name = "New Anim"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("little:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.7, 1.3, 1.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(-2.51984, 146.151), Vector2(0.629974, 95.7541), Vector2(3.03388e-05, 108.353)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_dd5g0"]
-_data = {
-&"New Anim": SubResource("2")
-}
-
-[sub_resource type="Animation" id="3"]
-resource_name = "New Anim"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("adventure:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.7, 1.2, 1.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(-38.0976, 7.937), Vector2(-27.7795, 278.589), Vector2(-29.3669, 216.68), Vector2(-18.2551, 269.064)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_5fef2"]
-_data = {
-&"New Anim": SubResource("3")
-}
 
 [node name="Control" type="Node2D" unique_id=1887341443]
 position = Vector2(0, 1)
@@ -101,17 +58,7 @@ texture = ExtResource("1")
 wait_time = 3.5
 autostart = true
 
-[node name="AnimationPlayerLittle" type="AnimationPlayer" parent="." unique_id=376007251]
-libraries/ = SubResource("AnimationLibrary_dd5g0")
-
-[node name="little" parent="." unique_id=1342379460 instance=ExtResource("8")]
-position = Vector2(3.03388e-05, 108.353)
-rotation = 0.185005
-
-[node name="adventure" parent="." unique_id=283275157 instance=ExtResource("6")]
-position = Vector2(-29.3669, 216.68)
-
-[node name="AnimationPlayerAdventure" type="AnimationPlayer" parent="." unique_id=456963495]
-libraries/ = SubResource("AnimationLibrary_5fef2")
+[node name="logo" parent="." instance=ExtResource("logo")]
+position = Vector2(40, 64)
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

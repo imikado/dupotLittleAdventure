@@ -12,3 +12,9 @@ func _init(name_,animation_,damage_,xpMin_):
 	self.animation=animation_
 	self.damage=damage_
 	self.xpMin=xpMin_
+
+# nom dans la langue du jeu (dictionnaire FR/EN, ou texte deja traduit)
+func getName():
+	if name is Dictionary:
+		return name[GlobalGame.getLang()]
+	return name

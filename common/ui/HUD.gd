@@ -15,6 +15,11 @@ const MENU_INVENTORY=1
 const MENU_QUIT=2
 
 const LOW_LIFE_RATIO=0.3
+const MEDIUM_LIFE_RATIO=0.6
+
+const COLOR_LIFE_OK=Color(0.3, 0.9, 0.45)
+const COLOR_LIFE_MEDIUM=Color(1, 0.75, 0.25)
+const COLOR_LIFE_LOW=Color(0.95, 0.3, 0.3)
 
 @onready var btnBlock=$btnBlock
 @onready var confirmation=$confirmation
@@ -58,17 +63,18 @@ func refreshUi():
 	$parameters/list/title.text=GlobalGame.getTraductionById(GlobalGame.TRAD_UI_SETTINGS)
 	$parameters/list/touchUiEnabled.text=GlobalGame.getTraductionById(GlobalGame.TRAD_UI_TOUCH)
 	$parameters/list/dialogAnimationEnabled.text=GlobalGame.getTraductionById(GlobalGame.TRAD_UI_DIALOG_ANIMATION)
+	$parameters/list/soundEnabled.text=GlobalGame.getTraductionById(GlobalGame.TRAD_UI_SOUND)
 	$parameters/list/language.text=GlobalGame.getTraductionById(GlobalGame.TRAD_UI_LANGUAGE)
 	$parameters/list/saveParameters.text=GlobalGame.getTraductionById(GlobalGame.TRAD_UI_CLOSE)
 	$saved/label.text=GlobalGame.getTraductionById(GlobalGame.TRAD_UI_SAVED)
 
 func _process(delta):
-	# coeur qui clignote quand la vie est basse
+	# coeur qui bat quand la vie est basse
 	var lowLife=GlobalPlayer.getLife() <= GlobalPlayer.getMaxLife()*LOW_LIFE_RATIO
-	if lowLife and (Time.get_ticks_msec()/250)%2==0:
-		$Control/lifeIcon.modulate=Color(1,1,1,0.35)
+	if lowLife and (Time.get_ticks_msec()/250)%3==0:
+		$Control/lifeIcon.scale=Vector2(1.25, 1.25)
 	else:
-		$Control/lifeIcon.modulate=Color.WHITE
+		$Control/lifeIcon.scale=Vector2.ONE
 
 func _unhandled_input(event):
 	# Echap / bouton retour : revient en arriere dans les menus
@@ -82,6 +88,7 @@ func _unhandled_input(event):
 		_on_btnCancell_button_down()
 	else:
 		return
+	Sfx.play(Sfx.CANCEL)
 	get_viewport().set_input_as_handled()
 
 func isMenuOpen():
@@ -102,6 +109,7 @@ func reloadGems():
 	var gems=GlobalPlayer.getGemsBalance()
 	if gems > displayedGems:
 		popGain($Control/gem, gems-displayedGems)
+		Sfx.play(Sfx.GEM)
 	displayedGems=gems
 	setGems(gems)
 
@@ -125,7 +133,7 @@ func popGain(label_:Label, value_):
 	pop.add_theme_color_override("font_color", Color(1, 0.82, 0.4))
 	pop.add_theme_color_override("font_outline_color", Color(0.13, 0.125, 0.2))
 	pop.add_theme_constant_override("outline_size", 2)
-	pop.position=label_.position+Vector2(0, 8)
+	pop.position=label_.position+Vector2(0, 10)
 	$Control.add_child(pop)
 	var tween=pop.create_tween()
 	tween.tween_property(pop, "position:y", pop.position.y+8, 0.6).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
@@ -137,7 +145,20 @@ func popGain(label_:Label, value_):
 	bump.tween_property(label_, "modulate", Color.WHITE, 0.4)
 
 func setLife(life_):
-	$Control/life.text=str(life_)
+	var gauge=$Control/lifeGauge
+	gauge.max_value=GlobalPlayer.getMaxLife()
+	var ratio=float(life_)/max(1, GlobalPlayer.getMaxLife())
+	var color=COLOR_LIFE_OK
+	if ratio <= LOW_LIFE_RATIO:
+		color=COLOR_LIFE_LOW
+	elif ratio <= MEDIUM_LIFE_RATIO:
+		color=COLOR_LIFE_MEDIUM
+	gauge.get_theme_stylebox("fill").bg_color=color
+	if !is_inside_tree() or life_ > gauge.value:
+		gauge.value=life_
+		return
+	# la jauge descend en glissant
+	create_tween().tween_property(gauge, "value", life_, 0.3).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 
 func setGems(gems_):
 	$Control/gem.text=str(gems_)
@@ -214,6 +235,7 @@ func _on_btnParameters_button_down():
 
 	$parameters/list/touchUiEnabled.set_pressed_no_signal(GlobalPlayer.isTouchEnabled())
 	$parameters/list/dialogAnimationEnabled.set_pressed_no_signal(GlobalPlayer.isDialogAnimationEnabled())
+	$parameters/list/soundEnabled.set_pressed_no_signal(GlobalPlayer.isSoundEnabled())
 
 	$parameters/list/touchUiEnabled.grab_focus()
 
@@ -237,6 +259,13 @@ func _on_dialogAnimationEnabled_toggled(button_pressed):
 		GlobalPlayer.enableDialogAnimation()
 	else:
 		GlobalPlayer.disableDialogAnimation()
+
+
+func _on_soundEnabled_toggled(button_pressed):
+	if(button_pressed):
+		GlobalPlayer.enableSound()
+	else:
+		GlobalPlayer.disableSound()
 
 
 # les dialogues de la scène en cours gardent leur langue : ils sont

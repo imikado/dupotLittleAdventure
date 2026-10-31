@@ -19,6 +19,18 @@ func _init(name_,description_,image_,type_,actionList_=[]):
 	self.type=type_
 	self.actionList=actionList_
 
+# texte dans la langue du jeu (dictionnaire FR/EN, ou texte deja traduit)
+func _translate(text_):
+	if text_ is Dictionary:
+		return text_[GlobalGame.getLang()]
+	return text_
+
+func getName():
+	return _translate(name)
+
+func getDescription():
+	return _translate(description)
+
 func getTexture():
 
 	var path="res://"+image

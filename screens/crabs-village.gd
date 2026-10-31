@@ -1,5 +1,7 @@
 extends "res://common/class/scene.gd"
 
+const WorldMap=preload("res://screens/macro-map.gd")
+
 func _ready():
 	setPlayerPath("Node2D/playerAndControl")
 	loadPosition()
@@ -23,7 +25,7 @@ func _on_simpleDialog_discussionFinished():
 
 
 func _on_goToMacroMap_playerOpenedDoor():
-	GlobalPlayer.savePosition(Vector2(427,61))
+	GlobalPlayer.savePosition(WorldMap.CRABS)
 	SceneTransition.change_scene("res://screens/macro-map.tscn")
 
 

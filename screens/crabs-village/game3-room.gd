@@ -13,10 +13,7 @@ func _ready():
 	hasAlreadyWon=GlobalScenes.getParamForSceneOr(scene_file_path,"hasAlreadyWon",false)
 	
 	if true==hasAlreadyWon:
-		$ColorStart/simpleDialogStart.addDiscussion("Presentateur",[
-					"Re-bonjour,",
-					"Désolé, mais vous avez déjà gagné",
-					])
+		$ColorStart/simpleDialogStart.addDiscussion(GlobalGame.getTraductionById(GlobalGame.TRAD_WORD_PRESENTATEUR),GlobalGame.getTraductionById(GlobalGame.TRAD_CRABVILLAGE_GAME1_ALREADYWON))
 		$ColorStart.visible=true
 		$ColorStart/simpleDialogStart.start()
 		
@@ -26,17 +23,10 @@ func _ready():
 		$navigation.disable()
 		
 		$ColorWin.visible=false
-		$ColorWin/simpleDialogWin.addDiscussion("Presentateur",[
-						"Félicitations, tu remporte ce jeu",
-						"Voici 2 Gems de récompense"
-						])
+		$ColorWin/simpleDialogWin.addDiscussion(GlobalGame.getTraductionById(GlobalGame.TRAD_WORD_PRESENTATEUR),GlobalGame.getTraductionById(GlobalGame.TRAD_CRABVILLAGE_GAME1_WIN))
 		
 		$ColorStart.visible=true
-		$ColorStart/simpleDialogStart.addDiscussion("Presentateur",[
-			"Dans cet énigme,",
-			"Vous devez placer les coquillages",
-			"Sur les emplacements avec des croix"
-		])
+		$ColorStart/simpleDialogStart.addDiscussion(GlobalGame.getTraductionById(GlobalGame.TRAD_WORD_PRESENTATEUR),GlobalGame.getTraductionById(GlobalGame.TRAD_CRABVILLAGE_GAME3_START))
 		$ColorStart/simpleDialogStart.start()
 
 func _on_placeholder_placed(item_):

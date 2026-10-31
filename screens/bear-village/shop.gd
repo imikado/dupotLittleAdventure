@@ -10,11 +10,7 @@ func _ready():
 	loadPosition()
 	getPlayer().loadCameraLimits($cameraRef)
 	
-	$simpleDialog.addDiscussion("vendeur",[
-		"Bonjour,",
-		"Choisi parmi nos produits",
-		"Celui de ton choix"
-		])
+	$simpleDialog.addDiscussion(GlobalGame.getTraductionById(GlobalGame.TRAD_WORD_VENDEUR),GlobalGame.getTraductionById(GlobalGame.TRAD_BEARVILLAGE_SHOP))
 		
 	$shopList.setShopItemList([
 		shopItemClass.new(GlobalItems.ID.HONEY,6),

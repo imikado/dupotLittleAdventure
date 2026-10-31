@@ -57,3 +57,17 @@ func _on_AnimatedSprite_animation_finished():
 
 func getHeadPosition():
 	return position+HEAD_OFFSET
+
+func getSprite():
+	return $AnimatedSprite2D
+
+# duree d'une animation (pour caler le signal "!" sur le coup porte)
+func getAnimationDuration(animation_):
+	var frames=$AnimatedSprite2D.sprite_frames
+	if !frames.has_animation(animation_):
+		return 0.0
+	# chaque image peut avoir sa propre duree relative (anticipation, impact...)
+	var total=0.0
+	for i in frames.get_frame_count(animation_):
+		total+=frames.get_frame_duration(animation_, i)
+	return total/frames.get_animation_speed(animation_)

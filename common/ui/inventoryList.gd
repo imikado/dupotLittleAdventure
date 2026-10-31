@@ -87,6 +87,8 @@ func showWindow():
 		var newItem=patternItem.duplicate()
 		newItem.setImage(realItem.getTexture())
 		newItem.connect("button_down", Callable(self, "_on_pressed_selected").bind(item))
+		# la description suit le curseur (clavier / manette)
+		newItem.connect("focus_entered", Callable(self, "_on_pressed_selected").bind(item))
 	
 		getGrid().add_child(newItem)
 	
@@ -99,8 +101,8 @@ func showWindow():
 func _on_pressed_selected(item_):
 	var realItem=GlobalItems.getItem(item_)
 	getSideInfo().visible=true
-	getSideInfo().get_node("title").text=realItem.name
-	getSideInfo().get_node("description").text=realItem.description
+	getSideInfo().get_node("title").text=realItem.getName()
+	getSideInfo().get_node("description").text=realItem.getDescription()
 
 	itemSelected=item_
 

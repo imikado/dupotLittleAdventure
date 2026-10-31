@@ -1,5 +1,6 @@
 [gd_scene format=3]
 
+[ext_resource type="Texture2D" path="res://common/characters/shadow.png" id="shadow"]
 [ext_resource type="Texture2D" path="res://screens/tree-village/shop/assets/seller/Seller-idle.png" id="1"]
 
 [sub_resource type="AtlasTexture" id="1"]
@@ -54,3 +55,9 @@ animations = [{
 
 [node name="seller" type="AnimatedSprite2D" unique_id=12896566]
 sprite_frames = SubResource("7")
+
+[node name="shadow" type="Sprite2D" parent="."]
+show_behind_parent = true
+position = Vector2(0, 16)
+texture = ExtResource("shadow")
+

@@ -1,5 +1,6 @@
 [gd_scene format=3]
 
+[ext_resource type="Texture2D" path="res://common/characters/shadow.png" id="shadow"]
 [ext_resource type="Texture2D" path="res://common/characters/mom/Mom-idle.png" id="1"]
 [ext_resource type="PackedScene" path="res://common/areas/door.tscn" id="2"]
 [ext_resource type="Script" path="res://common/characters/mom.gd" id="3"]
@@ -45,6 +46,10 @@ size = Vector2(13.21296, 4.14274)
 
 [node name="StaticBody2D" type="StaticBody2D" unique_id=79519711]
 script = ExtResource("3")
+
+[node name="shadow" type="Sprite2D" parent="."]
+position = Vector2(0, 16)
+texture = ExtResource("shadow")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=912090104]
 sprite_frames = SubResource("5")

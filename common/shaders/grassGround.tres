@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" format=3]
+
+[ext_resource type="Shader" path="res://common/shaders/ground.gdshader" id="1"]
+
+[resource]
+shader = ExtResource("1")
+shader_parameter/patch_size = 140.0
+shader_parameter/patch_strength = 0.07
+shader_parameter/flower_cell = 20.0
+shader_parameter/flower_density = 0.16

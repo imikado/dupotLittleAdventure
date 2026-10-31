@@ -66,12 +66,12 @@ func showAttacks():
 	for attackLoop in weaponAttackList:
 		var button
 		if GlobalPlayer.isAttackUnlocked(attackLoop):
-			button=_addButton(attackLoop.name+"  "+str(attackLoop.damage), _on_attack_pressed.bind(attackLoop))
+			button=_addButton(attackLoop.getName()+"  "+str(attackLoop.damage), _on_attack_pressed.bind(attackLoop))
 			if first==null:
 				first=button
 		else:
 			# attaque visible mais verrouillee : donne un objectif d'xp
-			button=_addButton(attackLoop.name+"  XP "+str(attackLoop.xpMin), Callable())
+			button=_addButton(attackLoop.getName()+"  XP "+str(attackLoop.xpMin), Callable())
 			button.disabled=true
 	_addButton(_trad(GlobalGame.TRAD_FIGHT_BACK), showActions)
 	_open(first)

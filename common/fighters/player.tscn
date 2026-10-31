@@ -1,5 +1,6 @@
 [gd_scene format=3]
 
+[ext_resource type="Texture2D" path="res://common/characters/shadow.png" id="shadow"]
 [ext_resource type="Texture2D" path="res://common/fighters/player/player-idle.png" id="1"]
 [ext_resource type="Texture2D" path="res://common/fighters/player/player-attack2.png" id="2"]
 [ext_resource type="Texture2D" path="res://common/fighters/player/player-attack1.png" id="3"]
@@ -53,6 +54,10 @@ region = Rect2(192, 0, 64, 64)
 [sub_resource type="AtlasTexture" id="9"]
 atlas = ExtResource("3")
 region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="25"]
+atlas = ExtResource("3")
+region = Rect2(320, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="10"]
 atlas = ExtResource("5")
@@ -130,16 +135,19 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("5")
 }, {
-"duration": 1.0,
+"duration": 1.5,
 "texture": SubResource("6")
 }, {
 "duration": 1.0,
 "texture": SubResource("7")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("8")
 }, {
-"duration": 1.0,
+"duration": 0.5,
+"texture": SubResource("25")
+}, {
+"duration": 1.5,
 "texture": SubResource("9")
 }],
 "loop": 1,
@@ -192,6 +200,10 @@ animations = [{
 
 [node name="player" type="Node2D" unique_id=304141036]
 script = ExtResource("4")
+
+[node name="shadow" type="Sprite2D" parent="."]
+position = Vector2(-5, 31)
+texture = ExtResource("shadow")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=431102459]
 sprite_frames = SubResource("24")

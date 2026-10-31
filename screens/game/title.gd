@@ -8,8 +8,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$AnimationPlayerLittle.play("New Anim")
-	$AnimationPlayerAdventure.play("New Anim")
+	$logo.playIntro()
 	
 	var keyboardOsList=["HTML5","Web","X11","Linux", "FreeBSD", "NetBSD", "OpenBSD", "BSD","Windows"]
 

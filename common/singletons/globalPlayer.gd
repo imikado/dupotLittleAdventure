@@ -19,6 +19,7 @@ var side="DOWN"
 
 var touchEnabled=true
 var dialogAnimationEnabled=true
+var soundEnabled=true
 
 func setSide(side_):
 	side=side_
@@ -44,6 +45,16 @@ func disableDialogAnimation():
 
 func isDialogAnimationEnabled():
 	return dialogAnimationEnabled
+
+
+func enableSound():
+	soundEnabled=true
+
+func disableSound():
+	soundEnabled=false
+
+func isSoundEnabled():
+	return soundEnabled
 
 #---nickname
 func setNickname(nickname_):

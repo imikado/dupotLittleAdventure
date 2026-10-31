@@ -1,5 +1,7 @@
 extends "res://common/class/scene.gd"
 
+const WorldMap=preload("res://screens/macro-map.gd")
+
 func debug():
 	GlobalPlayer.addItem(GlobalItems.ID.WOOD_SWORD)
 
@@ -26,5 +28,5 @@ func _on_shop_playerEntered():
 
 
 func _on_gotToMacro_playerOpenedDoor():
-	GlobalPlayer.savePosition(Vector2(168,-82))
+	GlobalPlayer.savePosition(WorldMap.BEAR)
 	SceneTransition.change_scene("res://screens/macro-map.tscn")

@@ -1,144 +1,109 @@
-[gd_scene format=4]
+[gd_scene format=3]
 
-[ext_resource type="Texture2D" path="res://screens/macro-map/images/spider-panel.png" id="1"]
-[ext_resource type="Texture2D" path="res://screens/macro-map/images/tree-village.png" id="2"]
-[ext_resource type="Texture2D" path="res://screens/tree-village/images/background.png" id="3"]
-[ext_resource type="Texture2D" path="res://screens/macro-map/images/crabs-village.png" id="4"]
-[ext_resource type="PackedScene" path="res://common/areas/door.tscn" id="5"]
-[ext_resource type="Script" path="res://screens/macro-map.gd" id="6"]
-[ext_resource type="Texture2D" path="res://screens/tree-village/images/paths.png" id="7"]
-[ext_resource type="PackedScene" path="res://common/ui/playerAndControl.tscn" id="8"]
-[ext_resource type="Texture2D" path="res://screens/macro-map/images/bear-village.png" id="9"]
+[ext_resource type="Script" path="res://screens/macro-map.gd" id="1"]
+[ext_resource type="Texture2D" path="res://screens/macro-map/images/world/worldmap.png" id="2"]
+[ext_resource type="Script" path="res://screens/macro-map/roads.gd" id="3"]
+[ext_resource type="Texture2D" path="res://screens/macro-map/images/world/icon-tree.png" id="4"]
+[ext_resource type="Texture2D" path="res://screens/macro-map/images/world/icon-crabs.png" id="5"]
+[ext_resource type="Texture2D" path="res://screens/macro-map/images/world/icon-bear.png" id="6"]
+[ext_resource type="Texture2D" path="res://screens/macro-map/images/world/icon-sign.png" id="7"]
+[ext_resource type="Texture2D" path="res://screens/macro-map/images/world/web.png" id="8"]
+[ext_resource type="Texture2D" path="res://common/characters/shadow.png" id="9"]
+[ext_resource type="PackedScene" path="res://common/ui/playerAndControl.tscn" id="10"]
+[ext_resource type="Texture2D" path="res://common/ui/simpleDialog/windows.png" id="11"]
+[ext_resource type="Theme" path="res://common/themes/default.tres" id="12"]
+[ext_resource type="PackedScene" path="res://common/effects/pollen.tscn" id="13"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_flywk"]
-texture = ExtResource("3")
-texture_region_size = Vector2i(96, 96)
-0:0/0 = 0
+[node name="macro-map" type="Node2D"]
+script = ExtResource("1")
 
-[sub_resource type="TileSet" id="TileSet_nugs0"]
-tile_size = Vector2i(96, 96)
-physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_flywk")
+[node name="camera" type="Camera2D" parent="."]
+anchor_mode = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vbl3k"]
+[node name="cameraRef" type="ReferenceRect" parent="."]
+offset_right = 320.0
+offset_bottom = 180.0
+mouse_filter = 2
+
+[node name="background" type="Sprite2D" parent="."]
+texture = ExtResource("2")
+centered = false
+
+[node name="roads" type="Node2D" parent="."]
+script = ExtResource("3")
+
+[node name="treeVillage" type="Sprite2D" parent="."]
+position = Vector2(62, 136)
+texture = ExtResource("4")
+offset = Vector2(0, -26)
+
+[node name="bearVillage" type="Sprite2D" parent="."]
+position = Vector2(100, 62)
+texture = ExtResource("6")
+offset = Vector2(0, -21)
+
+[node name="crabsVillage" type="Sprite2D" parent="."]
+position = Vector2(241, 55)
+texture = ExtResource("5")
+offset = Vector2(0, -21)
+
+[node name="spiderSign" type="Sprite2D" parent="."]
+position = Vector2(124, 126)
 texture = ExtResource("7")
-texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
+offset = Vector2(0, -13)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_17a2h"]
-texture = ExtResource("7")
-margins = Vector2i(32, 0)
-texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
+[node name="web" type="Sprite2D" parent="."]
+position = Vector2(162, 116)
+texture = ExtResource("8")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yv0k1"]
-texture = ExtResource("7")
-margins = Vector2i(64, 0)
-texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
+[node name="gordon" type="Node2D" parent="."]
+position = Vector2(62, 140)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jsgse"]
-texture = ExtResource("7")
-margins = Vector2i(0, 32)
-texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ma6vp"]
-texture = ExtResource("7")
-margins = Vector2i(0, 64)
-texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ac25v"]
-texture = ExtResource("7")
-margins = Vector2i(32, 64)
-texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6oqvy"]
-texture = ExtResource("7")
-margins = Vector2i(64, 32)
-texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ht14j"]
-texture = ExtResource("7")
-margins = Vector2i(64, 64)
-texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_ddulh"]
-tile_size = Vector2i(32, 32)
-physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_vbl3k")
-sources/1 = SubResource("TileSetAtlasSource_17a2h")
-sources/2 = SubResource("TileSetAtlasSource_yv0k1")
-sources/3 = SubResource("TileSetAtlasSource_jsgse")
-sources/4 = SubResource("TileSetAtlasSource_ma6vp")
-sources/5 = SubResource("TileSetAtlasSource_ac25v")
-sources/6 = SubResource("TileSetAtlasSource_6oqvy")
-sources/7 = SubResource("TileSetAtlasSource_ht14j")
-
-[node name="macro-map" type="Node2D" unique_id=113001127]
-script = ExtResource("6")
-
-[node name="TileMap" type="TileMapLayer" parent="." unique_id=1175052759]
-tile_map_data = PackedByteArray("AAAAAPv/AAAAAAAAAAABAPv/AAAAAAAAAAAAAPz/AAAAAAAAAAABAPz/AAAAAAAAAAACAPz/AAAAAAAAAAD+//3/AAAAAAAAAAD///3/AAAAAAAAAAAAAP3/AAAAAAAAAAABAP3/AAAAAAAAAAACAP3/AAAAAAAAAAADAP3/AAAAAAAAAAAEAP3/AAAAAAAAAAAFAP3/AAAAAAAAAAAGAP3/AAAAAAAAAAAHAP3/AAAAAAAAAAAIAP3/AAAAAAAAAAAJAP3/AAAAAAAAAAAKAP3/AAAAAAAAAAD+//7/AAAAAAAAAAD///7/AAAAAAAAAAAAAP7/AAAAAAAAAAABAP7/AAAAAAAAAAACAP7/AAAAAAAAAAADAP7/AAAAAAAAAAAEAP7/AAAAAAAAAAAFAP7/AAAAAAAAAAAGAP7/AAAAAAAAAAAHAP7/AAAAAAAAAAAIAP7/AAAAAAAAAAAJAP7/AAAAAAAAAAAKAP7/AAAAAAAAAAD+////AAAAAAAAAAD/////AAAAAAAAAAAAAP//AAAAAAAAAAABAP//AAAAAAAAAAACAP//AAAAAAAAAAADAP//AAAAAAAAAAAEAP//AAAAAAAAAAAFAP//AAAAAAAAAAAGAP//AAAAAAAAAAAHAP//AAAAAAAAAAAIAP//AAAAAAAAAAAJAP//AAAAAAAAAAAKAP//AAAAAAAAAAD+/wAAAAAAAAAAAAD//wAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAD+/wEAAAAAAAAAAAD//wEAAAAAAAAAAAAAAAEAAAAAAAAAAAABAAEAAAAAAAAAAAACAAEAAAAAAAAAAAADAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAAFAAEAAAAAAAAAAAAGAAEAAAAAAAAAAAAHAAEAAAAAAAAAAAAIAAEAAAAAAAAAAAAJAAEAAAAAAAAAAAAKAAEAAAAAAAAAAAD+/wIAAAAAAAAAAAD//wIAAAAAAAAAAAAAAAIAAAAAAAAAAAABAAIAAAAAAAAAAAACAAIAAAAAAAAAAAADAAIAAAAAAAAAAAAEAAIAAAAAAAAAAAAFAAIAAAAAAAAAAAAGAAIAAAAAAAAAAAAHAAIAAAAAAAAAAAAIAAIAAAAAAAAAAAAJAAIAAAAAAAAAAAAKAAIAAAAAAAAAAAD+/wMAAAAAAAAAAAD//wMAAAAAAAAAAAAAAAMAAAAAAAAAAAABAAMAAAAAAAAAAAACAAMAAAAAAAAAAAADAAMAAAAAAAAAAAAEAAMAAAAAAAAAAAAFAAMAAAAAAAAAAAAGAAMAAAAAAAAAAAAHAAMAAAAAAAAAAAAIAAMAAAAAAAAAAAAJAAMAAAAAAAAAAAAKAAMAAAAAAAAAAAD+/wQAAAAAAAAAAAD//wQAAAAAAAAAAAAAAAQAAAAAAAAAAAABAAQAAAAAAAAAAAACAAQAAAAAAAAAAAADAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAFAAQAAAAAAAAAAAAGAAQAAAAAAAAAAAAHAAQAAAAAAAAAAAAIAAQAAAAAAAAAAAAJAAQAAAAAAAAAAAAKAAQAAAAAAAAAAAD+/wUAAAAAAAAAAAD//wUAAAAAAAAAAAAAAAUAAAAAAAAAAAABAAUAAAAAAAAAAAACAAUAAAAAAAAAAAADAAUAAAAAAAAAAAAEAAUAAAAAAAAAAAAFAAUAAAAAAAAAAAAGAAUAAAAAAAAAAAAHAAUAAAAAAAAAAAAIAAUAAAAAAAAAAAAJAAUAAAAAAAAAAAAKAAUAAAAAAAAAAAD+/wYAAAAAAAAAAAD//wYAAAAAAAAAAAAAAAYAAAAAAAAAAAABAAYAAAAAAAAAAAACAAYAAAAAAAAAAAADAAYAAAAAAAAAAAAEAAYAAAAAAAAAAAAFAAYAAAAAAAAAAAAGAAYAAAAAAAAAAAAHAAYAAAAAAAAAAAAIAAYAAAAAAAAAAAAJAAYAAAAAAAAAAAAKAAYAAAAAAAAAAAD+/wcAAAAAAAAAAAD//wcAAAAAAAAAAAAAAAcAAAAAAAAAAAABAAcAAAAAAAAAAAACAAcAAAAAAAAAAAADAAcAAAAAAAAAAAAEAAcAAAAAAAAAAAAFAAcAAAAAAAAAAAAGAAcAAAAAAAAAAAAHAAcAAAAAAAAAAAAIAAcAAAAAAAAAAAAJAAcAAAAAAAAAAAAKAAcAAAAAAAAAAAD+/wgAAAAAAAAAAAD//wgAAAAAAAAAAAAAAAgAAAAAAAAAAAABAAgAAAAAAAAAAAACAAgAAAAAAAAAAAADAAgAAAAAAAAAAAAEAAgAAAAAAAAAAAAFAAgAAAAAAAAAAAAGAAgAAAAAAAAAAAAHAAgAAAAAAAAAAAAIAAgAAAAAAAAAAAAJAAgAAAAAAAAAAAAKAAgAAAAAAAAAAAA=")
-tile_set = SubResource("TileSet_nugs0")
-
-[node name="road" type="TileMapLayer" parent="." unique_id=919945913]
-tile_map_data = PackedByteArray("AAAEAP3/AQAAAAAAAAAFAP3/AQAAAAAAAAAGAP3/AQAAAAAAAAAHAP3/AQAAAAAAAAAIAP3/AQAAAAAAAAAJAP3/AgAAAAAAAAAJAP7/AwAAAAAAAAAJAP//AwAAAAAAAAAJAAAAAwAAAAAAAAAJAAEABgAAAAAAAAAKAAEAAQAAAAAAAAALAAEAAQAAAAAAAAAMAAEAAQAAAAAAAAANAAEAAQAAAAAAAAAOAAEAAQAAAAAAAAAPAAEAAQAAAAAAAAAJAAIAAwAAAAAAAAAJAAMAAwAAAAAAAAAJAAQAAwAAAAAAAAAJAAUAAwAAAAAAAAAJAAYAAwAAAAAAAAAJAAcAAwAAAAAAAAAJAAgAAwAAAAAAAAAJAAkAAwAAAAAAAAAJAAoAAwAAAAAAAAAJAAsAAwAAAAAAAAAJAAwAAwAAAAAAAAAJAA0AAwAAAAAAAAAJAA4AAwAAAAAAAAAJAA8AAwAAAAAAAAAJABAAAwAAAAAAAAAJABEAAwAAAAAAAAAJABIAAwAAAAAAAAAFABMAAQAAAAAAAAAGABMAAQAAAAAAAAAHABMAAQAAAAAAAAAIABMAAQAAAAAAAAAJABMABwAAAAAAAAA=")
-tile_set = SubResource("TileSet_ddulh")
-
-[node name="bear-village" type="Sprite2D" parent="." unique_id=340789008]
-position = Vector2(64.6932, -87.2574)
+[node name="shadow" type="Sprite2D" parent="gordon"]
+position = Vector2(0, 0)
 texture = ExtResource("9")
 
-[node name="cameraRef" type="ReferenceRect" parent="." unique_id=670866529]
-offset_left = 12.0
-offset_top = -191.0
-offset_right = 644.0
-offset_bottom = 672.0
+[node name="sprite" type="AnimatedSprite2D" parent="gordon"]
+position = Vector2(0, -14)
 
-[node name="crabs-village" type="Sprite2D" parent="." unique_id=1137315136]
-position = Vector2(568.233, 82.5132)
-texture = ExtResource("4")
+[node name="pollen" parent="." instance=ExtResource("13")]
+area = NodePath("../cameraRef")
 
-[node name="spider-panel" type="Sprite2D" parent="." unique_id=104198246]
-position = Vector2(382.434, 368.64)
-texture = ExtResource("1")
+[node name="playerAndControl" parent="." instance=ExtResource("10")]
 
-[node name="tree-village" type="Sprite2D" parent="." unique_id=1645535070]
-position = Vector2(139.655, 541.263)
-texture = ExtResource("2")
+[node name="placeInfo" type="CanvasLayer" parent="."]
+layer = 5
 
-[node name="tree-village2" parent="." unique_id=795862080 instance=ExtResource("5")]
-position = Vector2(138.287, 602.641)
-scale = Vector2(10.9592, 7.31102)
+[node name="panel" type="NinePatchRect" parent="placeInfo"]
+offset_left = 90.0
+offset_top = 154.0
+offset_right = 230.0
+offset_bottom = 176.0
+theme = ExtResource("12")
+texture = ExtResource("11")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
 
-[node name="crab-village" parent="." unique_id=1815856312 instance=ExtResource("5")]
-position = Vector2(570.792, 86.3607)
-scale = Vector2(10.9592, 7.31102)
+[node name="name" type="Label" parent="placeInfo/panel"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 5.0
+offset_right = 96.0
+offset_bottom = 15.0
+theme_type_variation = &"DarkLabel"
+text = "Village des arbres"
 
-[node name="spider-attack-upa" parent="." unique_id=414742758 instance=ExtResource("5")]
-position = Vector2(345.641, 302.218)
-scale = Vector2(52.8019, 3.06326)
+[node name="enter" type="Button" parent="placeInfo/panel"]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 3.0
+offset_right = 136.0
+offset_bottom = 17.0
+focus_mode = 0
+theme_type_variation = &"ChipButton"
+text = "Entrer"
 
-[node name="spider-attack-down" parent="." unique_id=1663467045 instance=ExtResource("5")]
-position = Vector2(346.764, 371.811)
-scale = Vector2(52.8019, 3.06326)
-
-[node name="playerAndControl" parent="." unique_id=397254014 instance=ExtResource("8")]
-position = Vector2(413.957, 558.186)
-
-[node name="bear-village2" parent="." unique_id=1398611432 instance=ExtResource("5")]
-position = Vector2(53.4089, -85.3309)
-scale = Vector2(8.64, 9.04)
-
-[connection signal="playerOpenedDoor" from="tree-village2" to="." method="_on_treevillage2_playerOpenedDoor"]
-[connection signal="playerOpenedDoor" from="crab-village" to="." method="_on_crabvillage_playerOpenedDoor"]
-[connection signal="playerOpenedDoor" from="spider-attack-upa" to="." method="_on_spiderattackupa_playerOpenedDoor"]
-[connection signal="playerOpenedDoor" from="spider-attack-down" to="." method="_on_spiderattackdown_playerOpenedDoor"]
 [connection signal="quit" from="playerAndControl" to="." method="_on_playerAndControl_quit"]
 [connection signal="save" from="playerAndControl" to="." method="_on_playerAndControl_save"]
-[connection signal="playerOpenedDoor" from="bear-village2" to="." method="_on_bearvillage2_playerOpenedDoor"]

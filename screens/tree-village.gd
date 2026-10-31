@@ -1,5 +1,7 @@
 extends "res://common/class/scene.gd"
 
+const WorldMap=preload("res://screens/macro-map.gd")
+
 var groundFounded=null
 
 
@@ -98,7 +100,7 @@ func _on_gemhouse_playerEntered():
 
 
 func _on_goOutFromTreeVillage_playerOpenedDoor():
-	GlobalPlayer.savePosition(Vector2(293,608))
+	GlobalPlayer.savePosition(WorldMap.TREE)
 	SceneTransition.change_scene("res://screens/macro-map.tscn")
 	pass # Replace with function body.
 
@@ -213,10 +215,5 @@ func _on_well_talk():
 
 
 func _on_well_repaired():
-	$endgame.visible=true
-	#get_tree().change_scene("res://screens/game/endgame.tscn")
-	pass # Replace with function body.
-
-
-func _on_gotBackToMenu_button_down():
-	SceneTransition.change_scene("res://screens/game/menu.tscn")
+	getPlayer().disableNavigation()
+	$endgame.showEnd()

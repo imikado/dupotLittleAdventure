@@ -2,38 +2,27 @@
 
 [ext_resource type="Texture2D" path="res://common/ui/shopList/gem.png" id="1"]
 [ext_resource type="Script" path="res://common/ui/shopList/item.gd" id="2"]
+[ext_resource type="Texture2D" path="res://common/ui/simpleDialog/slot.png" id="slot"]
 [ext_resource type="Script" path="res://common/ui/shopList.gd" id="3"]
 [ext_resource type="Theme" path="res://common/themes/default.tres" id="5"]
 [ext_resource type="Texture2D" path="res://common/items/weapons/wood-sword.png" id="6"]
 [ext_resource type="Texture2D" path="res://common/ui/simpleDialog/windows.png" id="7"]
 
-[sub_resource type="StyleBoxFlat" id="item_normal"]
-bg_color = Color(0.105882, 0.329412, 0.411765, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 2
-border_color = Color(0.13, 0.125, 0.2, 1)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
-corner_detail = 1
-anti_aliasing = false
+[sub_resource type="StyleBoxTexture" id="item_normal"]
+texture = ExtResource("slot")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+modulate_color = Color(1, 1, 1, 1)
 
-[sub_resource type="StyleBoxFlat" id="item_hover"]
-bg_color = Color(0.15, 0.45, 0.55, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 2
-border_color = Color(0.13, 0.125, 0.2, 1)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
-corner_detail = 1
-anti_aliasing = false
+[sub_resource type="StyleBoxTexture" id="item_hover"]
+texture = ExtResource("slot")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+modulate_color = Color(1.25, 1.25, 1.35, 1)
 
 [sub_resource type="StyleBoxFlat" id="item_focus"]
 draw_center = false
@@ -67,11 +56,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("5")
 texture = ExtResource("7")
-region_rect = Rect2(1, 0, 31, 32)
-patch_margin_left = 3
-patch_margin_top = 5
-patch_margin_right = 3
-patch_margin_bottom = 3
+region_rect = Rect2(0, 0, 32, 32)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
 
 [node name="title" type="Label" parent="window"]
 layout_mode = 0
@@ -89,7 +78,7 @@ offset_top = 22.0
 offset_right = 144.0
 offset_bottom = 145.0
 mouse_filter = 2
-color = Color(1, 1, 1, 0.27)
+color = Color(0.45, 0.27, 0.1, 0.12)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="window"]
 layout_mode = 0
@@ -147,7 +136,6 @@ uppercase = true
 [node name="description" type="RichTextLabel" parent="window/HBoxContainer/sideInfo"]
 layout_mode = 2
 mouse_filter = 2
-theme_override_colors/default_color = Color(0.13, 0.125, 0.2, 1)
 text = "Description"
 fit_content = true
 
@@ -165,10 +153,43 @@ layout_mode = 2
 theme_type_variation = &"DarkLabel"
 
 [node name="buyButton" type="Button" parent="window/HBoxContainer/sideInfo"]
+alignment = 0
 layout_mode = 2
 text = "Acheter"
 
+[node name="notice" type="Label" parent="window/HBoxContainer/sideInfo"]
+visible = false
+layout_mode = 2
+theme_type_variation = &"DarkLabel"
+theme_override_colors/font_color = Color(0.75, 0.12, 0.08, 1)
+text = "Pas assez de gemmes"
+autowrap_mode = 3
+
+[node name="wallet" type="HBoxContainer" parent="window"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 130.0
+offset_right = 142.0
+offset_bottom = 142.0
+theme_override_constants/separation = 3
+
+[node name="label" type="Label" parent="window/wallet"]
+layout_mode = 2
+theme_type_variation = &"DarkLabel"
+text = "Tes gemmes :"
+
+[node name="TextureRect" type="TextureRect" parent="window/wallet"]
+layout_mode = 2
+texture = ExtResource("1")
+stretch_mode = 3
+
+[node name="count" type="Label" parent="window/wallet"]
+layout_mode = 2
+theme_type_variation = &"DarkLabel"
+text = "0"
+
 [node name="closeButton" type="Button" parent="window"]
+theme_type_variation = &"ChipButton"
 layout_mode = 0
 offset_left = 268.0
 offset_top = 6.0

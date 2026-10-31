@@ -112,6 +112,8 @@ Found a bug or have an idea? [Open an issue](https://github.com/imikado/dupotLit
 
 This game is released under the [GNU LGPL v2.1](LICENSE).
 
+Font: [Pixel Operator](https://github.com/bauripalash/ttf-pixeloperator-fork) by Jayvee Enaguas, released into the public domain ([CC0 1.0](common/themes/fonts/LICENSE-PixelOperator-CC0.txt)).
+
 ---
 
 <div align="center">
