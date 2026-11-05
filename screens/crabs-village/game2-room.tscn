@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" path="res://screens/crabs-village/game2-room/assets/raft-3-horiz.tscn" id="3"]
 [ext_resource type="PackedScene" path="res://screens/crabs-village/game2-room/assets/raft-3-vert.tscn" id="4"]
 [ext_resource type="Script" path="res://screens/crabs-village/game2-room.gd" id="5"]
-[ext_resource type="Texture2D" path="res://screens/crabs-village/characters/welcome-boy/welcome-boy-idle.png" id="6"]
+[ext_resource type="Texture2D" path="res://screens/crabs-village/characters/welcome-boy/presenter-wave.png" id="6"]
 [ext_resource type="Texture2D" path="res://screens/crabs-village/game2-room/see.png" id="7"]
 [ext_resource type="PackedScene" path="res://common/ui/simpleDialog.tscn" id="8"]
 [ext_resource type="Texture2D" path="res://screens/crabs-village/images/presenterStage.png" id="stage"]
@@ -78,27 +78,27 @@ sources/7 = SubResource("TileSetAtlasSource_oj8px")
 
 [sub_resource type="AtlasTexture" id="9"]
 atlas = ExtResource("6")
-region = Rect2(0, 0, 32, 32)
+region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="10"]
 atlas = ExtResource("6")
-region = Rect2(32, 0, 32, 32)
+region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="11"]
 atlas = ExtResource("6")
-region = Rect2(64, 0, 32, 32)
+region = Rect2(128, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="12"]
 atlas = ExtResource("6")
-region = Rect2(96, 0, 32, 32)
+region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="13"]
 atlas = ExtResource("6")
-region = Rect2(128, 0, 32, 32)
+region = Rect2(256, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="14"]
 atlas = ExtResource("6")
-region = Rect2(160, 0, 32, 32)
+region = Rect2(320, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="15"]
 animations = [{
@@ -187,7 +187,6 @@ texture = ExtResource("stage")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="colorWin" unique_id=1973231278]
 position = Vector2(181.949, 113.569)
-scale = Vector2(2, 2)
 sprite_frames = SubResource("15")
 
 [node name="simpleDialogWin" parent="." unique_id=1826317231 instance=ExtResource("8")]
@@ -208,7 +207,6 @@ texture = ExtResource("stage")
 
 [node name="AnimatedSprite2" type="AnimatedSprite2D" parent="ColorStart" unique_id=1061187718]
 position = Vector2(146.949, 110.569)
-scale = Vector2(2, 2)
 sprite_frames = SubResource("15")
 
 [connection signal="goLeft" from="raft-2-horiz2" to="." method="_on_raft2horiz_goLeft"]

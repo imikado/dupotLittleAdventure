@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" path="res://common/areas/door.tscn" id="6"]
 [ext_resource type="Script" path="res://screens/tree-village/gem-house.gd" id="7"]
 [ext_resource type="PackedScene" path="res://common/ui/simpleDialog.tscn" id="8"]
+[ext_resource type="Texture2D" path="res://common/ui/HUD/gem.png" id="gem"]
+[ext_resource type="Texture2D" path="res://screens/tree-village/images/plant.png" id="plant"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fsc58"]
 texture = ExtResource("2")
@@ -151,6 +153,9 @@ sources/1 = SubResource("TileSetAtlasSource_h6u78")
 sources/2 = SubResource("TileSetAtlasSource_13av1")
 sources/3 = SubResource("TileSetAtlasSource_csd4g")
 
+[sub_resource type="RectangleShape2D" id="plantShape"]
+size = Vector2(10, 6)
+
 [node name="gem-house" type="Node2D" unique_id=365050620]
 script = ExtResource("7")
 
@@ -175,6 +180,49 @@ position = Vector2(107.799, 32.0724)
 position = Vector2(0, -0.5)
 tile_map_data = PackedByteArray("AAAAAP//AQAAAAAAAAACAP//AAAAAAAAAAAEAP//AQAAAAAAAAAIAP//AQAAAAAAAAAKAP//AAAAAAAAAAAAAAEAAAAAAAAAAAACAAEAAAAAAAAAAAADAAEAAAAAAAAAAAAEAAEAAgAAAAAAAAAFAAEAAAAAAAAAAAAGAAEAAAAAAAAAAAAHAAEAAAAAAAAAAAAIAAEAAAAAAAAAAAAKAAEAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_j64a7")
+
+[node name="gemDisplay" type="Node2D" parent="."]
+position = Vector2(0, 40)
+
+[node name="gem1" type="Sprite2D" parent="gemDisplay"]
+position = Vector2(68, 0)
+texture = ExtResource("gem")
+
+[node name="gem2" type="Sprite2D" parent="gemDisplay"]
+position = Vector2(78, -2)
+texture = ExtResource("gem")
+
+[node name="gem3" type="Sprite2D" parent="gemDisplay"]
+position = Vector2(140, 0)
+texture = ExtResource("gem")
+
+[node name="gem4" type="Sprite2D" parent="gemDisplay"]
+position = Vector2(150, -2)
+texture = ExtResource("gem")
+
+[node name="gem5" type="Sprite2D" parent="gemDisplay"]
+position = Vector2(160, 0)
+texture = ExtResource("gem")
+
+[node name="plant1" type="StaticBody2D" parent="."]
+position = Vector2(8, 90)
+
+[node name="sprite" type="Sprite2D" parent="plant1"]
+position = Vector2(0, -8)
+texture = ExtResource("plant")
+
+[node name="shape" type="CollisionShape2D" parent="plant1"]
+shape = SubResource("plantShape")
+
+[node name="plant2" type="StaticBody2D" parent="."]
+position = Vector2(184, 90)
+
+[node name="sprite" type="Sprite2D" parent="plant2"]
+position = Vector2(0, -8)
+texture = ExtResource("plant")
+
+[node name="shape" type="CollisionShape2D" parent="plant2"]
+shape = SubResource("plantShape")
 
 [node name="door" parent="." unique_id=1766795290 instance=ExtResource("6")]
 position = Vector2(47.1434, 107.195)

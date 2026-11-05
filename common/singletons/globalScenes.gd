@@ -12,6 +12,9 @@ func setClipboard(value):
 func getClipboard():
 	return clipboard
 
+func reset():
+	scenesData={}
+
 func getKey(scene_,param_):
 	return scene_+'___'+param_
 

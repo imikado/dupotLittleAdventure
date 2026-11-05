@@ -1,0 +1,110 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://common/decor/fence.tscn" id="fence"]
+[ext_resource type="PackedScene" path="res://common/decor/flowers.tscn" id="flowers"]
+[ext_resource type="PackedScene" path="res://common/decor/lantern.tscn" id="lantern"]
+[ext_resource type="PackedScene" path="res://common/decor/logs.tscn" id="logs"]
+[ext_resource type="PackedScene" path="res://common/decor/sign.tscn" id="sign"]
+[ext_resource type="PackedScene" path="res://common/decor/stump.tscn" id="stump"]
+
+[node name="props" type="Node2D"]
+y_sort_enabled = true
+
+[node name="lantern1" parent="." instance=ExtResource("lantern")]
+position = Vector2(790, 236)
+
+[node name="lantern2" parent="." instance=ExtResource("lantern")]
+position = Vector2(1020, 236)
+
+[node name="lantern3" parent="." instance=ExtResource("lantern")]
+position = Vector2(1270, 236)
+
+[node name="lantern4" parent="." instance=ExtResource("lantern")]
+position = Vector2(860, 284)
+
+[node name="lantern5" parent="." instance=ExtResource("lantern")]
+position = Vector2(1330, 284)
+
+[node name="lantern6" parent="." instance=ExtResource("lantern")]
+position = Vector2(330, 268)
+
+[node name="fence1" parent="." instance=ExtResource("fence")]
+position = Vector2(1100, 222)
+segments = 5
+
+[node name="stump1" parent="." instance=ExtResource("stump")]
+position = Vector2(860, 112)
+
+[node name="stump2" parent="." instance=ExtResource("stump")]
+position = Vector2(1200, 318)
+
+[node name="stump3" parent="." instance=ExtResource("stump")]
+position = Vector2(555, 224)
+
+[node name="stump4" parent="." instance=ExtResource("stump")]
+position = Vector2(110, 134)
+
+[node name="logs1" parent="." instance=ExtResource("logs")]
+position = Vector2(1118, 118)
+
+[node name="sign1" parent="." instance=ExtResource("sign")]
+position = Vector2(1395, 230)
+
+[node name="sign2" parent="." instance=ExtResource("sign")]
+position = Vector2(714, 236)
+
+[node name="flowers1" parent="." instance=ExtResource("flowers")]
+position = Vector2(200, 236)
+variant = 0
+
+[node name="flowers2" parent="." instance=ExtResource("flowers")]
+position = Vector2(385, 246)
+variant = 2
+
+[node name="flowers3" parent="." instance=ExtResource("flowers")]
+position = Vector2(470, 224)
+variant = 1
+
+[node name="flowers4" parent="." instance=ExtResource("flowers")]
+position = Vector2(600, 314)
+variant = 0
+
+[node name="flowers5" parent="." instance=ExtResource("flowers")]
+position = Vector2(810, 198)
+variant = 2
+
+[node name="flowers6" parent="." instance=ExtResource("flowers")]
+position = Vector2(900, 134)
+variant = 1
+
+[node name="flowers7" parent="." instance=ExtResource("flowers")]
+position = Vector2(1060, 314)
+variant = 0
+
+[node name="flowers8" parent="." instance=ExtResource("flowers")]
+position = Vector2(1240, 164)
+variant = 2
+
+[node name="flowers9" parent="." instance=ExtResource("flowers")]
+position = Vector2(1350, 124)
+variant = 1
+
+[node name="flowers10" parent="." instance=ExtResource("flowers")]
+position = Vector2(985, 334)
+variant = 2
+
+[node name="flowers11" parent="." instance=ExtResource("flowers")]
+position = Vector2(40, 264)
+variant = 1
+
+[node name="flowers12" parent="." instance=ExtResource("flowers")]
+position = Vector2(1180, 74)
+variant = 0
+
+[node name="flowers13" parent="." instance=ExtResource("flowers")]
+position = Vector2(740, 329)
+variant = 1
+
+[node name="flowers14" parent="." instance=ExtResource("flowers")]
+position = Vector2(150, 339)
+variant = 0

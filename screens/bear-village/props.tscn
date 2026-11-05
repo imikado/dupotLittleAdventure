@@ -1,0 +1,124 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://common/decor/barrel.tscn" id="barrel"]
+[ext_resource type="PackedScene" path="res://common/decor/flowerBed.tscn" id="flowerBed"]
+[ext_resource type="PackedScene" path="res://common/decor/flowers.tscn" id="flowers"]
+[ext_resource type="PackedScene" path="res://common/decor/honeyPots.tscn" id="honeyPots"]
+[ext_resource type="PackedScene" path="res://common/decor/lantern.tscn" id="lantern"]
+[ext_resource type="PackedScene" path="res://common/decor/sign.tscn" id="sign"]
+[ext_resource type="PackedScene" path="res://screens/bear-village/assets/walker/walkingBear.tscn" id="walkingBear"]
+[ext_resource type="Texture2D" path="res://screens/bear-village/assets/walker/bear-idle-light.png" id="idleLight"]
+[ext_resource type="Texture2D" path="res://screens/bear-village/assets/walker/bear-walking-light.png" id="walkLight"]
+
+[node name="props" type="Node2D"]
+y_sort_enabled = true
+
+[node name="flowerBed1" parent="." instance=ExtResource("flowerBed")]
+position = Vector2(165, 329)
+
+[node name="flowerBed2" parent="." instance=ExtResource("flowerBed")]
+position = Vector2(48, 329)
+
+[node name="flowerBed3" parent="." instance=ExtResource("flowerBed")]
+position = Vector2(282, 420)
+
+[node name="flowerBed4" parent="." instance=ExtResource("flowerBed")]
+position = Vector2(404, 420)
+
+[node name="barrel1" parent="." instance=ExtResource("barrel")]
+position = Vector2(900, 428)
+
+[node name="barrel2" parent="." instance=ExtResource("barrel")]
+position = Vector2(916, 422)
+
+[node name="honeyPots1" parent="." instance=ExtResource("honeyPots")]
+position = Vector2(780, 428)
+
+[node name="honeyPots2" parent="." instance=ExtResource("honeyPots")]
+position = Vector2(668, 568)
+
+[node name="honeyPots3" parent="." instance=ExtResource("honeyPots")]
+position = Vector2(486, 584)
+
+[node name="barrel3" parent="." instance=ExtResource("barrel")]
+position = Vector2(488, 556)
+
+[node name="flowerBed5" parent="." instance=ExtResource("flowerBed")]
+position = Vector2(250, 614)
+
+[node name="flowerBed6" parent="." instance=ExtResource("flowerBed")]
+position = Vector2(860, 604)
+
+[node name="flowerBed7" parent="." instance=ExtResource("flowerBed")]
+position = Vector2(980, 624)
+
+[node name="lantern1" parent="." instance=ExtResource("lantern")]
+position = Vector2(232, 428)
+
+[node name="lantern2" parent="." instance=ExtResource("lantern")]
+position = Vector2(600, 428)
+
+[node name="lantern3" parent="." instance=ExtResource("lantern")]
+position = Vector2(1000, 428)
+
+[node name="lantern4" parent="." instance=ExtResource("lantern")]
+position = Vector2(460, 484)
+
+[node name="sign1" parent="." instance=ExtResource("sign")]
+position = Vector2(1035, 424)
+
+[node name="flowers1" parent="." instance=ExtResource("flowers")]
+position = Vector2(200, 494)
+variant = 0
+
+[node name="flowers2" parent="." instance=ExtResource("flowers")]
+position = Vector2(390, 484)
+variant = 2
+
+[node name="flowers3" parent="." instance=ExtResource("flowers")]
+position = Vector2(960, 504)
+variant = 1
+
+[node name="flowers4" parent="." instance=ExtResource("flowers")]
+position = Vector2(560, 674)
+variant = 0
+
+[node name="flowers5" parent="." instance=ExtResource("flowers")]
+position = Vector2(700, 634)
+variant = 2
+
+[node name="flowers6" parent="." instance=ExtResource("flowers")]
+position = Vector2(130, 584)
+variant = 1
+
+[node name="flowers7" parent="." instance=ExtResource("flowers")]
+position = Vector2(520, 234)
+variant = 2
+
+[node name="flowers8" parent="." instance=ExtResource("flowers")]
+position = Vector2(470, 284)
+variant = 0
+
+[node name="flowers9" parent="." instance=ExtResource("flowers")]
+position = Vector2(660, 284)
+variant = 1
+
+[node name="flowers10" parent="." instance=ExtResource("flowers")]
+position = Vector2(960, 284)
+variant = 0
+
+[node name="flowers11" parent="." instance=ExtResource("flowers")]
+position = Vector2(50, 436)
+variant = 2
+
+[node name="walkingBear1" parent="." instance=ExtResource("walkingBear")]
+position = Vector2(600, 456)
+fromX = -300.0
+toX = 180.0
+
+[node name="walkingBear2" parent="." instance=ExtResource("walkingBear")]
+position = Vector2(700, 500)
+idleSheet = ExtResource("idleLight")
+walkSheet = ExtResource("walkLight")
+fromX = 0.0
+toX = 260.0

@@ -1,7 +1,7 @@
 name: dupot-little-adventure
 title: Little Adventure
 base: core24
-version: '1.22.0'
+version: '1.23.0'
 summary: RPG Pixel Art little Game
 description: |
   Gordon has to repair the village's well.

@@ -1,0 +1,31 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://screens/bear-village/bee-room-platform/bee.png" id="1"]
+[ext_resource type="Script" path="res://screens/bear-village/bee-room-platform/assets/ambientBee.gd" id="2"]
+
+[sub_resource type="AtlasTexture" id="fly0"]
+atlas = ExtResource("1")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="fly1"]
+atlas = ExtResource("1")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="frames"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("fly0")
+}, {
+"duration": 1.0,
+"texture": SubResource("fly1")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 12.0
+}]
+
+[node name="ambientBee" type="AnimatedSprite2D"]
+sprite_frames = SubResource("frames")
+animation = &"fly"
+script = ExtResource("2")

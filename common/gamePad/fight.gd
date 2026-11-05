@@ -8,6 +8,7 @@ signal attack(attack_)
 signal usePotion
 
 const attackClass=preload("res://common/class/item/attack_class.gd")
+const fighterPlayer=preload("res://common/fighters/player.gd")
 const PUNCH_DAMAGE=4
 
 @onready var message=$messageBox/message
@@ -62,7 +63,7 @@ func showAttacks():
 	var weaponAttackList=GlobalPlayer.getWeaponAttackList()
 	if weaponAttackList.is_empty():
 		# sans arme, on se defend quand meme a mains nues
-		weaponAttackList=[attackClass.new(_trad(GlobalGame.TRAD_FIGHT_PUNCH), "", PUNCH_DAMAGE, 0)]
+		weaponAttackList=[attackClass.new(_trad(GlobalGame.TRAD_FIGHT_PUNCH), fighterPlayer.PUNCH_ANIMATION, PUNCH_DAMAGE, 0)]
 	for attackLoop in weaponAttackList:
 		var button
 		if GlobalPlayer.isAttackUnlocked(attackLoop):

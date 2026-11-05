@@ -4,6 +4,8 @@ const WorldMap=preload("res://screens/macro-map.gd")
 
 var groundFounded=null
 
+const NB_GORMONSTAR=5
+
 
 func debug():
 	GlobalPlayer.addItem(GlobalItems.ID.NAILS)
@@ -48,11 +50,11 @@ func _ready():
 		$ground5.enableDiscovered()
 	
 	if GlobalPlayer.hasItem(GlobalItems.ID.NAILS) and GlobalPlayer.hasItem(GlobalItems.ID.HONEY) and GlobalPlayer.hasItem(GlobalItems.ID.BUCKET) :
-		
-		var discussionList=GlobalGame.getTraductionById(GlobalGame.TRAD_TREEVILLAGE_START)
+
+		var discussionList=GlobalGame.getTraductionById(GlobalGame.TRAD_TREEVILLAGE_END)
 
 		$simpleDialog.addDiscussion(TRAD_ARTISAN,discussionList[0])
-		$simpleDialog.addDiscussion("Gordon",discussionList[1])
+		$simpleDialog.addDiscussion(GlobalGame.getTraductionById(GlobalGame.TRAD_WORD_GORDON),discussionList[1])
 		$simpleDialog.addDiscussion(TRAD_ARTISAN,discussionList[2])
 	
 	elif GlobalPlayer.hasItem(GlobalItems.ID.NAILS) or GlobalPlayer.hasItem(GlobalItems.ID.HONEY) or GlobalPlayer.hasItem(GlobalItems.ID.BUCKET) :
@@ -60,7 +62,7 @@ func _ready():
 		var discussionList=GlobalGame.getTraductionById(GlobalGame.TRAD_TREEVILLAGE_PENDING)
 
 		$simpleDialog.addDiscussion(TRAD_ARTISAN,discussionList[0])
-		$simpleDialog.addDiscussion("Gordon",discussionList[1])
+		$simpleDialog.addDiscussion(GlobalGame.getTraductionById(GlobalGame.TRAD_WORD_GORDON),discussionList[1])
 
 		var missingItem=[]
 		if !GlobalPlayer.hasItem(GlobalItems.ID.NAILS):
@@ -70,16 +72,16 @@ func _ready():
 		if !GlobalPlayer.hasItem(GlobalItems.ID.BUCKET):
 			missingItem.append(discussionList[4])
 					
-		$simpleDialog.addDiscussion("Gordon",missingItem)
+		$simpleDialog.addDiscussion(GlobalGame.getTraductionById(GlobalGame.TRAD_WORD_GORDON),missingItem)
 
 	else:
 
 		var discussionList=GlobalGame.getTraductionById(GlobalGame.TRAD_TREEVILLAGE_START)
 		
 		$simpleDialog.addDiscussion(TRAD_ARTISAN,discussionList[0])
-		$simpleDialog.addDiscussion("Gordon",discussionList[1])
+		$simpleDialog.addDiscussion(GlobalGame.getTraductionById(GlobalGame.TRAD_WORD_GORDON),discussionList[1])
 		$simpleDialog.addDiscussion(TRAD_ARTISAN,discussionList[2])
-		$simpleDialog.addDiscussion("Gordon",discussionList[3])
+		$simpleDialog.addDiscussion(GlobalGame.getTraductionById(GlobalGame.TRAD_WORD_GORDON),discussionList[3])
 		$simpleDialog.addDiscussion(TRAD_ARTISAN,discussionList[4])
 	
 	
@@ -121,7 +123,6 @@ func _on_playerAndControl_startClimbing():
 func _on_playerAndControl_digging():
 	if groundFounded!=null:
 		groundFounded.play()
-		print("play ground")
 	pass # Replace with function body.
 
 func _on_playerAndControl_endDigging():
@@ -131,8 +132,9 @@ func _on_playerAndControl_endDigging():
 
 #--- grounds
 func processGormonStarFounded(grounded_):
-	$notification.display(GlobalGame.getTraductionById(GlobalGame.TRAD_TREEVILLAGE_STARFOUND))
 	GlobalPlayer.addItemEvenIfExist(GlobalItems.ID.GORDMON_STAR)
+	var nbFound=GlobalPlayer.countItem(GlobalItems.ID.GORDMON_STAR)
+	$notification.display(GlobalGame.getTraductionById(GlobalGame.TRAD_TREEVILLAGE_STARFOUND) % [nbFound, NB_GORMONSTAR])
 	$Node2D/playerAndControl.reloadInvetory()
 	
 	GlobalScenes.saveParamForScene(scene_file_path,grounded_+".isDiscovered",true)

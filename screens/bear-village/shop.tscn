@@ -1,6 +1,6 @@
 [gd_scene format=4]
 
-[ext_resource type="PackedScene" path="res://screens/bear-village/assets/bear.tscn" id="1"]
+[ext_resource type="PackedScene" path="res://screens/bear-village/assets/bearSeller.tscn" id="1"]
 [ext_resource type="Texture2D" path="res://screens/bear-village/shop/bearShopTiles.png" id="2"]
 [ext_resource type="Texture2D" path="res://screens/bear-village/shop/bearShopBackground.png" id="bg"]
 [ext_resource type="Texture2D" path="res://screens/bear-village/shop/bearShopCounter.png" id="counter"]
@@ -93,3 +93,5 @@ position = Vector2(111.503, 116)
 [connection signal="discussionFinished" from="simpleDialog" to="." method="_on_simpleDialog_discussionFinished"]
 [connection signal="playerOpenedDoor" from="sellerTalk" to="." method="_on_sellerTalk_playerOpenedDoor"]
 [connection signal="buyItem" from="shopList" to="playerAndControl" method="_on_shopList_buyItem"]
+[connection signal="save" from="playerAndControl" to="." method="_on_playerAndControl_save"]
+[connection signal="quit" from="playerAndControl" to="." method="_on_playerAndControl_quit"]

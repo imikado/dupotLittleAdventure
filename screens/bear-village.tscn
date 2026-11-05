@@ -8,7 +8,18 @@
 [ext_resource type="PackedScene" path="res://common/areas/door.tscn" id="6"]
 [ext_resource type="ShaderMaterial" path="res://common/shaders/grassGround.tres" id="fx_grass"]
 [ext_resource type="PackedScene" path="res://common/effects/pollen.tscn" id="fx_pollen"]
-[ext_resource type="ShaderMaterial" path="res://common/shaders/wind.tres" id="fx_wind"]
+[ext_resource type="Texture2D" path="res://screens/bear-village/images/paths.png" id="paths"]
+[ext_resource type="Texture2D" path="res://screens/bear-village/images/bushes.png" id="bushes"]
+[ext_resource type="Texture2D" path="res://screens/bear-village/images/mushrooms.png" id="mushrooms"]
+[ext_resource type="Texture2D" path="res://screens/bear-village/images/hiveBox.png" id="hiveBox"]
+[ext_resource type="Texture2D" path="res://screens/bear-village/images/tree-variants.png" id="treeVariants"]
+[ext_resource type="PackedScene" path="res://common/effects/butterflies.tscn" id="fx_butterflies"]
+[ext_resource type="PackedScene" path="res://common/effects/cloudShadows.tscn" id="fx_cloudShadows"]
+[ext_resource type="PackedScene" path="res://screens/bear-village/props.tscn" id="props"]
+[ext_resource type="PackedScene" path="res://common/effects/bees.tscn" id="fx_bees"]
+[ext_resource type="Material" path="res://common/shaders/crownFade.tres" id="crownFadeMat"]
+[ext_resource type="Script" path="res://common/effects/crownFade.gd" id="crownFadeScript"]
+[ext_resource type="Texture2D" path="res://common/decor/doorSlab.png" id="doorSlab"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3hnlc"]
 texture = ExtResource("2")
@@ -21,22 +32,153 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_3hnlc")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ws841"]
-texture = ExtResource("3")
+texture = ExtResource("treeVariants")
 texture_region_size = Vector2i(154, 256)
 0:0/0 = 0
 0:0/0/texture_origin = Vector2i(-45, -96)
+0:0/0/y_sort_origin = 192
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-24, 68, 112, 68, 108, 80, 102, 94, 86, 104, 71, 111, 71, 204, 56, 210, 32, 210, 18, 206, 13, 200, 13, 111, -2, 104, -16, 92, -22, 80)
+1:0/0 = 0
+1:0/0/texture_origin = Vector2i(-45, -96)
+1:0/0/y_sort_origin = 192
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-24, 68, 112, 68, 108, 80, 102, 94, 86, 104, 71, 111, 71, 204, 56, 210, 32, 210, 18, 206, 13, 200, 13, 111, -2, 104, -16, 92, -22, 80)
+2:0/0 = 0
+2:0/0/texture_origin = Vector2i(-45, -96)
+2:0/0/y_sort_origin = 192
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-24, 68, 112, 68, 108, 80, 102, 94, 86, 104, 71, 111, 71, 204, 56, 210, 32, 210, 18, 206, 13, 200, 13, 111, -2, 104, -16, 92, -22, 80)
+3:0/0 = 0
+3:0/0/texture_origin = Vector2i(-45, -96)
+3:0/0/y_sort_origin = 192
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-24, 68, 112, 68, 108, 80, 102, 94, 86, 104, 71, 111, 71, 204, 56, 210, 32, 210, 18, 206, 13, 200, 13, 111, -2, 104, -16, 92, -22, 80)
 
 [sub_resource type="TileSet" id="TileSet_ytans"]
 tile_size = Vector2i(64, 64)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_ws841")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_road0"]
+texture = ExtResource("paths")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_road1"]
+texture = ExtResource("paths")
+margins = Vector2i(32, 0)
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_road2"]
+texture = ExtResource("paths")
+margins = Vector2i(64, 0)
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_road3"]
+texture = ExtResource("paths")
+margins = Vector2i(0, 32)
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_road4"]
+texture = ExtResource("paths")
+margins = Vector2i(64, 32)
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_road5"]
+texture = ExtResource("paths")
+margins = Vector2i(0, 64)
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_road6"]
+texture = ExtResource("paths")
+margins = Vector2i(32, 64)
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_road7"]
+texture = ExtResource("paths")
+margins = Vector2i(64, 64)
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_road8"]
+texture = ExtResource("paths")
+margins = Vector2i(96, 0)
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_road9"]
+texture = ExtResource("paths")
+margins = Vector2i(96, 32)
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_road10"]
+texture = ExtResource("paths")
+margins = Vector2i(96, 64)
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_road"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_road0")
+sources/1 = SubResource("TileSetAtlasSource_road1")
+sources/2 = SubResource("TileSetAtlasSource_road2")
+sources/3 = SubResource("TileSetAtlasSource_road3")
+sources/4 = SubResource("TileSetAtlasSource_road4")
+sources/5 = SubResource("TileSetAtlasSource_road5")
+sources/6 = SubResource("TileSetAtlasSource_road6")
+sources/7 = SubResource("TileSetAtlasSource_road7")
+sources/8 = SubResource("TileSetAtlasSource_road8")
+sources/9 = SubResource("TileSetAtlasSource_road9")
+sources/10 = SubResource("TileSetAtlasSource_road10")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bush"]
+texture = ExtResource("bushes")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/y_sort_origin = -5
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-11.3029995, 5.6551, -9.84945, 0.8099003, -2.7432003, -2.5817003, 10.5002, -0.32059956, 8.239201, 9.3696995, -9.52644, 9.0467)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mushroom"]
+texture = ExtResource("mushrooms")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/y_sort_origin = -3
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-11.94902, -5.9733, -6.7808504, -11.78751, 5.493601, -12.91805, 10.9848, -8.3959, 11.6308, -0.32059956, 6.4626007, 3.5555, 4.363001, 4.040001, 4.5245, 11.792299, -4.6813, 11.469299, -4.5198, 3.8785, -9.84945, 1.1329002)
+1:0/0 = 0
+1:0/0/y_sort_origin = -3
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-11.94902, -5.9733, -6.7808504, -11.78751, 5.493601, -12.91805, 10.9848, -8.3959, 11.6308, -0.32059956, 6.4626007, 3.5555, 4.363001, 4.040001, 4.5245, 11.792299, -4.6813, 11.469299, -4.5198, 3.8785, -9.84945, 1.1329002)
+2:0/0 = 0
+2:0/0/y_sort_origin = -3
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-11.94902, -5.9733, -6.7808504, -11.78751, 5.493601, -12.91805, 10.9848, -8.3959, 11.6308, -0.32059956, 6.4626007, 3.5555, 4.363001, 4.040001, 4.5245, 11.792299, -4.6813, 11.469299, -4.5198, 3.8785, -9.84945, 1.1329002)
+
+[sub_resource type="TileSet" id="TileSet_decors"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_bush")
+sources/1 = SubResource("TileSetAtlasSource_mushroom")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hiveBox"]
+texture = ExtResource("hiveBox")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/y_sort_origin = -5
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-9, -2, 9, -2, 9, 9, -9, 9)
+
+[sub_resource type="TileSet" id="TileSet_apiary"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_hiveBox")
+
 [node name="bear-village" type="Node2D" unique_id=1137999618]
 script = ExtResource("1")
 
 [node name="cameraRef" type="ReferenceRect" parent="." unique_id=771623893]
 offset_left = -104.0
-offset_right = 1060.0
+offset_right = 1056.0
 offset_bottom = 814.0
 
 [node name="background" type="TileMapLayer" parent="." unique_id=2120526299]
@@ -44,21 +186,64 @@ material = ExtResource("fx_grass")
 tile_map_data = PackedByteArray("AAD+////AAAAAAAAAAD/////AAAAAAAAAAAAAP//AAAAAAAAAAABAP//AAAAAAAAAAACAP//AAAAAAAAAAADAP//AAAAAAAAAAAEAP//AAAAAAAAAAAFAP//AAAAAAAAAAAGAP//AAAAAAAAAAAHAP//AAAAAAAAAAAIAP//AAAAAAAAAAAJAP//AAAAAAAAAAAKAP//AAAAAAAAAAD+/wAAAAAAAAAAAAD//wAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAD+/wEAAAAAAAAAAAD//wEAAAAAAAAAAAAAAAEAAAAAAAAAAAABAAEAAAAAAAAAAAACAAEAAAAAAAAAAAADAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAAFAAEAAAAAAAAAAAAGAAEAAAAAAAAAAAAHAAEAAAAAAAAAAAAIAAEAAAAAAAAAAAAJAAEAAAAAAAAAAAAKAAEAAAAAAAAAAAD+/wIAAAAAAAAAAAD//wIAAAAAAAAAAAAAAAIAAAAAAAAAAAABAAIAAAAAAAAAAAACAAIAAAAAAAAAAAADAAIAAAAAAAAAAAAEAAIAAAAAAAAAAAAFAAIAAAAAAAAAAAAGAAIAAAAAAAAAAAAHAAIAAAAAAAAAAAAIAAIAAAAAAAAAAAAJAAIAAAAAAAAAAAAKAAIAAAAAAAAAAAD+/wMAAAAAAAAAAAD//wMAAAAAAAAAAAAAAAMAAAAAAAAAAAABAAMAAAAAAAAAAAACAAMAAAAAAAAAAAADAAMAAAAAAAAAAAAEAAMAAAAAAAAAAAAFAAMAAAAAAAAAAAAGAAMAAAAAAAAAAAAHAAMAAAAAAAAAAAAIAAMAAAAAAAAAAAAJAAMAAAAAAAAAAAAKAAMAAAAAAAAAAAD+/wQAAAAAAAAAAAD//wQAAAAAAAAAAAAAAAQAAAAAAAAAAAABAAQAAAAAAAAAAAACAAQAAAAAAAAAAAADAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAFAAQAAAAAAAAAAAAGAAQAAAAAAAAAAAAHAAQAAAAAAAAAAAAIAAQAAAAAAAAAAAAJAAQAAAAAAAAAAAAKAAQAAAAAAAAAAAD+/wUAAAAAAAAAAAD//wUAAAAAAAAAAAAAAAUAAAAAAAAAAAABAAUAAAAAAAAAAAACAAUAAAAAAAAAAAADAAUAAAAAAAAAAAAEAAUAAAAAAAAAAAAFAAUAAAAAAAAAAAAGAAUAAAAAAAAAAAAHAAUAAAAAAAAAAAAIAAUAAAAAAAAAAAAJAAUAAAAAAAAAAAAKAAUAAAAAAAAAAAD+/wYAAAAAAAAAAAD//wYAAAAAAAAAAAAAAAYAAAAAAAAAAAABAAYAAAAAAAAAAAACAAYAAAAAAAAAAAADAAYAAAAAAAAAAAAEAAYAAAAAAAAAAAAFAAYAAAAAAAAAAAAGAAYAAAAAAAAAAAAHAAYAAAAAAAAAAAAIAAYAAAAAAAAAAAAJAAYAAAAAAAAAAAAKAAYAAAAAAAAAAAD+/wcAAAAAAAAAAAD//wcAAAAAAAAAAAAAAAcAAAAAAAAAAAABAAcAAAAAAAAAAAACAAcAAAAAAAAAAAADAAcAAAAAAAAAAAAEAAcAAAAAAAAAAAAFAAcAAAAAAAAAAAAGAAcAAAAAAAAAAAAHAAcAAAAAAAAAAAAIAAcAAAAAAAAAAAAJAAcAAAAAAAAAAAAKAAcAAAAAAAAAAAD+/wgAAAAAAAAAAAD//wgAAAAAAAAAAAAAAAgAAAAAAAAAAAABAAgAAAAAAAAAAAACAAgAAAAAAAAAAAADAAgAAAAAAAAAAAAEAAgAAAAAAAAAAAAFAAgAAAAAAAAAAAAGAAgAAAAAAAAAAAAHAAgAAAAAAAAAAAAIAAgAAAAAAAAAAAAJAAgAAAAAAAAAAAAKAAgAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_bg1pk")
 
-[node name="treeTop" type="TileMapLayer" parent="." unique_id=47076831]
-material = ExtResource("fx_wind")
-tile_map_data = PackedByteArray("AAD///v/AAAAAAAAAAD9//3/AAAAAAAAAAAAAP3/AAAAAAAAAAADAP3/AAAAAAAAAAAGAP3/AAAAAAAAAAAJAP3/AAAAAAAAAAAMAP3/AAAAAAAAAAAPAP3/AAAAAAAAAAD7////AAAAAAAAAAD+////AAAAAAAAAAABAP//AAAAAAAAAAAEAP//AAAAAAAAAAAIAP//AAAAAAAAAAALAP//AAAAAAAAAAANAP//AAAAAAAAAAAGAAAAAAAAAAAAAAAPAAAAAAAAAAAAAAAKAAEAAAAAAAAAAAAMAAEAAAAAAAAAAAD7/wIAAAAAAAAAAAAOAAIAAAAAAAAAAAA=")
-tile_set = SubResource("TileSet_ytans")
+[node name="road" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAADAAkAAwAAAAAAAAADAAoAAwAAAAAAAAADAAsAAwAAAAAAAAADAAwAAwAAAAAAAAADAA0AAwAAAAAAAAADAA4ABQAAAAAAAAAEAA4AAQAAAAAAAAAFAA4AAQAAAAAAAAAGAA4AAQAAAAAAAAAHAA4AAQAAAAAAAAAIAA4AAQAAAAAAAAAJAA4AAQAAAAAAAAAKAAwAAwAAAAAAAAAKAA0AAwAAAAAAAAAKAA4ACQAAAAAAAAALAA4AAQAAAAAAAAAMAA4AAQAAAAAAAAANAA4AAQAAAAAAAAAOAA4AAQAAAAAAAAAPAA4AAQAAAAAAAAAQAA4AAQAAAAAAAAARAA4AAQAAAAAAAAASAA4AAQAAAAAAAAATAA4AAQAAAAAAAAAUAA4AAQAAAAAAAAAVAA4AAQAAAAAAAAAWAA4AAQAAAAAAAAAXAA4AAQAAAAAAAAAYAA4AAQAAAAAAAAAZAA4AAQAAAAAAAAAaAA0AAwAAAAAAAAAaAA4ACQAAAAAAAAAbAA4AAQAAAAAAAAAcAA4AAQAAAAAAAAAdAA4AAQAAAAAAAAAeAA4AAQAAAAAAAAAfAA4AAQAAAAAAAAAgAA4AAQAAAAAAAAAhAA4AAQAAAAAAAAA=")
+tile_set = SubResource("TileSet_road")
 
-[node name="treeBottom" type="TileMapLayer" parent="." unique_id=1878805352]
-material = ExtResource("fx_wind")
-tile_map_data = PackedByteArray("AAD9/wMAAAAAAAAAAAD8/wUAAAAAAAAAAAD+/wYAAAAAAAAAAAD8/wcAAAAAAAAAAAD+/wgAAAAAAAAAAAD8/woAAAAAAAAAAAAAAAoAAAAAAAAAAAAEAAoAAAAAAAAAAAAJAAoAAAAAAAAAAAANAAoAAAAAAAAAAAD+/wsAAAAAAAAAAAADAAsAAAAAAAAAAAAGAAsAAAAAAAAAAAAKAAsAAAAAAAAAAAAOAAsAAAAAAAAAAAABAAwAAAAAAAAAAAAIAAwAAAAAAAAAAAAMAAwAAAAAAAAAAAA=")
-tile_set = SubResource("TileSet_ytans")
+[node name="doorSlabs" type="Node2D" parent="."]
+
+[node name="bevilRoom" type="Sprite2D" parent="doorSlabs"]
+position = Vector2(106, 302)
+texture = ExtResource("doorSlab")
+
+[node name="beeRoom" type="Sprite2D" parent="doorSlabs"]
+position = Vector2(342, 395)
+texture = ExtResource("doorSlab")
+
+[node name="shop" type="Sprite2D" parent="doorSlabs"]
+position = Vector2(841, 441)
+texture = ExtResource("doorSlab")
+
+[node name="crownFade" type="Node" parent="."]
+script = ExtResource("crownFadeScript")
+
+[node name="cloudShadows" parent="." instance=ExtResource("fx_cloudShadows")]
+area = NodePath("../cameraRef")
+
+[node name="butterflies" parent="." instance=ExtResource("fx_butterflies")]
+area = NodePath("../cameraRef")
+count = 5
+
+[node name="bees" parent="." instance=ExtResource("fx_bees")]
+position = Vector2(576, 590)
 
 [node name="pollen" parent="." instance=ExtResource("fx_pollen")]
 area = NodePath("../cameraRef")
 
 [node name="Node2D" type="Node2D" parent="." unique_id=2022261284]
 y_sort_enabled = true
+
+[node name="decors" type="TileMapLayer" parent="Node2D"]
+y_sort_enabled = true
+tile_map_data = PackedByteArray("AAAGABAAAAAAAAAAAAAHABAAAAAAAAAAAAAOABEAAAAAAAAAAAATAA8AAAAAAAAAAAAWABIAAAAAAAAAAAAdABEAAAAAAAAAAAAeABIAAAAAAAAAAAAQAAkAAAAAAAAAAAARAAoAAAAAAAAAAAATAAcAAAAAAAAAAAAAAA0AAAAAAAAAAAD//xEAAAAAAAAAAAAMAAYAAAAAAAAAAAABABMAAAAAAAAAAAAYABAAAAAAAAAAAAAIABEAAQACAAAAAAAUABAAAQABAAAAAAAXAAoAAQABAAAAAAAfABAAAQAAAAAAAAABABAAAQAAAAAAAAAPAAsAAQAAAAAAAAAGAAcAAQABAAAAAAANABIAAQACAAAAAAACABEAAAAAAAAAAAAJABIAAAAAAAAAAAALABAAAAAAAAAAAAAZABIAAAAAAAAAAAAgABIAAAAAAAAAAAAEAAsAAAAAAAAAAAAVAAwAAAAAAAAAAAANAAkAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_decors")
+
+[node name="apiary" type="TileMapLayer" parent="Node2D"]
+y_sort_enabled = true
+tile_map_data = PackedByteArray("AAAQABEAAAAAAAAAAAARABEAAAAAAAAAAAASABEAAAAAAAAAAAATABEAAAAAAAAAAAARABMAAAAAAAAAAAASABMAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_apiary")
+
+[node name="treeTop" type="TileMapLayer" parent="Node2D" unique_id=47076831]
+y_sort_enabled = true
+material = ExtResource("crownFadeMat")
+tile_map_data = PackedByteArray("AAD///v/AAAAAAAAAAD9//3/AAADAAAAAAAAAP3/AAAAAAAAAAADAP3/AAAAAAAAAAAGAP3/AAACAAAAAAAJAP3/AAACAAAAAAAMAP3/AAAAAAAAAAAPAP3/AAAAAAAAAAD7////AAAAAAAAAAD+////AAABAAAAAAABAP//AAAAAAAAAAAEAP//AAACAAAAAAAIAP//AAACAAAAAAALAP//AAAAAAAAAAANAP//AAAAAAAAAAAGAAAAAAACAAAAAAAPAAAAAAAAAAAAAAAKAAEAAAACAAAAAAAMAAEAAAADAAAAAAD7/wIAAAABAAAAAAAOAAIAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_ytans")
+
+[node name="treeBottom" type="TileMapLayer" parent="Node2D" unique_id=1878805352]
+y_sort_enabled = true
+material = ExtResource("crownFadeMat")
+tile_map_data = PackedByteArray("AAD9/wMAAAAAAAAAAAD8/wUAAAACAAAAAAD+/wYAAAACAAAAAAD8/wcAAAACAAAAAAD+/wgAAAAAAAAAAAD8/woAAAACAAAAAAAAAAoAAAAAAAAAAAAEAAoAAAABAAAAAAAJAAoAAAABAAAAAAANAAoAAAACAAAAAAD+/wsAAAACAAAAAAADAAsAAAABAAAAAAAGAAsAAAABAAAAAAAKAAsAAAACAAAAAAAOAAsAAAAAAAAAAAABAAwAAAABAAAAAAAIAAwAAAACAAAAAAAMAAwAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_ytans")
 
 [node name="playerAndControl" parent="Node2D" unique_id=1884453099 instance=ExtResource("4")]
 position = Vector2(964.88, 427.121)
@@ -71,6 +256,8 @@ position = Vector2(344.015, 361.588)
 
 [node name="shop" parent="Node2D" unique_id=1613678617 instance=ExtResource("5")]
 position = Vector2(842.935, 402.186)
+
+[node name="props" parent="Node2D" instance=ExtResource("props")]
 
 [node name="gotToMacro" parent="." unique_id=657282079 instance=ExtResource("6")]
 position = Vector2(1024.87, 359.783)

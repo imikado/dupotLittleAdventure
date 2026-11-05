@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" path="res://screens/game/title/pixelLogo.tscn" id="logo"]
 [ext_resource type="Theme" path="res://common/themes/default.tres" id="1"]
+[ext_resource type="ShaderMaterial" path="res://common/shaders/grassGround.tres" id="fx_grass"]
 [ext_resource type="Script" path="res://screens/game/menu.gd" id="2"]
 [ext_resource type="Texture2D" path="res://screens/tree-village/images/background.png" id="5"]
 [ext_resource type="PackedScene" path="res://screens/game/keyboardGame.tscn" id="6"]
@@ -18,11 +19,14 @@ theme = ExtResource("1")
 script = ExtResource("2")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=484308339]
+material = ExtResource("fx_grass")
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-scale = Vector2(3.34032, 1.88094)
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("5")
+stretch_mode = 1
 
 [node name="logo" parent="." instance=ExtResource("logo")]
 position = Vector2(40, 34)

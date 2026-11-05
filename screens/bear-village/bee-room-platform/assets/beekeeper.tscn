@@ -1,0 +1,58 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://screens/bear-village/bee-room-platform/beekeeper.png" id="1"]
+
+[sub_resource type="AtlasTexture" id="idle0"]
+atlas = ExtResource("1")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="idle1"]
+atlas = ExtResource("1")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="idle2"]
+atlas = ExtResource("1")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="idle3"]
+atlas = ExtResource("1")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="idle4"]
+atlas = ExtResource("1")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="frames"]
+animations = [{
+"frames": [{
+"duration": 8.0,
+"texture": SubResource("idle1")
+}, {
+"duration": 6.0,
+"texture": SubResource("idle0")
+}, {
+"duration": 6.0,
+"texture": SubResource("idle1")
+}, {
+"duration": 2.0,
+"texture": SubResource("idle2")
+}, {
+"duration": 2.0,
+"texture": SubResource("idle3")
+}, {
+"duration": 2.0,
+"texture": SubResource("idle4")
+}, {
+"duration": 10.0,
+"texture": SubResource("idle1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="beekeeper" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("frames")
+autoplay = "default"

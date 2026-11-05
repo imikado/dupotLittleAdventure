@@ -12,6 +12,7 @@ const TRAD_WORD_PRESENTATEUR='Presentateur'
 const TRAD_WORD_APICULTEUR='Apiculteur'
 const TRAD_WORD_ARTISAN='Artisan'
 const TRAD_WORD_GORDONMOM='gordon_mom'
+const TRAD_WORD_GORDON='gordon'
 
 const TRAD_TREEVILLAGE_START='tree-village_start'
 const TRAD_TREEVILLAGE_PENDING='tree-village_pending'
@@ -25,6 +26,7 @@ const TRAD_TREEVILLAGE_GEMHOUSE_END='tree-village_gemhouse_end'
 
 const TRAD_TREEVILLAGE_SHOP='tree-village_shop'
 const TRAD_TREEVILLAGE_GORDONHOME='tree-village_gordonhome'
+const TRAD_TREEVILLAGE_GORDONHOME_HEAL='tree-village_gordonhome_heal'
 
 
 const TRAD_CRABVILLAGE_SHOP='crabvillage_shop'
@@ -41,8 +43,10 @@ const TRAD_BEARVILLAGE_SHOP='beervillage_shop'
 const TRAD_BEARVILLAGE_BEEPLATFORM='beervillage_beeplatform'
 const TRAD_BEARVILLAGE_BEEPLATFORM_START='beervillage_beeplatform_start'
 const TRAD_BEARVILLAGE_BEEPLATFORM_WIN='beervillage_beeplatform_win'
+const TRAD_BEARVILLAGE_BEEPLATFORM_REPLAY='beervillage_beeplatform_replay'
 const TRAD_BEARVILLAGE_BEVILROOM_START='beervillage_bevilroom_start'
 const TRAD_BEARVILLAGE_BEVILROOM_WIN='beervillage_bevilroom_win'
+const TRAD_BEARVILLAGE_BEVILROOM_REPLAY='beervillage_bevilroom_replay'
 
 
 const TRAD_BUTTON_NEWGAME='button_newgame'
@@ -61,6 +65,22 @@ const TRAD_BUTTON_VALIDER='button_valider'
 const TRAD_LABEL_RETOURAUMENU='label_retouraumenu'
 const TRAD_END_TITLE='end_title'
 const TRAD_END_MESSAGE='end_message'
+const TRAD_END_PARTY='end_party'
+const TRAD_TITLE_PRESS_KEY='title_press_key'
+const TRAD_TITLE_TOUCH='title_touch'
+const TRAD_CREDITS_GAME='credits_game'
+const TRAD_CREDITS_CAST='credits_cast'
+const TRAD_CREDITS_BEARS='credits_bears'
+const TRAD_CREDITS_BEVIL='credits_bevil'
+const TRAD_CREDITS_CRABS='credits_crabs'
+const TRAD_CREDITS_SPIDER='credits_spider'
+const TRAD_CREDITS_FONT_TITLE='credits_font_title'
+const TRAD_CREDITS_FONT='credits_font'
+const TRAD_CREDITS_ENGINE_TITLE='credits_engine_title'
+const TRAD_CREDITS_ENGINE='credits_engine'
+const TRAD_CREDITS_LICENSE_TITLE='credits_license_title'
+const TRAD_CREDITS_LICENSE='credits_license'
+const TRAD_CREDITS_MORE='credits_more'
 
 const TRAD_UI_PAUSE='ui_pause'
 const TRAD_UI_RESUME='ui_resume'
@@ -85,6 +105,14 @@ const TRAD_MAP_SPIDERWEB='map_spider-web'
 const TRAD_MAP_ENTER='map_enter'
 const TRAD_UI_SHOP='ui_shop'
 const TRAD_UI_EQUIP='ui_equip'
+const TRAD_UI_EQUIPPED='ui_equipped'
+const TRAD_UI_RESET='ui_reset'
+const TRAD_UI_GOALS='ui_goals'
+const TRAD_GOALS_WELL='goals_well'
+const TRAD_GOALS_SWORD='goals_sword'
+const TRAD_GOALS_NAILS='goals_nails'
+const TRAD_GOALS_BEARS='goals_bears'
+const TRAD_GOALS_STARS='goals_stars'
 const TRAD_UI_REPLAY='ui_replay'
 const TRAD_UI_RESTART='ui_restart'
 const TRAD_UI_DISPLAY='ui_display'
@@ -132,10 +160,10 @@ var traductionsList={
 	},
 	TRAD_BUTTON_LOADGAME:{
 		FR:'Charger une partie',
-		EN:'Load previous Game'
+		EN:'Load a game'
 	},
 	TRAD_BUTTON_CREATE:{
-		FR:'Crééer',
+		FR:'Créer',
 		EN:'Create'
 	},
 	TRAD_LABEL_NOM:{
@@ -197,6 +225,14 @@ var traductionsList={
 	TRAD_MAP_ENTER:{FR:'Entrer',EN:'Enter'},
 	TRAD_UI_SHOP:{FR:'Boutique',EN:'Shop'},
 	TRAD_UI_EQUIP:{FR:'Équiper',EN:'Equip'},
+	TRAD_UI_EQUIPPED:{FR:'Équipé',EN:'Equipped'},
+	TRAD_UI_RESET:{FR:'Recommencer',EN:'Restart'},
+	TRAD_UI_GOALS:{FR:'Objectifs',EN:'Goals'},
+	TRAD_GOALS_WELL:{FR:'Pour réparer le puits :',EN:'To repair the well:'},
+	TRAD_GOALS_SWORD:{FR:'boutique',EN:'shop'},
+	TRAD_GOALS_NAILS:{FR:'crabes',EN:'crabs'},
+	TRAD_GOALS_BEARS:{FR:'ours',EN:'bears'},
+	TRAD_GOALS_STARS:{FR:'Étoiles de Gormon %d/%d',EN:'Gormon stars %d/%d'},
 	TRAD_UI_REPLAY:{FR:'Rejouer',EN:'Play again'},
 	TRAD_UI_RESTART:{FR:'Recommencer ?',EN:'Try again?'},
 	TRAD_UI_DISPLAY:{FR:'Afficher',EN:'Show'},
@@ -227,7 +263,23 @@ var traductionsList={
 	TRAD_FIGHT_DEFEAT:{FR:'%s est épuisé et recule...',EN:'%s is exhausted and retreats...'},
 	TRAD_END_TITLE:{FR:'Fin',EN:'The End'},
 	TRAD_END_MESSAGE:{FR:"Le puits est réparé !\nMerci d'avoir joué.",EN:'The well is fixed!\nThanks for playing.'},
-	TRAD_FIGHT_TIP:{FR:'Appuie au « ! » pour un bonus !',EN:'Press at « ! » for a bonus!'},
+	TRAD_END_PARTY:{FR:'Le puits coule à nouveau !',EN:'The well flows again!'},
+	TRAD_TITLE_PRESS_KEY:{FR:'Appuyez sur une touche',EN:'Press any key'},
+	TRAD_TITLE_TOUCH:{FR:"Touchez l'écran",EN:'Tap the screen'},
+	TRAD_CREDITS_GAME:{FR:'Un jeu de Dupot',EN:'A game by Dupot'},
+	TRAD_CREDITS_CAST:{FR:'Avec',EN:'Starring'},
+	TRAD_CREDITS_BEARS:{FR:'Les ours',EN:'The bears'},
+	TRAD_CREDITS_BEVIL:{FR:'Les BeVil',EN:'The BeVils'},
+	TRAD_CREDITS_CRABS:{FR:'Les crabes',EN:'The crabs'},
+	TRAD_CREDITS_SPIDER:{FR:"L'araignée",EN:'The spider'},
+	TRAD_CREDITS_FONT_TITLE:{FR:'Police',EN:'Font'},
+	TRAD_CREDITS_FONT:{FR:'Pixel Operator\npar Jayvee Enaguas (CC0)',EN:'Pixel Operator\nby Jayvee Enaguas (CC0)'},
+	TRAD_CREDITS_ENGINE_TITLE:{FR:'Moteur',EN:'Engine'},
+	TRAD_CREDITS_ENGINE:{FR:'Godot Engine',EN:'Godot Engine'},
+	TRAD_CREDITS_LICENSE_TITLE:{FR:'Licence',EN:'License'},
+	TRAD_CREDITS_LICENSE:{FR:'GNU LGPL 2.1',EN:'GNU LGPL 2.1'},
+	TRAD_CREDITS_MORE:{FR:"D'autres jeux sur\ndupot.org",EN:'More games at\ndupot.org'},
+	TRAD_FIGHT_TIP:{FR:'Appuie au « ! » pour un bonus !',EN:'Press at "!" for a bonus!'},
 	TRAD_FIGHT_PERFECT:{FR:'Parfait !',EN:'Perfect!'},
 	TRAD_FIGHT_PARRY:{FR:'Paré !',EN:'Blocked!'},
 
@@ -243,6 +295,10 @@ var traductionsList={
 	TRAD_WORD_VENDEUR:{
 		FR:"Vendeur",
 		EN:"Seller"
+	},
+	TRAD_WORD_GORDON:{
+		FR:"Gordon",
+		EN:"Gordon"
 	},
 	TRAD_WORD_GORDONMOM:{
 		FR:"Maman de Gordon",
@@ -264,23 +320,23 @@ var traductionsList={
 		FR:[
 			["Bonjour Gordon !","Tu peux m'aider à réparer le puits ?"],
 			[
-				"Oui je pense, j'ai",
-				"- vos clous;",
-				"- le miel pour sceller les pierres;",
+				"Oui, je pense. J'ai :",
+				"- vos clous ;",
+				"- le miel pour sceller les pierres ;",
 				"- et un nouveau seau. :)"
 			],
 			["Félicitations Gordon !","Je vais pouvoir réparer."],
 
 		],
 		EN:[
-			["Hi Gordon !","Can you help me to repair the well ?"],
+			["Hi Gordon!","Can you help me repair the well?"],
 			[
-				"Yes i think, i have",
+				"Yes, I think so. I have:",
 				"- your nails;",
-				"- honey to stick stones;",
+				"- honey to seal the stones;",
 				"- and a new bucket. :)"
 			],
-			["Congratulations Gordon !","I can repair now."],
+			["Congratulations Gordon!","Now I can repair it."],
 
 		],
 	},
@@ -289,8 +345,8 @@ var traductionsList={
 			["Bonjour Gordon !","Tu peux m'aider à réparer le puits ?"],
 			[
 				"Bonjour,",
-				"Oui je pense, mais il me manque encore des objets...",
-				"Il me manque"
+				"Oui, je pense, mais il me manque encore des objets...",
+				"Il me manque :"
 				
 			],
 			"- les clous",
@@ -298,16 +354,16 @@ var traductionsList={
 			"- le nouveau seau"
 		],
 		EN:[
-			["Hi Gordon !","Can you help me to repair the well ?"],
+			["Hi Gordon!","Can you help me repair the well?"],
 			[
 				"Hi,",
-				"Yes i think, but i miss some objects...",
-				"i miss"
+				"Yes, I think so, but some things are still missing...",
+				"I still need:"
 				
 			],
 			"- nails",
-			"- honey, to stick stones",
-			"- and a new bucket"
+			"- honey to seal the stones",
+			"- a new bucket"
 		]
 	},
 	TRAD_TREEVILLAGE_START:{
@@ -316,29 +372,29 @@ var traductionsList={
 			["Bonjour monsieur.","Oui bien sûr, comment ?"],
 			[
 				"Il me faudrait de quoi sceller les pierres,",
-				" des clous pour refixer l'armature en bois",
-				" et un nouveau seau."
+				"des clous pour refixer l'armature en bois",
+				"et un nouveau seau."
 			],
-			["Où puis-je trouver ça ?"],
+			["Où puis-je trouver tout ça ?"],
 			[
-				"Tu devras parcourir les différents villages autour de nous,",
-				" mais fais attention...",
-				" des dangers guêtent dans nos forêts..."
+				"Tu devras parcourir les villages autour de nous,",
+				"mais fais attention...",
+				"des dangers guettent dans nos forêts..."
 			]
 		],
 		EN:[
-			["Hi Gordon !","Can you help me to repair the well ?"],
-			["Hi","Yes of course, how ?"],
+			["Hi Gordon!","Can you help me repair the well?"],
+			["Hello sir.","Yes of course, how?"],
 			[
-				"I need something to stick stones,",
-				" some nails to repair wood structure",
-				" and a new bucket."
+				"I need something to seal the stones,",
+				"some nails to fix the wooden frame",
+				"and a new bucket."
 			],
-			["Where can i find it ?"],
+			["Where can I find all that?"],
 			[
-				"You should explore some villages around us,",
-				" but you should be careful...",
-				" there are dangers in woods ..."
+				"You will have to explore the villages around us,",
+				"but be careful...",
+				"dangers lurk in our woods..."
 			]
 		],
 	},
@@ -346,19 +402,19 @@ var traductionsList={
 	TRAD_TREEVILLAGE_GEMHOUSE_START:{
 		FR:[
 			["Bonjour Gordon","Que puis-je pour toi ?"],
-			["Bonjour Monsieur","Je souhaiterais gagner des Gems pour acheter une épée."],
-			["Il y a des étoiles de Gormon enterrées dans notre village.","Si tu m'en rapportes, je te les echangerais contre une Gem chacunes","Ça t'intéresse ?"],
-			["Oui, ça m'interesse mais comment les trouver ?"],
-			["Je vais te donner une carte et une pelle."],
+			["Bonjour monsieur","Je voudrais gagner des gemmes pour acheter une épée."],
+			["Il y a des étoiles de Gormon enterrées dans notre village.","Si tu me les rapportes toutes, je te donnerai 2 gemmes par étoile.","Ça t'intéresse ?"],
+			["Oui ! Mais comment les trouver ?"],
+			["Je vais te donner une carte et une pelle.","Équipe la pelle et creuse là où le sol brille."],
 			["Merci pour la pelle et la carte."]
 		],
 		EN:[
-			["Hi Gordon","What do you want ?"],
-			["Hi","I want earn Gems to buy a sword."],
-			["There are some Gormon star buried in our village.","I you give to me, i will give you one Gem per star","You want it ?"],
-			["Yes, but how to find them ?"],
-			["I will give to you a map and spade."],
-			["Thanks, i got it, bye."]
+			["Hi Gordon","What can I do for you?"],
+			["Hello sir","I'd like to earn gems to buy a sword."],
+			["Some Gormon stars are buried in our village.","If you bring me all of them, I'll give you 2 gems per star.","Interested?"],
+			["Yes! But how can I find them?"],
+			["I'll give you a map and a spade.","Equip the spade and dig where the ground sparkles."],
+			["Thanks for the spade and the map."]
 		]
 	},
 
@@ -366,28 +422,28 @@ var traductionsList={
 		FR:[
 			["Bonjour Gordon","Tu as trouvé toutes les étoiles ?"],
 			[
-				"Bonjour Monsieur.",
-				"Non pas encore, il m'en reste encore des étoiles à trouver"
+				"Bonjour monsieur.",
+				"Non, pas encore. Il me reste des étoiles à trouver."
 			],
 			[
-				"Bonjour Monsieur.",
-				"Oui, je les ai toutes trouver",
+				"Bonjour monsieur.",
+				"Oui, je les ai toutes trouvées !",
 				"Les voilà !"
 			],
-			["Merci pour les étoiles de Gormon.","Voilà tes 10 Gems."]
+			["Merci pour les étoiles de Gormon.","Voilà tes 10 gemmes."]
 		],
 		EN:[
-			["Hi Gordon","Do you find all stars ?"],
+			["Hi Gordon","Did you find all the stars?"],
 			[
-				"Hi.",
-				"No for the moment, i have no find all yet"
+				"Hello sir.",
+				"Not yet, there are still some stars to find."
 			],
 			[
-				"Hi.",
-				"Yes i found all",
-				"There it is!"
+				"Hello sir.",
+				"Yes, I found them all!",
+				"Here they are!"
 			],
-			["Thanks for Gormon stars.","I give to you 10 Gems."]
+			["Thanks for the Gormon stars.","Here are your 10 gems."]
 		]
 	},
 
@@ -396,20 +452,20 @@ var traductionsList={
 			["Bonjour Gordon.","Désolé, je n'ai plus de mission pour toi ;)"]
 		],
 		EN:[
-			["Hi Gordon.","Sorry, i have no mission to you ;)"]
+			["Hi Gordon.","Sorry, I have no more missions for you ;)"]
 		]
 	},
 
 	TRAD_TREEVILLAGE_SHOP:{
 		FR:[
 			["Bonjour Gordon","Que souhaites-tu ?"],
-			["Bonjour monsieur","Je souhaiterais acheter un objet"],
-			["Je vais t’afficher les produits en vente","Tu n’auras qu’a choisir"]
+			["Bonjour monsieur","Je voudrais acheter un objet."],
+			["Je vais t'afficher les produits en vente.","Tu n'auras qu'à choisir."]
 		],
 		EN:[
-			["Hi Gordon","What do you want ?"],
-			["Hi","I want to buy an item"],
-			["I will diplay to you some products i sell","You should choose one"]
+			["Hi Gordon","What would you like?"],
+			["Hello sir","I'd like to buy something."],
+			["Here are the products I sell.","Just pick one."]
 		]
 	},
 
@@ -418,22 +474,27 @@ var traductionsList={
 			["Bonjour Gordon."],
 			["Bonjour Maman, comment va Papa ?"],
 			["Il est encore mal en point...",
-			"depuis la tempête qui a ravagé le puits..",
-			"Le problème c'est qu'en son absence,",
+			"depuis la tempête qui a ravagé le puits...",
+			"Le problème, c'est qu'en son absence,",
 			"personne ne peut aider notre artisan",
-			"a réparer notre unique puits...",
+			"à réparer notre unique puits...",
 			]
 		],
 		EN:[
 			["Hi Gordon."],
-			["Hi Mom, how do Dad ?"],
-			["He is not feeling well...",
-			"since the storm which broke the well..",
-			"The problem is with his absence,",
-			"nobody can help crafsman ",
-			"to repair the well...",
+			["Hi Mom, how is Dad?"],
+			["He is still not feeling well...",
+			"since the storm that broke the well...",
+			"The problem is, without him,",
+			"nobody can help our craftsman",
+			"repair our only well...",
 			]
 		]
+	},
+
+	TRAD_TREEVILLAGE_GORDONHOME_HEAL:{
+		FR:["Tu as l'air épuisé, mon grand.","Mange un morceau et repose-toi un peu.","Voilà, tu es en pleine forme !"],
+		EN:["You look exhausted, sweetie.","Eat something and rest a little.","There, you're as good as new!"]
 	},
 
 	#crab village
@@ -441,7 +502,7 @@ var traductionsList={
 	TRAD_CRABVILLAGE:{
 		FR:[
 			[
-				"Bonjour jeune inconnu."
+				"Bonjour, jeune inconnu."
 			],
 			[
 				"Bonjour,",
@@ -449,27 +510,27 @@ var traductionsList={
 				"Pour réparer notre puits."
 			],
 			[
-				"Tu es au bon endroit,",
-				"Remporte les 2 épreuves.",
-				"Ils te donneront un jeton",
-				"Que tu pourras échanger",
-				"Dans la boutique."
+				"Tu es au bon endroit !",
+				"Remporte nos 3 épreuves :",
+				"Chacune te rapportera 2 gemmes,",
+				"De quoi acheter des clous",
+				"À la boutique."
 			]
 		],
 		EN:[
 			[
-				"Hi."
+				"Hello, young stranger."
 			],
 			[
 				"Hi,",
-				"I want to buy some nails",
+				"I need some nails",
 				"To repair our well."
 			],
 			[
-				"You have found the right place,",
-				"Win this two challenges.",
-				"They will give to you  a token",
-				"You will exchange it",
+				"You've come to the right place!",
+				"Win our 3 challenges:",
+				"Each one gives you 2 gems,",
+				"Enough to buy nails",
 				"In the shop."
 			]
 		]
@@ -479,20 +540,20 @@ var traductionsList={
 	TRAD_CRABVILLAGE_GAME1_ALREADYWON:{
 		FR:[
 			"Re-bonjour,",
-			"Désolé, mais vous avez déjà gagné...",
+			"Désolé, mais tu as déjà gagné...",
 			],
 		EN:[
-			"Hi,",
-			"Sorry but you have already won...",
+			"Hello again,",
+			"Sorry, but you have already won...",
 			]	
 	},
 	TRAD_CRABVILLAGE_GAME1_START:{
 		FR:[
-			"Bonjour, pour remporter ce jeu",
-			"Vous devez faire traverser",
+			"Bonjour, pour remporter ce jeu,",
+			"Tu dois faire traverser",
 			"Le crabe, l'algue et la méduse.",
-			"Vous pouvez en transporter un seul à la fois.",
-			"Attention si vous laissez seuls certains :",
+			"Le radeau n'en porte qu'un à la fois.",
+			"Attention si tu en laisses certains seuls :",
 			"Le crabe mange la méduse,",
 			"La méduse mange l'algue."
 			],
@@ -510,10 +571,10 @@ var traductionsList={
 	TRAD_CRABVILLAGE_GAME1_WIN:{
 		FR:[
 			"Félicitations, tu remportes ce jeu !",
-			"Voici 2 Gems en récompense."
+			"Voici 2 gemmes en récompense."
 			],
 		EN:[
-			"Congratulations, you win !",
+			"Congratulations, you win!",
 			"Here are 2 gems."
 			],
 
@@ -523,7 +584,7 @@ var traductionsList={
 	TRAD_CRABVILLAGE_GAME2_START:{
 		FR:[
 			"Dans cette énigme,",
-			"Vous devez faire sortir",
+			"Tu dois faire sortir",
 			"La barque avec le crabe."
 			],
 		EN:[
@@ -535,13 +596,15 @@ var traductionsList={
 	TRAD_CRABVILLAGE_GAME3_START:{
 		FR:[
 			"Dans cette énigme,",
-			"Vous devez placer les coquillages",
-			"Sur les emplacements avec des croix."
+			"Tu dois placer les coquillages",
+			"Sur les emplacements avec des croix.",
+			"Bloqué ? Appuie sur « Recommencer »."
 			],
 		EN:[
 			"In this puzzle,",
 			"You must put the shells",
-			"On the spots marked with a cross."
+			"On the spots marked with a cross.",
+			"Stuck? Press \"Restart\"."
 			],
 	},
 	TRAD_BEARVILLAGE_SHOP:{
@@ -565,8 +628,8 @@ var traductionsList={
 		],
 		EN:[
 		"Hi,",
-		"Choose in list",
-		"Product you want."
+		"Pick the product",
+		"Of your choice."
 		]	
 	},
 
@@ -585,42 +648,55 @@ var traductionsList={
 	TRAD_BEARVILLAGE_BEEPLATFORM_START:{
 		FR:[
 			"Bonjour,",
-			"Peux-tu m'aider à récuperer mon miel  ?",
-			"Il te faudra aller à la ruche et me ramener mes 3 sceaux"
+			"Peux-tu m'aider à récupérer mon miel ?",
+			"Va à la ruche et rapporte-moi mes 3 seaux de miel."
 		],
 		EN:[
 			"Hi,",
-			"Can you help me to get the honey  ?",
-			"You should go to the honey house and get 3 bucket"
+			"Can you help me get my honey back?",
+			"Go to the hive and bring me my 3 honey buckets."
 		],
 	},
 
 	TRAD_BEARVILLAGE_BEEPLATFORM_WIN:{
 		FR:[
 			"Bravo,",
-			"Merci beaucoup",
-			"Voila 4 Gems pour te remercier"
+			"Merci beaucoup !",
+			"Voilà 4 gemmes pour te remercier."
 		],
 		EN:[
-			"Congratulations,",
-			"Thanks a lot",
-			"I give to you 4 Gems"
+			"Well done,",
+			"Thanks a lot!",
+			"Here are 4 gems to thank you."
 		],
 
+	},
+
+	TRAD_BEARVILLAGE_BEEPLATFORM_REPLAY:{
+		FR:[
+			"Encore bravo !",
+			"Mes seaux de miel sont bien à l'abri.",
+			"Reviens jouer quand tu veux."
+		],
+		EN:[
+			"Well done again!",
+			"My honey buckets are safe now.",
+			"Come back and play anytime."
+		],
 	},
 
 	TRAD_BEARVILLAGE_BEVILROOM_START:{
 		FR:[
 			"Bonjour,",
-			"Peux tu m'aider ?",
-			"Nous avons depuis quelques jours de méchantes BeVil",
-			"Qui nous empêchent d'accéder à la ruche."
+			"Peux-tu m'aider ?",
+			"Depuis quelques jours, de méchantes BeVil",
+			"Nous empêchent d'accéder à la ruche."
 		],
 		EN:[
 			"Hi,",
-			"Can you help me ?",
-			"There are since few days bad BeVil",
-			"They deny us to go to the hive."
+			"Can you help me?",
+			"For a few days now, nasty BeVils",
+			"Have been keeping us away from the hive."
 		],
 
 	},
@@ -629,19 +705,32 @@ var traductionsList={
 		FR:[
 			"Bravo,",
 			"Un grand merci pour ton aide !",
-			"Pour te remercier, voici 4 Gems"
+			"Pour te remercier, voici 4 gemmes."
 		],
 		EN:[
-			"Congratulations,",
-			"Thanks a lot !",
-			"I give to you 4 Gems"
+			"Well done,",
+			"Thanks a lot for your help!",
+			"Here are 4 gems to thank you."
 		],
 
 	},
 
+	TRAD_BEARVILLAGE_BEVILROOM_REPLAY:{
+		FR:[
+			"Bravo, encore une fois !",
+			"Les BeVil n'osent plus approcher.",
+			"Tu deviens un vrai guerrier !"
+		],
+		EN:[
+			"Well done, once again!",
+			"The BeVils don't dare come back.",
+			"You're becoming a real warrior!"
+		],
+	},
+
 	TRAD_TREEVILLAGE_STARFOUND:{
-		FR:"Une étoile de Gormon trouvée !!",
-		EN:"One Gormon Star found !!",
+		FR:"Une étoile de Gormon trouvée ! (%d/%d)",
+		EN:"Gormon star found! (%d/%d)",
 		
 	}
 
@@ -687,6 +776,9 @@ func getSceneToLoad():
 func create(nickname_):
 	var scene='screens/tree-village/gordon-home.tscn'
 	_filename=getNewFilename(nickname_)
+	# une nouvelle partie ne doit rien garder de la partie precedente
+	GlobalPlayer.reset()
+	GlobalScenes.reset()
 	GlobalPlayer.setNickname(nickname_)
 	GlobalPlayer.savePosition(Vector2(48,75))
 	save(scene)
@@ -697,7 +789,6 @@ func saveWithPosition(scene_,position_):
 	save(scene_)
 
 func save(scene_):
-	print("save :"+_filename)
 	var gameData=getDataToSave(scene_)
 	var saveFile = FileAccess.open("user://"+_filename, FileAccess.WRITE)
 	if saveFile == null:
@@ -707,13 +798,25 @@ func save(scene_):
 	saveFile.close()
 
 func getNewFilename(nickname_):
+	return getNewFilenameFromList(nickname_, getList())
+
+# numero suivant le plus grand existant : ne jamais ecraser une partie
+func getNewFilenameFromList(nickname_, saveList_):
 	var filePattern=nickname_+"_"
 	var newId=1
-	var saveList=getList()
-	for saveFile in saveList:
-		if(saveFile.substr(0,nickname_.length())==nickname_):
-			newId+=1
+	for saveFile in saveList_:
+		var number=saveFile.trim_prefix(filePattern).trim_suffix(".save")
+		if saveFile.begins_with(filePattern) and number.is_valid_int():
+			newId=max(newId, int(number)+1)
 	return filePattern+str(newId)+".save"
+
+# "BOB_2.save" s'affiche "BOB (2)"
+func getSaveLabel(file_):
+	var name=file_.trim_suffix(".save")
+	var separator=name.rfind("_")
+	if separator==-1:
+		return name
+	return name.substr(0, separator)+" ("+name.substr(separator+1)+")"
 
 func getFilteredSaveList(fileList_):
 	var filterSaveList=[]
@@ -751,6 +854,13 @@ func convertObjectToSave(object_,fieldList_):
 func gotoMenu():
 	SceneTransition.change_scene("res://screens/game/menu.tscn")
 
+# fenetres de dialogue affichees : tant qu'il en reste une, Gordon ne bouge
+# pas et n'utilise rien (il faut aller au bout du dialogue)
+const DIALOG_GROUP="openDialog"
+
+func isDialogOpen():
+	return get_tree().get_first_node_in_group(DIALOG_GROUP)!=null
+
 
 func getDataToSave(scene_):
 	var gameData= {
@@ -767,6 +877,8 @@ func loadFile(file_):
 	if not FileAccess.file_exists(saveFilename):
 		return # Error! We don't have a save to load.
 	
+	GlobalPlayer.reset()
+	GlobalScenes.reset()
 	var saveFile = FileAccess.open(saveFilename, FileAccess.READ)
 	while saveFile.get_position() < saveFile.get_length():
 		# Get the saved dictionary from the next line in the save file

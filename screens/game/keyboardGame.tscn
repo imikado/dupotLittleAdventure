@@ -1,6 +1,7 @@
 [gd_scene format=3]
 
 [ext_resource type="Theme" path="res://common/themes/default.tres" id="1"]
+[ext_resource type="ShaderMaterial" path="res://common/shaders/grassGround.tres" id="fx_grass"]
 [ext_resource type="Script" path="res://screens/game/keyboardGame.gd" id="2"]
 [ext_resource type="Texture2D" path="res://screens/tree-village/images/background.png" id="bg"]
 
@@ -40,6 +41,7 @@ theme = ExtResource("1")
 text = " A "
 
 [node name="background" type="TextureRect" parent="." unique_id=649705527]
+material = ExtResource("fx_grass")
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0

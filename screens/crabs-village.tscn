@@ -14,7 +14,20 @@
 [ext_resource type="ShaderMaterial" path="res://common/shaders/grassGround.tres" id="fx_grass"]
 [ext_resource type="ShaderMaterial" path="res://common/shaders/sandGround.tres" id="fx_sand"]
 [ext_resource type="PackedScene" path="res://common/effects/sandWind.tscn" id="fx_sandWind"]
-[ext_resource type="ShaderMaterial" path="res://common/shaders/wind.tres" id="fx_wind"]
+[ext_resource type="Texture2D" path="res://screens/crabs-village/images/sea.png" id="sea"]
+[ext_resource type="PackedScene" path="res://screens/crabs-village/characters/villager.tscn" id="villager"]
+[ext_resource type="Texture2D" path="res://screens/crabs-village/characters/villager/villager-idle-orange.png" id="crabOrange"]
+[ext_resource type="Texture2D" path="res://screens/crabs-village/characters/villager/villager-idle-blue.png" id="crabBlue"]
+[ext_resource type="ShaderMaterial" path="res://common/shaders/water.tres" id="fx_water"]
+[ext_resource type="Texture2D" path="res://screens/crabs-village/images/sandBorder.png" id="sandBorder"]
+[ext_resource type="Texture2D" path="res://screens/crabs-village/images/shoreFoam.png" id="shoreFoamTex"]
+[ext_resource type="Script" path="res://screens/crabs-village/assets/shoreFoam.gd" id="shoreFoam"]
+[ext_resource type="Texture2D" path="res://screens/crabs-village/images/pier.png" id="pier"]
+[ext_resource type="Texture2D" path="res://screens/crabs-village/images/boat.png" id="boat"]
+[ext_resource type="Texture2D" path="res://screens/crabs-village/images/netRack.png" id="netRack"]
+[ext_resource type="Texture2D" path="res://screens/crabs-village/images/rocks.png" id="rocks"]
+[ext_resource type="Texture2D" path="res://screens/crabs-village/images/seagull.png" id="seagull"]
+[ext_resource type="Script" path="res://common/effects/seagulls.gd" id="seagulls"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x0r02"]
 texture = ExtResource("1")
@@ -107,6 +120,10 @@ sources/8 = SubResource("TileSetAtlasSource_6f6o3")
 texture = ExtResource("7")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_twiy4"]
 tile_size = Vector2i(32, 32)
@@ -119,12 +136,30 @@ margins = Vector2i(0, 96)
 texture_region_size = Vector2i(154, 160)
 0:0/0 = 0
 0:0/0/texture_origin = Vector2i(-45, -48)
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, 96, -14.538401, 79.496, -11.5243, 65.4304, 2.541401, 67.7747, -5.4960995, 58.7324, -2.8169003, 44.666702, 10.913898, 49.3553, 4.5508003, 38.973396, 6.5601997, 29.261398, 28.998402, 31.605701, 45.4084, 0.79510117, 63.157997, 29.261398, 84.591, 30.266102, 88.61, 44.666702, 80.573, 50.6949, 93.969, 46.6761, 97.31799, 60.072, 89.615, 69.784, 104.01601, 67.1049, 105.354996, 82.51, 96.983, 86.529, 109.039, 86.529, 111.382996, 95.571, 105.69, 106.623, 91.624, 110.30701, 74.544, 115.66499, 41.389603, 117.673996, 8.569599, 115.33, -19.2269, 102.938995, -17.552399, 83.85)
+0:0/0/y_sort_origin = 94
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(45, 8, 86, 63, 106, 96, 80, 114, 54, 120, 36, 120, 10, 114, -16, 96, 4, 63)
+1:0/0 = 0
+1:0/0/texture_origin = Vector2i(-45, -48)
+1:0/0/y_sort_origin = 94
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(45, 8, 86, 63, 106, 96, 80, 114, 54, 120, 36, 120, 10, 114, -16, 96, 4, 63)
+2:0/0 = 0
+2:0/0/texture_origin = Vector2i(-45, -48)
+2:0/0/y_sort_origin = 94
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(45, 8, 86, 63, 106, 96, 80, 114, 54, 120, 36, 120, 10, 114, -16, 96, 4, 63)
 
 [sub_resource type="TileSet" id="TileSet_cav20"]
 tile_size = Vector2i(64, 64)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_syx4h")
+
+[sub_resource type="RectangleShape2D" id="shape_boat"]
+size = Vector2(46, 14)
+
+[sub_resource type="RectangleShape2D" id="shape_post"]
+size = Vector2(4, 4)
+
+[sub_resource type="RectangleShape2D" id="shape_rocks"]
+size = Vector2(26, 10)
 
 [node name="crabs-village" type="Node2D" unique_id=535374953]
 script = ExtResource("6")
@@ -142,17 +177,41 @@ tile_set = SubResource("TileSet_2vgpr")
 
 [node name="bkg green-sand" type="TileMapLayer" parent="." unique_id=1287308807]
 material = ExtResource("fx_sand")
-tile_map_data = PackedByteArray("AAD8//7/AAAAAAAAAAD9//7/AQAAAAAAAAD+//7/AQAAAAAAAAD///7/AQAAAAAAAAAAAP7/AQAAAAAAAAABAP7/AQAAAAAAAAACAP7/AQAAAAAAAAADAP7/AQAAAAAAAAAEAP7/AQAAAAAAAAAFAP7/AQAAAAAAAAAGAP7/AQAAAAAAAAAHAP7/AQAAAAAAAAAIAP7/AQAAAAAAAAAJAP7/AQAAAAAAAAAKAP7/AQAAAAAAAAALAP7/AQAAAAAAAAAMAP7/AQAAAAAAAAANAP7/AQAAAAAAAAAOAP7/AQAAAAAAAAAPAP7/AQAAAAAAAAAQAP7/AQAAAAAAAAARAP7/AQAAAAAAAAASAP7/AQAAAAAAAAATAP7/AQAAAAAAAAAUAP7/AQAAAAAAAAAVAP7/AQAAAAAAAAAWAP7/AQAAAAAAAAAXAP7/AQAAAAAAAAAYAP7/AQAAAAAAAAAZAP7/AQAAAAAAAAAaAP7/AQAAAAAAAAAbAP7/AQAAAAAAAAAcAP7/AQAAAAAAAAAdAP7/AQAAAAAAAAAeAP7/AQAAAAAAAAAfAP7/AQAAAAAAAAAgAP7/AQAAAAAAAAAhAP7/AQAAAAAAAAAiAP7/AQAAAAAAAAAjAP7/AgAAAAAAAAD8////AwAAAAAAAAAjAP//BAAAAAAAAAD8/wAAAwAAAAAAAAAjAAAABAAAAAAAAAD8/wEAAwAAAAAAAAAjAAEABAAAAAAAAAD8/wIAAwAAAAAAAAAjAAIABAAAAAAAAAD8/wMAAwAAAAAAAAAjAAMABAAAAAAAAAD8/wQAAwAAAAAAAAAjAAQABAAAAAAAAAD8/wUAAwAAAAAAAAAjAAUABAAAAAAAAAD8/wYAAwAAAAAAAAAjAAYABAAAAAAAAAD8/wcAAwAAAAAAAAAjAAcABAAAAAAAAAD8/wgAAwAAAAAAAAAjAAgABAAAAAAAAAD8/wkAAwAAAAAAAAAjAAkABAAAAAAAAAD8/woAAwAAAAAAAAAjAAoABAAAAAAAAAD8/wsAAwAAAAAAAAAjAAsABAAAAAAAAAD8/wwAAwAAAAAAAAAjAAwABAAAAAAAAAD8/w0AAwAAAAAAAAAjAA0ABAAAAAAAAAD8/w4AAwAAAAAAAAAjAA4ABAAAAAAAAAD8/w8AAwAAAAAAAAAjAA8ABAAAAAAAAAD8/xAAAwAAAAAAAAAjABAABAAAAAAAAAD8/xEAAwAAAAAAAAAjABEABAAAAAAAAAD8/xIABQAAAAAAAAD9/xIABwAAAAAAAAD+/xIABwAAAAAAAAD//xIABwAAAAAAAAAAABIABwAAAAAAAAABABIABwAAAAAAAAACABIABwAAAAAAAAADABIABwAAAAAAAAAEABIABwAAAAAAAAAFABIABwAAAAAAAAAGABIABwAAAAAAAAAHABIABwAAAAAAAAAIABIABwAAAAAAAAAJABIABwAAAAAAAAAKABIABwAAAAAAAAALABIABwAAAAAAAAAMABIABwAAAAAAAAANABIABwAAAAAAAAAOABIABwAAAAAAAAAPABIABwAAAAAAAAAQABIABwAAAAAAAAARABIABwAAAAAAAAASABIABwAAAAAAAAATABIABwAAAAAAAAAUABIABwAAAAAAAAAVABIABwAAAAAAAAAWABIABwAAAAAAAAAXABIABwAAAAAAAAAYABIABwAAAAAAAAAZABIABwAAAAAAAAAaABIABwAAAAAAAAAbABIABwAAAAAAAAAcABIABwAAAAAAAAAdABIABwAAAAAAAAAeABIABwAAAAAAAAAfABIABwAAAAAAAAAgABIABwAAAAAAAAAhABIABwAAAAAAAAAiABIABwAAAAAAAAAjABIACAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAD8//7/AAAAAAAAAAD9//7/AQAAAAAAAAD+//7/AQAAAAAAAAD///7/AQAAAAAAAAAAAP7/AQAAAAAAAAABAP7/AQAAAAAAAAACAP7/AQAAAAAAAAADAP7/AQAAAAAAAAAEAP7/AQAAAAAAAAAFAP7/AQAAAAAAAAAGAP7/AQAAAAAAAAAHAP7/AQAAAAAAAAAIAP7/AQAAAAAAAAAJAP7/AQAAAAAAAAAKAP7/AQAAAAAAAAALAP7/AQAAAAAAAAAMAP7/AQAAAAAAAAANAP7/AQAAAAAAAAAOAP7/AQAAAAAAAAAPAP7/AQAAAAAAAAAQAP7/AQAAAAAAAAARAP7/AQAAAAAAAAASAP7/AQAAAAAAAAATAP7/AQAAAAAAAAAUAP7/AQAAAAAAAAAVAP7/AQAAAAAAAAAWAP7/AQAAAAAAAAAXAP7/AQAAAAAAAAAYAP7/AQAAAAAAAAAZAP7/AQAAAAAAAAAaAP7/AQAAAAAAAAAbAP7/AQAAAAAAAAAcAP7/AQAAAAAAAAAdAP7/AQAAAAAAAAAeAP7/AQAAAAAAAAAfAP7/AQAAAAAAAAAgAP7/AQAAAAAAAAAhAP7/AQAAAAAAAAAiAP7/AQAAAAAAAAAjAP7/AgAAAAAAAAD8////AwAAAAAAAAAjAP//BAAAAAAAAAD8/wAAAwAAAAAAAAAjAAAABAAAAAAAAAD8/wEAAwAAAAAAAAAjAAEABAAAAAAAAAD8/wIAAwAAAAAAAAAjAAIABAAAAAAAAAD8/wMAAwAAAAAAAAAjAAMABAAAAAAAAAD8/wQAAwAAAAAAAAAjAAQABAAAAAAAAAD8/wUAAwAAAAAAAAAjAAUABAAAAAAAAAD8/wYAAwAAAAAAAAAjAAYABAAAAAAAAAD8/wcAAwAAAAAAAAAjAAcABAAAAAAAAAD8/wgAAwAAAAAAAAAjAAgABAAAAAAAAAD8/wkAAwAAAAAAAAAjAAkABAAAAAAAAAD8/woAAwAAAAAAAAAjAAoABAAAAAAAAAD8/wsAAwAAAAAAAAAjAAsABAAAAAAAAAD8/wwAAwAAAAAAAAAjAAwABAAAAAAAAAD8/w0AAwAAAAAAAAAjAA0ABAAAAAAAAAD8/w4AAwAAAAAAAAAjAA4ABAAAAAAAAAD8/w8AAwAAAAAAAAAjAA8ABAAAAAAAAAD8/xAAAwAAAAAAAAAjABAABAAAAAAAAAD8/xEAAwAAAAAAAAAjABEABAAAAAAAAAD8/xIABQAAAAAAAAD9/xIABwAAAAAAAAD+/xIABwAAAAAAAAD//xIABwAAAAAAAAAAABIABwAAAAAAAAABABIABwAAAAAAAAACABIABwAAAAAAAAADABIABwAAAAAAAAAEABIABwAAAAAAAAAFABIABwAAAAAAAAAGABIABwAAAAAAAAAHABIABwAAAAAAAAAIABIABwAAAAAAAAAJABIABwAAAAAAAAAKABIABwAAAAAAAAALABIABwAAAAAAAAAMABIABwAAAAAAAAANABIABwAAAAAAAAAOABIABwAAAAAAAAAPABIABwAAAAAAAAAQABIABwAAAAAAAAARABIABwAAAAAAAAASABIABwAAAAAAAAATABIABwAAAAAAAAAUABIABwAAAAAAAAAVABIABwAAAAAAAAAWABIABwAAAAAAAAAXABIABwAAAAAAAAAYABIABwAAAAAAAAAZABIABwAAAAAAAAAaABIABwAAAAAAAAAbABIABwAAAAAAAAAcABIABwAAAAAAAAAdABIABwAAAAAAAAAeABIABwAAAAAAAAAfABIABwAAAAAAAAAgABIABwAAAAAAAAAhABIABwAAAAAAAAAiABIABwAAAAAAAAAjABIACAAAAAAAAAD9/xEABgAAAAAAAAD+/xEABgAAAAAAAAD//xEABgAAAAAAAAAAABEABgAAAAAAAAABABEABgAAAAAAAAACABEABgAAAAAAAAADABEABgAAAAAAAAAEABEABgAAAAAAAAAFABEABgAAAAAAAAAGABEABgAAAAAAAAAHABEABgAAAAAAAAAIABEABgAAAAAAAAAJABEABgAAAAAAAAAKABEABgAAAAAAAAALABEABgAAAAAAAAAMABEABgAAAAAAAAANABEABgAAAAAAAAAOABEABgAAAAAAAAAPABEABgAAAAAAAAAQABEABgAAAAAAAAARABEABgAAAAAAAAASABEABgAAAAAAAAATABEABgAAAAAAAAAUABEABgAAAAAAAAAVABEABgAAAAAAAAAWABEABgAAAAAAAAAXABEABgAAAAAAAAAYABEABgAAAAAAAAAZABEABgAAAAAAAAAaABEABgAAAAAAAAAbABEABgAAAAAAAAAcABEABgAAAAAAAAAdABEABgAAAAAAAAAeABEABgAAAAAAAAAfABEABgAAAAAAAAAgABEABgAAAAAAAAAhABEABgAAAAAAAAAiABEABgAAAAAAAAA=")
 tile_set = SubResource("TileSet_mcodn")
 
+[node name="sandBorder" type="Sprite2D" parent="."]
+material = ExtResource("fx_grass")
+position = Vector2(-136, -80)
+texture = ExtResource("sandBorder")
+centered = false
+
 [node name="seashells" type="TileMapLayer" parent="." unique_id=294232930]
-tile_map_data = PackedByteArray("AAD9////AAAAAAAAAAATAP//AAAAAAAAAAANAAEAAAAAAAAAAAAdAAEAAAAAAAAAAAAXAAIAAAAAAAAAAAD8/wUAAAAAAAAAAAAEAAkAAAAAAAAAAAAZAAwAAAAAAAAAAAAMABAAAAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAFAAgAAAABAAAAAAAFAAoAAAAAAAAAAAALAP//AAADAAAAAAAOAAsAAAADAAAAAAAPAAsAAAAEAAAAAAAWAAcAAAAAAAAAAAAXAAkAAAAEAAAAAAAaAAoAAAACAAAAAAAaAAsAAAAAAAAAAAAaAA4AAAAAAAAAAAAbAAIAAAAAAAAAAAAbAAUAAAACAAAAAAAbAAYAAAAAAAAAAAAbAAoAAAABAAAAAAAbABAAAAABAAAAAAAcAAIAAAABAAAAAAA=")
 tile_set = SubResource("TileSet_twiy4")
 
-[node name="trees" type="TileMapLayer" parent="." unique_id=314375457]
-material = ExtResource("fx_wind")
-tile_map_data = PackedByteArray("AAD9//7/AAAAAAAAAAAAAP7/AAAAAAAAAAADAP7/AAAAAAAAAAAGAP7/AAAAAAAAAAAHAP7/AAAAAAAAAAAJAP7/AAAAAAAAAAALAP7/AAAAAAAAAAAIAP//AAAAAAAAAAALAP//AAAAAAAAAAD9/wAAAAAAAAAAAAD9/wEAAAAAAAAAAAD+/wIAAAAAAAAAAAD9/wMAAAAAAAAAAAD+/wQAAAAAAAAAAAD//wUAAAAAAAAAAAD9/wYAAAAAAAAAAAAAAAYAAAAAAAAAAAADAAYAAAAAAAAAAAAGAAYAAAAAAAAAAAAIAAYAAAAAAAAAAAAKAAYAAAAAAAAAAAABAAcAAAAAAAAAAAAEAAcAAAAAAAAAAAAHAAcAAAAAAAAAAAAJAAcAAAAAAAAAAAALAAcAAAAAAAAAAAA=")
-tile_set = SubResource("TileSet_cav20")
+[node name="sea" type="Sprite2D" parent="."]
+material = ExtResource("fx_water")
+position = Vector2(880, -80)
+texture = ExtResource("sea")
+centered = false
+
+[node name="shoreFoam" type="Sprite2D" parent="."]
+position = Vector2(880, -80)
+texture = ExtResource("shoreFoamTex")
+centered = false
+hframes = 4
+script = ExtResource("shoreFoam")
+
+[node name="pier" type="Sprite2D" parent="."]
+position = Vector2(994, 62)
+texture = ExtResource("pier")
+centered = false
+
+[node name="seaLimit" type="StaticBody2D" parent="."]
+
+[node name="shape" type="CollisionPolygon2D" parent="seaLimit"]
+polygon = PackedVector2Array(972, -80, 973, -60, 981, -40, 992, -20, 1002, 0, 1006, 20, 1005, 40, 1002, 60, 1001, 80, 1005, 100, 1011, 120, 1013, 140, 1009, 160, 999, 180, 987, 200, 979, 220, 977, 240, 980, 260, 984, 280, 986, 300, 984, 320, 981, 340, 980, 360, 986, 380, 997, 400, 1008, 420, 1015, 440, 1014, 460, 1009, 480, 1002, 500, 999, 520, 1000, 540, 1002, 560, 1001, 580, 994, 600, 983, 620, 1160, 620, 1160, -80)
 
 [node name="cameraRef" type="ReferenceRect" parent="." unique_id=187674482]
 offset_left = -132.0
@@ -160,8 +219,18 @@ offset_top = -76.0
 offset_right = 1151.0
 offset_bottom = 606.0
 
+[node name="seagulls" type="Node2D" parent="."]
+script = ExtResource("seagulls")
+area = NodePath("../cameraRef")
+texture = ExtResource("seagull")
+
 [node name="Node2D" type="Node2D" parent="." unique_id=1313590628]
 y_sort_enabled = true
+
+[node name="trees" type="TileMapLayer" parent="Node2D" unique_id=314375457]
+y_sort_enabled = true
+tile_map_data = PackedByteArray("AAD9//7/AAACAAAAAAAAAP7/AAABAAAAAAADAP7/AAACAAAAAAAGAP7/AAABAAAAAAAHAP7/AAACAAAAAAAJAP7/AAACAAAAAAALAP7/AAACAAAAAAAIAP//AAACAAAAAAALAP//AAAAAAAAAAD9/wAAAAABAAAAAAD9/wEAAAAAAAAAAAD+/wIAAAACAAAAAAD9/wMAAAAAAAAAAAD+/wQAAAAAAAAAAAD//wUAAAAAAAAAAAD9/wYAAAABAAAAAAAAAAYAAAABAAAAAAADAAYAAAAAAAAAAAAGAAYAAAABAAAAAAAIAAYAAAACAAAAAAAKAAYAAAAAAAAAAAABAAcAAAACAAAAAAAEAAcAAAAAAAAAAAAHAAcAAAAAAAAAAAAJAAcAAAACAAAAAAALAAcAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_cav20")
 
 [node name="game1" parent="Node2D" unique_id=1208264107 instance=ExtResource("2")]
 position = Vector2(305.888, 111.493)
@@ -180,6 +249,75 @@ position = Vector2(117.261, 129.532)
 
 [node name="shop" parent="Node2D" unique_id=1190034252 instance=ExtResource("2")]
 position = Vector2(52.7557, 90.9194)
+
+[node name="boat" type="StaticBody2D" parent="Node2D"]
+position = Vector2(930, 344)
+
+[node name="sprite" type="Sprite2D" parent="Node2D/boat"]
+position = Vector2(0, -13)
+texture = ExtResource("boat")
+
+[node name="shape" type="CollisionShape2D" parent="Node2D/boat"]
+position = Vector2(-1, -12)
+shape = SubResource("shape_boat")
+
+[node name="netRack" type="StaticBody2D" parent="Node2D"]
+position = Vector2(884, 136)
+
+[node name="sprite" type="Sprite2D" parent="Node2D/netRack"]
+position = Vector2(0, -18)
+texture = ExtResource("netRack")
+
+[node name="post1" type="CollisionShape2D" parent="Node2D/netRack"]
+position = Vector2(-20, -3)
+shape = SubResource("shape_post")
+
+[node name="post2" type="CollisionShape2D" parent="Node2D/netRack"]
+position = Vector2(20, -3)
+shape = SubResource("shape_post")
+
+[node name="rocks1" type="StaticBody2D" parent="Node2D"]
+position = Vector2(948, 42)
+
+[node name="sprite" type="Sprite2D" parent="Node2D/rocks1"]
+position = Vector2(0, -12)
+texture = ExtResource("rocks")
+
+[node name="shape" type="CollisionShape2D" parent="Node2D/rocks1"]
+position = Vector2(0, -7)
+shape = SubResource("shape_rocks")
+
+[node name="rocks2" type="StaticBody2D" parent="Node2D"]
+position = Vector2(936, 530)
+
+[node name="sprite" type="Sprite2D" parent="Node2D/rocks2"]
+position = Vector2(0, -12)
+texture = ExtResource("rocks")
+flip_h = true
+
+[node name="shape" type="CollisionShape2D" parent="Node2D/rocks2"]
+position = Vector2(0, -7)
+shape = SubResource("shape_rocks")
+
+[node name="villager1" parent="Node2D" instance=ExtResource("villager")]
+position = Vector2(402, 252)
+sheet = ExtResource("crabOrange")
+
+[node name="villager2" parent="Node2D" instance=ExtResource("villager")]
+position = Vector2(636, 300)
+sheet = ExtResource("crabBlue")
+
+[node name="villager3" parent="Node2D" instance=ExtResource("villager")]
+position = Vector2(902, 430)
+sheet = ExtResource("crabOrange")
+
+[node name="villager4" parent="Node2D" instance=ExtResource("villager")]
+position = Vector2(560, 372)
+sheet = ExtResource("crabBlue")
+
+[node name="villager5" parent="Node2D" instance=ExtResource("villager")]
+position = Vector2(190, 330)
+sheet = ExtResource("crabBlue")
 
 [node name="sandWind" parent="." instance=ExtResource("fx_sandWind")]
 area = NodePath("../cameraRef")

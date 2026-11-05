@@ -1,9 +1,0 @@
-[gd_resource type="ShaderMaterial" format=3]
-
-[ext_resource type="Shader" path="res://common/shaders/wind.gdshader" id="1"]
-
-[resource]
-shader = ExtResource("1")
-shader_parameter/amplitude = 1.5
-shader_parameter/speed = 1.6
-shader_parameter/anchor = 0.35

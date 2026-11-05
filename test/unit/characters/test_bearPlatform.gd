@@ -5,7 +5,7 @@ var BearPlatform=load("res://screens/bear-village/assets/bear-platform.gd")
 enum {IDLE,WALK,JUMP,JUMP_DOWN,HURT,DEAD,LAND}
 
 func getBear():
-	var bear=BearPlatform.new()
+	var bear=autofree(BearPlatform.new())
 	return bear
 
 func test_getStateIdleToIdleWithNoMoveOnFloor():

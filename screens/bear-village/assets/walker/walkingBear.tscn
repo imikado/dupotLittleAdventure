@@ -1,0 +1,24 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://screens/bear-village/assets/walker/walkingBear.gd" id="1"]
+[ext_resource type="Texture2D" path="res://common/characters/shadow.png" id="2"]
+[ext_resource type="Texture2D" path="res://screens/bear-village/assets/bear/bear-idle.png" id="3"]
+[ext_resource type="Texture2D" path="res://screens/bear-village/assets/walker/bear-walking.png" id="4"]
+
+[sub_resource type="RectangleShape2D" id="shape"]
+size = Vector2(14, 6)
+
+[node name="walkingBear" type="AnimatableBody2D"]
+script = ExtResource("1")
+idleSheet = ExtResource("3")
+walkSheet = ExtResource("4")
+
+[node name="shadow" type="Sprite2D" parent="."]
+position = Vector2(0, 16)
+texture = ExtResource("2")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+
+[node name="collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, 12)
+shape = SubResource("shape")

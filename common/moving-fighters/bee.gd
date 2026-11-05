@@ -4,7 +4,8 @@ var speed = 10
 
 var player
 
-var directionBack
+# recul apres avoir pique Gordon (nul tant que l'abeille n'a pas bouge)
+var directionBack=Vector2.ZERO
 
 var shouldGoBack=false
 
@@ -19,6 +20,9 @@ func _ready():
 	add_to_group("Enemy")
 	
 	$AnimatedSprite2D.play()
+	# chaque abeille demarre a une image differente : les ailes ne battent pas toutes ensemble
+	var sprite=$AnimatedSprite2D
+	sprite.frame=randi()%sprite.sprite_frames.get_frame_count(sprite.animation)
 
 
 func _process(delta):

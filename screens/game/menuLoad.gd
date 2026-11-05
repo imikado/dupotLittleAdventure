@@ -20,7 +20,7 @@ func _ready():
 		for saveFileLoop in saveFileList:
 			#popup.add_item(saveFile)
 			var newButton=expleButton.duplicate()
-			newButton.text=saveFileLoop
+			newButton.text=GlobalGame.getSaveLabel(saveFileLoop)
 			
 			buttonBox.add_child(newButton)
 			

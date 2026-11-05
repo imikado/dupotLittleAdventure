@@ -9,6 +9,12 @@
 [ext_resource type="Script" path="res://screens/tree-village/shop.gd" id="7"]
 [ext_resource type="PackedScene" path="res://common/ui/simpleDialog.tscn" id="8"]
 [ext_resource type="PackedScene" path="res://common/ui/shopList.tscn" id="9"]
+[ext_resource type="Texture2D" path="res://screens/tree-village/images/plant.png" id="plant"]
+[ext_resource type="Texture2D" path="res://screens/tree-village/images/rug.png" id="rug"]
+[ext_resource type="Texture2D" path="res://common/items/magicpotion/magic-potion.png" id="potion"]
+[ext_resource type="Texture2D" path="res://common/items/weapons/wood-sword.png" id="woodSword"]
+[ext_resource type="Texture2D" path="res://common/items/weapons/iron-sword.png" id="ironSword"]
+[ext_resource type="Texture2D" path="res://common/items/tools/spade.png" id="spade"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xsmuu"]
 texture = ExtResource("2")
@@ -152,6 +158,9 @@ sources/1 = SubResource("TileSetAtlasSource_6satg")
 sources/2 = SubResource("TileSetAtlasSource_7le0o")
 sources/3 = SubResource("TileSetAtlasSource_6lfff")
 
+[sub_resource type="RectangleShape2D" id="plantShape"]
+size = Vector2(10, 6)
+
 [node name="shop" type="Node2D" unique_id=431151482]
 script = ExtResource("7")
 
@@ -162,6 +171,10 @@ tile_set = SubResource("TileSet_g62no")
 [node name="walls" type="TileMapLayer" parent="." unique_id=922265435]
 tile_map_data = PackedByteArray("AAD/////AAAAAAAAAAAAAP//AQAAAAAAAAABAP//AQAAAAAAAAACAP//AQAAAAAAAAADAP//CgAAAAAAAAAEAP//AQAAAAAAAAAFAP//AQAAAAAAAAAGAP//AgAAAAAAAAD//wAAAwAAAAAAAAAGAAAABQAAAAAAAAD//wEAAwAAAAAAAAAGAAEABQAAAAAAAAD//wIAAwAAAAAAAAAGAAIABQAAAAAAAAD//wMABgAAAAAAAAAAAAMABwAAAAAAAAABAAMABAAAAAAAAAACAAMABwAAAAAAAAADAAMABwAAAAAAAAAEAAMABwAAAAAAAAAFAAMABwAAAAAAAAAGAAMACAAAAAAAAAA=")
 tile_set = SubResource("TileSet_5lk04")
+
+[node name="rug" type="Sprite2D" parent="."]
+position = Vector2(104, 80)
+texture = ExtResource("rug")
 
 [node name="cameraRef" type="ReferenceRect" parent="." unique_id=1325776701]
 offset_left = -27.1591
@@ -176,6 +189,39 @@ position = Vector2(113, 31)
 position = Vector2(0, -0.5)
 tile_map_data = PackedByteArray("AAAAAP//AQAAAAAAAAACAP//AAAAAAAAAAAEAP//AQAAAAAAAAAIAP//AQAAAAAAAAAKAP//AAAAAAAAAAAAAAEAAAAAAAAAAAACAAEAAAAAAAAAAAADAAEAAAAAAAAAAAAEAAEAAgAAAAAAAAAFAAEAAAAAAAAAAAAGAAEAAAAAAAAAAAAHAAEAAAAAAAAAAAAIAAEAAAAAAAAAAAAKAAEAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_xtbkt")
+
+[node name="plant1" type="StaticBody2D" parent="."]
+position = Vector2(184, 90)
+
+[node name="sprite" type="Sprite2D" parent="plant1"]
+position = Vector2(0, -8)
+texture = ExtResource("plant")
+
+[node name="shape" type="CollisionShape2D" parent="plant1"]
+shape = SubResource("plantShape")
+
+[node name="goodsDisplay" type="Node2D" parent="."]
+position = Vector2(0, 38)
+
+[node name="potion1" type="Sprite2D" parent="goodsDisplay"]
+position = Vector2(66, 0)
+texture = ExtResource("potion")
+
+[node name="potion2" type="Sprite2D" parent="goodsDisplay"]
+position = Vector2(78, -1)
+texture = ExtResource("potion")
+
+[node name="woodSword" type="Sprite2D" parent="goodsDisplay"]
+position = Vector2(140, -1)
+texture = ExtResource("woodSword")
+
+[node name="spade" type="Sprite2D" parent="goodsDisplay"]
+position = Vector2(154, 0)
+texture = ExtResource("spade")
+
+[node name="ironSword" type="Sprite2D" parent="goodsDisplay"]
+position = Vector2(168, -1)
+texture = ExtResource("ironSword")
 
 [node name="door" parent="." unique_id=825850519 instance=ExtResource("6")]
 position = Vector2(47.1434, 107.195)

@@ -21,6 +21,18 @@ var touchEnabled=true
 var dialogAnimationEnabled=true
 var soundEnabled=true
 
+# etat d'une nouvelle partie (les parametres d'affichage et de son sont gardes)
+func reset():
+	position=null
+	itemsList=[]
+	gems=0
+	xp=0
+	life=100
+	maxLife=100
+	nickname=null
+	equipment=null
+	side="DOWN"
+
 func setSide(side_):
 	side=side_
 

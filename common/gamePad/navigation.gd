@@ -52,7 +52,8 @@ func _on_joystickbig_moveJoystick(joystickVector_):
 		emit_signal("movePlayer",joystickVector_)
 
 func enableButton():
-	$button.visible=true
+	# le bouton ne s'affiche que si les commandes tactiles sont actives
+	$button.visible=_isEnable
 
 func setEquipment(item_):
 	var realItem=GlobalItems.getItem(item_)

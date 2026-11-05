@@ -3,33 +3,54 @@
 [ext_resource type="Texture2D" path="res://common/moving-fighters/bee/bee-flying.png" id="1"]
 [ext_resource type="Script" path="res://common/moving-fighters/bee.gd" id="2"]
 
-[sub_resource type="AtlasTexture" id="1"]
+[sub_resource type="AtlasTexture" id="fly_0"]
 atlas = ExtResource("1")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="2"]
+[sub_resource type="AtlasTexture" id="fly_1"]
 atlas = ExtResource("1")
 region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="3"]
+[sub_resource type="AtlasTexture" id="fly_2"]
 atlas = ExtResource("1")
 region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="fly_3"]
+atlas = ExtResource("1")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="fly_4"]
+atlas = ExtResource("1")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="fly_5"]
+atlas = ExtResource("1")
+region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="4"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("1")
+"texture": SubResource("fly_0")
 }, {
 "duration": 1.0,
-"texture": SubResource("2")
+"texture": SubResource("fly_1")
 }, {
 "duration": 1.0,
-"texture": SubResource("3")
+"texture": SubResource("fly_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("fly_3")
+}, {
+"duration": 1.0,
+"texture": SubResource("fly_4")
+}, {
+"duration": 1.0,
+"texture": SubResource("fly_5")
 }],
 "loop": 1,
 "name": &"default",
-"speed": 5.0
+"speed": 12.0
 }]
 
 [sub_resource type="RectangleShape2D" id="5"]

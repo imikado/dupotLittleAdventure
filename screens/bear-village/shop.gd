@@ -13,8 +13,8 @@ func _ready():
 	$simpleDialog.addDiscussion(GlobalGame.getTraductionById(GlobalGame.TRAD_WORD_VENDEUR),GlobalGame.getTraductionById(GlobalGame.TRAD_BEARVILLAGE_SHOP))
 		
 	$shopList.setShopItemList([
-		shopItemClass.new(GlobalItems.ID.HONEY,6),
-		shopItemClass.new(GlobalItems.ID.HEALTH_POTION_10,50),
+		shopItemClass.new(GlobalItems.ID.HONEY,5),
+		shopItemClass.new(GlobalItems.ID.HEALTH_POTION_10,8),
 		shopItemClass.new(GlobalItems.ID.BUCKET,3)
 		])
 	

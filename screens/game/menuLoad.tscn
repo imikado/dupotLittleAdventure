@@ -1,6 +1,7 @@
 [gd_scene format=3]
 
 [ext_resource type="Texture2D" path="res://screens/tree-village/images/background.png" id="1"]
+[ext_resource type="ShaderMaterial" path="res://common/shaders/grassGround.tres" id="fx_grass"]
 [ext_resource type="Script" path="res://screens/game/menuLoad.gd" id="2"]
 [ext_resource type="Theme" path="res://common/themes/default.tres" id="3"]
 [ext_resource type="StyleBox" path="res://common/themes/window.tres" id="panel"]
@@ -14,27 +15,30 @@ pivot_offset = Vector2(-165, -20)
 script = ExtResource("2")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1398643300]
+material = ExtResource("fx_grass")
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-scale = Vector2(3.34032, 1.88094)
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("1")
+stretch_mode = 1
 
 [node name="window" type="Panel" parent="." unique_id=530039675]
 layout_mode = 0
-offset_left = 126.0
-offset_top = 36.0
-offset_right = 316.0
-offset_bottom = 170.0
+offset_left = 65.0
+offset_top = 34.0
+offset_right = 255.0
+offset_bottom = 148.0
 theme = ExtResource("3")
 theme_override_styles/panel = ExtResource("panel")
 
 [node name="scroll" type="ScrollContainer" parent="." unique_id=530039674]
 layout_mode = 0
-offset_left = 133.0
-offset_top = 42.0
-offset_right = 310.0
-offset_bottom = 164.0
+offset_left = 72.0
+offset_top = 40.0
+offset_right = 249.0
+offset_bottom = 142.0
 follow_focus = true
 horizontal_scroll_mode = 0
 
@@ -62,13 +66,14 @@ offset_bottom = 30.0
 theme = ExtResource("3")
 theme_type_variation = &"HeadingLabel"
 text = "Charger une partie"
+horizontal_alignment = 1
 
 [node name="Retour" type="Button" parent="." unique_id=717816920]
 layout_mode = 0
-offset_left = 20.0
-offset_top = 148.0
-offset_right = 74.0
-offset_bottom = 168.0
+offset_left = 133.0
+offset_top = 154.0
+offset_right = 187.0
+offset_bottom = 174.0
 theme = ExtResource("3")
 theme_type_variation = &"ChipButton"
 text = "Retour"

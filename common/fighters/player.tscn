@@ -1,131 +1,453 @@
 [gd_scene format=3]
 
 [ext_resource type="Texture2D" path="res://common/characters/shadow.png" id="shadow"]
-[ext_resource type="Texture2D" path="res://common/fighters/player/player-idle.png" id="1"]
-[ext_resource type="Texture2D" path="res://common/fighters/player/player-attack2.png" id="2"]
-[ext_resource type="Texture2D" path="res://common/fighters/player/player-attack1.png" id="3"]
 [ext_resource type="Script" path="res://common/fighters/player.gd" id="4"]
-[ext_resource type="Texture2D" path="res://common/fighters/player/player-damage.png" id="5"]
+[ext_resource type="Texture2D" path="res://common/fighters/player/player-attack-iron.png" id="iron"]
+[ext_resource type="Texture2D" path="res://common/fighters/player/player-attack-iron-legend.png" id="ironLegend"]
+[ext_resource type="Texture2D" path="res://common/fighters/player/player-idle.png" id="idle"]
+[ext_resource type="Texture2D" path="res://common/fighters/player/player-idle-iron.png" id="idleIron"]
+[ext_resource type="Texture2D" path="res://common/fighters/player/player-damage.png" id="damage"]
+[ext_resource type="Texture2D" path="res://common/fighters/player/player-damage-iron.png" id="damageIron"]
+[ext_resource type="Texture2D" path="res://common/fighters/player/player-attack1.png" id="woodSimple"]
+[ext_resource type="Texture2D" path="res://common/fighters/player/player-attack2.png" id="woodAdvanced"]
+[ext_resource type="Texture2D" path="res://common/fighters/player/player-idle-bare.png" id="idleBare"]
+[ext_resource type="Texture2D" path="res://common/fighters/player/player-damage-bare.png" id="damageBare"]
+[ext_resource type="Texture2D" path="res://common/fighters/player/player-attack-punch.png" id="punch"]
 
-[sub_resource type="AtlasTexture" id="17"]
-atlas = ExtResource("2")
+[sub_resource type="AtlasTexture" id="idle_0"]
+atlas = ExtResource("idle")
 region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="18"]
-atlas = ExtResource("2")
+[sub_resource type="AtlasTexture" id="idle_1"]
+atlas = ExtResource("idle")
 region = Rect2(64, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="19"]
-atlas = ExtResource("2")
+[sub_resource type="AtlasTexture" id="idle_2"]
+atlas = ExtResource("idle")
 region = Rect2(128, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="20"]
-atlas = ExtResource("2")
+[sub_resource type="AtlasTexture" id="idle_3"]
+atlas = ExtResource("idle")
 region = Rect2(192, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="21"]
-atlas = ExtResource("2")
+[sub_resource type="AtlasTexture" id="idleIron_0"]
+atlas = ExtResource("idleIron")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="idleIron_1"]
+atlas = ExtResource("idleIron")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="idleIron_2"]
+atlas = ExtResource("idleIron")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="idleIron_3"]
+atlas = ExtResource("idleIron")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="damage_0"]
+atlas = ExtResource("damage")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="damage_1"]
+atlas = ExtResource("damage")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="damage_2"]
+atlas = ExtResource("damage")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="damage_3"]
+atlas = ExtResource("damage")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="damage_4"]
+atlas = ExtResource("damage")
 region = Rect2(256, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="22"]
-atlas = ExtResource("2")
+[sub_resource type="AtlasTexture" id="damage_5"]
+atlas = ExtResource("damage")
 region = Rect2(320, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="23"]
-atlas = ExtResource("2")
+[sub_resource type="AtlasTexture" id="damage_6"]
+atlas = ExtResource("damage")
 region = Rect2(384, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="5"]
-atlas = ExtResource("3")
+[sub_resource type="AtlasTexture" id="damageIron_0"]
+atlas = ExtResource("damageIron")
 region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="6"]
-atlas = ExtResource("3")
+[sub_resource type="AtlasTexture" id="damageIron_1"]
+atlas = ExtResource("damageIron")
 region = Rect2(64, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="7"]
-atlas = ExtResource("3")
+[sub_resource type="AtlasTexture" id="damageIron_2"]
+atlas = ExtResource("damageIron")
 region = Rect2(128, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="8"]
-atlas = ExtResource("3")
+[sub_resource type="AtlasTexture" id="damageIron_3"]
+atlas = ExtResource("damageIron")
 region = Rect2(192, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="9"]
-atlas = ExtResource("3")
+[sub_resource type="AtlasTexture" id="damageIron_4"]
+atlas = ExtResource("damageIron")
 region = Rect2(256, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="25"]
-atlas = ExtResource("3")
+[sub_resource type="AtlasTexture" id="damageIron_5"]
+atlas = ExtResource("damageIron")
 region = Rect2(320, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="10"]
-atlas = ExtResource("5")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="11"]
-atlas = ExtResource("5")
-region = Rect2(64, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="12"]
-atlas = ExtResource("5")
-region = Rect2(128, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="13"]
-atlas = ExtResource("5")
-region = Rect2(192, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="14"]
-atlas = ExtResource("5")
-region = Rect2(256, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="15"]
-atlas = ExtResource("5")
-region = Rect2(320, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="16"]
-atlas = ExtResource("5")
+[sub_resource type="AtlasTexture" id="damageIron_6"]
+atlas = ExtResource("damageIron")
 region = Rect2(384, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="1"]
-atlas = ExtResource("1")
+[sub_resource type="AtlasTexture" id="woodSimple_0"]
+atlas = ExtResource("woodSimple")
 region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="2"]
-atlas = ExtResource("1")
+[sub_resource type="AtlasTexture" id="woodSimple_1"]
+atlas = ExtResource("woodSimple")
 region = Rect2(64, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="3"]
-atlas = ExtResource("1")
+[sub_resource type="AtlasTexture" id="woodSimple_2"]
+atlas = ExtResource("woodSimple")
 region = Rect2(128, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="4"]
-atlas = ExtResource("1")
+[sub_resource type="AtlasTexture" id="woodSimple_3"]
+atlas = ExtResource("woodSimple")
 region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="woodSimple_4"]
+atlas = ExtResource("woodSimple")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="woodSimple_5"]
+atlas = ExtResource("woodSimple")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="woodSimple_6"]
+atlas = ExtResource("woodSimple")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="woodAdvanced_0"]
+atlas = ExtResource("woodAdvanced")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="woodAdvanced_1"]
+atlas = ExtResource("woodAdvanced")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="woodAdvanced_2"]
+atlas = ExtResource("woodAdvanced")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="woodAdvanced_3"]
+atlas = ExtResource("woodAdvanced")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="woodAdvanced_4"]
+atlas = ExtResource("woodAdvanced")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="woodAdvanced_5"]
+atlas = ExtResource("woodAdvanced")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="woodAdvanced_6"]
+atlas = ExtResource("woodAdvanced")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="woodAdvanced_7"]
+atlas = ExtResource("woodAdvanced")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="iron_0"]
+atlas = ExtResource("iron")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="iron_1"]
+atlas = ExtResource("iron")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="iron_2"]
+atlas = ExtResource("iron")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="iron_3"]
+atlas = ExtResource("iron")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="iron_4"]
+atlas = ExtResource("iron")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="iron_5"]
+atlas = ExtResource("iron")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="iron_6"]
+atlas = ExtResource("iron")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="iron_7"]
+atlas = ExtResource("iron")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="ironLegend_0"]
+atlas = ExtResource("ironLegend")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="ironLegend_1"]
+atlas = ExtResource("ironLegend")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="ironLegend_2"]
+atlas = ExtResource("ironLegend")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="ironLegend_3"]
+atlas = ExtResource("ironLegend")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="ironLegend_4"]
+atlas = ExtResource("ironLegend")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="ironLegend_5"]
+atlas = ExtResource("ironLegend")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="ironLegend_6"]
+atlas = ExtResource("ironLegend")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="ironLegend_7"]
+atlas = ExtResource("ironLegend")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="ironLegend_8"]
+atlas = ExtResource("ironLegend")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="ironLegend_9"]
+atlas = ExtResource("ironLegend")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="ironLegend_10"]
+atlas = ExtResource("ironLegend")
+region = Rect2(640, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="idleBare_0"]
+atlas = ExtResource("idleBare")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="idleBare_1"]
+atlas = ExtResource("idleBare")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="idleBare_2"]
+atlas = ExtResource("idleBare")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="idleBare_3"]
+atlas = ExtResource("idleBare")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="damageBare_0"]
+atlas = ExtResource("damageBare")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="damageBare_1"]
+atlas = ExtResource("damageBare")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="damageBare_2"]
+atlas = ExtResource("damageBare")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="damageBare_3"]
+atlas = ExtResource("damageBare")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="damageBare_4"]
+atlas = ExtResource("damageBare")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="damageBare_5"]
+atlas = ExtResource("damageBare")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="damageBare_6"]
+atlas = ExtResource("damageBare")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="punch_0"]
+atlas = ExtResource("punch")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="punch_1"]
+atlas = ExtResource("punch")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="punch_2"]
+atlas = ExtResource("punch")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="punch_3"]
+atlas = ExtResource("punch")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="punch_4"]
+atlas = ExtResource("punch")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="punch_5"]
+atlas = ExtResource("punch")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="punch_6"]
+atlas = ExtResource("punch")
+region = Rect2(384, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="24"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("17")
+"duration": 2.0,
+"texture": SubResource("idle_0")
+}, {
+"duration": 0.75,
+"texture": SubResource("idle_1")
+}, {
+"duration": 1.75,
+"texture": SubResource("idle_2")
+}, {
+"duration": 0.5,
+"texture": SubResource("idle_3")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("idleIron_0")
+}, {
+"duration": 0.75,
+"texture": SubResource("idleIron_1")
+}, {
+"duration": 1.75,
+"texture": SubResource("idleIron_2")
+}, {
+"duration": 0.5,
+"texture": SubResource("idleIron_3")
+}],
+"loop": 1,
+"name": &"idle-iron",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.5,
+"texture": SubResource("damage_0")
+}, {
+"duration": 0.5,
+"texture": SubResource("damage_1")
 }, {
 "duration": 1.0,
-"texture": SubResource("18")
+"texture": SubResource("damage_2")
 }, {
 "duration": 1.0,
-"texture": SubResource("19")
+"texture": SubResource("damage_3")
+}, {
+"duration": 0.75,
+"texture": SubResource("damage_4")
+}, {
+"duration": 0.75,
+"texture": SubResource("damage_5")
+}, {
+"duration": 0.75,
+"texture": SubResource("damage_6")
+}],
+"loop": 1,
+"name": &"damage",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.5,
+"texture": SubResource("damageIron_0")
+}, {
+"duration": 0.5,
+"texture": SubResource("damageIron_1")
 }, {
 "duration": 1.0,
-"texture": SubResource("20")
+"texture": SubResource("damageIron_2")
 }, {
 "duration": 1.0,
-"texture": SubResource("21")
+"texture": SubResource("damageIron_3")
+}, {
+"duration": 0.75,
+"texture": SubResource("damageIron_4")
+}, {
+"duration": 0.75,
+"texture": SubResource("damageIron_5")
+}, {
+"duration": 0.75,
+"texture": SubResource("damageIron_6")
+}],
+"loop": 1,
+"name": &"damage-iron",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.5,
+"texture": SubResource("woodSimple_0")
+}, {
+"duration": 1.25,
+"texture": SubResource("woodSimple_1")
+}, {
+"duration": 0.5,
+"texture": SubResource("woodSimple_2")
+}, {
+"duration": 0.5,
+"texture": SubResource("woodSimple_3")
+}, {
+"duration": 1.25,
+"texture": SubResource("woodSimple_4")
 }, {
 "duration": 1.0,
-"texture": SubResource("22")
+"texture": SubResource("woodSimple_5")
+}, {
+"duration": 1.5,
+"texture": SubResource("woodSimple_6")
+}],
+"loop": 1,
+"name": &"attack_wood-sword_simple",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.5,
+"texture": SubResource("woodAdvanced_0")
+}, {
+"duration": 1.25,
+"texture": SubResource("woodAdvanced_1")
+}, {
+"duration": 0.5,
+"texture": SubResource("woodAdvanced_2")
+}, {
+"duration": 0.5,
+"texture": SubResource("woodAdvanced_3")
+}, {
+"duration": 1.25,
+"texture": SubResource("woodAdvanced_4")
+}, {
+"duration": 0.75,
+"texture": SubResource("woodAdvanced_5")
 }, {
 "duration": 1.0,
-"texture": SubResource("23")
+"texture": SubResource("woodAdvanced_6")
+}, {
+"duration": 1.25,
+"texture": SubResource("woodAdvanced_7")
 }],
 "loop": 1,
 "name": &"attack_wood-sword_advanced",
@@ -133,68 +455,140 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("5")
+"texture": SubResource("iron_0")
+}, {
+"duration": 2.5,
+"texture": SubResource("iron_1")
 }, {
 "duration": 1.5,
-"texture": SubResource("6")
+"texture": SubResource("iron_2")
 }, {
-"duration": 1.0,
-"texture": SubResource("7")
+"duration": 0.6,
+"texture": SubResource("iron_3")
 }, {
-"duration": 0.5,
-"texture": SubResource("8")
+"duration": 1.6,
+"texture": SubResource("iron_4")
 }, {
-"duration": 0.5,
-"texture": SubResource("25")
+"duration": 1.2,
+"texture": SubResource("iron_5")
 }, {
-"duration": 1.5,
-"texture": SubResource("9")
+"duration": 1.8,
+"texture": SubResource("iron_6")
+}, {
+"duration": 3.0,
+"texture": SubResource("iron_7")
 }],
 "loop": 1,
-"name": &"attack_wood-sword_simple",
-"speed": 5.0
+"name": &"attack_iron-sword_simple",
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("10")
+"texture": SubResource("ironLegend_0")
+}, {
+"duration": 2.0,
+"texture": SubResource("ironLegend_1")
+}, {
+"duration": 3.0,
+"texture": SubResource("ironLegend_2")
 }, {
 "duration": 1.0,
-"texture": SubResource("11")
+"texture": SubResource("ironLegend_3")
 }, {
-"duration": 1.0,
-"texture": SubResource("12")
+"duration": 1.5,
+"texture": SubResource("ironLegend_4")
 }, {
-"duration": 1.0,
-"texture": SubResource("13")
+"duration": 1.8,
+"texture": SubResource("ironLegend_5")
 }, {
-"duration": 1.0,
-"texture": SubResource("14")
+"duration": 1.2,
+"texture": SubResource("ironLegend_6")
 }, {
-"duration": 1.0,
-"texture": SubResource("15")
+"duration": 0.8,
+"texture": SubResource("ironLegend_7")
 }, {
-"duration": 1.0,
-"texture": SubResource("16")
+"duration": 2.2,
+"texture": SubResource("ironLegend_8")
+}, {
+"duration": 2.0,
+"texture": SubResource("ironLegend_9")
+}, {
+"duration": 3.0,
+"texture": SubResource("ironLegend_10")
 }],
 "loop": 1,
-"name": &"damage",
-"speed": 5.0
+"name": &"attack_iron-sword_legend",
+"speed": 10.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("1")
+"duration": 2.0,
+"texture": SubResource("idleBare_0")
 }, {
-"duration": 1.0,
-"texture": SubResource("2")
+"duration": 0.75,
+"texture": SubResource("idleBare_1")
 }, {
-"duration": 1.0,
-"texture": SubResource("3")
+"duration": 1.75,
+"texture": SubResource("idleBare_2")
 }, {
-"duration": 1.0,
-"texture": SubResource("4")
+"duration": 0.5,
+"texture": SubResource("idleBare_3")
 }],
 "loop": 1,
-"name": &"idle",
+"name": &"idle-bare",
+"speed": 5.0
+},
+{
+"frames": [{
+"duration": 0.5,
+"texture": SubResource("damageBare_0")
+}, {
+"duration": 0.5,
+"texture": SubResource("damageBare_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("damageBare_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("damageBare_3")
+}, {
+"duration": 0.75,
+"texture": SubResource("damageBare_4")
+}, {
+"duration": 0.75,
+"texture": SubResource("damageBare_5")
+}, {
+"duration": 0.75,
+"texture": SubResource("damageBare_6")
+}],
+"loop": 1,
+"name": &"damage-bare",
+"speed": 5.0
+},
+{
+"frames": [{
+"duration": 0.5,
+"texture": SubResource("punch_0")
+}, {
+"duration": 1.25,
+"texture": SubResource("punch_1")
+}, {
+"duration": 0.5,
+"texture": SubResource("punch_2")
+}, {
+"duration": 0.5,
+"texture": SubResource("punch_3")
+}, {
+"duration": 1.25,
+"texture": SubResource("punch_4")
+}, {
+"duration": 1.0,
+"texture": SubResource("punch_5")
+}, {
+"duration": 1.5,
+"texture": SubResource("punch_6")
+}],
+"loop": 1,
+"name": &"attack_punch",
 "speed": 5.0
 }]
 

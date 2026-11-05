@@ -1,0 +1,7 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://common/effects/bees.gd" id="1"]
+
+[node name="bees" type="Node2D"]
+z_index = 9
+script = ExtResource("1")

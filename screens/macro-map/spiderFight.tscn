@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" path="res://common/gamePad/fight.tscn" id="6"]
 [ext_resource type="ShaderMaterial" path="res://common/shaders/grassGround.tres" id="fx_grass"]
 [ext_resource type="Texture2D" path="res://screens/macro-map/fightDecor.png" id="decor"]
+[ext_resource type="Texture2D" path="res://screens/macro-map/fightArena.png" id="arena"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6ld7b"]
 texture = ExtResource("4")
@@ -26,6 +27,10 @@ script = ExtResource("5")
 material = ExtResource("fx_grass")
 tile_map_data = PackedByteArray("AAD/////AAAAAAAAAAAAAP//AAAAAAAAAAABAP//AAAAAAAAAAACAP//AAAAAAAAAAADAP//AAAAAAAAAAAEAP//AAAAAAAAAAD//wAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAD//wEAAAAAAAAAAAAAAAEAAAAAAAAAAAABAAEAAAAAAAAAAAACAAEAAAAAAAAAAAADAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAABAAIAAAAAAAAAAAACAAIAAAAAAAAAAAADAAIAAAAAAAAAAAAEAAIAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_5jdrl")
+
+[node name="arena" type="Sprite2D" parent="."]
+position = Vector2(155, 84)
+texture = ExtResource("arena")
 
 [node name="decor" type="Sprite2D" parent="."]
 position = Vector2(-8, -8)

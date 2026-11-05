@@ -10,7 +10,7 @@ func _ready():
 	var discussionList=GlobalGame.getTraductionById(GlobalGame.TRAD_CRABVILLAGE)
 
 	$simpleDialog.addDiscussion(GlobalGame.getTraductionById(GlobalGame.TRAD_WORD_HABITANT),discussionList[0])
-	$simpleDialog.addDiscussion("Gordon",discussionList[1])
+	$simpleDialog.addDiscussion(GlobalGame.getTraductionById(GlobalGame.TRAD_WORD_GORDON),discussionList[1])
 	$simpleDialog.addDiscussion(GlobalGame.getTraductionById(GlobalGame.TRAD_WORD_HABITANT),discussionList[2])
 
 

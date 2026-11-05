@@ -1,64 +1,140 @@
-[gd_scene format=4]
+[gd_scene format=3]
 
+[ext_resource type="Script" path="res://screens/game/title.gd" id="1"]
 [ext_resource type="PackedScene" path="res://screens/game/title/pixelLogo.tscn" id="logo"]
-[ext_resource type="Texture2D" path="res://screens/tree-village/images/mushrooms.png" id="1"]
-[ext_resource type="Texture2D" path="res://screens/tree-village/assets/ball-house/ballhouse.png" id="2"]
-[ext_resource type="Texture2D" path="res://screens/tree-village/images/bushes.png" id="3"]
-[ext_resource type="Texture2D" path="res://screens/tree-village/images/background.png" id="4"]
-[ext_resource type="Texture2D" path="res://screens/tree-village/images/tree.png" id="5"]
-[ext_resource type="Script" path="res://screens/game/title.gd" id="7"]
+[ext_resource type="Theme" path="res://common/themes/default.tres" id="theme"]
+[ext_resource type="Texture2D" path="res://screens/game/title/sky.png" id="sky"]
+[ext_resource type="Texture2D" path="res://screens/game/title/clouds.png" id="clouds"]
+[ext_resource type="Texture2D" path="res://screens/game/title/forestFar.png" id="far"]
+[ext_resource type="Texture2D" path="res://screens/game/title/forestNear.png" id="near"]
+[ext_resource type="Texture2D" path="res://screens/game/title/leaf.png" id="leaf"]
+[ext_resource type="Texture2D" path="res://screens/tree-village/images/background.png" id="grass"]
+[ext_resource type="ShaderMaterial" path="res://common/shaders/grassGround.tres" id="fx_grass"]
+[ext_resource type="Texture2D" path="res://screens/tree-village/assets/tree-house/treehouse2.png" id="treehouse"]
+[ext_resource type="Texture2D" path="res://screens/tree-village/images/bushes.png" id="bushes"]
+[ext_resource type="Texture2D" path="res://screens/tree-village/images/mushrooms.png" id="mushrooms"]
+[ext_resource type="Texture2D" path="res://common/characters/shadow.png" id="shadow"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kguro"]
-texture = ExtResource("4")
-texture_region_size = Vector2i(96, 96)
-0:0/0 = 0
+[sub_resource type="Gradient" id="leafFade"]
+offsets = PackedFloat32Array(0, 0.1, 0.85, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
-[sub_resource type="TileSet" id="TileSet_y8wdv"]
-tile_size = Vector2i(96, 96)
-physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_kguro")
+[sub_resource type="Gradient" id="leafTint"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 0.92, 0.55, 1)
 
-[node name="Control" type="Node2D" unique_id=1887341443]
-position = Vector2(0, 1)
-script = ExtResource("7")
+[node name="title" type="Node2D"]
+script = ExtResource("1")
 
-[node name="TileMap" type="TileMapLayer" parent="." unique_id=1783613249]
-tile_map_data = PackedByteArray("AAD9/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAABAAEAAAAAAAAAAAACAAEAAAAAAAAAAAADAAEAAAAAAAAAAAA=")
-tile_set = SubResource("TileSet_y8wdv")
+[node name="sky" type="Sprite2D" parent="."]
+texture = ExtResource("sky")
+centered = false
 
-[node name="ballhouse" type="Sprite2D" parent="." unique_id=1120372293]
-position = Vector2(160.113, 49.4255)
-texture = ExtResource("2")
+[node name="clouds" type="Parallax2D" parent="."]
+repeat_size = Vector2(320, 0)
+autoscroll = Vector2(-3, 0)
+repeat_times = 2
 
-[node name="tree2" type="Sprite2D" parent="." unique_id=88379403]
-position = Vector2(308.947, -0.630981)
-texture = ExtResource("5")
+[node name="sprite" type="Sprite2D" parent="clouds"]
+texture = ExtResource("clouds")
+centered = false
 
-[node name="tree" type="Sprite2D" parent="." unique_id=1260949396]
-position = Vector2(43.9816, 66.7784)
-texture = ExtResource("5")
+[node name="far" type="Node2D" parent="."]
+position = Vector2(0, 56)
 
-[node name="bushes" type="Sprite2D" parent="." unique_id=1000293817]
-position = Vector2(244.875, 46.0884)
-texture = ExtResource("3")
+[node name="sprite" type="Sprite2D" parent="far"]
+position = Vector2(-32, 0)
+texture = ExtResource("far")
+centered = false
 
-[node name="bushes2" type="Sprite2D" parent="." unique_id=112925938]
-position = Vector2(82.692, 83.4639)
-texture = ExtResource("3")
+[node name="ground" type="Node2D" parent="."]
 
-[node name="mushrooms" type="Sprite2D" parent="." unique_id=760471994]
-position = Vector2(354.999, 33.4074)
-texture = ExtResource("1")
+[node name="grass" type="TextureRect" parent="ground"]
+material = ExtResource("fx_grass")
+offset_left = -16.0
+offset_top = 116.0
+offset_right = 336.0
+offset_bottom = 180.0
+mouse_filter = 2
+texture = ExtResource("grass")
+stretch_mode = 1
 
-[node name="mushrooms2" type="Sprite2D" parent="." unique_id=1626715704]
-position = Vector2(356.334, 147.536)
-texture = ExtResource("1")
+[node name="near" type="Node2D" parent="."]
+position = Vector2(0, 62)
 
-[node name="Timer" type="Timer" parent="." unique_id=1311566028]
-wait_time = 3.5
-autostart = true
+[node name="sprite" type="Sprite2D" parent="near"]
+position = Vector2(-32, 0)
+texture = ExtResource("near")
+centered = false
+
+[node name="front" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="bushes" type="Sprite2D" parent="front"]
+position = Vector2(38, 140)
+texture = ExtResource("bushes")
+
+[node name="bushes2" type="Sprite2D" parent="front"]
+position = Vector2(232, 170)
+texture = ExtResource("bushes")
+
+[node name="mushrooms" type="Sprite2D" parent="front"]
+position = Vector2(214, 136)
+texture = ExtResource("mushrooms")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 32)
+
+[node name="mushrooms2" type="Sprite2D" parent="front"]
+position = Vector2(14, 132)
+texture = ExtResource("mushrooms")
+region_enabled = true
+region_rect = Rect2(64, 0, 32, 32)
+
+[node name="treehouse" type="Sprite2D" parent="front"]
+position = Vector2(299, 44)
+texture = ExtResource("treehouse")
+
+[node name="gordon" type="Node2D" parent="front"]
+position = Vector2(262, 150)
+
+[node name="shadow" type="Sprite2D" parent="front/gordon"]
+position = Vector2(0, 16)
+texture = ExtResource("shadow")
+
+[node name="sprite" type="AnimatedSprite2D" parent="front/gordon"]
+
+[node name="leaves" type="CPUParticles2D" parent="."]
+position = Vector2(220, -4)
+amount = 9
+lifetime = 7.0
+preprocess = 7.0
+texture = ExtResource("leaf")
+emission_shape = 3
+emission_rect_extents = Vector2(130, 2)
+direction = Vector2(-1, 0.4)
+spread = 30.0
+gravity = Vector2(0, 5)
+initial_velocity_min = 6.0
+initial_velocity_max = 12.0
+tangential_accel_min = -5.0
+tangential_accel_max = 5.0
+color_ramp = SubResource("leafFade")
+color_initial_ramp = SubResource("leafTint")
 
 [node name="logo" parent="." instance=ExtResource("logo")]
-position = Vector2(40, 64)
+position = Vector2(8, 16)
+
+[node name="pressKey" type="Label" parent="."]
+offset_top = 162.0
+offset_right = 236.0
+offset_bottom = 174.0
+theme = ExtResource("theme")
+theme_type_variation = &"HeadingLabel"
+theme_override_font_sizes/font_size = 8
+theme_override_constants/outline_size = 2
+horizontal_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 8.0
+autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

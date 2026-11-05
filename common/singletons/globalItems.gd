@@ -7,7 +7,7 @@ var potionClass=preload("res://common/class/item/potion_class.gd")
 enum ID {
 	#weapons
 	WOOD_SWORD,
-	#potions 
+	#potions (l'identifiant garde son nom : il est stocke dans les sauvegardes)
 	HEALTH_POTION_10,
 	#maps
 	GORMON_STAR_MAP,
@@ -21,7 +21,10 @@ enum ID {
 
 	HONEY,
 
-	BUCKET
+	BUCKET,
+
+	#weapons ajoutees ensuite (a la fin : les sauvegardes stockent les numeros)
+	IRON_SWORD
 	
 	}
 
@@ -56,11 +59,11 @@ var itemList={
 	),
 	ID.HEALTH_POTION_10:itemClass.new(
 		{GlobalGame.FR:"Potion de santé",GlobalGame.EN:"Health potion"},
-		{GlobalGame.FR:"Une potion de santé qui donne 10 points de vie.",GlobalGame.EN:"A health potion that restores 10 life points."},
+		{GlobalGame.FR:"Une potion de santé qui rend 30 points de vie.",GlobalGame.EN:"A health potion that restores 30 life points."},
 		"common/items/magicpotion/magic-potion.png",
 		itemClass.TYPE.MAGICPOTION,
 		[	
-			potionClass.new("increaseLife",10)
+			potionClass.new("increaseLife",30)
 		]
 	),
 	ID.SPADE:itemClass.new(
@@ -98,11 +101,46 @@ var itemList={
 		{GlobalGame.FR:"Seau pour le puits",GlobalGame.EN:"Bucket for the well"},
 		"common/items/things/bucket.png",
 		itemClass.TYPE.THING
+	),
+	ID.IRON_SWORD:itemClass.new(
+		{GlobalGame.FR:"Épée en fer forgé",GlobalGame.EN:"Forged iron sword"},
+		{GlobalGame.FR:"Une épée de légende forgée dans le fer",GlobalGame.EN:"A legendary sword forged in iron"},
+		"common/items/weapons/iron-sword.png",
+		itemClass.TYPE.WEAPON,
+		[
+			attackClass.new(
+				{GlobalGame.FR:"Taille de fer",GlobalGame.EN:"Iron slash"},
+				"attack_iron-sword_simple",
+				22,
+				0
+			),
+			attackClass.new(
+				{GlobalGame.FR:"Lame de légende",GlobalGame.EN:"Legendary blade"},
+				"attack_iron-sword_legend",
+				55,
+				20
+			)
+		]
 	)
 }
 
 func getItem(key_):
 	return itemList[int(key_)]
+
+# vrai si l'objet est une arme (epee en bois, epee en fer...)
+func isWeapon(key_):
+	if key_==null:
+		return false
+	return getItem(key_).type==itemClass.TYPE.WEAPON
+
+# identifiants de toutes les armes, dans l'ordre de l'enum
+func getWeaponIdList():
+	var weaponIdList=[]
+	for key in itemList:
+		if isWeapon(key):
+			weaponIdList.append(key)
+	weaponIdList.sort()
+	return weaponIdList
 	
 	
 

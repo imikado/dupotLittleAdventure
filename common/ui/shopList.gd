@@ -11,6 +11,10 @@ var shopItemClass=preload("res://common/class/shopItem_class.gd")
 
 var patternItem=null
 
+# une seule case cochee a la fois : c'est l'objet dont on lit la fiche
+var itemGroup=ButtonGroup.new()
+var itemButtons={}
+
 # la fenetre prend la hauteur de son contenu (en pixels du jeu)
 const MIN_HEIGHT=90
 const MARGIN_BOTTOM=8
@@ -67,13 +71,13 @@ func showWindow():
 				var realItem=GlobalItems.getItem(shopItem.item)
 				var newItem=patternItem.duplicate()
 				newItem.setImage(realItem.getTexture())
+				newItem.button_group=itemGroup
+				itemButtons[shopItem]=newItem
 				newItem.connect("button_down", Callable(self, "_on_pressed_selected").bind(shopItem))
 				# la description suit le curseur (clavier / manette)
 				newItem.connect("focus_entered", Callable(self, "_on_pressed_selected").bind(shopItem))
 			
 				getGrid().add_child(newItem)
-			else:
-				print(shopItem)
 	getWindow().get_node("wallet/count").text=str(GlobalPlayer.getGemsBalance())
 	await _fitWindow()
 	# focus sur le premier objet pour la navigation clavier / manette
@@ -112,7 +116,9 @@ func _fitWindow():
 
 func _on_pressed_selected(shopItem_):
 	shopItemSelected=shopItem_
-	
+	if itemButtons.has(shopItem_):
+		itemButtons[shopItem_].button_pressed=true
+
 	var realItem=GlobalItems.getItem(shopItemSelected.item)
 	getSideInfo().visible=true
 	getSideInfo().get_node("title").text=realItem.getName()
@@ -124,7 +130,8 @@ func _on_pressed_selected(shopItem_):
 		buyButton.button_down.connect(_on_pressed_buy)
 
 	var canAfford=GlobalPlayer.canSpendGems(shopItemSelected.price)
-	var owned=GlobalPlayer.hasItem(shopItemSelected.item)
+	# les potions se consomment : on peut en acheter plusieurs
+	var owned=GlobalPlayer.hasItem(shopItemSelected.item) and realItem.type!=itemClass.TYPE.MAGICPOTION
 	buyButton.disabled=!canAfford or owned
 	buyButton.text=GlobalGame.getTraductionById(GlobalGame.TRAD_UI_OWNED if owned else GlobalGame.TRAD_UI_BUY)
 	# on explique pourquoi le bouton est grise

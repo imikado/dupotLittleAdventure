@@ -1,10 +1,14 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://cnwoas0c2qlnd"]
 
-[ext_resource type="Texture2D" path="res://screens/tree-village/assets/well/well.png" id="1"]
-[ext_resource type="Script" path="res://screens/tree-village/assets/well.gd" id="2"]
-[ext_resource type="Texture2D" path="res://screens/tree-village/assets/well/well-is-repairing.png" id="3"]
-[ext_resource type="Texture2D" path="res://screens/tree-village/assets/well/well-repaired.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://cb7rp7su25wtc" path="res://screens/tree-village/assets/well/well.png" id="1"]
+[ext_resource type="Script" uid="uid://b8lpj21imamro" path="res://screens/tree-village/assets/well.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://doynoy1ui8ttm" path="res://screens/tree-village/assets/well/well-is-repairing.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://gudvmrcrpfq6" path="res://screens/tree-village/assets/well/well-repaired.png" id="4"]
 [ext_resource type="PackedScene" path="res://screens/tree-village/assets/craftsman.tscn" id="5"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lbj6w"]
+radius = 14.0
+height = 63.999992
 
 [sub_resource type="AtlasTexture" id="1"]
 atlas = ExtResource("3")
@@ -598,19 +602,26 @@ _data = {
 }
 
 [node name="well" type="Node2D" unique_id=1895219460]
+y_sort_enabled = true
 script = ExtResource("2")
 
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1852774336]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=886355078]
+position = Vector2(62, 107)
+rotation = -1.5707964
+shape = SubResource("CapsuleShape2D_lbj6w")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1541300273]
-position = Vector2(62.2263, 58.8627)
+position = Vector2(62.2263, 106.863)
 sprite_frames = SubResource("71")
-animation = &"is-repairing"
-frame = 69
+offset = Vector2(0, -48)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D" unique_id=1299234590]
 libraries/ = SubResource("AnimationLibrary_2w85y")
 
 [node name="craftsman" parent="." unique_id=563451028 instance=ExtResource("5")]
-position = Vector2(113.499, 106.356)
+position = Vector2(132, 106)
 
 [node name="Timer" type="Timer" parent="." unique_id=876400132]
 

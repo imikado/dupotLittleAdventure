@@ -1,12 +1,15 @@
 extends CharacterBody2D
 
+# teinte d'un coquillage pose sur une croix
+const PLACED_COLOR=Color(0.8, 1.0, 0.75)
+
 var placed=false
 
 func setPlaced(state_):
+	if placed==state_:
+		return
 	placed=state_
-	
-	print ("placed:")
-	print(state_)
+	modulate=PLACED_COLOR if placed else Color.WHITE
 
 func getPlaced():
 	return placed

@@ -1,5 +1,7 @@
 extends "res://common/class/scene.gd"
 
+# devant la salle, au village des ours
+const EXIT_POSITION=Vector2(120,300)
 
 var nbBeeKilled=0
 var maxNbBeeToKill=0
@@ -15,24 +17,24 @@ func debug():
 
 func _ready():
 	#debug()
-	
+
 	playerSavedLife=GlobalPlayer.getLife()
 
 	setPlayerPath("playerAndControl")
 	loadPosition()
-		
+
 	setupGame()
-	
+
 	getPlayer().loadCameraLimits($cameraRef)
 
 	$playerAndControl.enableNavigation()
-	
-	
+
+
 func setupGame():
 	for node in get_children():
 		if node.is_in_group("Enemy"):
 			node.setPlayer(getPlayer())
-			
+
 			maxNbBeeToKill+=1
 
 func _on_playerAndControl_hit(enemy_):
@@ -41,32 +43,29 @@ func _on_playerAndControl_hit(enemy_):
 	GlobalPlayer.addXp(2)
 	nbBeeKilled+=1
 	$playerAndControl.reloadXp()
-	
+
 	if nbBeeKilled==maxNbBeeToKill:
 		win()
-	
+
 
 func win():
 	SceneTransition.change_scene("res://screens/bear-village/bevil-room-end.tscn")
-	
+
 
 func _on_playerAndControl_damagedBy(enemy_):
-	
+
 	enemy_.goBack()
-	
+
 	GlobalPlayer.damage(10)
 	getPlayer().reloadLife()
 
 	if( GlobalPlayer.getLife() <= 0):
 		GlobalPlayer.setLife(playerSavedLife)
-		
-		GlobalPlayer.savePosition(Vector2(120,300))
+
+		GlobalPlayer.savePosition(EXIT_POSITION)
 		SceneTransition.change_scene("res://screens/bear-village.tscn")
 
 
-
-func _on_winDialog_discussionFinished():
-	GlobalPlayer.addGems(4)
-	
-	GlobalPlayer.savePosition(Vector2(120,300))
-	SceneTransition.change_scene("res://screens/bear-village.tscn")
+# sauvegarder pendant le combat : la partie reprendra devant la salle, au village
+func _on_playerAndControl_save():
+	GlobalGame.saveWithPosition("res://screens/bear-village.tscn", EXIT_POSITION)

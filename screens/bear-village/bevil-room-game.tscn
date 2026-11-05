@@ -5,6 +5,10 @@
 [ext_resource type="PackedScene" path="res://common/ui/playerAndControl.tscn" id="3"]
 [ext_resource type="PackedScene" path="res://common/moving-fighters/bee.tscn" id="5"]
 [ext_resource type="Texture2D" path="res://screens/bear-village/images/hive1.png" id="6"]
+[ext_resource type="Texture2D" path="res://screens/bear-village/bevil-room/clearing.png" id="clearing"]
+[ext_resource type="Texture2D" path="res://screens/bear-village/images/bushes.png" id="bushes"]
+[ext_resource type="Texture2D" path="res://screens/bear-village/images/mushrooms.png" id="mushrooms"]
+[ext_resource type="Texture2D" path="res://screens/bear-village/bevil-room/meadowFlowers.png" id="meadowFlowers"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o1wtj"]
 texture = ExtResource("1")
@@ -16,12 +20,315 @@ tile_size = Vector2i(96, 96)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_o1wtj")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_flowers"]
+texture = ExtResource("meadowFlowers")
+texture_region_size = Vector2i(16, 16)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_flowers"]
+tile_size = Vector2i(16, 16)
+sources/0 = SubResource("TileSetAtlasSource_flowers")
+
 [node name="bee-room" type="Node2D" unique_id=773478349]
 script = ExtResource("2")
 
 [node name="background" type="TileMapLayer" parent="." unique_id=1685048208]
 tile_map_data = PackedByteArray("AAD///7/AAAAAAAAAAAAAP7/AAAAAAAAAAABAP7/AAAAAAAAAAACAP7/AAAAAAAAAAADAP7/AAAAAAAAAAAEAP7/AAAAAAAAAAD/////AAAAAAAAAAAAAP//AAAAAAAAAAABAP//AAAAAAAAAAACAP//AAAAAAAAAAADAP//AAAAAAAAAAAEAP//AAAAAAAAAAD//wAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAD//wEAAAAAAAAAAAAAAAEAAAAAAAAAAAABAAEAAAAAAAAAAAACAAEAAAAAAAAAAAADAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAD//wIAAAAAAAAAAAAAAAIAAAAAAAAAAAABAAIAAAAAAAAAAAACAAIAAAAAAAAAAAADAAIAAAAAAAAAAAAEAAIAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_bi0nc")
+
+[node name="flowers" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAXAA8AAAAEAAAAAAAYAAIAAAAEAAAAAAAHAPn/AAAGAAAAAAAbAAMAAAAEAAAAAAAGAPf/AAADAAAAAAAOAPj/AAAAAAAAAAAdAA0AAAAFAAAAAAD9/wcAAAADAAAAAAAXAAgAAAAFAAAAAAAFAAcAAAAAAAAAAAAcAPb/AAAAAAAAAAD9//r/AAABAAAAAAD8/wwAAAADAAAAAAAPAAIAAAAEAAAAAAAHAAQAAAABAAAAAAANAAMAAAAAAAAAAAAAAAIAAAAEAAAAAAAMAAEAAAAEAAAAAAAAAAoAAAACAAAAAAAPAAwAAAABAAAAAAAbAP3/AAAAAAAAAAD//wYAAAAGAAAAAAABAAAAAAAAAAAAAAD///T/AAAEAAAAAAD7//r/AAABAAAAAAD+/wMAAAADAAAAAAAUAAEAAAAAAAAAAAAHAAwAAAAEAAAAAAAMAP7/AAAAAAAAAAAOAP7/AAAAAAAAAAAVAAwAAAAAAAAAAAADAPv/AAAFAAAAAAABAPT/AAAAAAAAAAAYAA0AAAADAAAAAAAGAAkAAAAEAAAAAAAHAAIAAAAEAAAAAAADAAEAAAAEAAAAAAATAPf/AAADAAAAAAAVAPr/AAAAAAAAAAAMAA8AAAAGAAAAAAAOABAAAAAAAAAAAAAUAA8AAAAEAAAAAAAXAPz/AAAAAAAAAAAQAA4AAAACAAAAAAD///b/AAABAAAAAAAKAPT/AAAEAAAAAAA=")
+tile_set = SubResource("TileSet_flowers")
+
+[node name="decor" type="Node2D" parent="."]
+
+[node name="clearing" type="Sprite2D" parent="decor"]
+position = Vector2(302, -31)
+texture = ExtResource("clearing")
+
+[node name="bush1" type="Sprite2D" parent="decor"]
+position = Vector2(-60, -150)
+texture = ExtResource("bushes")
+
+[node name="bush2" type="Sprite2D" parent="decor"]
+position = Vector2(436, -158)
+texture = ExtResource("bushes")
+
+[node name="bush3" type="Sprite2D" parent="decor"]
+position = Vector2(-66, 250)
+texture = ExtResource("bushes")
+
+[node name="bush4" type="Sprite2D" parent="decor"]
+position = Vector2(444, 244)
+texture = ExtResource("bushes")
+
+[node name="bush5" type="Sprite2D" parent="decor"]
+position = Vector2(150, 266)
+texture = ExtResource("bushes")
+
+[node name="bush6" type="Sprite2D" parent="decor"]
+position = Vector2(60, -172)
+texture = ExtResource("bushes")
+
+[node name="bush7" type="Sprite2D" parent="decor"]
+position = Vector2(250, 262)
+texture = ExtResource("bushes")
+
+[node name="mushroom1" type="Sprite2D" parent="decor"]
+position = Vector2(424, 70)
+texture = ExtResource("mushrooms")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 32)
+
+[node name="mushroom2" type="Sprite2D" parent="decor"]
+position = Vector2(-62, 60)
+texture = ExtResource("mushrooms")
+region_enabled = true
+region_rect = Rect2(32, 0, 32, 32)
+
+[node name="mushroom3" type="Sprite2D" parent="decor"]
+position = Vector2(200, -170)
+texture = ExtResource("mushrooms")
+region_enabled = true
+region_rect = Rect2(64, 0, 32, 32)
+
+[node name="hedge1" type="Sprite2D" parent="decor"]
+position = Vector2(-79, -177)
+texture = ExtResource("bushes")
+
+[node name="hedge2" type="Sprite2D" parent="decor"]
+position = Vector2(-77, 270)
+texture = ExtResource("bushes")
+
+[node name="hedge3" type="Sprite2D" parent="decor"]
+position = Vector2(-43, -180)
+texture = ExtResource("bushes")
+
+[node name="hedge4" type="Sprite2D" parent="decor"]
+position = Vector2(-44, 270)
+texture = ExtResource("bushes")
+
+[node name="hedge5" type="Sprite2D" parent="decor"]
+position = Vector2(-14, -178)
+texture = ExtResource("bushes")
+
+[node name="hedge6" type="Sprite2D" parent="decor"]
+position = Vector2(-13, 275)
+texture = ExtResource("bushes")
+
+[node name="hedge7" type="Sprite2D" parent="decor"]
+position = Vector2(21, -179)
+texture = ExtResource("bushes")
+
+[node name="hedge8" type="Sprite2D" parent="decor"]
+position = Vector2(20, 274)
+texture = ExtResource("bushes")
+
+[node name="hedge9" type="Sprite2D" parent="decor"]
+position = Vector2(60, -179)
+texture = ExtResource("bushes")
+
+[node name="hedge10" type="Sprite2D" parent="decor"]
+position = Vector2(58, 272)
+texture = ExtResource("bushes")
+
+[node name="hedge11" type="Sprite2D" parent="decor"]
+position = Vector2(87, -176)
+texture = ExtResource("bushes")
+
+[node name="hedge12" type="Sprite2D" parent="decor"]
+position = Vector2(86, 269)
+texture = ExtResource("bushes")
+
+[node name="hedge13" type="Sprite2D" parent="decor"]
+position = Vector2(121, -182)
+texture = ExtResource("bushes")
+
+[node name="hedge14" type="Sprite2D" parent="decor"]
+position = Vector2(128, 271)
+texture = ExtResource("bushes")
+
+[node name="hedge15" type="Sprite2D" parent="decor"]
+position = Vector2(157, -176)
+texture = ExtResource("bushes")
+
+[node name="hedge16" type="Sprite2D" parent="decor"]
+position = Vector2(158, 272)
+texture = ExtResource("bushes")
+
+[node name="hedge17" type="Sprite2D" parent="decor"]
+position = Vector2(195, -178)
+texture = ExtResource("bushes")
+
+[node name="hedge18" type="Sprite2D" parent="decor"]
+position = Vector2(196, 270)
+texture = ExtResource("bushes")
+
+[node name="hedge19" type="Sprite2D" parent="decor"]
+position = Vector2(223, -180)
+texture = ExtResource("bushes")
+
+[node name="hedge20" type="Sprite2D" parent="decor"]
+position = Vector2(225, 272)
+texture = ExtResource("bushes")
+
+[node name="hedge21" type="Sprite2D" parent="decor"]
+position = Vector2(264, -181)
+texture = ExtResource("bushes")
+
+[node name="hedge22" type="Sprite2D" parent="decor"]
+position = Vector2(260, 270)
+texture = ExtResource("bushes")
+
+[node name="hedge23" type="Sprite2D" parent="decor"]
+position = Vector2(293, -182)
+texture = ExtResource("bushes")
+
+[node name="hedge24" type="Sprite2D" parent="decor"]
+position = Vector2(291, 271)
+texture = ExtResource("bushes")
+
+[node name="hedge25" type="Sprite2D" parent="decor"]
+position = Vector2(330, -175)
+texture = ExtResource("bushes")
+
+[node name="hedge26" type="Sprite2D" parent="decor"]
+position = Vector2(327, 269)
+texture = ExtResource("bushes")
+
+[node name="hedge27" type="Sprite2D" parent="decor"]
+position = Vector2(358, -180)
+texture = ExtResource("bushes")
+
+[node name="hedge28" type="Sprite2D" parent="decor"]
+position = Vector2(362, 271)
+texture = ExtResource("bushes")
+
+[node name="hedge29" type="Sprite2D" parent="decor"]
+position = Vector2(400, -180)
+texture = ExtResource("bushes")
+
+[node name="hedge30" type="Sprite2D" parent="decor"]
+position = Vector2(393, 271)
+texture = ExtResource("bushes")
+
+[node name="hedge31" type="Sprite2D" parent="decor"]
+position = Vector2(428, -175)
+texture = ExtResource("bushes")
+
+[node name="hedge32" type="Sprite2D" parent="decor"]
+position = Vector2(431, 274)
+texture = ExtResource("bushes")
+
+[node name="hedge33" type="Sprite2D" parent="decor"]
+position = Vector2(468, -180)
+texture = ExtResource("bushes")
+
+[node name="hedge34" type="Sprite2D" parent="decor"]
+position = Vector2(460, 269)
+texture = ExtResource("bushes")
+
+[node name="hedge35" type="Sprite2D" parent="decor"]
+position = Vector2(-84, -139)
+texture = ExtResource("bushes")
+
+[node name="hedge36" type="Sprite2D" parent="decor"]
+position = Vector2(468, -140)
+texture = ExtResource("bushes")
+
+[node name="hedge37" type="Sprite2D" parent="decor"]
+position = Vector2(-87, -108)
+texture = ExtResource("bushes")
+
+[node name="hedge38" type="Sprite2D" parent="decor"]
+position = Vector2(467, -107)
+texture = ExtResource("bushes")
+
+[node name="hedge39" type="Sprite2D" parent="decor"]
+position = Vector2(-84, -71)
+texture = ExtResource("bushes")
+
+[node name="hedge40" type="Sprite2D" parent="decor"]
+position = Vector2(468, -68)
+texture = ExtResource("bushes")
+
+[node name="hedge41" type="Sprite2D" parent="decor"]
+position = Vector2(-85, -34)
+texture = ExtResource("bushes")
+
+[node name="hedge42" type="Sprite2D" parent="decor"]
+position = Vector2(463, -35)
+texture = ExtResource("bushes")
+
+[node name="hedge43" type="Sprite2D" parent="decor"]
+position = Vector2(-84, 8)
+texture = ExtResource("bushes")
+
+[node name="hedge44" type="Sprite2D" parent="decor"]
+position = Vector2(465, 0)
+texture = ExtResource("bushes")
+
+[node name="hedge45" type="Sprite2D" parent="decor"]
+position = Vector2(-82, 38)
+texture = ExtResource("bushes")
+
+[node name="hedge46" type="Sprite2D" parent="decor"]
+position = Vector2(469, 41)
+texture = ExtResource("bushes")
+
+[node name="hedge47" type="Sprite2D" parent="decor"]
+position = Vector2(-85, 73)
+texture = ExtResource("bushes")
+
+[node name="hedge48" type="Sprite2D" parent="decor"]
+position = Vector2(468, 79)
+texture = ExtResource("bushes")
+
+[node name="hedge49" type="Sprite2D" parent="decor"]
+position = Vector2(-87, 114)
+texture = ExtResource("bushes")
+
+[node name="hedge50" type="Sprite2D" parent="decor"]
+position = Vector2(469, 108)
+texture = ExtResource("bushes")
+
+[node name="hedge51" type="Sprite2D" parent="decor"]
+position = Vector2(-81, 151)
+texture = ExtResource("bushes")
+
+[node name="hedge52" type="Sprite2D" parent="decor"]
+position = Vector2(467, 144)
+texture = ExtResource("bushes")
+
+[node name="hedge53" type="Sprite2D" parent="decor"]
+position = Vector2(-83, 186)
+texture = ExtResource("bushes")
+
+[node name="hedge54" type="Sprite2D" parent="decor"]
+position = Vector2(466, 180)
+texture = ExtResource("bushes")
+
+[node name="hedge55" type="Sprite2D" parent="decor"]
+position = Vector2(-83, 217)
+texture = ExtResource("bushes")
+
+[node name="hedge56" type="Sprite2D" parent="decor"]
+position = Vector2(463, 217)
+texture = ExtResource("bushes")
+
+[node name="hedge57" type="Sprite2D" parent="decor"]
+position = Vector2(-82, 253)
+texture = ExtResource("bushes")
+
+[node name="hedge58" type="Sprite2D" parent="decor"]
+position = Vector2(465, 258)
+texture = ExtResource("bushes")
 
 [node name="cameraRef" type="ReferenceRect" parent="." unique_id=2045033264]
 offset_left = -94.0
@@ -79,3 +386,5 @@ texture = ExtResource("6")
 
 [connection signal="damagedBy" from="playerAndControl" to="." method="_on_playerAndControl_damagedBy"]
 [connection signal="hit" from="playerAndControl" to="." method="_on_playerAndControl_hit"]
+[connection signal="save" from="playerAndControl" to="." method="_on_playerAndControl_save"]
+[connection signal="quit" from="playerAndControl" to="." method="_on_playerAndControl_quit"]

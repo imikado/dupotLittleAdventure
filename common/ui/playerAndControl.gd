@@ -16,6 +16,9 @@ signal damagedBy(enemy_)
 signal pressAccept
 signal pressMenu
 
+# la scene a bloque Gordon (dialogue, boutique) : fermer le menu ne le libere pas
+var navigationLocked=false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -24,11 +27,14 @@ func getPlayerPosition():
 	return $player.global_position
 
 func enableNavigation():
+	navigationLocked=false
 	$navigation.enable()
+	$player.enableNavigation()
 
 func disableNavigation():
+	navigationLocked=true
 	$navigation.disable()
-
+	$player.disableNavigation()
 	$player.stop()
 	
 func disableCamera():
@@ -97,6 +103,11 @@ func _on_gordonhome_playerStartClimbing():
 	pass # Replace with function body.
 
 
+# Gordon redescend sans avoir monte l'echelle
+func _on_gordonhome_playerEndClimbing():
+	$player._on_gordonhome_playerEndClimbing()
+
+
 
 
 func _on_navigation_releaseButton():
@@ -104,6 +115,8 @@ func _on_navigation_releaseButton():
 		emit_signal("endDigging")
 	
 func _on_navigation_pushButton():
+	if GlobalGame.isDialogOpen():
+		return
 	if GlobalPlayer.getEquipment()==GlobalItems.ID.SPADE:
 		emit_signal("digging")
 	
@@ -137,16 +150,16 @@ func _on_player_pressMenu():
 func _on_HUD_openMenu():
 	$navigation.disable()
 	$player.disableNavigation()
-	
-	print("open menu")
+
 
 
 
 func _on_HUD_closeMenu():
+	if navigationLocked:
+		return
 	$navigation.enable()
 	$player.enableNavigation()
-	
-	print("close menu")
+
 
 
 

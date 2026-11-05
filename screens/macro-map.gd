@@ -21,6 +21,18 @@ const PATHS=[
 ]
 # le chemin barre par la toile (index dans PATHS)
 const SPIDER_PATH=1
+# un chemin est une courbe qui passe par ses points : roads.gd la peint et
+# Gordon la suit (PATH_SAMPLES points par troncon)
+const PATH_SAMPLES=8
+
+# apres une victoire, l'araignee laisse passer Gordon quelques fois
+const SPIDER_REST_KEY="spiderRest"
+const SPIDER_REST_CROSSINGS=2
+const WEB_RESTING_ALPHA=0.4
+
+# fanion plante a cote du socle d'un village dont on a rapporte les objets
+const FLAG_TEXTURE=preload("res://screens/macro-map/images/world/flag-done.png")
+const FLAG_OFFSET=Vector2(10,-4)
 
 const SPEED=120.0
 # une direction doit viser le chemin d'assez pres pour le choisir
@@ -64,6 +76,8 @@ func _ready():
 
 	if GlobalPlayer.shouldLoadPosition():
 		current=_nearestPlace(GlobalPlayer.loadPosition())
+	_refreshWeb()
+	_showCompletedFlags()
 	_arrive(current)
 
 func _nearestPlace(position_):
@@ -117,11 +131,23 @@ func _chooseRoute(direction_):
 			bestIndex=index
 	if best.is_empty():
 		return
-	route=best
+	route=smoothPath(best)
 	routeIndex=1
 	crossingWeb=bestIndex==SPIDER_PATH
 	webPassed=false
 	$placeInfo.visible=false
+
+# courbe de Catmull-Rom passant par les points du chemin ; les points de
+# depart et d'arrivee restent exacts (ce sont les cles de places)
+static func smoothPath(path_):
+	var points=[path_[0]]
+	for i in path_.size()-1:
+		var before=path_[i-1] if i > 0 else path_[i]
+		var after=path_[i+2] if i+2 < path_.size() else path_[i+1]
+		for k in range(1, PATH_SAMPLES):
+			points.append(path_[i].cubic_interpolate(path_[i+1], before, after, float(k)/PATH_SAMPLES))
+		points.append(path_[i+1])
+	return points
 
 func _travel(delta):
 	var step=SPEED*delta
@@ -141,7 +167,13 @@ func _travel(delta):
 		_animateWalk(toTarget)
 	if crossingWeb and !webPassed and gordon.position.distance_to($web.position) < 3:
 		webPassed=true
-		_startSpiderFight()
+		var rest=getSpiderRest()
+		if rest > 0:
+			# l'araignee se repose : la toile est libre
+			setSpiderRest(rest-1)
+			_refreshWeb()
+		else:
+			_startSpiderFight()
 
 func _arrive(place_):
 	route=[]
@@ -228,6 +260,29 @@ func _enter():
 
 # l'araignee attaque sur la toile ; le combat renvoie de l'autre cote
 # (victoire) ou au point de depart (fuite, defaite)
+func _showCompletedFlags():
+	var completedList={
+		CRABS:GlobalPlayer.hasItem(GlobalItems.ID.NAILS),
+		BEAR:GlobalPlayer.hasItem(GlobalItems.ID.HONEY) and GlobalPlayer.hasItem(GlobalItems.ID.BUCKET),
+	}
+	for place in completedList:
+		if completedList[place]:
+			var flag=Sprite2D.new()
+			flag.texture=FLAG_TEXTURE
+			flag.position=place+FLAG_OFFSET
+			add_child(flag)
+			move_child(flag, $gordon.get_index())
+
+static func getSpiderRest():
+	return GlobalScenes.getParamForSceneOr("res://screens/macro-map.tscn", SPIDER_REST_KEY, 0)
+
+static func setSpiderRest(crossings_):
+	GlobalScenes.saveParamForScene("res://screens/macro-map.tscn", SPIDER_REST_KEY, crossings_)
+
+# toile estompee tant que l'araignee se repose
+func _refreshWeb():
+	$web.modulate.a=WEB_RESTING_ALPHA if getSpiderRest() > 0 else 1.0
+
 func _startSpiderFight():
 	var fromSouth=route[-1]==SPIDER_NORTH
 	GlobalPlayer.setSide("DOWN" if fromSouth else "UP")

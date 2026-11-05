@@ -10,6 +10,13 @@ var disableDisplayByCharacter=false
 
 var lastNextFrame=-1
 
+const PORTRAIT_DIR="res://common/ui/portraits/"
+# position du nom et du texte, sans et avec portrait
+const TALKER_X=6.0
+const DISCUSSION_X=7.0
+const TALKER_X_PORTRAIT=50.0
+const DISCUSSION_X_PORTRAIT=52.0
+
 func _process(delta):
 	# uniquement quand le dialogue est affiche
 	if getWindow().visible and Input.is_action_just_pressed("ui_accept"):
@@ -21,13 +28,20 @@ func _process(delta):
 func addDiscussion(talker_,discussionList_):
 	multiDialogList.append({"talker":talker_,"discussionLineList":discussionList_})
 
+func clearDiscussion():
+	multiDialogList=[]
+	currentDiscussionPage=0
+	currentDiscussionLine=0
+
 func start():
 	setTalker(getCurrentDiscussionTalker())
 	getDiscussion().text=getCurrentDiscussionLine()
+	refreshPortrait()
 	var wasVisible=getWindow().visible
 	# l'appui qui ouvre le dialogue ne doit pas aussi afficher tout le texte
 	lastNextFrame=Engine.get_process_frames()
 	getWindow().visible=true
+	add_to_group(GlobalGame.DIALOG_GROUP)
 	$Timer.start()
 	if !wasVisible:
 		_openAnimation()
@@ -42,6 +56,7 @@ func _openAnimation():
 
 func end():
 	getWindow().visible=false
+	remove_from_group(GlobalGame.DIALOG_GROUP)
 	$Timer.stop()
 
 func _ready():
@@ -68,6 +83,66 @@ func setTalker(talker_):
 	getWindow().get_node("talkerTab").reset_size()
 	
 
+
+# portraits
+# les noms affiches sont deja traduits : on retrouve la cle en comparant
+# avec la traduction de chaque nom connu. "Vendeur" depend de la boutique.
+func getPortraitByTalker():
+	return {
+		GlobalGame.TRAD_WORD_GORDON:"gordon",
+		GlobalGame.TRAD_WORD_GORDONMOM:"mom",
+		GlobalGame.TRAD_WORD_ARTISAN:"craftsman",
+		GlobalGame.TRAD_WORD_APICULTEUR:"bear",
+		GlobalGame.TRAD_WORD_HABITANT:"crab",
+		GlobalGame.TRAD_WORD_PRESENTATEUR:"crabPresenter",
+	}
+
+func getPortraitByScene():
+	return {
+		"res://screens/tree-village/shop.tscn":{GlobalGame.TRAD_WORD_VENDEUR:"seller"},
+		"res://screens/tree-village/gem-house.tscn":{GlobalGame.TRAD_WORD_VENDEUR:"gemSeller"},
+		"res://screens/bear-village/shop.tscn":{GlobalGame.TRAD_WORD_VENDEUR:"bearSeller"},
+		"res://screens/crabs-village/shop.tscn":{GlobalGame.TRAD_WORD_VENDEUR:"crab"},
+	}
+
+func getPortraitName(talker_, scenePath_):
+	var candidates=getPortraitByTalker()
+	if getPortraitByScene().has(scenePath_):
+		candidates.merge(getPortraitByScene()[scenePath_], true)
+	for key in candidates:
+		if GlobalGame.getTraductionById(key)==talker_:
+			return candidates[key]
+	return ""
+
+# expression contente quand la replique s'exclame
+func isHappyLine(line_):
+	return line_.strip_edges().ends_with("!")
+
+func getPortraitPath(talker_, line_, scenePath_):
+	var portraitName=getPortraitName(talker_, scenePath_)
+	if portraitName=="":
+		return ""
+	if isHappyLine(line_):
+		portraitName+="-happy"
+	return PORTRAIT_DIR+portraitName+".png"
+
+func getPortrait():
+	return getWindow().get_node("portrait")
+
+func refreshPortrait():
+	var scenePath=""
+	if get_tree().current_scene:
+		scenePath=get_tree().current_scene.scene_file_path
+	var path=getPortraitPath(getCurrentDiscussionTalker(), getCurrentDiscussionLine(), scenePath)
+	var hasPortrait=path!=""
+	getPortrait().visible=hasPortrait
+	if hasPortrait:
+		getPortrait().get_node("face").texture=load(path)
+	getWindow().get_node("talkerTab").position.x=TALKER_X_PORTRAIT if hasPortrait else TALKER_X
+	var discussion=getDiscussion()
+	var right=discussion.offset_right
+	discussion.offset_left=DISCUSSION_X_PORTRAIT if hasPortrait else DISCUSSION_X
+	discussion.offset_right=right
 
 func getCurrentDiscussion():
 	return multiDialogList[currentDiscussionPage]
@@ -108,12 +183,14 @@ func next():
 			currentDiscussionLine+=1
 			resetCharacterVisible()
 			getDiscussion().text=getCurrentDiscussionLine()
+			refreshPortrait()
 		elif shouldContinueNextPage():
 			currentDiscussionPage+=1
 			currentDiscussionLine=0
 			resetCharacterVisible()
 			setTalker(getCurrentDiscussionTalker())
 			getDiscussion().text=getCurrentDiscussionLine()
+			refreshPortrait()
 		else:
 			currentDiscussionPage=0
 			currentDiscussionLine=0

@@ -12,7 +12,9 @@ signal pressMenu
 
 signal useKeyboard
 
-var speed=100
+var speed=120
+# direction voulue (-1, 0 ou 1 par axe), lue au clavier ou au joystick
+var direction=Vector2.ZERO
 
 var left=false
 var right=false
@@ -100,32 +102,40 @@ func _process(delta):
 	
 	processInvincibility()
 	
-	if !navigationEnabled:
+	# Gordon bloque (dialogue a finir, boutique) : il attend sur place,
+	# seul le menu reste accessible
+	if !navigationEnabled or GlobalGame.isDialogOpen():
+		waitInPlace()
 		return
 	
 	pocessInput()
-	
-	# deplacement en 8 directions, vitesse identique en diagonale
-	var motion = Vector2(int(right)-int(left), int(down)-int(up))
-	
-	var velocityMin=motion	
-		
-	if motion.length() > 0:
-		motion = motion.normalized() * speed
-	
-	var expectPosition=global_position+velocityMin
-	
 
-	if expectPosition.x < limitRight && expectPosition.x > limitLeft && expectPosition.y > limitTop && expectPosition.y < limitBottom: 	
-		set_velocity(motion)
-		move_and_slide()
+	# deplacement en 8 directions, applique dans _physics_process
+	direction=Vector2(int(right)-int(left), int(down)-int(up))
 
 	# petits nuages de poussiere sous les pieds quand on marche
-	$dust.emitting=motion.length() > 0 and !climbingStarted
-	
+	$dust.emitting=direction.length() > 0 and !climbingStarted
+
 	processAnimation()
-	
+
 	resetKeys()
+
+# pas fixe de 1/60 s : a 120 px/s, Gordon avance d'exactement 2 px par pas.
+# Avec un pas variable (_process), il avancait de 1 ou 2 px selon l'image
+# et le decor, suivi par la camera, defilait par a-coups
+func _physics_process(delta):
+	var motion=direction
+
+	# chaque axe est bloque separement : contre un bord, Gordon glisse le long
+	var expectPosition=global_position+direction
+	if (direction.x > 0 and expectPosition.x >= limitRight) or (direction.x < 0 and expectPosition.x <= limitLeft):
+		motion.x=0
+	if (direction.y > 0 and expectPosition.y >= limitBottom) or (direction.y < 0 and expectPosition.y <= limitTop):
+		motion.y=0
+	# vitesse identique en diagonale
+	if motion.length() > 0:
+		set_velocity(motion.normalized()*speed)
+		move_and_slide()
 
 
 func pocessInput():
@@ -148,7 +158,6 @@ func pocessInput():
 	
 	if Input.is_action_just_pressed("ui_cancel"):
 		emit_signal("pressMenu")
-		print("press menuA")
 	
 	
 	if Input.is_action_just_pressed("ui_accept"):
@@ -174,11 +183,15 @@ func processAnimation():
 
 	if buttonPressed && GlobalPlayer.getEquipment()==GlobalItems.ID.SPADE:
 		currentAnimation='digging'
-	elif buttonPressed && GlobalPlayer.getEquipment()==GlobalItems.ID.WOOD_SWORD:
+	elif buttonPressed && GlobalItems.isWeapon(GlobalPlayer.getEquipment()):
+		# toute arme en main (epee en bois, epee en fer...) donne le meme coup
 		currentAnimation='attack1'
 		$AnimatedSprite2D.flip_h=facingLeft
 	elif climbingStarted:
-		currentAnimation='climbing'
+		$shadow.visible=false
+		_applyFacing()
+		playClimbing()
+		return
 	elif left != right:
 		# en diagonale, on garde l'animation de profil
 		$AnimatedSprite2D.flip_h=left
@@ -212,6 +225,28 @@ func playAnimation(anim):
 		$AnimatedSprite2D/slash.visible=false
 	$AnimatedSprite2D/AnimationPlayer.play(anim)
 	$AnimatedSprite2D/AnimationPlayer.play()
+
+# a l'echelle, les mains et les pieds ne bougent que si Gordon monte ou
+# descend : a l'envers en descendant, figee sur place
+func playClimbing():
+	var animationPlayer=$AnimatedSprite2D/AnimationPlayer
+	$AnimatedSprite2D/slash.visible=false
+	if up != down:
+		animationPlayer.play('climbing', -1, -1.0 if down else 1.0, down)
+	elif animationPlayer.assigned_animation!='climbing':
+		animationPlayer.play('climbing')
+		animationPlayer.pause()
+	else:
+		animationPlayer.pause()
+
+func waitInPlace():
+	stop()
+	direction=Vector2.ZERO
+	buttonPressed=false
+	$dust.emitting=false
+	if Input.is_action_just_pressed("ui_cancel"):
+		emit_signal("pressMenu")
+	processAnimation()
 
 func stop():
 	left=false

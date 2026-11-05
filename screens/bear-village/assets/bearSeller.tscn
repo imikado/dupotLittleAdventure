@@ -1,0 +1,78 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://common/characters/shadow.png" id="shadow"]
+[ext_resource type="Texture2D" path="res://screens/bear-village/assets/bear/bear-seller-idle.png" id="1"]
+
+[sub_resource type="AtlasTexture" id="101"]
+atlas = ExtResource("1")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="102"]
+atlas = ExtResource("1")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="103"]
+atlas = ExtResource("1")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="104"]
+atlas = ExtResource("1")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="105"]
+atlas = ExtResource("1")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="6"]
+animations = [{
+"frames": [{
+"duration": 8.0,
+"texture": SubResource("101")
+}, {
+"duration": 8.0,
+"texture": SubResource("102")
+}, {
+"duration": 4.0,
+"texture": SubResource("101")
+}, {
+"duration": 1.2,
+"texture": SubResource("103")
+}, {
+"duration": 4.0,
+"texture": SubResource("101")
+}, {
+"duration": 1.2,
+"texture": SubResource("104")
+}, {
+"duration": 1.2,
+"texture": SubResource("105")
+}, {
+"duration": 1.2,
+"texture": SubResource("104")
+}, {
+"duration": 1.2,
+"texture": SubResource("105")
+}, {
+"duration": 1.2,
+"texture": SubResource("104")
+}, {
+"duration": 1.2,
+"texture": SubResource("105")
+}, {
+"duration": 6.0,
+"texture": SubResource("101")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="bearSeller" type="Node2D"]
+
+[node name="shadow" type="Sprite2D" parent="."]
+position = Vector2(-1, 16)
+texture = ExtResource("shadow")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("6")
+autoplay = "default"

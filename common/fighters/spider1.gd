@@ -9,7 +9,7 @@ var currentAnim=TYPE_ANIM.IDLE
 enum TYPE_ANIM {ATTACK,DAMAGE,IDLE,DIE}
 
 # point au-dessus de la tete (pour les degats affiches)
-const HEAD_OFFSET=Vector2(34, 40)
+const HEAD_OFFSET=Vector2(34, 28)
 
 func playAttack(animation_):
 	$AnimatedSprite2D.play(animation_)

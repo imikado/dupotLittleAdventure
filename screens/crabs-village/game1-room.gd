@@ -93,7 +93,6 @@ func checkProblemForCrabAstonishedAndAlgaeOnSide(crab_,astonished_,algae_):
 	return OK
 
 func gameOver(state_):
-	print( "game over:"+state_)
 	if state_==CRAB_ATE_ASTONISHED:
 		$colorGameOver.visible=true
 		$colorGameOver/crabAteAstonished.visible=true

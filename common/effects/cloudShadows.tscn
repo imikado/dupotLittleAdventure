@@ -1,0 +1,13 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://common/effects/cloudShadows.gd" id="1"]
+[ext_resource type="Shader" path="res://common/effects/cloudShadows.gdshader" id="2"]
+
+[sub_resource type="ShaderMaterial" id="mat"]
+shader = ExtResource("2")
+
+[node name="cloudShadows" type="ColorRect"]
+z_index = 9
+material = SubResource("mat")
+mouse_filter = 2
+script = ExtResource("1")

@@ -26,7 +26,6 @@ func _ready():
 
 func _physics_process(delta):
 	if moving:
-		print("moving to ")
 		var relativeDirection=target-position
 		
 		set_velocity(relativeDirection*delta*speed)

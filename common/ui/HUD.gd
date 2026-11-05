@@ -24,6 +24,15 @@ const COLOR_LIFE_LOW=Color(0.95, 0.3, 0.3)
 @onready var btnBlock=$btnBlock
 @onready var confirmation=$confirmation
 @onready var parameters=$parameters
+@onready var goals=$goals
+
+# journal de quete : objets a reunir pour reparer le puits, et ou les trouver
+const GEMHOUSE_SCENE="res://screens/tree-village/gem-house.tscn"
+const GEMHOUSE_STEP_FIRSTTIME="first_time"
+const GEMHOUSE_STEP_DONE="hasFoundGormonStar"
+const NB_GORMONSTAR=5
+const GOAL_DONE_COLOR=Color(0.18, 0.45, 0.16)
+const GOAL_MISSING_ALPHA=0.35
 
 var displayedGems=0
 # frame de fermeture du menu (la meme touche Echap ne doit pas le rouvrir)
@@ -41,18 +50,24 @@ func _ready():
 	btnBlock.visible=false
 	confirmation.visible=false
 	parameters.visible=false
+	goals.visible=false
 	$modalBackdrop.visible=false
 	$saved.visible=false
 
 	$inventoryList.setItemList(GlobalPlayer.getItemsList())
 
 	refreshUi()
+	refreshEquipment()
 
 func refreshUi():
 	$Control/btnMenu.text=GlobalGame.getTraductionById(GlobalGame.TRAD_UI_MENU)
 	$btnBlock/list/title.text=GlobalGame.getTraductionById(GlobalGame.TRAD_UI_PAUSE)
 	$btnBlock/list/btnCancell.text=GlobalGame.getTraductionById(GlobalGame.TRAD_UI_RESUME)
 	$btnBlock/list/btnInventory.text=GlobalGame.getTraductionById(GlobalGame.TRAD_UI_INVENTORY)
+	$btnBlock/list/btnGoals.text=GlobalGame.getTraductionById(GlobalGame.TRAD_UI_GOALS)
+	$goals/list/title.text=GlobalGame.getTraductionById(GlobalGame.TRAD_UI_GOALS)
+	$goals/list/subtitle.text=GlobalGame.getTraductionById(GlobalGame.TRAD_GOALS_WELL)
+	$goals/list/closeGoals.text=GlobalGame.getTraductionById(GlobalGame.TRAD_UI_CLOSE)
 	$btnBlock/list/btnSave.text=GlobalGame.getTraductionById(GlobalGame.TRAD_UI_SAVE)
 	$btnBlock/list/btnParameters.text=GlobalGame.getTraductionById(GlobalGame.TRAD_UI_SETTINGS)
 	$btnBlock/list/btnQuit.text=GlobalGame.getTraductionById(GlobalGame.TRAD_UI_QUIT)
@@ -77,10 +92,24 @@ func _process(delta):
 		$Control/lifeIcon.scale=Vector2.ONE
 
 func _unhandled_input(event):
+	# Tab / bouton Y : passe a l'objet suivant (epee, pelle...)
+	if event.is_action_pressed("switch_equipment") and !isMenuOpen() and !get_tree().paused:
+		switchEquipment()
+		get_viewport().set_input_as_handled()
+		return
+	# I / bouton Select : ouvre l'inventaire
+	if event.is_action_pressed("open_inventory") and !isMenuOpen() and !get_tree().paused:
+		openInventory()
+		get_viewport().set_input_as_handled()
+		return
 	# Echap / bouton retour : revient en arriere dans les menus
 	if !event.is_action_pressed("ui_cancel"):
 		return
-	if parameters.visible:
+	if $inventoryList.closeTopWindow():
+		pass
+	elif goals.visible:
+		_on_closeGoals_pressed()
+	elif parameters.visible:
 		_on_saveParameters_button_down()
 	elif confirmation.visible:
 		_on_btnNo_button_down()
@@ -92,7 +121,7 @@ func _unhandled_input(event):
 	get_viewport().set_input_as_handled()
 
 func isMenuOpen():
-	return btnBlock.visible or confirmation.visible or parameters.visible or $inventoryList.getWindow().visible
+	return btnBlock.visible or confirmation.visible or parameters.visible or goals.visible or $inventoryList.getWindow().visible
 
 func emitOpenMenu():
 	$modalBackdrop.visible=true
@@ -115,6 +144,7 @@ func reloadGems():
 
 func reloadInventory():
 	$inventoryList.setItemList(GlobalPlayer.getItemsList())
+	refreshEquipment()
 
 func reloadLife():
 	setLife(GlobalPlayer.getLife())
@@ -195,6 +225,13 @@ func _on_btnInventory_button_down():
 	btnBlock.visible=false
 	$inventoryList.showWindow()
 
+# icone sac du HUD : inventaire directement, sans passer par la pause
+func openInventory():
+	if isMenuOpen() or GlobalGame.isDialogOpen():
+		return
+	emitOpenMenu()
+	$inventoryList.showWindow()
+
 
 func _on_btnYes_button_down():
 	confirmation.visible=false
@@ -209,6 +246,7 @@ func _on_btnNo_button_down():
 
 func _on_inventoryList_equipItem(item_):
 	emit_signal("equipItem",item_)
+	refreshEquipment()
 	emitCloseMenu()
 
 func _on_btnCancell_button_down():
@@ -277,3 +315,108 @@ func _on_language_pressed():
 
 func _on_inventoryList_closeInventory():
 	emitCloseMenu()
+
+
+#--- objectifs
+
+func _on_btnGoals_pressed():
+	btnBlock.visible=false
+	_buildGoals()
+	goals.visible=true
+	$goals/list/closeGoals.grab_focus()
+
+func _on_closeGoals_pressed():
+	goals.visible=false
+	btnBlock.visible=true
+	$btnBlock/list/btnGoals.grab_focus()
+
+func _buildGoals():
+	var rows=$goals/list/rows
+	for child in rows.get_children():
+		rows.remove_child(child)
+		child.queue_free()
+	var goalList=[
+		[_getGoalWeaponId(), GlobalGame.TRAD_GOALS_SWORD],
+		[GlobalItems.ID.NAILS, GlobalGame.TRAD_GOALS_NAILS],
+		[GlobalItems.ID.HONEY, GlobalGame.TRAD_GOALS_BEARS],
+		[GlobalItems.ID.BUCKET, GlobalGame.TRAD_GOALS_BEARS],
+	]
+	for goal in goalList:
+		var item=GlobalItems.getItem(goal[0])
+		var text=item.getName()+" ("+GlobalGame.getTraductionById(goal[1])+")"
+		rows.add_child(_makeGoalRow(item.getTexture(), text, GlobalPlayer.hasItem(goal[0])))
+	# quete des etoiles : affichee une fois proposee par le marchand de gemmes
+	var gemHouseStep=GlobalScenes.getParamForSceneOr(GEMHOUSE_SCENE, "step", GEMHOUSE_STEP_FIRSTTIME)
+	if gemHouseStep!=GEMHOUSE_STEP_FIRSTTIME:
+		var done=gemHouseStep==GEMHOUSE_STEP_DONE
+		var count=NB_GORMONSTAR if done else min(NB_GORMONSTAR, GlobalPlayer.countItem(GlobalItems.ID.GORDMON_STAR))
+		var star=GlobalItems.getItem(GlobalItems.ID.GORDMON_STAR)
+		var text=GlobalGame.getTraductionById(GlobalGame.TRAD_GOALS_STARS) % [count, NB_GORMONSTAR]
+		rows.add_child(_makeGoalRow(star.getTexture(), text, done))
+
+# objectif "une epee" : n'importe quelle arme compte. On affiche la derniere
+# arme possedee (la plus forte), sinon l'epee en bois
+func _getGoalWeaponId():
+	var goalWeaponId=GlobalItems.ID.WOOD_SWORD
+	for weaponId in GlobalItems.getWeaponIdList():
+		if GlobalPlayer.hasItem(weaponId):
+			goalWeaponId=weaponId
+	return goalWeaponId
+
+# icone de l'objet (estompee s'il manque) et texte (vert une fois obtenu)
+func _makeGoalRow(texture_, text_, done_):
+	var row=HBoxContainer.new()
+	row.add_theme_constant_override("separation", 4)
+	var icon=TextureRect.new()
+	icon.texture=texture_
+	icon.custom_minimum_size=Vector2(16, 16)
+	icon.expand_mode=TextureRect.EXPAND_IGNORE_SIZE
+	icon.stretch_mode=TextureRect.STRETCH_KEEP_CENTERED
+	if !done_:
+		icon.modulate.a=GOAL_MISSING_ALPHA
+	row.add_child(icon)
+	var label=Label.new()
+	label.theme_type_variation=&"DarkLabel"
+	label.text=text_
+	label.size_flags_vertical=Control.SIZE_SHRINK_CENTER
+	if done_:
+		label.add_theme_color_override("font_color", GOAL_DONE_COLOR)
+	row.add_child(label)
+	return row
+
+
+#--- equipement
+
+# objets qu'on peut tenir en main, dans l'ordre de l'inventaire
+func getEquipableList():
+	var equipableList=[]
+	for itemId in GlobalPlayer.getItemsList():
+		var type=GlobalItems.getItem(itemId).type
+		if (type==item_class.TYPE.WEAPON or type==item_class.TYPE.TOOL) and !equipableList.has(int(itemId)):
+			equipableList.append(int(itemId))
+	return equipableList
+
+# emplacement a cote de la barre : objet en main, a toucher pour changer
+func refreshEquipment():
+	var button=$Control/btnEquipment
+	button.visible=!getEquipableList().is_empty()
+	var icon=button.get_node("icon")
+	icon.texture=GlobalItems.getItem(GlobalPlayer.getEquipment()).getTexture() if GlobalPlayer.hasEquipment() else null
+
+func switchEquipment():
+	# pas de changement d'objet en plein dialogue
+	if GlobalGame.isDialogOpen():
+		return
+	var equipableList=getEquipableList()
+	if equipableList.is_empty():
+		return
+	var index=-1
+	if GlobalPlayer.hasEquipment():
+		index=equipableList.find(int(GlobalPlayer.getEquipment()))
+	var next=equipableList[(index+1)%equipableList.size()]
+	if GlobalPlayer.hasEquipment() and next==int(GlobalPlayer.getEquipment()):
+		return
+	GlobalPlayer.setEquipment(next)
+	Sfx.play(Sfx.CURSOR)
+	emit_signal("equipItem",next)
+	refreshEquipment()

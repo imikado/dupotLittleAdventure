@@ -86,7 +86,7 @@ Unit tests use [GUT](https://github.com/bitwes/Gut) and live in [test/](test/). 
 
 | Script | What it does |
 |---|---|
-| `./maj_version.sh` | copies the version of the latest `<release>` in the [appdata](export/linux/flatpak/org.dupot.littleadventure.appdata.xml) to `globalVersion.gd` and `snapcraft.yaml` (run by the build scripts) |
+| `./maj_version.sh` | copies the version of the latest `<release>` in the [appdata](export/linux/flatpak/org.dupot.littleadventure.appdata.xml) to `project.godot`, `globalVersion.gd` and `snapcraft.yaml` (run by the build scripts) |
 | `./build_snap.sh` | exports the Linux build and packs the snap in [export/linux/snap](export/linux/snap) (`--install` to install it locally) |
 | `./build_flathub.sh` | exports the Linux build into `export/linux/bundle.tar.gz`, the archive used by the Flathub manifest, and prints its SHA256 |
 | `./export_html5.sh` | exports the HTML5 build and zips it in `export/html` |

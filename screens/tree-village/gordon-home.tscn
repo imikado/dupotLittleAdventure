@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" path="res://screens/tree-village/gordon-home/furnitures.png" id="8"]
 [ext_resource type="Texture2D" path="res://screens/tree-village/gordon-home/furnitures2.png" id="9"]
 [ext_resource type="PackedScene" path="res://common/characters/mom.tscn" id="10"]
+[ext_resource type="Texture2D" path="res://screens/tree-village/images/plant.png" id="plant"]
+[ext_resource type="Texture2D" path="res://screens/tree-village/images/rug.png" id="rug"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4pwic"]
 texture = ExtResource("1")
@@ -224,6 +226,9 @@ size = Vector2(40.6332, 20.98)
 [sub_resource type="RectangleShape2D" id="22"]
 size = Vector2(28.6832, 31.8294)
 
+[sub_resource type="RectangleShape2D" id="plantShape"]
+size = Vector2(10, 6)
+
 [node name="gordon-home" type="Node2D" unique_id=226001469]
 script = ExtResource("4")
 
@@ -234,6 +239,10 @@ tile_set = SubResource("TileSet_4almt")
 [node name="walls" type="TileMapLayer" parent="." unique_id=1352879177]
 tile_map_data = PackedByteArray("AAD/////AAAAAAAAAAAAAP//AQAAAAAAAAABAP//AQAAAAAAAAACAP//AQAAAAAAAAADAP//CwAAAAAAAAAEAP//AQAAAAAAAAAFAP//AQAAAAAAAAAGAP//AgAAAAAAAAD//wAABAAAAAAAAAAGAAAABgAAAAAAAAD//wEABAAAAAAAAAAGAAEABgAAAAAAAAD//wIABAAAAAAAAAAGAAIABgAAAAAAAAD//wMACAAAAAAAAAAAAAMACQAAAAAAAAABAAMABQAAAAAAAAACAAMACQAAAAAAAAADAAMACQAAAAAAAAAEAAMACQAAAAAAAAAFAAMACQAAAAAAAAAGAAMACgAAAAAAAAA=")
 tile_set = SubResource("TileSet_mc0ja")
+
+[node name="rug" type="Sprite2D" parent="."]
+position = Vector2(132, 74)
+texture = ExtResource("rug")
 
 [node name="kitchenFurnitures" type="TileMapLayer" parent="." unique_id=241230864]
 position = Vector2(-7, -8)
@@ -281,6 +290,16 @@ position = Vector2(47.3962, 35.1711)
 
 [node name="playerAndControl" parent="Node2D" unique_id=1691177979 instance=ExtResource("3")]
 position = Vector2(29.0212, 56.5609)
+
+[node name="plant1" type="StaticBody2D" parent="."]
+position = Vector2(184, 90)
+
+[node name="sprite" type="Sprite2D" parent="plant1"]
+position = Vector2(0, -8)
+texture = ExtResource("plant")
+
+[node name="shape" type="CollisionShape2D" parent="plant1"]
+shape = SubResource("plantShape")
 
 [node name="door" parent="." unique_id=1956106406 instance=ExtResource("7")]
 position = Vector2(47.2176, 106.017)

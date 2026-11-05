@@ -7,10 +7,10 @@
 [ext_resource type="Texture2D" path="res://screens/crabs-village/game1-room/see.png" id="5"]
 [ext_resource type="PackedScene" path="res://screens/crabs-village/game1-room/assets/raft.tscn" id="6"]
 [ext_resource type="Script" path="res://screens/crabs-village/game1-room.gd" id="7"]
-[ext_resource type="Texture2D" path="res://screens/crabs-village/game1-room/crab-ate-astonished.png" id="8"]
+[ext_resource type="Texture2D" path="res://screens/crabs-village/game1-room/crab-ate-astonished-big.png" id="8"]
 [ext_resource type="Theme" path="res://common/themes/default.tres" id="9"]
-[ext_resource type="Texture2D" path="res://screens/crabs-village/game1-room/astonished-ate-algae.png" id="10"]
-[ext_resource type="Texture2D" path="res://screens/crabs-village/characters/welcome-boy/welcome-boy-idle.png" id="11"]
+[ext_resource type="Texture2D" path="res://screens/crabs-village/game1-room/astonished-ate-algae-big.png" id="10"]
+[ext_resource type="Texture2D" path="res://screens/crabs-village/characters/welcome-boy/presenter-wave.png" id="11"]
 [ext_resource type="PackedScene" path="res://common/ui/simpleDialog.tscn" id="12"]
 [ext_resource type="Texture2D" path="res://screens/crabs-village/images/presenterStage.png" id="stage"]
 
@@ -127,55 +127,55 @@ _data = {
 
 [sub_resource type="AtlasTexture" id="4"]
 atlas = ExtResource("8")
-region = Rect2(0, 0, 64, 32)
+region = Rect2(0, 0, 128, 64)
 
 [sub_resource type="AtlasTexture" id="5"]
 atlas = ExtResource("8")
-region = Rect2(64, 0, 64, 32)
+region = Rect2(128, 0, 128, 64)
 
 [sub_resource type="AtlasTexture" id="6"]
 atlas = ExtResource("8")
-region = Rect2(128, 0, 64, 32)
+region = Rect2(256, 0, 128, 64)
 
 [sub_resource type="AtlasTexture" id="7"]
 atlas = ExtResource("8")
-region = Rect2(192, 0, 64, 32)
+region = Rect2(384, 0, 128, 64)
 
 [sub_resource type="AtlasTexture" id="8"]
 atlas = ExtResource("8")
-region = Rect2(256, 0, 64, 32)
+region = Rect2(512, 0, 128, 64)
 
 [sub_resource type="AtlasTexture" id="9"]
 atlas = ExtResource("8")
-region = Rect2(320, 0, 64, 32)
+region = Rect2(640, 0, 128, 64)
 
 [sub_resource type="AtlasTexture" id="10"]
 atlas = ExtResource("8")
-region = Rect2(384, 0, 64, 32)
+region = Rect2(768, 0, 128, 64)
 
 [sub_resource type="AtlasTexture" id="11"]
 atlas = ExtResource("8")
-region = Rect2(448, 0, 64, 32)
+region = Rect2(896, 0, 128, 64)
 
 [sub_resource type="AtlasTexture" id="12"]
 atlas = ExtResource("8")
-region = Rect2(512, 0, 64, 32)
+region = Rect2(1024, 0, 128, 64)
 
 [sub_resource type="AtlasTexture" id="13"]
 atlas = ExtResource("8")
-region = Rect2(576, 0, 64, 32)
+region = Rect2(1152, 0, 128, 64)
 
 [sub_resource type="AtlasTexture" id="14"]
 atlas = ExtResource("8")
-region = Rect2(640, 0, 64, 32)
+region = Rect2(1280, 0, 128, 64)
 
 [sub_resource type="AtlasTexture" id="15"]
 atlas = ExtResource("8")
-region = Rect2(704, 0, 64, 32)
+region = Rect2(1408, 0, 128, 64)
 
 [sub_resource type="AtlasTexture" id="16"]
 atlas = ExtResource("8")
-region = Rect2(768, 0, 64, 32)
+region = Rect2(1536, 0, 128, 64)
 
 [sub_resource type="SpriteFrames" id="17"]
 animations = [{
@@ -226,47 +226,47 @@ animations = [{
 
 [sub_resource type="AtlasTexture" id="18"]
 atlas = ExtResource("10")
-region = Rect2(0, 0, 64, 32)
+region = Rect2(0, 0, 128, 64)
 
 [sub_resource type="AtlasTexture" id="19"]
 atlas = ExtResource("10")
-region = Rect2(64, 0, 64, 32)
+region = Rect2(128, 0, 128, 64)
 
 [sub_resource type="AtlasTexture" id="20"]
 atlas = ExtResource("10")
-region = Rect2(128, 0, 64, 32)
+region = Rect2(256, 0, 128, 64)
 
 [sub_resource type="AtlasTexture" id="21"]
 atlas = ExtResource("10")
-region = Rect2(192, 0, 64, 32)
+region = Rect2(384, 0, 128, 64)
 
 [sub_resource type="AtlasTexture" id="22"]
 atlas = ExtResource("10")
-region = Rect2(256, 0, 64, 32)
+region = Rect2(512, 0, 128, 64)
 
 [sub_resource type="AtlasTexture" id="23"]
 atlas = ExtResource("10")
-region = Rect2(320, 0, 64, 32)
+region = Rect2(640, 0, 128, 64)
 
 [sub_resource type="AtlasTexture" id="24"]
 atlas = ExtResource("10")
-region = Rect2(384, 0, 64, 32)
+region = Rect2(768, 0, 128, 64)
 
 [sub_resource type="AtlasTexture" id="25"]
 atlas = ExtResource("10")
-region = Rect2(448, 0, 64, 32)
+region = Rect2(896, 0, 128, 64)
 
 [sub_resource type="AtlasTexture" id="26"]
 atlas = ExtResource("10")
-region = Rect2(512, 0, 64, 32)
+region = Rect2(1024, 0, 128, 64)
 
 [sub_resource type="AtlasTexture" id="27"]
 atlas = ExtResource("10")
-region = Rect2(576, 0, 64, 32)
+region = Rect2(1152, 0, 128, 64)
 
 [sub_resource type="AtlasTexture" id="28"]
 atlas = ExtResource("10")
-region = Rect2(640, 0, 64, 32)
+region = Rect2(1280, 0, 128, 64)
 
 [sub_resource type="SpriteFrames" id="29"]
 animations = [{
@@ -311,27 +311,27 @@ animations = [{
 
 [sub_resource type="AtlasTexture" id="30"]
 atlas = ExtResource("11")
-region = Rect2(0, 0, 32, 32)
+region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="31"]
 atlas = ExtResource("11")
-region = Rect2(32, 0, 32, 32)
+region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="32"]
 atlas = ExtResource("11")
-region = Rect2(64, 0, 32, 32)
+region = Rect2(128, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="33"]
 atlas = ExtResource("11")
-region = Rect2(96, 0, 32, 32)
+region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="34"]
 atlas = ExtResource("11")
-region = Rect2(128, 0, 32, 32)
+region = Rect2(256, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="35"]
 atlas = ExtResource("11")
-region = Rect2(160, 0, 32, 32)
+region = Rect2(320, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="36"]
 animations = [{
@@ -408,7 +408,6 @@ texture = ExtResource("stage")
 [node name="crabAteAstonished" type="AnimatedSprite2D" parent="colorGameOver" unique_id=1431953]
 visible = false
 position = Vector2(158.178, 92.7712)
-scale = Vector2(2, 2)
 sprite_frames = SubResource("17")
 
 [node name="restart" type="Button" parent="colorGameOver" unique_id=803053578]
@@ -424,7 +423,6 @@ text = "Re-commencer ?"
 [node name="astonishedAteAlgae" type="AnimatedSprite2D" parent="colorGameOver" unique_id=566833260]
 visible = false
 position = Vector2(171.527, 89.7678)
-scale = Vector2(2, 2)
 sprite_frames = SubResource("29")
 
 [node name="Label" type="Label" parent="colorGameOver" unique_id=1887553098]
@@ -450,7 +448,6 @@ texture = ExtResource("stage")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ColorStart" unique_id=1363917280]
 position = Vector2(141.493, 62.7374)
-scale = Vector2(2, 2)
 sprite_frames = SubResource("36")
 
 [node name="simpleDialogStart" parent="ColorStart" unique_id=247766238 instance=ExtResource("12")]
@@ -467,7 +464,6 @@ texture = ExtResource("stage")
 
 [node name="AnimatedSprite2" type="AnimatedSprite2D" parent="ColorWin" unique_id=1237376470]
 position = Vector2(141.493, 62.7374)
-scale = Vector2(2, 2)
 sprite_frames = SubResource("36")
 
 [node name="simpleDialogWin" parent="ColorWin" unique_id=1605157899 instance=ExtResource("12")]

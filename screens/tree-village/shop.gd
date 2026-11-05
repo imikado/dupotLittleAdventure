@@ -14,12 +14,13 @@ func _ready():
 	var discussionList=GlobalGame.getTraductionById(GlobalGame.TRAD_TREEVILLAGE_SHOP)
 	
 	$simpleDialog.addDiscussion(TRAD_WORD_VENDEUR,discussionList[0])
-	$simpleDialog.addDiscussion("Gordon",discussionList[1])
+	$simpleDialog.addDiscussion(GlobalGame.getTraductionById(GlobalGame.TRAD_WORD_GORDON),discussionList[1])
 	$simpleDialog.addDiscussion(TRAD_WORD_VENDEUR,discussionList[2])
 	
 	$shopList.setShopItemList([
 		shopItemClass.new(GlobalItems.ID.WOOD_SWORD,10),
-		shopItemClass.new(GlobalItems.ID.HEALTH_POTION_10,50),
+		shopItemClass.new(GlobalItems.ID.IRON_SWORD,20),
+		shopItemClass.new(GlobalItems.ID.HEALTH_POTION_10,8),
 	])
 
 func _on_door_playerOpenedDoor():
@@ -34,8 +35,8 @@ func _on_discussionDoor_playerOpenedDoor():
 
 func _on_simpleDialog_discussionFinished():
 	$simpleDialog.end()
+	# Gordon reste immobile tant que la boutique est ouverte (buyItem le libere)
 	$shopList.showWindow()
-	getPlayer().enableNavigation()
 
 
 func _on_discussionArea_playerOpenedDoor():

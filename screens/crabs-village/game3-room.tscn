@@ -5,8 +5,8 @@
 [ext_resource type="Script" path="res://screens/crabs-village/game3-room.gd" id="3"]
 [ext_resource type="Texture2D" path="res://screens/crabs-village/game3-room/tiles.png" id="4"]
 [ext_resource type="PackedScene" path="res://screens/crabs-village/game3-room/assets/sea-shell.tscn" id="5"]
+[ext_resource type="PackedScene" path="res://screens/crabs-village/characters/presenter.tscn" id="presenter"]
 [ext_resource type="PackedScene" path="res://screens/crabs-village/game3-room/assets/placeholder.tscn" id="6"]
-[ext_resource type="PackedScene" path="res://screens/crabs-village/characters/welcome-boy.tscn" id="7"]
 [ext_resource type="PackedScene" path="res://common/ui/simpleDialog.tscn" id="8"]
 [ext_resource type="Texture2D" path="res://screens/crabs-village/shop/shopTiles.png" id="9"]
 [ext_resource type="Texture2D" path="res://screens/crabs-village/images/presenterStage.png" id="stage"]
@@ -188,9 +188,8 @@ position = Vector2(120, 88)
 scale = Vector2(2, 2)
 texture = ExtResource("stage")
 
-[node name="welcome-boy" parent="ColorStart" unique_id=807736968 instance=ExtResource("7")]
+[node name="welcome-boy" parent="ColorStart" unique_id=807736968 instance=ExtResource("presenter")]
 position = Vector2(120, 88)
-scale = Vector2(2, 2)
 
 [node name="simpleDialogStart" parent="ColorStart" unique_id=1280395212 instance=ExtResource("8")]
 
@@ -205,9 +204,8 @@ position = Vector2(120, 80)
 scale = Vector2(2, 2)
 texture = ExtResource("stage")
 
-[node name="welcome-boy2" parent="ColorWin" unique_id=1383014523 instance=ExtResource("7")]
+[node name="welcome-boy2" parent="ColorWin" unique_id=1383014523 instance=ExtResource("presenter")]
 position = Vector2(120, 80)
-scale = Vector2(2, 2)
 
 [node name="simpleDialogWin" parent="ColorWin" unique_id=1382209576 instance=ExtResource("8")]
 
@@ -223,13 +221,6 @@ position = Vector2(-3.78632, -1.33633)
 shape = SubResource("3")
 
 [connection signal="movePlayer" from="navigation" to="character" method="_on_navigation_movePlayer"]
-[connection signal="placed" from="placeholder" to="." method="_on_placeholder_placed"]
-[connection signal="placed" from="placeholder2" to="." method="_on_placeholder_placed"]
-[connection signal="placed" from="placeholder3" to="." method="_on_placeholder_placed"]
-[connection signal="placed" from="placeholder4" to="." method="_on_placeholder_placed"]
-[connection signal="placed" from="placeholder5" to="." method="_on_placeholder_placed"]
-[connection signal="placed" from="placeholder6" to="." method="_on_placeholder_placed"]
-[connection signal="unPlaced" from="placeholder7" to="." method="_on_placeholder7_unPlaced"]
 [connection signal="discussionFinished" from="ColorStart/simpleDialogStart" to="." method="_on_simpleDialogStart_discussionFinished"]
 [connection signal="discussionFinished" from="ColorWin/simpleDialogWin" to="." method="_on_simpleDialogWin_discussionFinished"]
 [connection signal="body_shape_entered" from="exit" to="." method="_on_exit_body_shape_entered"]

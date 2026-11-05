@@ -1,0 +1,17 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://common/decor/flowerBed.png" id="1"]
+
+[sub_resource type="RectangleShape2D" id="shape"]
+size = Vector2(28, 8)
+
+[node name="flowerBed" type="StaticBody2D"]
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1")
+centered = false
+offset = Vector2(-17, -1)
+
+[node name="collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, 12)
+shape = SubResource("shape")

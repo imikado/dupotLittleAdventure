@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" path="res://common/ui/simpleDialog/dialog-arrow.png" id="4"]
 
 [ext_resource type="Theme" path="res://common/themes/default.tres" id="7"]
+[ext_resource type="Texture2D" path="res://common/ui/portraits/frame.png" id="frame"]
 
 [sub_resource type="StyleBoxFlat" id="talkerTab"]
 content_margin_left = 4.0
@@ -45,6 +46,24 @@ patch_margin_left = 4
 patch_margin_top = 4
 patch_margin_right = 4
 patch_margin_bottom = 4
+
+[node name="portrait" type="TextureRect" parent="window"]
+visible = false
+layout_mode = 0
+offset_left = 4.0
+offset_top = -8.0
+offset_right = 48.0
+offset_bottom = 36.0
+mouse_filter = 2
+texture = ExtResource("frame")
+
+[node name="face" type="TextureRect" parent="window/portrait"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 42.0
+offset_bottom = 42.0
+mouse_filter = 2
 
 [node name="talkerTab" type="PanelContainer" parent="window"]
 layout_mode = 0

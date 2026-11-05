@@ -1,5 +1,7 @@
 extends "res://common/class/scene.gd"
 
+# Maman soigne Gordon quand il rentre fatigue
+var shouldHeal=false
 
 func _ready():
 	setPlayerPath("Node2D/playerAndControl")
@@ -7,13 +9,23 @@ func _ready():
 	getPlayer().zoomDown()
 	getPlayer().loadCameraLimits($cameraRef)
 
+	buildDiscussion()
+
+func buildDiscussion():
+	$simpleDialog.clearDiscussion()
+
 	var TRAD_GORDONMOM=GlobalGame.getTraductionById(GlobalGame.TRAD_WORD_GORDONMOM)
+	var TRAD_GORDON=GlobalGame.getTraductionById(GlobalGame.TRAD_WORD_GORDON)
 
 	var discussionList=GlobalGame.getTraductionById(GlobalGame.TRAD_TREEVILLAGE_GORDONHOME)
-	
+
 	$simpleDialog.addDiscussion(TRAD_GORDONMOM,discussionList[0])
-	$simpleDialog.addDiscussion("Gordon",discussionList[1])
+	$simpleDialog.addDiscussion(TRAD_GORDON,discussionList[1])
 	$simpleDialog.addDiscussion(TRAD_GORDONMOM,discussionList[2])
+
+	shouldHeal=GlobalPlayer.getLife() < GlobalPlayer.getMaxLife()
+	if shouldHeal:
+		$simpleDialog.addDiscussion(TRAD_GORDONMOM,GlobalGame.getTraductionById(GlobalGame.TRAD_TREEVILLAGE_GORDONHOME_HEAL))
 
 
 func _on_door_playerOpenedDoor():
@@ -29,6 +41,11 @@ func _on_mom_talk():
 
 func _on_simpleDialog_discussionFinished():
 	$simpleDialog.end()
+	if shouldHeal:
+		GlobalPlayer.setLife(GlobalPlayer.getMaxLife())
+		getPlayer().reloadLife()
+		Sfx.play(Sfx.HEAL)
+	buildDiscussion()
 	getPlayer().enableNavigation()
 
 

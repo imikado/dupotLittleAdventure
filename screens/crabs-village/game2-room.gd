@@ -10,6 +10,7 @@ const THREE_V="3V"
 var vitesse=(640*3)
 
 var hasAlreadyWon=false
+var gameWon=false
 
 func _ready():
 	
@@ -31,6 +32,10 @@ func _ready():
 	
 
 func win():
+	# la barque sortie peut encore bouger : une seule victoire
+	if gameWon:
+		return
+	gameWon=true
 	GlobalScenes.saveParamForScene(scene_file_path,"hasAlreadyWon",true)
 
 	$colorWin.visible=true

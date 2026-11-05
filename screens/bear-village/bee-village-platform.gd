@@ -2,6 +2,9 @@ extends Node2D
 
 var honeyReceived=0
 var dialogStillDisplayed=false
+# le niveau se rejoue, mais les gemmes ne sont donnees qu'une fois
+var hasAlreadyWon=false
+const GEMS_REWARD=4
 
 @onready var cheatGround=get_node("cheat-ground")
 
@@ -15,6 +18,7 @@ func _ready():
 	cheatGround.position.y=500
 	
 	dialogStillDisplayed=GlobalScenes.getParamForSceneOr(scene_file_path,'dialogStillDisplayed',false)
+	hasAlreadyWon=GlobalScenes.getParamForSceneOr(scene_file_path,'hasAlreadyWon',false)
 	
 	$gameOver.visible=false
 	getPlayer().loadCameraLimits($cameraRef)
@@ -28,7 +32,8 @@ func _ready():
 	else:
 		enableNavigation()
 	
-	$winDialog.addDiscussion(GlobalGame.getTraductionById(GlobalGame.TRAD_WORD_APICULTEUR),GlobalGame.getTraductionById(GlobalGame.TRAD_BEARVILLAGE_BEEPLATFORM_WIN)	)
+	var winDialogId=GlobalGame.TRAD_BEARVILLAGE_BEEPLATFORM_REPLAY if hasAlreadyWon else GlobalGame.TRAD_BEARVILLAGE_BEEPLATFORM_WIN
+	$winDialog.addDiscussion(GlobalGame.getTraductionById(GlobalGame.TRAD_WORD_APICULTEUR),GlobalGame.getTraductionById(winDialogId))
 	
 
 func enableNavigation():
@@ -84,7 +89,9 @@ func _on_startDialog_discussionFinished():
 
 func _on_winDialog_discussionFinished():
 	$winDialog.end()
-	GlobalPlayer.addGems(4)
+	if !hasAlreadyWon:
+		GlobalPlayer.addGems(GEMS_REWARD)
+		GlobalScenes.saveParamForScene(scene_file_path,'hasAlreadyWon',true)
 	goBackToVillage()	
 	
 func goBackToVillage():

@@ -65,3 +65,5 @@ position = Vector2(149.604, 163.29)
 [connection signal="discussionFinished" from="simpleDialog" to="." method="_on_simpleDialog_discussionFinished"]
 [connection signal="playerOpenedDoor" from="sellerTalk" to="." method="_on_sellerTalk_playerOpenedDoor"]
 [connection signal="playerOpenedDoor" from="door" to="." method="_on_door_playerOpenedDoor"]
+[connection signal="save" from="playerAndControl" to="." method="_on_playerAndControl_save"]
+[connection signal="quit" from="playerAndControl" to="." method="_on_playerAndControl_quit"]

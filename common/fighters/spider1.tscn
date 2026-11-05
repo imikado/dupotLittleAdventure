@@ -7,121 +7,137 @@
 [ext_resource type="Texture2D" path="res://common/fighters/spider1/enemy1-attack1.png" id="4"]
 [ext_resource type="Texture2D" path="res://common/fighters/spider1/enemy1-idle.png" id="5"]
 
-[sub_resource type="AtlasTexture" id="12"]
+[sub_resource type="AtlasTexture" id="attack1_0"]
 atlas = ExtResource("4")
 region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="13"]
+[sub_resource type="AtlasTexture" id="attack1_1"]
 atlas = ExtResource("4")
 region = Rect2(64, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="14"]
+[sub_resource type="AtlasTexture" id="attack1_2"]
 atlas = ExtResource("4")
 region = Rect2(128, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="15"]
+[sub_resource type="AtlasTexture" id="attack1_3"]
 atlas = ExtResource("4")
 region = Rect2(192, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="16"]
+[sub_resource type="AtlasTexture" id="attack1_4"]
 atlas = ExtResource("4")
 region = Rect2(256, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="17"]
+[sub_resource type="AtlasTexture" id="attack1_5"]
 atlas = ExtResource("4")
 region = Rect2(320, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="18"]
+[sub_resource type="AtlasTexture" id="attack1_6"]
 atlas = ExtResource("4")
 region = Rect2(384, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="5"]
+[sub_resource type="AtlasTexture" id="damage_0"]
 atlas = ExtResource("2")
 region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="6"]
+[sub_resource type="AtlasTexture" id="damage_1"]
 atlas = ExtResource("2")
 region = Rect2(64, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="7"]
+[sub_resource type="AtlasTexture" id="damage_2"]
 atlas = ExtResource("2")
 region = Rect2(128, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="8"]
+[sub_resource type="AtlasTexture" id="damage_3"]
 atlas = ExtResource("2")
 region = Rect2(192, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="9"]
+[sub_resource type="AtlasTexture" id="damage_4"]
 atlas = ExtResource("2")
 region = Rect2(256, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="10"]
+[sub_resource type="AtlasTexture" id="damage_5"]
 atlas = ExtResource("2")
 region = Rect2(320, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="11"]
+[sub_resource type="AtlasTexture" id="damage_6"]
 atlas = ExtResource("2")
 region = Rect2(384, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="19"]
+[sub_resource type="AtlasTexture" id="die_0"]
 atlas = ExtResource("3")
 region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="20"]
+[sub_resource type="AtlasTexture" id="die_1"]
 atlas = ExtResource("3")
 region = Rect2(64, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="21"]
+[sub_resource type="AtlasTexture" id="die_2"]
 atlas = ExtResource("3")
 region = Rect2(128, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="22"]
+[sub_resource type="AtlasTexture" id="die_3"]
 atlas = ExtResource("3")
 region = Rect2(192, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="23"]
+[sub_resource type="AtlasTexture" id="die_4"]
 atlas = ExtResource("3")
 region = Rect2(256, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="25"]
+[sub_resource type="AtlasTexture" id="idle_0"]
 atlas = ExtResource("5")
 region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="26"]
+[sub_resource type="AtlasTexture" id="idle_1"]
 atlas = ExtResource("5")
 region = Rect2(64, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="27"]
+[sub_resource type="AtlasTexture" id="idle_2"]
 atlas = ExtResource("5")
 region = Rect2(128, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="28"]
+[sub_resource type="AtlasTexture" id="idle_3"]
 atlas = ExtResource("5")
 region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="idle_4"]
+atlas = ExtResource("5")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="idle_5"]
+atlas = ExtResource("5")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="idle_6"]
+atlas = ExtResource("5")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="idle_7"]
+atlas = ExtResource("5")
+region = Rect2(448, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="24"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("12")
+"texture": SubResource("attack1_0")
 }, {
 "duration": 1.0,
-"texture": SubResource("13")
+"texture": SubResource("attack1_1")
 }, {
 "duration": 1.0,
-"texture": SubResource("14")
+"texture": SubResource("attack1_2")
 }, {
 "duration": 1.5,
-"texture": SubResource("15")
+"texture": SubResource("attack1_3")
 }, {
 "duration": 1.0,
-"texture": SubResource("16")
+"texture": SubResource("attack1_4")
 }, {
 "duration": 0.5,
-"texture": SubResource("17")
+"texture": SubResource("attack1_5")
 }, {
 "duration": 1.5,
-"texture": SubResource("18")
+"texture": SubResource("attack1_6")
 }],
 "loop": 1,
 "name": &"attack-1",
@@ -129,66 +145,78 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("5")
+"texture": SubResource("damage_0")
+}, {
+"duration": 2.0,
+"texture": SubResource("damage_1")
 }, {
 "duration": 1.0,
-"texture": SubResource("6")
+"texture": SubResource("damage_2")
 }, {
 "duration": 1.0,
-"texture": SubResource("7")
+"texture": SubResource("damage_3")
 }, {
-"duration": 1.0,
-"texture": SubResource("8")
+"duration": 2.0,
+"texture": SubResource("damage_4")
 }, {
-"duration": 1.0,
-"texture": SubResource("9")
+"duration": 2.0,
+"texture": SubResource("damage_5")
 }, {
-"duration": 1.0,
-"texture": SubResource("10")
-}, {
-"duration": 1.0,
-"texture": SubResource("11")
+"duration": 3.0,
+"texture": SubResource("damage_6")
 }],
 "loop": 1,
 "name": &"damage",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("19")
+"duration": 2.0,
+"texture": SubResource("die_0")
 }, {
-"duration": 1.0,
-"texture": SubResource("20")
+"duration": 2.0,
+"texture": SubResource("die_1")
 }, {
-"duration": 1.0,
-"texture": SubResource("21")
+"duration": 2.0,
+"texture": SubResource("die_2")
 }, {
-"duration": 1.0,
-"texture": SubResource("22")
+"duration": 2.0,
+"texture": SubResource("die_3")
 }, {
-"duration": 3.0,
-"texture": SubResource("23")
+"duration": 6.0,
+"texture": SubResource("die_4")
 }],
 "loop": 1,
 "name": &"die",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("25")
+"duration": 3.0,
+"texture": SubResource("idle_0")
+}, {
+"duration": 3.0,
+"texture": SubResource("idle_1")
+}, {
+"duration": 3.0,
+"texture": SubResource("idle_2")
+}, {
+"duration": 3.0,
+"texture": SubResource("idle_3")
+}, {
+"duration": 3.0,
+"texture": SubResource("idle_4")
+}, {
+"duration": 3.0,
+"texture": SubResource("idle_5")
 }, {
 "duration": 1.0,
-"texture": SubResource("26")
+"texture": SubResource("idle_6")
 }, {
-"duration": 1.0,
-"texture": SubResource("27")
-}, {
-"duration": 1.0,
-"texture": SubResource("28")
+"duration": 2.0,
+"texture": SubResource("idle_7")
 }],
 "loop": 1,
 "name": &"idle",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [node name="spider1" type="Node2D" unique_id=91677519]
@@ -196,7 +224,7 @@ script = ExtResource("1")
 
 [node name="shadow" type="Sprite2D" parent="."]
 position = Vector2(34, 62)
-scale = Vector2(2, 1)
+scale = Vector2(3, 1)
 texture = ExtResource("shadow")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2015394866]

@@ -15,6 +15,14 @@ var patternItem=null
 
 var itemSelected=null
 
+# comme a la boutique : une seule case cochee, celle dont on lit la fiche
+var itemGroup=ButtonGroup.new()
+var itemButtons={}
+
+const COUNT_OUTLINE=Color(0.13, 0.125, 0.2)
+const COUNT_MARGIN=1
+const EQUIPPED_COLOR=Color(1.2, 1.05, 0.6)
+
 func _ready():
 	getWindow().visible=false
 	getSideInfo().visible=false
@@ -80,15 +88,29 @@ func showWindow():
 		getGrid().remove_child(itemToReset)
 		itemToReset.queue_free()
 	
+	itemButtons={}
 	patternItem=exampleItem.duplicate()
 
+	# un seul emplacement par objet, avec le nombre d'exemplaires
+	var uniqueItemList=[]
 	for item in itemList:
+		if !uniqueItemList.has(item):
+			uniqueItemList.append(item)
+
+	for item in uniqueItemList:
 		var realItem=GlobalItems.getItem(item)
 		var newItem=patternItem.duplicate()
 		newItem.setImage(realItem.getTexture())
+		newItem.button_group=itemGroup
+		itemButtons[item]=newItem
 		newItem.connect("button_down", Callable(self, "_on_pressed_selected").bind(item))
 		# la description suit le curseur (clavier / manette)
 		newItem.connect("focus_entered", Callable(self, "_on_pressed_selected").bind(item))
+		var count=itemList.count(item)
+		if count > 1:
+			newItem.add_child(_makeCountLabel(count))
+		if _isEquipped(item):
+			newItem.add_theme_stylebox_override("normal", _equippedStyle(newItem))
 	
 		getGrid().add_child(newItem)
 	
@@ -98,7 +120,34 @@ func showWindow():
 	else:
 		getWindow().get_node("closeButton").grab_focus()
 
+func _isEquipped(item_):
+	return GlobalPlayer.hasEquipment() and int(GlobalPlayer.getEquipment())==int(item_)
+
+# "x3" en bas a droite de l'emplacement
+func _makeCountLabel(count_):
+	var label=Label.new()
+	label.text="x"+str(count_)
+	label.add_theme_color_override("font_outline_color", COUNT_OUTLINE)
+	label.add_theme_constant_override("outline_size", 2)
+	label.mouse_filter=Control.MOUSE_FILTER_IGNORE
+	# le label couvre l'emplacement, le texte est cale en bas a droite
+	label.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	label.offset_right=-COUNT_MARGIN
+	label.offset_bottom=-COUNT_MARGIN
+	label.horizontal_alignment=HORIZONTAL_ALIGNMENT_RIGHT
+	label.vertical_alignment=VERTICAL_ALIGNMENT_BOTTOM
+	return label
+
+# emplacement dore pour l'objet equipe
+func _equippedStyle(button_:Button):
+	var style=button_.get_theme_stylebox("normal").duplicate()
+	style.modulate_color=EQUIPPED_COLOR
+	return style
+
 func _on_pressed_selected(item_):
+	if itemButtons.has(item_):
+		itemButtons[item_].button_pressed=true
+
 	var realItem=GlobalItems.getItem(item_)
 	getSideInfo().visible=true
 	getSideInfo().get_node("title").text=realItem.getName()
@@ -120,6 +169,10 @@ func _on_pressed_selected(item_):
 
 	if realItem.type==itemClass.TYPE.TOOL or realItem.type==itemClass.TYPE.WEAPON:
 		equipButton.visible=true
+		# objet deja equipe : le bouton le signale
+		var equipped=_isEquipped(item_)
+		equipButton.disabled=equipped
+		equipButton.text=GlobalGame.getTraductionById(GlobalGame.TRAD_UI_EQUIPPED if equipped else GlobalGame.TRAD_UI_EQUIP)
 	else:
 		equipButton.visible=false
 		
@@ -153,11 +206,22 @@ func _on_pressed_use():
 	getWindow().visible=false
 	emitCloseInventory()
 
+# Echap : ferme la carte, sinon l'inventaire (renvoie false si rien n'etait ouvert)
+func closeTopWindow():
+	if $window2.visible:
+		_on_closeButton2_pressed()
+		return true
+	if getWindow().visible:
+		_on_closeButton_pressed()
+		return true
+	return false
+
 func _on_closeButton_pressed():
 	getWindow().visible=false
 	emitCloseInventory()
 
 
+# la carte se ferme sur l'inventaire, toujours ouvert
 func _on_closeButton2_pressed():
 	$window2.visible=false
-	emitCloseInventory()
+	getDisplayButton().grab_focus()

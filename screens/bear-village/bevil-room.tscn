@@ -1,8 +1,9 @@
 [gd_scene format=3]
 
+[ext_resource type="Texture2D" path="res://screens/bear-village/bevil-room/backdrop.png" id="backdrop"]
 [ext_resource type="Script" path="res://screens/bear-village/bevil-room.gd" id="2"]
 [ext_resource type="PackedScene" path="res://common/ui/simpleDialog.tscn" id="4"]
-[ext_resource type="PackedScene" path="res://screens/bear-village/assets/bear.tscn" id="7"]
+[ext_resource type="PackedScene" path="res://screens/bear-village/assets/bear-big.tscn" id="7"]
 
 [node name="bee-room" type="Node2D" unique_id=1010806518]
 position = Vector2(177, 103)
@@ -15,11 +16,15 @@ offset_right = 177.0
 offset_bottom = 103.0
 color = Color(0, 0, 0, 1)
 
+[node name="backdrop" type="TextureRect" parent="startRect"]
+offset_right = 356.0
+offset_bottom = 196.0
+texture = ExtResource("backdrop")
+
 [node name="startDialog" parent="startRect" unique_id=1468884611 instance=ExtResource("4")]
 
 [node name="bear" parent="startRect" unique_id=1747329669 instance=ExtResource("7")]
 position = Vector2(101, 73)
-scale = Vector2(4, 4)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1628467658]
 position = Vector2(-0.179184, 3.34854)

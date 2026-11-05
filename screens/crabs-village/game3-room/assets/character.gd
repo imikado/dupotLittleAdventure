@@ -102,30 +102,28 @@ func pocessInput():
 func processAnimation():
 	var currentAnimation="default"
 
-	
-	if up :
-		currentAnimation='walk-up'
-		$AnimatedSprite2D.flip_h=true
-	elif down :
-		currentAnimation='walk-down'
-		$AnimatedSprite2D.flip_h=false
-	elif left:
+	# meme ordre de priorite que le deplacement dans _process
+	if left:
 		currentAnimation='walk-right'
-		
 		$AnimatedSprite2D.flip_h=true
-
 	elif right:
 		currentAnimation='walk-right'
 		$AnimatedSprite2D.flip_h=false
-	else:
-		currentAnimation="default"
+	elif up :
+		currentAnimation='walk-up'
+		$AnimatedSprite2D.flip_h=false
+	elif down :
+		currentAnimation='walk-down'
+		$AnimatedSprite2D.flip_h=false
 
 	playAnimation(currentAnimation)
 
 
-func playAnimation(anim):
-	$AnimatedSprite2D.play(anim)
-	$AnimatedSprite2D.play()
+func playAnimation(anim_):
+	# ne relancer que si l'animation change : appelee a chaque image,
+	# elle resterait sinon figee sur sa premiere image
+	if $AnimatedSprite2D.animation!=anim_ or !$AnimatedSprite2D.is_playing():
+		$AnimatedSprite2D.play(anim_)
 
 
 func resetKeys():
