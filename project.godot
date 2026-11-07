@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="LittleAdventure"
-config/version="1.23.0"
+config/version="1.23.1"
 run/main_scene="res://screens/game/boot.tscn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 boot_splash/bg_color=Color(0.933333, 0.372549, 0, 1)
